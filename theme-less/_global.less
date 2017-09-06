@@ -1,0 +1,351 @@
+html {
+	font-size: 1em;
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin-top: 0;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+.icons-bck {
+	position: absolute;
+	top: 90px;
+	left: 50%;
+	.translate(-50%; 0);
+}
+/* Section Title
+-------------------------------------------------- */
+.section-title {
+	text-align: center;
+	text-transform: uppercase;
+	position: relative;
+	margin-bottom: 6.25rem;
+	font-weight: bold;
+
+	&::after {
+		position: absolute;
+		content: " ";
+		display: block;
+		height: 1px;
+		border-top: 1px solid @heroColor;
+		width: 4.41176470588235em;
+		left: 50%;
+		bottom: -0.73529411764706em;
+		.translate(-50%; 0);
+		z-index: 0;
+	}
+
+	&::before {
+		content: "";
+		position: absolute;
+		bottom: -35px;
+		border: 10px solid #fff;
+		border-top: none;
+		border-bottom: none;
+		left: 50%;
+		width: 21px;
+		height: 20px;
+		.transition( all 300ms );
+		.translate( -50%; 0);
+		background-color: @heroColor;
+		z-index: 1;
+	}
+}
+
+.section-title.alt {
+	text-align: left;
+	margin-bottom: 4.375rem;
+
+	&::after {
+		left: 0;
+		bottom: -0.89285714285714em;
+		.translate(0; 0);
+	}
+
+	&::before {
+		bottom: -35px;
+		left: 53px;
+		.transition( all 300ms );
+		.translate( 0; 0);
+	}
+}
+
+.style-title {
+	color: #fff;
+	text-transform: uppercase;
+	.font-size(48);
+
+	span {
+		font-family: "Dancing Script";
+		text-transform: capitalize;
+		color: @heroColor;
+		display: block;
+		.font-size(50);
+	}
+}
+
+/* Read More Button
+-------------------------------------------------- */
+.read-more {
+	color: @gray-dark;
+	font-weight: bold;
+	clear: both;
+	margin: 1.875em 0;
+	font-family: @headings-font-family;
+	text-decoration: none;
+	position: relative;
+	margin-right: 20px;
+
+		&:hover{
+			color: @gray-dark;
+			text-decoration: none;
+
+				i{
+					.translate(25px;-50%);
+					opacity: 1;
+				}
+				&::before{
+					width: 0;
+				}
+		}
+		
+
+		i{
+			.font-size(16);
+			height: 16px;
+			width: 16px;
+			position: absolute;
+			right: 0;
+			top: 50%;
+			.transition(~"opacity 200ms, transform 800ms cubic-bezier(0.075, 0.82, 0.165, 1)");
+			.translate(5px;-50%);
+			opacity: 0;
+
+		}
+}
+
+.ql_background {
+	.transition(all 300ms);
+	.box-shadow( 0 2px 3px 0 rgba(0,0,0,0.07));
+	background-color: #fff;
+	padding: 1.875rem;
+}
+
+.ql_background_hover {
+	.ql_background;
+
+	&:hover {
+		.box-shadow( 0 3px 8px 1px rgba(0,0,0,0.1) );
+	}
+}
+/* Shadows
+-------------------------------------------------- */
+.ql_shadow {
+	.box-shadow( 0 15px 35px rgba(0,0,0,0.2) );
+}
+
+.ql_shadow_w_hover {
+	.box-shadow( 0 15px 35px rgba(0,0,0,0.2) );
+
+	.no-touch &:hover {
+		.box-shadow( 0 15px 35px rgba(0,0,0,0.4) );
+	}
+}
+/* Custom button
+-------------------------------------------------- */
+.ql_primary_btn{
+	display: inline-block;
+	background-color: @heroColor;
+	color: #fff;
+	padding: 13px 30px;
+	border-radius: 3px;
+	border: none;
+	text-transform: uppercase;
+	font-family: @headings-font-family;
+	font-weight: 500;
+	letter-spacing: 1px;
+	.font-size(16);
+	.transition(~ "box-shadow 500ms, background 200ms");
+
+	.no-touch &:hover {
+		text-decoration: none !important;
+		background-color: darken( @heroColor, 4%);
+		color: #fff;
+	}
+
+	&:active,
+	&:focus {
+		position: relative;
+		bottom: -1px;
+		text-decoration: none;
+	}
+}
+
+.ql_secundary_btn{
+	.ql_primary_btn;
+	background-color: #fff;
+	color: @heroColor;
+	border: 1px solid @heroColor;
+	vertical-align: middle;
+	outline: none;
+	text-align: center;
+}
+
+.ql_border_btn{
+	.ql_primary_btn;
+	background-color: transparent;
+	color: #fff;
+	border: 1px solid #fff;
+	vertical-align: middle;
+	outline: none;
+	text-align: center;
+
+		.no-touch &:hover {
+			background-color: #fff;
+			color: @heroColor;
+		}
+}
+
+
+
+
+/* Make Space between sections											*/
+/*----------------------------------------------------------------------*/
+.clear_space {
+	margin: 2.30769230769231em 0;
+}
+
+
+/* Hover effect for thumbnails											*/
+/*----------------------------------------------------------------------*/
+.ql_thumbnail_hover {
+	position: relative;
+	display: block;
+	text-align: center;
+	overflow: hidden;
+
+	&:before {
+		content: " ";
+		display: block;
+		top: 5px;
+		left: 5px;
+		right: 5px;
+		bottom: 5px;
+		z-index: 1;
+		background-color: rgba(0,0,0,0.7);
+		position: absolute;
+		.transition( all 200ms );
+		opacity: 0;
+		border-radius: @border-radius-small;
+	}
+
+	&:hover:before {
+		opacity: 1;
+	}
+
+	&:after {
+		.transition(all 200ms);
+		.transition-delay(100ms);
+		.translate(-50%;-50%);
+		opacity: 0;
+		display: block;
+		z-index: 2;
+		position: absolute;
+		top: 45%;
+		left: 50%;
+		content: "+";
+		color: #fff;
+		font: bold 14px/1 FontAwesome;
+		.font-size(62);
+		text-rendering: auto;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
+
+	&:hover:after {
+		top: 50%;
+		opacity: 1;
+	}
+
+	img {
+		.transition( transform 800ms );
+	}
+
+	&:hover img {
+		.scale(1.1);
+	}
+}
+
+/* Font size using REMs													*/
+/*----------------------------------------------------------------------*/
+.font-size(@size:14) {
+	font-size: unit(@size, px);
+	font-size: unit(@size / @font-size-base, rem); //Bootstrap variable
+}
+
+iframe{
+	max-width: 100%;
+}
+
+
+/* Inputs																*/
+/*----------------------------------------------------------------------*/
+input,
+textarea {
+	display: block;
+	width: 100%;
+	height: 42px; // Make inputs at least the height of their button counterpart (base line-height + padding + border)
+	padding: 10px @padding-base-horizontal;
+	font-size: 0.88888888888889em;
+	line-height: @line-height-base;
+	color: @input-color;
+	vertical-align: middle;
+	background-color: @input-bg;
+	background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
+	border-radius: @input-border-radius;
+	margin-bottom: 0.71428571428571em;
+	border: 2px solid @gray-lighter;
+	.transition(all 300ms);
+	.box-shadow(none);
+
+	// Customize the `:focus` state to imitate native WebKit styles.
+	.form-control-focus();
+	// Placeholder
+	//
+	// Placeholder text gets special styles because when browsers invalidate entire
+	// lines if it doesn't understand a selector/
+	.placeholder();
+	// Disabled and read-only inputs
+	// Note: HTML5 says that controls under a fieldset > legend:first-child won't
+	// be disabled if the fieldset is disabled. Due to implementation difficulty,
+	// we don't honor that edge case; we style them as disabled anyway.
+	&[disabled],
+	&[readonly],
+	fieldset[disabled] & {
+		cursor: not-allowed;
+		background-color: @input-bg-disabled;
+	}
+	// Reset height for `textarea`s
+	textarea & {
+		height: auto;
+	}
+	&:focus{
+		@box_shadow: 0 10px 15px rgba(0,0,0,0.12), 0 13px 40px rgba(0,0,0,0.17);
+		.box-shadow(@box_shadow);
+		border: 2px solid @gray-light;
+	}
+}
+
+textarea {
+	min-height: 100px;
+}

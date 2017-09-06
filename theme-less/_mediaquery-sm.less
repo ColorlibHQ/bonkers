@@ -1,0 +1,269 @@
+@media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
+
+	.container{
+		width: 98%;
+	}
+
+
+	/*
+	Header
+	==========================================
+	*/
+	#header{
+		padding: 0;
+	}
+	.logo_container{
+		text-align: center;
+		position: relative;
+		width: 100%;
+		margin-bottom: 0;
+		margin-top: 15px;
+	}
+	.logo_container, #jqueryslidemenu{
+		text-align: center;
+	}
+	.shopapp-nav-btn{
+		top: 45px;
+	}
+
+	.main-navigation{
+		display: block;
+		text-align: center;
+
+			.menu{
+				text-align: center;
+			}
+	}
+
+
+
+
+	/*
+	Content
+	==========================================
+	*/
+	.metadata ul li{
+		float: left;
+	}
+
+	/*Post										*/
+	/*------------------------------------------*/
+	.blog #content.col-md-12 .post{
+		width: 45%;
+	}
+	.blog #content.col-md-8 .post{
+		width: 45.5%;
+		margin: 0 2% 4% 2%;
+
+	}
+
+
+
+	/*
+	Sidebar
+	==========================================
+	*/
+	.bonkers-sidenav-out .sidebar-wrap{
+		margin-top: 210px;
+	}
+	
+
+
+	/*
+	Single
+	============================= */
+	.single .post .entry-footer{
+		text-align: left;
+	}
+	.single .post .entry-footer .metadata ul li{
+		display: inline-block;
+		margin-right: 15px;
+	}
+	.single .post .entry-footer .metadata ul li.meta_date{
+		display: block;
+	}
+
+
+
+
+	/*Comments Form---------------------------------------------------*/
+	#respond .input-wrap{
+		width:46%;
+	}
+	#content.col-md-12 #comments{
+		width: 100%;
+	}
+
+	input, textarea{
+		@box_shadow: 0 2px 4px rgba(0,0,0,0.08), 0 3px 15px rgba(0,0,0,0.13);
+		.box-shadow(@box_shadow);
+		border: 1px solid @gray-lighter;
+	}
+
+
+	
+	/*
+	Welcome Section
+	---------------------------------------*/
+	.bonkers-welcome-section{
+			
+			.bonkers-welcome-intro{
+				width: 70%;
+				padding: 20% 0 14% 0;
+				margin: 0 15%;
+
+					.bonkers-intro-line{
+						.font-size(38);
+						margin-bottom: 50px;
+					}
+			}
+	}
+
+	/*
+	Services Section
+	---------------------------------------*/
+	.bonkers-services-section{
+
+			.bonkers-service{
+				margin-bottom: 30px;
+			}
+	}
+
+
+	/*
+	Image Section
+	---------------------------------------*/
+	.bonkers-image-section{	
+
+	    	.bonkers-image-section-image{
+			    position: relative;
+			    top: 0;
+			    bottom: auto;
+			    width: 100%;
+			    padding-bottom: 60%;
+	    	}
+
+	    	.bonkers-image-section-text{
+	    		width: 100%;
+	    		margin-left: 0;
+	    		padding: 40px;
+	    		display: block;
+
+	    			.bonkers-image-section-content{
+	    				.font-size(18);
+	    				line-height: 30px;
+	    			}
+	    	}
+
+	}
+
+	/*
+	Phone Section
+	---------------------------------------*/
+	.bonkers-phone-section{
+		padding: 70px 7% 30px 7%;
+		
+			.bonkers-phone-services{
+				padding-top: 0;
+				width: 40%;
+
+					.bonkers-phone-service{
+						margin-bottom: 20%;
+
+							.bonkers-phone-service-content{
+
+							}
+					}
+
+					&.bonkers-phone-left{
+						margin-right: 9%;
+
+
+					}
+
+					&.bonkers-phone-right{
+						margin-left: 9%;
+
+					}
+			}
+
+			.bonkers-phone-image{
+				display: none;
+
+					.bonkers-phone-screenshot{
+						top: 122px;
+						left: 68px;
+					}
+			}
+	}
+
+
+	/*
+	CTA Section
+	---------------------------------------*/
+	.bonkers-cta-section{
+
+			.bonkers-cta-title{
+				width: 66%;
+			}
+
+			.bonkers-cta-button{
+				position: absolute;
+				top: 50%;
+				right: 19%;
+				.translate(0;-50%);
+				z-index: 2;
+				vertical-align: top;
+
+			}
+	}
+
+
+	/*
+	Video Section
+	---------------------------------------*/
+	.bonkers-video-section{
+		padding: 70px 10%;
+
+			.bonkers-video-title{
+				.font-size(36);
+			}
+	}
+/*
+	Team Section
+	---------------------------------------*/
+	.bonkers-team-section{
+
+			.bonkers-team-wrap{
+
+
+					.bonkers-team-member{
+						width: 38%;
+					}
+			}
+	}
+	
+
+	/*
+	Subscribe Section
+	---------------------------------------*/
+	.bonkers-subscribe-section{
+		padding: 50px 15%;
+	}
+
+
+
+	/*
+	Contact Section
+	---------------------------------------*/
+	.bonkers-contact-section{
+		padding: 80px 0;
+			
+			.bonkers-contact-content{
+				width: 60%;
+				margin-left: 39%;
+			}
+	}
+
+
+}

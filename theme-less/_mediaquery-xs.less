@@ -1,0 +1,375 @@
+@media (max-width: @screen-xs-max) {
+
+	.pace{
+		display: none;
+	}
+
+	/*
+	Header
+	==========================================
+	*/
+
+	#header{
+		position: relative;
+		padding: 0;
+		background-color: #fff;
+
+			.bonkers-sidenav &{
+				padding: 0 20px;
+				margin-bottom: 30px;
+			}
+			.bonkers-sidenav-out &{
+				width: 94%;
+				margin-bottom: 10px;
+				margin-top: 30px;
+			}
+	}
+	.logo_container{
+		position: relative;
+		display: block;
+		float: none;
+		margin-right: 0;
+
+			.ql_logo{
+				color: #000;
+			}
+	}
+
+	
+	#bonkers-sidebar-btn{
+		top: 17px;
+	}
+
+	#bonkers-nav-btn{
+		top: 0;
+		right: 20px;
+		padding: 6px 10px;
+		
+			i{
+				.font-size(24);
+			}
+	}
+	.nav_social li{
+		float: none;
+		display: inline-block;
+	}
+
+
+	
+
+
+	/*
+	Content
+	--------------------------------
+	*/
+	.metadata{
+		display: block;
+	}
+	.metadata ul li{
+		float: left;
+	}
+
+	/*Post										*/
+	/*------------------------------------------*/
+	.blog #content.col-md-12 .post, .blog #content.col-md-8 .post{
+		width: 100%;
+		display: block;
+		margin: 0 0 5%;
+	}
+
+	.pagination{
+		margin-top: 0;
+		margin-bottom: 15%;
+	}
+
+	/*
+	Single
+	============================= */
+	.single .post .entry-footer{
+		text-align: left;
+	}
+	.single .post .entry-footer .metadata ul li{
+		display: inline-block;
+		margin-right: 15px;
+	}
+	.single .post .entry-footer .metadata ul li.meta_date{
+		display: block;
+	}
+
+	/*
+	Sidebar
+	==========================================
+	*/
+	.bonkers-sidenav-out .sidebar-wrap{
+		margin-top: 120px;
+	}
+	#sidebar{
+		padding-left: 20px;
+	}
+
+
+	.bonkers-preloader {
+		top: 10px;
+		left: 10px;
+		right: 10px;
+	}
+
+
+	/*
+	Comments
+	==========================================
+	*/
+	/*Comments Form---------------------------------------------------*/
+	#respond .input-wrap{
+		width:100%;
+	}
+
+	#content.col-md-12 #comments{
+		width: 100%;
+	}
+
+	#comments .comment-meta{
+		width: 100%;
+		display: block;
+		margin-bottom: 20px;
+	}
+	#comments .comment-content{
+		width: 100%;
+		display: block;
+	}
+	.comment-list{
+			.children{
+				padding-left: 10px;
+			}
+	}
+
+
+	
+
+	/*
+	Footer
+	==========================================
+	*/
+	.sub-footer p{
+		margin-bottom: 20px;
+		float: none;
+		line-height: 1.6em;
+		text-align: center;
+	}
+	.nav_social{
+		float: none;
+			li{
+				margin: 3px;
+			}
+	}
+
+
+	.section-title{
+		margin-bottom: 4rem;
+	}
+
+	
+
+	/*
+	Welcome Section
+	---------------------------------------*/
+	.bonkers-welcome-section{
+			
+			.bonkers-welcome-intro{
+				width: 70%;
+				padding: 14% 0;
+				margin: 0 15%;
+
+					.bonkers-intro-line{
+						.font-size(28);
+						margin-bottom: 50px;
+					}
+			}
+	}
+
+	/*
+	Services Section
+	---------------------------------------*/
+	.bonkers-services-section{
+		padding: 50px 0;
+
+			.bonkers-service{
+				margin-bottom: 30px;
+			}
+	}
+
+	/*
+	Image Section
+	---------------------------------------*/
+	.bonkers-image-section{	
+
+	    	.bonkers-image-section-image{
+			    position: relative;
+			    top: 0;
+			    bottom: auto;
+			    width: 100%;
+			    padding-bottom: 60%;
+	    	}
+
+	    	.bonkers-image-section-text{
+	    		width: 100%;
+	    		margin-left: 0;
+	    		padding: 30px;
+	    		display: block;
+
+	    			.bonkers-image-section-title{
+	    				.font-size(30);
+	    			}
+
+	    			.bonkers-image-section-content{
+	    				.font-size(16);
+	    				line-height: 25px;
+	    			}
+	    	}
+
+	}
+
+
+	/*
+	Phone Section
+	---------------------------------------*/
+	.bonkers-phone-section{
+		padding: 70px 7% 30px 7%;
+		
+			.bonkers-phone-services{
+				padding-top: 0;
+				width: 100%;
+				margin: 0;
+
+					.bonkers-phone-service{
+						margin-bottom: 10%;
+
+							.bonkers-phone-service-content{
+
+							}
+					}
+
+					&.bonkers-phone-left .bonkers-phone-service{
+					text-align: left;
+
+						.bonkers-phone-service-content{
+							padding-left: 45px;
+							padding-right: 0;
+						}
+
+						.bonkers-phone-icon{
+							left: 0;
+							right: auto;
+						}
+				}
+			}
+
+			.bonkers-phone-image{
+				display: none;
+
+					.bonkers-phone-screenshot{
+						top: 122px;
+						left: 68px;
+					}
+			}
+	}
+
+	/*
+	CTA Section
+	---------------------------------------*/
+	.bonkers-cta-section{
+		text-align: center;
+		padding: 60px 7%;
+
+			.bonkers-cta-title{
+				width: 100%;
+				line-height: 38px;
+
+			}
+
+			.bonkers-cta-button{
+				position: relative;
+				margin-top: 20px;
+				top: auto;
+				right: auto;
+				.translate(0;0);
+
+			}
+	}
+
+	/*
+	Video Section
+	---------------------------------------*/
+	.bonkers-video-section{
+		padding: 50px 5%;
+
+			&::before{
+				bottom: 30%;
+			}
+
+			.bonkers-video-title{
+				.font-size(30);
+			}
+
+	}
+
+	/*
+	Team Section
+	---------------------------------------*/
+	.bonkers-team-section{
+
+			.bonkers-team-wrap{
+
+
+					.bonkers-team-member{
+						width: 80%;
+					}
+			}
+	}
+
+	/*
+	Subscribe Section
+	---------------------------------------*/
+	.bonkers-subscribe-section{
+		padding: 50px 10%;
+
+			.bonkers-subscribe-content{
+
+					.bonkers-subscribre-form-wrapper{
+							
+							.bonkers-subscribre-form{
+
+									input{
+										width: 100%;
+										display: block;
+									}
+
+							}
+
+					}
+			}
+	}
+
+
+	/*
+	Contact Section
+	---------------------------------------*/
+	.bonkers-contact-section{
+		padding: 0;
+
+			.bonkers-contact-map{
+				position: relative;
+
+					#bonkers-map{
+						height: 300px;
+					}
+			}
+			
+			.bonkers-contact-content{
+				width: 100%;
+				margin-left: 0;
+				padding: 30px;
+			}
+	}
+
+}

@@ -1,0 +1,66 @@
+.sortable-sections-desc{
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+
+/*
+Customizer
+=========================================================*/
+#accordion-section-bonkers_shop_options, #accordion-section-bonkers_blog_section, #accordion-section-bonkers_site_options_section, #accordion-section-bonkers_portfolio_options_section, #accordion-section-bonkers_typography_section, #accordion-section-bonkers_map_section, #accordion-section-bonkers_topbar_section, #accordion-section-bonkers_header_section{
+		.accordion-section-title{
+			position: relative;
+			padding-left: 40px;
+
+				&::before{
+					font-family: 'bonkers' !important;
+					speak: none;
+					font-style: normal;
+					font-weight: normal;
+					font-variant: normal;
+					text-transform: none;
+					line-height: 1;
+					-webkit-font-smoothing: antialiased;
+					-moz-osx-font-smoothing: grayscale;
+					position: absolute;
+					left: 14px;
+					top: 50%;
+					-webkit-transform: translate(0, -50%);
+					-ms-transform: translate(0, -50%);
+					-o-transform: translate(0, -50%);
+					transform: translate(0, -50%);
+					font-size: 15px;
+				}
+		}
+
+}
+#accordion-section-bonkers_shop_options .accordion-section-title::before{
+	content: "\e900";
+}
+#accordion-section-bonkers_blog_section .accordion-section-title::before{
+	content: "\e90a";
+}
+#accordion-section-bonkers_site_options_section .accordion-section-title::before{
+	content: "\e909";
+}
+#accordion-section-bonkers_portfolio_options_section .accordion-section-title::before{
+	content: "\e90c";
+}
+#accordion-section-bonkers_map_section .accordion-section-title::before{
+	content: "\e90b";
+}
+#accordion-section-bonkers_typography_section .accordion-section-title::before{
+	content: "\e90d";
+}
+#accordion-section-bonkers_topbar_section .accordion-section-title::before{
+	content: "\e917";
+}
+#accordion-section-bonkers_header_section .accordion-section-title::before{
+	content: "\e923";
+}
+
+
+
+// Custom Icon Fonts
+@import "../less/font-awesome/less/font-awesome.less";
+@import "../less/font-bonkers/font-bonkers.less";
