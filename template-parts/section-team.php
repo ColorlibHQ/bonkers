@@ -43,7 +43,7 @@ if ( $bonkers_enable_section || is_customize_preview() ) :
         </div>
 
         <div class="bonkers-team-member">
-            <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/member3.jpg" alt="" class="bonkers-team-image">
+            <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/member1.jpg" alt="" class="bonkers-team-image">
             <div class="bonker-team-content">
                 <h4 class="bonkers-team-name"><?php esc_html_e( 'John Doe', 'bonkers' ); ?></h4>
                 <span class="bonkers-team-position"><?php esc_html_e( 'CEO', 'bonkers' ); ?></span>
@@ -56,7 +56,7 @@ if ( $bonkers_enable_section || is_customize_preview() ) :
         </div>
 
         <div class="bonkers-team-member">
-            <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/member4.jpg" alt="" class="bonkers-team-image">
+            <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/member2.jpg" alt="" class="bonkers-team-image">
             <div class="bonker-team-content">
                 <h4 class="bonkers-team-name"><?php esc_html_e( 'John Doe', 'bonkers' ); ?></h4>
                 <span class="bonkers-team-position"><?php esc_html_e( 'CEO', 'bonkers' ); ?></span>

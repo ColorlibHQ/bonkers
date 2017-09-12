@@ -75,14 +75,10 @@ Source: https://github.com/afarkas/html5shiv
 
 [PT Sans](https://fonts.google.com/specimen/PT+Sans) by ParaType - Licensed under the [SIL Open Font License, 1.1](http://scripts.sil.org/OFL).
 
-Images from Unsplash
-License: https://unsplash.com/license
-Source: https://unsplash.com
-https://unsplash.com/photos/379j_c9tjj8
-https://unsplash.com/photos/DOdp8RKBfcw
-https://unsplash.com/photos/En-3vOTSOKk
-https://unsplash.com/photos/nbBLwsBeh64
-https://unsplash.com/photos/GWe0dlVD9e0
-https://unsplash.com/photos/9l_326FISzk
-https://unsplash.com/photos/bpxgyD4YYt4
-https://unsplash.com/photos/sibVwORYqs0
+Images from pixabay
+License: https://pixabay.com/es/service/terms/#usage
+https://pixabay.com/photo-2689542/
+https://pixabay.com/photo-2562560/
+https://pixabay.com/photo-2602886/
+https://pixabay.com/photo-1274360/
+https://pixabay.com/photo-1690965/

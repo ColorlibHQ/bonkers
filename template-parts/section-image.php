@@ -11,7 +11,7 @@ if ( $bonkers_enable_section || is_customize_preview() ) :
 <div id="bonkers-image-section" class="bonkers-image-section <?php echo esc_attr( $bonkers_image_css_class ); ?>" <?php if( false == $bonkers_enable_section ): echo 'style="display: none;"'; endif; ?>>
 
     <?php
-    $bonkers_image_image = get_option( 'bonkers_addons_image_image', esc_url( get_template_directory_uri() ) . '/images/luca-bravo-207676.jpg' );
+    $bonkers_image_image = get_option( 'bonkers_addons_image_image', esc_url( get_template_directory_uri() ) . '/images/computer-2562560_1920.jpg' );
     $bonkers_image_title = get_option( 'bonkers_addons_image_title', esc_html__( 'Start Growing your Business', 'bonkers' ) );
     $bonkers_image_link_title = get_option( 'bonkers_addons_image_link_title', esc_html__( 'Learn More', 'bonkers' ) );
     ?>
