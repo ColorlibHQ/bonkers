@@ -1208,6 +1208,9 @@ Subscribe Section
 .bonkers-subscribe-section .bonkers-subscribe-content .bonkers-subscribe-title {
   color: #fff;
 }
+.bonkers-subscribe-section .bonkers-subscribe-content .bonkers-subscribe-text {
+  margin-bottom: 10px;
+}
 .bonkers-subscribe-section .bonkers-subscribe-content .bonkers-subscribre-form-wrapper .bonkers-subscribre-form > div,
 .bonkers-subscribe-section .bonkers-subscribe-content .bonkers-subscribre-form-wrapper .contact-form > div {
   display: inline-block;

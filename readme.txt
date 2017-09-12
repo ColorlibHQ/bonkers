@@ -14,6 +14,11 @@ License URI: http://www.gnu.org/licenses/gpl-3.0.en.html
 2. Click Upload and Choose File, then select the theme's .zip file. Click Install Now.
 3. Click Activate to use your new theme right away.
 
+= Create a Front Page =
+
+Create a new page and select "Front Page" as template.
+Then you can make this page your home page by going to Settings > Reading > Front page displays, and selecting your new page under "Front page" option.
+
 
 == Credits ==
 
@@ -59,10 +64,6 @@ Source: http://imagesloaded.desandro.com
 Flickity by Metafizzy | GPLv3
 License: http://isotope.metafizzy.co/license.html
 Source: http://isotope.metafizzy.co/
-
-PhotoSwipe by @dimsemenov | MIT License
-License: https://raw.githubusercontent.com/dimsemenov/PhotoSwipe/master/LICENSE
-Source: http://photoswipe.com
 
 Pace
 License: https://raw.githubusercontent.com/HubSpot/pace/master/LICENSE

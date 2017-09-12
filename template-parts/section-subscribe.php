@@ -7,10 +7,12 @@ if ( $bonkers_enable_section || is_customize_preview() ) :
     <div class="bonkers-subscribe-content">
         <?php $bonkers_subscribe_title = get_option( 'bonkers_addons_subscribe_title', esc_html__( 'Subscribe', 'bonkers' ) ); ?>
         <h3 class="bonkers-subscribe-title"><?php echo esc_html( $bonkers_subscribe_title ); ?></h3>
-        <?php 
-        $bonkers_subscribe_text = get_option( 'bonkers_addons_subscribe_text' );
-        echo wp_kses_post( $bonkers_subscribe_text );
-        ?>
+        <div class="bonkers-subscribe-text">
+            <?php 
+            $bonkers_subscribe_text = get_option( 'bonkers_addons_subscribe_text' );
+            echo wp_kses_post( $bonkers_subscribe_text );
+            ?>
+        </div>
         <div class="bonkers-subscribre-form-wrapper">
             <?php
             $bonkers_subscribe_link_title = get_option( 'bonkers_addons_subscribe_link_title', esc_html__( 'Subscribe', 'bonkers' ) );

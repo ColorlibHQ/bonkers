@@ -159,7 +159,7 @@
     	//Welcome Message
 		wp.customize( 'bonkers_addons_welcome_title', function( value ) {
 			value.bind( function( to ) {
-				$( '.bonkers-welcome-section .intro-text' ).text( to );
+				$( '.bonkers-welcome-section .bonkers-intro-line' ).html( to );
 			} );
 		} );
 		//Link Title
@@ -185,7 +185,7 @@
 			} );
 		} );
 		//Enable/Disable Section
-		wp.customize( 'bonkers_addons_welcome_enable', function( value ) {
+		wp.customize( 'bonkers_addons[bonkers_addons_welcome_enable]', function( value ) {
 			value.bind( function( to ) {
 				if ( to == true ) {
 					$( '.bonkers-welcome-section' ).show();	
@@ -199,7 +199,7 @@
     	Services
     	------------------------------ */
 		//Enable/Disable Section
-		wp.customize( 'bonkers_addons_services_enable', function( value ) {
+		wp.customize( 'bonkers_addons[bonkers_addons_services_enable]', function( value ) {
 			value.bind( function( to ) {
 				if ( to == true ) {
 					$( '.bonkers-services-section' ).show();	
@@ -247,7 +247,7 @@
 			} );
 		} );
 		//Enable/Disable Section
-		wp.customize( 'bonkers_addons_image_enable', function( value ) {
+		wp.customize( 'bonkers_addons[bonkers_addons_image_enable]', function( value ) {
 			value.bind( function( to ) {
 				if ( to == true ) {
 					$( '.bonkers-image-section' ).show();	
@@ -279,7 +279,7 @@
 			} );
 		} );
 		//Enable/Disable Section
-		wp.customize( 'bonkers_addons_phone_enable', function( value ) {
+		wp.customize( 'bonkers_addons[bonkers_addons_phone_enable]', function( value ) {
 			value.bind( function( to ) {
 				if ( to == true ) {
 					$( '.bonkers-phone-section' ).show();	
@@ -321,7 +321,7 @@
 			} );
 		} );
 		//Enable/Disable Section
-		wp.customize( 'bonkers_addons_cta_enable', function( value ) {
+		wp.customize( 'bonkers_addons[bonkers_addons_cta_enable]', function( value ) {
 			value.bind( function( to ) {
 				if ( to == true ) {
 					$( '.bonkers-cta-section' ).show();	
@@ -338,6 +338,12 @@
 		wp.customize( 'bonkers_addons_video_title', function( value ) {
 			value.bind( function( to ) {
 				$( '.bonkers-video-section .bonkers-video-title' ).text( to );
+			} );
+		} );
+		//Content
+		wp.customize( 'bonkers_addons_video_text', function( value ) {
+			value.bind( function( to ) {
+				$( '.bonkers-video-section .bonkers-video-content' ).text( to );
 			} );
 		} );
 		//Enable/Disable Section
@@ -380,6 +386,12 @@
 				$( '.bonkers-subscribe-section .bonkers-subscribe-title' ).text( to );
 			} );
 		} );
+		//Content
+		wp.customize( 'bonkers_addons_subscribe_text', function( value ) {
+			value.bind( function( to ) {
+				$( '.bonkers-subscribe-section .bonkers-subscribe-text' ).text( to );
+			} );
+		} );
 		//Subscribe Button
 		wp.customize( 'bonkers_addons_subscribe_link_title', function( value ) {
 			value.bind( function( to ) {
@@ -389,7 +401,7 @@
 		//Placeholder
 		wp.customize( 'bonkers_addons_subscribe_link_placeholder', function( value ) {
 			value.bind( function( to ) {
-				$( '.bonkers-subscribe-section .bonkers-subscribe-content .bonkers-subscribre-form-wrapper .contact-form input[type="text"]' ).attr( 'placeholder', to );
+				$( '.bonkers-subscribe-section .bonkers-subscribe-content .bonkers-subscribre-form-wrapper .contact-form input[type="email"]' ).attr( 'placeholder', to );
 			} );
 		} );
 		//Enable/Disable Section
@@ -403,6 +415,15 @@
 			} );
 		} );
 
+		/*
+    	Clients
+    	------------------------------ */
+		//Title
+		wp.customize( 'bonkers_addons_clients_title', function( value ) {
+			value.bind( function( to ) {
+				$( '.bonkers-clients-section .bonkers-section-title' ).text( to );
+			} );
+		} );
 
 		/*
     	Contact
@@ -411,6 +432,12 @@
 		wp.customize( 'bonkers_addons_contact_title', function( value ) {
 			value.bind( function( to ) {
 				$( '.bonkers-contact-section .bonkers-contact-content .bonkers-contact-title' ).text( to );
+			} );
+		} );
+		//Button Text
+		wp.customize( 'bonkers_addons_contact_link_title', function( value ) {
+			value.bind( function( to ) {
+				$( '.bonkers-contact-section .bonkers-contact-form input.wpcf7-submit[type="submit"]' ).val( to );
 			} );
 		} );
 		//Enable/Disable Section
@@ -442,6 +469,22 @@ function hexToRgb(hex) {
         b: parseInt(result[3], 16)
     } : null;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
