@@ -22,7 +22,7 @@ if ( $bonkers_enable_section || is_customize_preview() ) :
                 </div><!-- service -->
 
                 <div class="bonkers-service col-md-4 col-sm-6">
-                    <img src="<?php echo esc_url( get_template_directory_uri() ); ?>images/30.User.png" alt="" class="bonkers-service-icon">
+                    <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/30.User.png" alt="" class="bonkers-service-icon">
                     <h4><?php echo esc_html__( 'Service Title', 'bonkers' ); ?></h4>
                     <p><?php echo esc_html__( 'Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus.', 'bonkers' ); ?></p>
                     <a href="#" class="bonkers-service-btn"><?php echo esc_html__( 'Learn More', 'bonkers' ); ?></a>
@@ -30,7 +30,7 @@ if ( $bonkers_enable_section || is_customize_preview() ) :
                 </div><!-- service -->
 
                 <div class="bonkers-service col-md-4 col-sm-12">
-                    <img src="<?php echo esc_url( get_template_directory_uri() ); ?>images/03.Office.png" alt="" class="bonkers-service-icon">
+                    <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/03.Office.png" alt="" class="bonkers-service-icon">
                     <h4><?php echo esc_html__( 'Service Title', 'bonkers' ); ?></h4>
                     <p><?php echo esc_html__( 'Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus.', 'bonkers' ); ?></p>
                     <a href="#" class="bonkers-service-btn"><?php echo esc_html__( 'Learn More', 'bonkers' ); ?></a>

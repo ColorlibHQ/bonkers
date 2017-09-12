@@ -177,11 +177,7 @@
 		//Background Image
 		wp.customize( 'bonkers_addons_welcome_image', function( value ) {
 			value.bind( function( to ) {
-				if ( to != "" ) {
-					$( '.bonkers-welcome-section' ).css( 'background-image', 'url(' + to + ')' );
-				}else{
-					$( '.bonkers-welcome-section' ).css( 'background-image', 'url(' + wp_customizer.theme_url + "/images/benjamin-child-17946.jpg)" );
-				}
+				$( '.bonkers-welcome-section' ).css( 'background-image', 'url(' + to + ')' );
 			} );
 		} );
 		//Enable/Disable Section
@@ -239,11 +235,7 @@
 		//Background Image
 		wp.customize( 'bonkers_addons_image_image', function( value ) {
 			value.bind( function( to ) {
-				if ( to != "" ) {
-					$( '.bonkers-image-section-image' ).css( 'background-image', 'url(' + to + ')' );
-				}else{
-					$( '.bonkers-image-section-image' ).css( 'background-image', 'url(' + wp_customizer.theme_url + "/images/luca-bravo-207676.jpg)" );
-				}
+				$( '.bonkers-image-section-image' ).css( 'background-image', 'url(' + to + ')' );
 			} );
 		} );
 		//Enable/Disable Section
@@ -263,11 +255,7 @@
 		//Background Image
 		wp.customize( 'bonkers_addons_phone_image', function( value ) {
 			value.bind( function( to ) {
-				if ( to != "" ) {
-					$( '.bonkers-phone-screenshot' ).css( 'background-image', 'url(' + to + ')' );
-				}else{
-					$( '.bonkers-phone-screenshot' ).css( 'background-image', '' );
-				}
+				$( '.bonkers-phone-screenshot' ).css( 'background-image', 'url(' + to + ')' );
 			} );
 		} );
 		//Background Color
@@ -295,11 +283,7 @@
 		//Background Image
 		wp.customize( 'bonkers_addons_cta_image', function( value ) {
 			value.bind( function( to ) {
-				if ( to != "" ) {
-					$( '.bonkers-cta-section' ).css( 'background-image', 'url(' + to + ')' );
-				}else{
-					$( '.bonkers-cta-section' ).css( 'background-image', '' );
-				}
+				$( '.bonkers-cta-section' ).css( 'background-image', 'url(' + to + ')' );
 			} );
 		} );
 		//Welcome Message
@@ -469,6 +453,16 @@ function hexToRgb(hex) {
         b: parseInt(result[3], 16)
     } : null;
 }
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -3,11 +3,7 @@ $bonkers_enable_section = bonkers_get_option( 'bonkers_addons_welcome_enable', t
 if ( $bonkers_enable_section || is_customize_preview() ) :
 ?>
 <?php
-$bonkers_welcome_image = wp_get_attachment_image_src( absint( get_option( 'bonkers_addons_welcome_image' ) ), 'full' );
-$bonkers_welcome_image = $bonkers_welcome_image[0];
-if ( empty( $bonkers_welcome_image ) ) {
-	$bonkers_welcome_image = esc_url( get_template_directory_uri() ) . '/images/benjamin-child-17946.jpg';
-}
+$bonkers_welcome_image = get_option( 'bonkers_addons_welcome_image', esc_url( get_template_directory_uri() ) . '/images/benjamin-child-17946.jpg' );
 $bonkers_welcome_link_title = get_option( 'bonkers_addons_welcome_link_title', esc_html__( 'View More', 'bonkers' ) );
 ?>
 
