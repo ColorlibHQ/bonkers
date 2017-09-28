@@ -105,8 +105,6 @@ function bonkers_customize_register( $wp_customize ) {
 		) ) );
 
 
-
-
 	/*
 	Typography
 	------------------------------ */
@@ -114,9 +112,31 @@ function bonkers_customize_register( $wp_customize ) {
 		'title' => esc_attr__( 'Typography', 'bonkers' ),
 	) );
 
-	if ( class_exists( 'Kirki' ) ){
+	if ( ! class_exists( 'Kirki' ) ) {
+		$wp_customize->add_setting( 'bonkers_typography_not_kirki', array( 'default' => '', 'sanitize_callback' => 'bonkers_sanitize_text', ) );
+		$wp_customize->add_control( new bonkers_Display_Text_Control( $wp_customize, 'bonkers_typography_not_kirki', array(
+			'section' => 'bonkers_typography_section', // Required, core or custom.
+			'label' => sprintf( esc_html__( 'To change typography make sure you have installed the %1$s Kirki Toolkit %2$s plugin.', 'bonkers' ), '<a href="' . get_admin_url( null, 'themes.php?page=tgmpa-install-plugins' ) . '">', '</a>' ),
+		) ) );
+	}//if Kirki exists
 
-		Kirki::add_field( 'bonkers_typography_font_family', array(
+
+
+
+}
+add_action( 'customize_register', 'bonkers_customize_register' );
+
+function bonkers_init_kirki(){
+
+	// If Kirki is installed add fields
+	if ( class_exists( 'Kirki' ) ) {
+
+		Kirki::add_config( 'bonkers_config', array(
+		    'capability'    => 'edit_theme_options',
+		    'option_type'   => 'theme_mod',
+		) );
+
+		Kirki::add_field( 'bonkers_config', array(
 		    'type'     => 'select',
 		    'settings' => 'bonkers_typography_font_family',
 		    'label'    => esc_html__( 'Font Family', 'bonkers' ),
@@ -132,7 +152,7 @@ function bonkers_customize_register( $wp_customize ) {
 		    ),
 		) );
 
-		Kirki::add_field( 'bonkers_typography_font_family_headings', array(
+		Kirki::add_field( 'bonkers_config', array(
 		    'type'     => 'select',
 		    'settings' => 'bonkers_typography_font_family_headings',
 		    'label'    => esc_html__( 'Headings Font Family', 'bonkers' ),
@@ -148,7 +168,7 @@ function bonkers_customize_register( $wp_customize ) {
 		    ),
 		) );
 
-		Kirki::add_field( 'bonkers_typography_subsets', array(
+		Kirki::add_field( 'bonkers_config', array(
 		    'type'        => 'multicheck',
 		    'settings'    => 'bonkers_typography_subsets',
 		    'label'       => esc_html__( 'Google-Font subsets', 'bonkers' ),
@@ -165,7 +185,7 @@ function bonkers_customize_register( $wp_customize ) {
 		    ),
 		) );
 
-		Kirki::add_field( 'bonkers_typography_font_size', array(
+		Kirki::add_field( 'bonkers_config', array(
 		    'type'      => 'slider',
 		    'settings'  => 'bonkers_typography_font_size',
 		    'label'     => esc_html__( 'Font Size', 'bonkers' ),
@@ -194,29 +214,11 @@ function bonkers_customize_register( $wp_customize ) {
 		        ),
 		    ),
 		) );
-	}else{
-		$wp_customize->add_setting( 'bonkers_typography_not_kirki', array( 'default' => '', 'sanitize_callback' => 'bonkers_sanitize_text', ) );
-		$wp_customize->add_control( new bonkers_Display_Text_Control( $wp_customize, 'bonkers_typography_not_kirki', array(
-			'section' => 'bonkers_typography_section', // Required, core or custom.
-			'label' => sprintf( esc_html__( 'To change typography make sure you have installed the %1$s Kirki Toolkit %2$s plugin.', 'bonkers' ), '<a href="' . get_admin_url( null, 'themes.php?page=tgmpa-install-plugins' ) . '">', '</a>' ),
-		) ) );
-	}//if Kirki exists
-
-
-
+	}
 
 }
-add_action( 'customize_register', 'bonkers_customize_register' );
 
-
-
-
-
-
-
-
-
-
+add_action( 'init', 'bonkers_init_kirki' );
 
 /**
  * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.

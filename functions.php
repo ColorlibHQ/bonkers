@@ -236,4 +236,3 @@ require get_template_directory() . '/inc/jetpack.php';
 
 	// Retina Logo
 	require get_template_directory() . '/inc/theme-functions/retina-logo.php';
-
