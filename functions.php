@@ -129,21 +129,7 @@ add_action( 'widgets_init', 'bonkers_widgets_init' );
 
 
 
-/**
- * Register widgets.
- *
- * @link https://codex.wordpress.org/Widgets_API
- */
-function bonkers_widgets_register() {
 
-	require get_template_directory() . '/inc/widgets/contact-info.php';
-	require get_template_directory() . '/inc/widgets/service.php';
-	require get_template_directory() . '/inc/widgets/phone-feature.php';
-	require get_template_directory() . '/inc/widgets/team-member.php';
-	require get_template_directory() . '/inc/widgets/client-logo.php';
-
-}
-add_action( 'widgets_init', 'bonkers_widgets_register' );
 
 
 
