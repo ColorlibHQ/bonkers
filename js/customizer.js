@@ -94,11 +94,27 @@ jQuery(window).load(function (){
 
 		} );
 
+		
+
 	} )( jQuery );
 });
 
 
-
+wp.customize.controlConstructor[ 'bonkers-checkbox-multiple' ] = wp.customize.Control.extend( {
+  ready: function() {
+    var control = this;
+    var values = [];
+    control.container.on( 'change', '.bonkers-multi-checkbox', function() {
+    	values = [];
+      	control.container.find( '.bonkers-multi-checkbox' ).each( function(){
+      		if ( jQuery(this).is(":checked") ) {
+      			values.push( jQuery(this).val() );
+      		}
+      	});
+     	control.setting( values );
+    } );
+  }
+} );
 
 
 

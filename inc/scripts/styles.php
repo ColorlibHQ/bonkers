@@ -43,10 +43,35 @@ function bonkers_custom_css() {
 	/*
 	Typography
 	*/
-	$bonkers_typography_font_family = get_theme_mod( 'bonkers_typography_font_family', 'PT Sans' );
-	$bonkers_typography_font_family_headings = get_theme_mod( 'bonkers_typography_font_family_headings', 'PT Sans' );
+	$bonkers_typography_font = get_theme_mod( 'bonkers_typography_font_family' );
+	$bonkers_typography_font_headings = get_theme_mod( 'bonkers_typography_font_family_headings' );
 	$bonkers_typography_subsets = get_theme_mod( 'bonkers_typography_subsets', '' );
-	$bonkers_typography_font_size = get_theme_mod( 'bonkers_typography_font_size', '16' );
+	$bonkers_typography_font_size = '16';
+	$bonkers_typography_font_family = 'PT Sans';
+	$bonkers_typography_font_family_headings = 'PT Sans';
+
+	if ( $bonkers_typography_font ) {
+		$bonkers_typography_font = json_decode( $bonkers_typography_font, true );
+		if ( isset( $bonkers_typography_font['json'] ) ) {
+			$parts = $bonkers_typography_font['json'];
+			if ( isset( $parts['font-family'] ) ) {
+				$bonkers_typography_font_family =  $parts['font-family'];
+			}
+			if ( isset( $parts['font-size'] ) ) {
+				$bonkers_typography_font_size =  $parts['font-size'];
+			}
+		}
+	}
+
+	if ( $bonkers_typography_font_headings ) {
+		$bonkers_typography_font_headings = json_decode( $bonkers_typography_font_headings, true );
+		if ( isset( $bonkers_typography_font_headings['json'] ) ) {
+			$parts = $bonkers_typography_font_headings['json'];
+			if ( isset( $parts['font-family'] ) ) {
+				$bonkers_typography_font_family_headings =  $parts['font-family'];
+			}
+		}
+	}
 
 	$typography = array(
 		'font-family' 		   => $bonkers_typography_font_family,

@@ -1,5 +1,5 @@
 <?php
-$bonkers_enable_section = bonkers_get_option( 'bonkers_addons_phone_enable', true );
+$bonkers_enable_section = get_option( 'bonkers_addons_phone_enable', true );
 if ( $bonkers_enable_section || is_customize_preview() ) :
 ?>
 <div id="bonkers-phone-section" class="bonkers-phone-section" <?php if( false == $bonkers_enable_section ): echo 'style="display: none;"'; endif; ?>>

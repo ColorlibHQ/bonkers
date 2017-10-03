@@ -12,7 +12,8 @@
  */
 function bonkers_customize_register( $wp_customize ) {
 
-
+	require_once get_template_directory() . '/inc/customizer-controls/class-bonkers-multiple-checkbox-control.php';
+	$wp_customize->register_control_type( 'Bonkers_Multiple_Checkbox_Control' );
 	/**
 	 * Control for the PRO buttons
 	 */
@@ -112,113 +113,59 @@ function bonkers_customize_register( $wp_customize ) {
 		'title' => esc_attr__( 'Typography', 'bonkers' ),
 	) );
 
-	if ( ! class_exists( 'Kirki' ) ) {
-		$wp_customize->add_setting( 'bonkers_typography_not_kirki', array( 'default' => '', 'sanitize_callback' => 'bonkers_sanitize_text', ) );
-		$wp_customize->add_control( new bonkers_Display_Text_Control( $wp_customize, 'bonkers_typography_not_kirki', array(
-			'section' => 'bonkers_typography_section', // Required, core or custom.
-			'label' => sprintf( esc_html__( 'To change typography make sure you have installed the %1$s Kirki Toolkit %2$s plugin.', 'bonkers' ), '<a href="' . get_admin_url( null, 'themes.php?page=tgmpa-install-plugins' ) . '">', '</a>' ),
-		) ) );
-	}//if Kirki exists
+	$wp_customize->add_setting( 'bonkers_typography_font_family', array(
+		'sanitize_callback' => 'sanitize_text_field',
+		'transport' => 'postMessage',
+	) );
+	$wp_customize->add_control( new Epsilon_Control_Typography( $wp_customize, 'bonkers_typography_font_family', array(
+        'section'     => 'bonkers_typography_section',
+        'label'       => esc_html__( 'Body Text', 'bonkers' ),
+        'stylesheet'  => 'bonkers_style',
+        'choices'     => array(
+        	'font-family',
+          	'font-size',
+        ),
+        'selectors'   => array(
+          	'body'
+        ),
+        'font_defaults'   => array(
+          	'font-size' 		=> '16',
+          	'font-family' => 'PT Sans',
+        ),
+	) ) );
 
+	$wp_customize->add_setting( 'bonkers_typography_font_family_headings', array(
+		'sanitize_callback' => 'sanitize_text_field',
+		'transport' => 'postMessage',
+	) );
+	$wp_customize->add_control( new Epsilon_Control_Typography( $wp_customize, 'bonkers_typography_font_family_headings', array(
+        'section'     => 'bonkers_typography_section',
+        'label'       => esc_html__( 'Headings', 'pixova-lite' ),
+        'stylesheet'    => 'bonkers_style',
+        'choices'     => array(
+        	'font-family',
+        ),
+        'selectors'   => array(
+          	'h1, h2, h3, h4, h5, h6, h1 a, h2 a, h3 a, h4 a, h5 a, h6 a'
+        ),
+        'font_defaults'   => array(
+          	'font-family' => 'PT Sans',
+        ),
+	) ) );
 
-
-
+	$wp_customize->add_setting( 'bonkers_typography_subsets', array(
+		'sanitize_callback' => 'bonkers_saniteze_google_font_subsets',
+		'transport' => 'refresh',
+	) );
+	$wp_customize->add_control( new Bonkers_Multiple_Checkbox_Control( $wp_customize, 'bonkers_typography_subsets', array(
+        'section'     => 'bonkers_typography_section',
+        'label'       => esc_html__( 'Google-Font subsets', 'bonkers' ),
+	    'description' => esc_html__( 'The subsets used from Google\'s API.', 'bonkers' ),
+        'choices'     => Bonkers_Helper::get_google_font_subsets(),
+	) ) );
+	
 }
 add_action( 'customize_register', 'bonkers_customize_register' );
-
-function bonkers_init_kirki(){
-
-	// If Kirki is installed add fields
-	if ( class_exists( 'Kirki' ) ) {
-
-		Kirki::add_config( 'bonkers_config', array(
-		    'capability'    => 'edit_theme_options',
-		    'option_type'   => 'theme_mod',
-		) );
-
-		Kirki::add_field( 'bonkers_config', array(
-		    'type'     => 'select',
-		    'settings' => 'bonkers_typography_font_family',
-		    'label'    => esc_html__( 'Font Family', 'bonkers' ),
-		    'section'  => 'bonkers_typography_section',
-		    'default'  => 'PT Sans',
-		    'priority' => 20,
-		    'choices'  => Kirki_Fonts::get_font_choices(),
-		    'output'   => array(
-		        array(
-		            'element'  => 'body',
-		            'property' => 'font-family',
-		        ),
-		    ),
-		) );
-
-		Kirki::add_field( 'bonkers_config', array(
-		    'type'     => 'select',
-		    'settings' => 'bonkers_typography_font_family_headings',
-		    'label'    => esc_html__( 'Headings Font Family', 'bonkers' ),
-		    'section'  => 'bonkers_typography_section',
-		    'default'  => 'PT Sans',
-		    'priority' => 22,
-		    'choices'  => Kirki_Fonts::get_font_choices(),
-		    'output'   => array(
-		        array(
-		            'element'  => 'h1, h2, h3, h4, h5, h6, h1 a, h2 a, h3 a, h4 a, h5 a, h6 a',
-		            'property' => 'font-family',
-		        ),
-		    ),
-		) );
-
-		Kirki::add_field( 'bonkers_config', array(
-		    'type'        => 'multicheck',
-		    'settings'    => 'bonkers_typography_subsets',
-		    'label'       => esc_html__( 'Google-Font subsets', 'bonkers' ),
-		    'description' => esc_html__( 'The subsets used from Google\'s API.', 'bonkers' ),
-		    'section'     => 'bonkers_typography_section',
-		    'default'     => '',
-		    'priority'    => 23,
-		    'choices'     => Kirki_Fonts::get_google_font_subsets(),
-		    'output'      => array(
-		        array(
-		            'element'  => 'body',
-		            'property' => 'font-subset',
-		        ),
-		    ),
-		) );
-
-		Kirki::add_field( 'bonkers_config', array(
-		    'type'      => 'slider',
-		    'settings'  => 'bonkers_typography_font_size',
-		    'label'     => esc_html__( 'Font Size', 'bonkers' ),
-		    'section'   => 'bonkers_typography_section',
-		    'default'   => 16,
-		    'priority'  => 25,
-		    'choices'   => array(
-		        'min'   => 7,
-		        'max'   => 48,
-		        'step'  => 1,
-		    ),
-		    'output' => array(
-		        array(
-		            'element'  => 'html',
-		            'property' => 'font-size',
-		            'units'    => 'px',
-		        ),
-		    ),
-		    'transport' => 'postMessage',
-		    'js_vars'   => array(
-		        array(
-		            'element'  => 'html',
-		            'function' => 'css',
-		            'property' => 'font-size',
-		            'units'    => 'px'
-		        ),
-		    ),
-		) );
-	}
-
-}
-
-add_action( 'init', 'bonkers_init_kirki' );
 
 /**
  * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.
@@ -256,14 +203,6 @@ function bonkers_customize_js() {
 
 }
 add_action( 'customize_controls_enqueue_scripts', 'bonkers_customize_js' );
-
-
-
-
-
-
-
-
 
 
 /*
@@ -343,6 +282,27 @@ function bonkers_sanitize_text_html( $str ) {
 			    'span' => array(),
 			);
 	return wp_kses( $str, $args );
+}
+
+/**
+ * Sanitize Google Font Subsets
+ */
+function bonkers_saniteze_google_font_subsets( $subsets ) {
+	$all_subsets = array_keys( Bonkers_Helper::get_google_font_subsets() );
+	if ( is_array( $subsets ) ) {
+		foreach ( $subsets as $key => $subset ) {
+			if ( ! in_array( $subset, $all_subsets ) ) {
+				unset( $subsets[ $key ] );
+			}
+		}
+	}else{
+		if ( ! in_array( $subsets, $all_subsets ) ) {
+			return false;
+		}
+	}
+
+	return $subsets;
+
 }
 
 /**

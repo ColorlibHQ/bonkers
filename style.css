@@ -89,6 +89,11 @@ Header
 #header .container {
   position: relative;
 }
+#header .flex-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 .logo_container .custom-logo-link {
   display: block;
   position: relative;
@@ -5717,4 +5722,3 @@ table th[class*="col-"] {
     border-bottom: 0;
   }
 }
-/*# sourceMappingURL=style.css.map */

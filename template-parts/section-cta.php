@@ -1,5 +1,5 @@
 <?php
-$bonkers_enable_section = bonkers_get_option( 'bonkers_addons_cta_enable', true );
+$bonkers_enable_section = get_option( 'bonkers_addons_cta_enable', true );
 if ( $bonkers_enable_section || is_customize_preview() ) :
 
     $bonkers_cta_image = get_option( 'bonkers_addons_cta_image', esc_url( get_template_directory_uri() ) . '/images/notebook-2602886_1920.jpg' );

@@ -1,5 +1,5 @@
 <?php
-$bonkers_enable_section = bonkers_get_option( 'bonkers_addons_services_enable', true );
+$bonkers_enable_section = get_option( 'bonkers_addons_services_enable', true );
 if ( $bonkers_enable_section || is_customize_preview() ) :
 
 ?>

@@ -36,7 +36,7 @@
         <header id="header" class="site-header" <?php echo ( $header_image ) ? 'style="background-image: url(' . esc_url( $header_image ) . ');"' : ''; ?>>
 
                 <div class="container">
-                    <div class="row">          
+                    <div class="row flex-row">          
 
                         <div class="logo_container col-md-3 col-sm-12 col-xs-12">
                             <?php
@@ -57,8 +57,6 @@
 
                         </div><!-- /logo_container -->
 
-
-
                         <div class="col-md-9 nav-wrapper">
 
                                 <nav id="site-navigation" class="main-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Main Menu', 'bonkers' ); ?>">
@@ -69,8 +67,6 @@
                                 </nav><!-- #site-navigation -->
                         
                         </div><!-- col-md-8 -->
-
-                        <div class="clearfix"></div>
 
                     </div><!-- row-->
                 </div><!-- /container -->

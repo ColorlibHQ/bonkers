@@ -1,5 +1,5 @@
 <?php
-$bonkers_enable_section = bonkers_get_option( 'bonkers_addons_contact_enable', true );
+$bonkers_enable_section = get_option( 'bonkers_addons_contact_enable', true );
 if ( $bonkers_enable_section || is_customize_preview() ) :
 ?>
 <div id="bonkers-contact-section" class="bonkers-contact-section" <?php if( false == $bonkers_enable_section ): echo 'style="display: none;"'; endif; ?>>

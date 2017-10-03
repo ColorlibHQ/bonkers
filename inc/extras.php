@@ -330,3 +330,5 @@ function bonkers_get_option( $setting, $default ) {
     }
     return $value;
 }
+
+
