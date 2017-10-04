@@ -30,16 +30,21 @@
 	
 		wp_enqueue_script( 'google-maps', '//maps.googleapis.com/maps/api/js?key=' . esc_attr( $bonkers_contact_key ), array(), '1.0.0', true );
 
-		wp_enqueue_script( 'bonkers_google_maps_custom', get_template_directory_uri() . '/js/google-maps.js', array(), '1.0.0', true );
+		$bonkers_contact_lat_long = bonkers_get_coordinates();
 
-		$bonkers_contact_lat_long = explode( ",", get_option( 'bonkers_addons_contact_lat_long', '40.725987, -74.002447' ) );
-		$bonkers_contact_zoom = absint( get_option( 'bonkers_addons_contact_zoom', '13' ) ) ;
-		$bonkers_g_maps = array(
-			'lat' => trim( esc_attr( $bonkers_contact_lat_long[0] ) ),
-			'long' => trim( esc_attr( $bonkers_contact_lat_long[1] ) ),
-			'zoom' => $bonkers_contact_zoom
-		);
-		wp_localize_script( 'bonkers_google_maps_custom', 'bonkers_g_maps', $bonkers_g_maps );
+		if ( $bonkers_contact_lat_long ) {
+			wp_enqueue_script( 'bonkers_google_maps_custom', get_template_directory_uri() . '/js/google-maps.js', array(), '1.0.0', true );
+			
+			$bonkers_contact_zoom = absint( get_option( 'bonkers_addons_contact_zoom', '13' ) ) ;
+			$bonkers_g_maps = array(
+				'lat' => trim( esc_attr( $bonkers_contact_lat_long[0] ) ),
+				'long' => trim( esc_attr( $bonkers_contact_lat_long[1] ) ),
+				'zoom' => $bonkers_contact_zoom
+			);
+			wp_localize_script( 'bonkers_google_maps_custom', 'bonkers_g_maps', $bonkers_g_maps );
+		}
+
+		
 	}
 	//=================================================================
 

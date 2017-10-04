@@ -331,4 +331,36 @@ function bonkers_get_option( $setting, $default ) {
     return $value;
 }
 
+function bonkers_get_coordinates() {
+    $default_coordinates = array(
+        'Central+Park%2C+New+York%2C+NY%2C+United+States' => array( '40.7828647', '-73.9675438' ),
+    );
+    $coordinates = get_option( 'bonkers_maps_coordinates' );
+    $all_coordinates = wp_parse_args( $coordinates, $default_coordinates );
+    $address = get_option( 'bonkers_addons_contact_address', 'Central Park, New York, NY, United States' );
 
+    $encoded_adress = urlencode( $address );
+
+    if ( isset( $all_coordinates[ $encoded_adress ] ) ) {
+        return $all_coordinates[ $encoded_adress ];
+    }
+
+    $gm_geocoding_api_url = 'https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyBDd-_yIs7FYbgDz-_74JS5Ehk6Qg61DjA&address=' . $encoded_adress;
+
+    $response = wp_remote_get( $gm_geocoding_api_url );
+
+    if ( is_array( $response ) ) {
+        $g_response = json_decode( $response['body'], true );
+
+        if ( 'OK' == $g_response['status'] ) {
+            $coordinates[ $encoded_adress ] = array( $g_response['results'][0]['geometry']['location']['lat'], $g_response['results'][0]['geometry']['location']['lng'] );
+            update_option( 'bonkers_maps_coordinates', $coordinates );
+            return $coordinates[ $encoded_adress ];
+        }
+
+        return false;
+    }
+
+    return false;
+
+}
