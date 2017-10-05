@@ -42,6 +42,9 @@ if ( $bonkers_enable_section || is_customize_preview() ) :
         }
 
         $bonkers_phone_image = get_option( 'bonkers_addons_phone_image' );
+        if ( is_numeric( $bonkers_phone_image ) ) {
+            $bonkers_phone_image = wp_get_attachment_url( $bonkers_phone_image );
+        }
         ?>
 
             <div class="bonkers-phone-image">

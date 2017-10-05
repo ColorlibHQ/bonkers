@@ -75,10 +75,13 @@ Source: https://github.com/afarkas/html5shiv
 
 [PT Sans](https://fonts.google.com/specimen/PT+Sans) by ParaType - Licensed under the [SIL Open Font License, 1.1](http://scripts.sil.org/OFL).
 
+Images from StockSnap.io
+License: https://stocksnap.io/license
+https://stocksnap.io/photo/1A3MXAT0M6
+https://stocksnap.io/photo/JBW2PXDOL6
+https://stocksnap.io/photo/R7GVMRJWW9
+
 Images from pixabay
 License: https://pixabay.com/es/service/terms/#usage
-https://pixabay.com/photo-2689542/
-https://pixabay.com/photo-2562560/
-https://pixabay.com/photo-2602886/
 https://pixabay.com/photo-1274360/
 https://pixabay.com/photo-1690965/

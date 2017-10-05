@@ -3,7 +3,10 @@ $bonkers_enable_section = get_option( 'bonkers_addons_welcome_enable', true );
 if ( $bonkers_enable_section || is_customize_preview() ) :
 ?>
 <?php
-$bonkers_welcome_image = get_option( 'bonkers_addons_welcome_image', esc_url( get_template_directory_uri() ) . '/images/architecture-2689542_1920.jpg' );
+$bonkers_welcome_image = get_option( 'bonkers_addons_welcome_image', esc_url( get_template_directory_uri() ) . '/images/StockSnap_1A3MXAT0M6.jpg' );
+if ( is_numeric( $bonkers_welcome_image ) ) {
+	$bonkers_welcome_image = wp_get_attachment_url( $bonkers_welcome_image );
+}
 $bonkers_welcome_link_title = get_option( 'bonkers_addons_welcome_link_title', esc_html__( 'View More', 'bonkers' ) );
 ?>
 
