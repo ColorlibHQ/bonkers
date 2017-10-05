@@ -149,8 +149,12 @@ Image Section
     				.font-size(20);
     				line-height: 35px;
 
-    					.ql_border_btn{
+    					.ql_border_btn {
     						margin-top: 30px;
+
+    						&:hover {
+    							background-color: #fff;
+    						}
     					}
     			}
     	}
@@ -289,6 +293,10 @@ CTA Section
 			z-index: 2;
 			vertical-align: top;
 
+			&:hover {
+				text-decoration: none;
+				color: #fff;
+			}
 		}
 }
 
@@ -383,12 +391,16 @@ Team Section
 		
 		.bonkers-team-wrap{
 
+				.widget {
 
-				.bonkers-team-member{
 					width: 28%;
 					display: inline-block;
 					text-align: left;
 					padding: 0 2.5%;
+
+				}
+
+				.bonkers-team-member{
 
 						.bonkers-team-image{
 							display: inline-block;
@@ -555,7 +567,7 @@ Clients Section
 		
 		.bonkers-clients-wrap{
 
-				.bonkers-clients-logo{
+				.widget {
 					width: 17%;
 					padding: 0 3.5%;
 					display: inline-block;

@@ -17,7 +17,7 @@ jQuery(document).ready(function($) {
     $bonkers_team_wrap.imagesLoaded(  function( $images, $proper, $broken ) {
         $bonkers_team_wrap.flickity({
             contain: true,
-            cellSelector: '.bonkers-team-member',
+            cellSelector: '.widget',
             cellAlign: 'left',
             prevNextButtons: false,
             pageDots: false,
@@ -34,7 +34,7 @@ jQuery(document).ready(function($) {
     $bonkers_clients_wrap.imagesLoaded(  function( $images, $proper, $broken ) {
         $bonkers_clients_wrap.flickity({
             contain: true,
-            cellSelector: '.bonkers-clients-logo',
+            cellSelector: '.widget',
             cellAlign: 'left',
             prevNextButtons: false,
             pageDots: false,
