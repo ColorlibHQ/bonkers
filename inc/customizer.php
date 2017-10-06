@@ -14,38 +14,23 @@ function bonkers_customize_register( $wp_customize ) {
 
 	require_once get_template_directory() . '/inc/customizer-controls/class-bonkers-multiple-checkbox-control.php';
 	$wp_customize->register_control_type( 'Bonkers_Multiple_Checkbox_Control' );
-	/**
-	 * Control for the PRO buttons
-	 */
-	class bonkers_Pro_Version extends WP_Customize_Control{
-		public function render_content()
-		{
-			$args = array(
-				'a' => array(
-					'href' => array(),
-					'title' => array()
-					),
-				'br' => array(),
-				'em' => array(),
-				'strong' => array(),
-				);
-			echo wp_kses( $this->label, $args );
-		}
-	}
 
 	$wp_customize->get_setting( 'blogname' )->transport         = 'postMessage';
 	$wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
 	$wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
 
-
-
 	/*
-    Colors
-    ===================================================== */
-    	/*
+	Colors
+	===================================================== */
+		/*
 		Featured
 		------------------------------ */
-		$wp_customize->add_setting( 'bonkers_hero_color', array( 'default' => '#2D80E2', 'transport' => 'postMessage', 'sanitize_callback' => 'sanitize_hex_color', 'type' => 'theme_mod' ) );
+		$wp_customize->add_setting( 'bonkers_hero_color', array(
+			'default' => '#2D80E2',
+			'transport' => 'postMessage',
+			'sanitize_callback' => 'sanitize_hex_color',
+			'type' => 'theme_mod',
+		) );
 		$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'bonkers_hero_color', array(
 			'label'        => esc_attr__( 'Featured Color', 'bonkers' ),
 			'section'    => 'colors',
@@ -54,7 +39,12 @@ function bonkers_customize_register( $wp_customize ) {
 		/*
 		Logo
 		------------------------------ */
-		$wp_customize->add_setting( 'bonkers_logo_color', array( 'default' => '#222222', 'transport' => 'postMessage', 'sanitize_callback' => 'sanitize_hex_color', 'type' => 'theme_mod' ) );
+		$wp_customize->add_setting( 'bonkers_logo_color', array(
+			'default' => '#222222',
+			'transport' => 'postMessage',
+			'sanitize_callback' => 'sanitize_hex_color',
+			'type' => 'theme_mod',
+		) );
 		$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'bonkers_logo_color', array(
 			'label'        => esc_attr__( 'Logo Color', 'bonkers' ),
 			'section'    => 'colors',
@@ -63,7 +53,12 @@ function bonkers_customize_register( $wp_customize ) {
 		/*
 		Headings
 		------------------------------ */
-		$wp_customize->add_setting( 'bonkers_headings_color', array( 'default' => '#222222', 'transport' => 'postMessage', 'sanitize_callback' => 'sanitize_hex_color', 'type' => 'theme_mod' ) );
+		$wp_customize->add_setting( 'bonkers_headings_color', array(
+			'default' => '#222222',
+			'transport' => 'postMessage',
+			'sanitize_callback' => 'sanitize_hex_color',
+			'type' => 'theme_mod',
+		) );
 		$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'bonkers_headings_color', array(
 			'label'        => esc_attr__( 'Headings Color', 'bonkers' ),
 			'section'    => 'colors',
@@ -72,7 +67,12 @@ function bonkers_customize_register( $wp_customize ) {
 		/*
 		Text
 		------------------------------ */
-		$wp_customize->add_setting( 'bonkers_text_color', array( 'default' => '#808080', 'transport' => 'postMessage', 'sanitize_callback' => 'sanitize_hex_color', 'type' => 'theme_mod' ) );
+		$wp_customize->add_setting( 'bonkers_text_color', array(
+			'default' => '#808080',
+			'transport' => 'postMessage',
+			'sanitize_callback' => 'sanitize_hex_color',
+			'type' => 'theme_mod',
+		) );
 		$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'bonkers_text_color', array(
 			'label'        => esc_attr__( 'Text Color', 'bonkers' ),
 			'section'    => 'colors',
@@ -81,7 +81,12 @@ function bonkers_customize_register( $wp_customize ) {
 		/*
 		Link
 		------------------------------ */
-		$wp_customize->add_setting( 'bonkers_link_color', array( 'default' => '#2D80E2', 'transport' => 'postMessage', 'sanitize_callback' => 'sanitize_hex_color', 'type' => 'theme_mod' ) );
+		$wp_customize->add_setting( 'bonkers_link_color', array(
+			'default' => '#2D80E2',
+			'transport' => 'postMessage',
+			'sanitize_callback' => 'sanitize_hex_color',
+			'type' => 'theme_mod',
+		) );
 		$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'bonkers_link_color', array(
 			'label'        => esc_attr__( 'Link Color', 'bonkers' ),
 			'section'    => 'colors',
@@ -90,7 +95,12 @@ function bonkers_customize_register( $wp_customize ) {
 		/*
 		Footer Background
 		------------------------------ */
-		$wp_customize->add_setting( 'bonkers_footer_background', array( 'default' => '#222222', 'transport' => 'postMessage', 'sanitize_callback' => 'sanitize_hex_color', 'type' => 'theme_mod' ) );
+		$wp_customize->add_setting( 'bonkers_footer_background', array(
+			'default' => '#222222',
+			'transport' => 'postMessage',
+			'sanitize_callback' => 'sanitize_hex_color',
+			'type' => 'theme_mod',
+		) );
 		$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'bonkers_footer_background', array(
 			'label'        => esc_attr__( 'Footer Background Color', 'bonkers' ),
 			'section'    => 'colors',
@@ -99,12 +109,16 @@ function bonkers_customize_register( $wp_customize ) {
 		/*
 		Header Background
 		------------------------------ */
-		$wp_customize->add_setting( 'bonkers_header_bck_color', array( 'default' => '#FFFFFF', 'transport' => 'postMessage', 'sanitize_callback' => 'sanitize_hex_color', 'type' => 'theme_mod' ) );
+		$wp_customize->add_setting( 'bonkers_header_bck_color', array(
+			'default' => '#FFFFFF',
+			'transport' => 'postMessage',
+			'sanitize_callback' => 'sanitize_hex_color',
+			'type' => 'theme_mod',
+		) );
 		$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'bonkers_header_bck_color', array(
 			'label'        => esc_attr__( 'Header Background Color', 'bonkers' ),
 			'section'    => 'colors',
 		) ) );
-
 
 	/*
 	Typography
@@ -118,20 +132,20 @@ function bonkers_customize_register( $wp_customize ) {
 		'transport' => 'postMessage',
 	) );
 	$wp_customize->add_control( new Epsilon_Control_Typography( $wp_customize, 'bonkers_typography_font_family', array(
-        'section'     => 'bonkers_typography_section',
-        'label'       => esc_html__( 'Body Text', 'bonkers' ),
-        'stylesheet'  => 'bonkers_style',
-        'choices'     => array(
-        	'font-family',
-          	'font-size',
-        ),
-        'selectors'   => array(
-          	'body'
-        ),
-        'font_defaults'   => array(
-          	'font-size' 		=> '16',
-          	'font-family' => 'PT Sans',
-        ),
+		'section'     => 'bonkers_typography_section',
+		'label'       => esc_html__( 'Body Text', 'bonkers' ),
+		'stylesheet'  => 'bonkers_style',
+		'choices'     => array(
+			'font-family',
+			'font-size',
+		),
+		'selectors'   => array(
+			'body'
+		),
+		'font_defaults'   => array(
+			'font-size'         => '16',
+			'font-family' => 'PT Sans',
+		),
 	) ) );
 
 	$wp_customize->add_setting( 'bonkers_typography_font_family_headings', array(
@@ -139,18 +153,18 @@ function bonkers_customize_register( $wp_customize ) {
 		'transport' => 'postMessage',
 	) );
 	$wp_customize->add_control( new Epsilon_Control_Typography( $wp_customize, 'bonkers_typography_font_family_headings', array(
-        'section'     => 'bonkers_typography_section',
-        'label'       => esc_html__( 'Headings', 'pixova-lite' ),
-        'stylesheet'    => 'bonkers_style',
-        'choices'     => array(
-        	'font-family',
-        ),
-        'selectors'   => array(
-          	'h1, h2, h3, h4, h5, h6, h1 a, h2 a, h3 a, h4 a, h5 a, h6 a'
-        ),
-        'font_defaults'   => array(
-          	'font-family' => 'PT Sans',
-        ),
+		'section'     => 'bonkers_typography_section',
+		'label'       => esc_html__( 'Headings', 'bonkers' ),
+		'stylesheet'    => 'bonkers_style',
+		'choices'     => array(
+			'font-family',
+		),
+		'selectors'   => array(
+			'h1, h2, h3, h4, h5, h6, h1 a, h2 a, h3 a, h4 a, h5 a, h6 a'
+		),
+		'font_defaults'   => array(
+			'font-family' => 'PT Sans',
+		),
 	) ) );
 
 	$wp_customize->add_setting( 'bonkers_typography_subsets', array(
@@ -158,12 +172,12 @@ function bonkers_customize_register( $wp_customize ) {
 		'transport' => 'refresh',
 	) );
 	$wp_customize->add_control( new Bonkers_Multiple_Checkbox_Control( $wp_customize, 'bonkers_typography_subsets', array(
-        'section'     => 'bonkers_typography_section',
-        'label'       => esc_html__( 'Google-Font subsets', 'bonkers' ),
-	    'description' => esc_html__( 'The subsets used from Google\'s API.', 'bonkers' ),
-        'choices'     => Bonkers_Helper::get_google_font_subsets(),
+		'section'     => 'bonkers_typography_section',
+		'label'       => esc_html__( 'Google-Font subsets', 'bonkers' ),
+		'description' => esc_html__( 'The subsets used from Google\'s API.', 'bonkers' ),
+		'choices'     => Bonkers_Helper::get_google_font_subsets(),
 	) ) );
-	
+
 }
 add_action( 'customize_register', 'bonkers_customize_register' );
 
@@ -213,30 +227,31 @@ Sanitize Callbacks
  * Sanitize for post's categories
  */
 function bonkers_sanitize_categories( $value ) {
-    if ( ! array_key_exists( $value, bonkers_categories_ar() ) )
-        $value = '';
-    return $value;
+	if ( ! array_key_exists( $value, bonkers_categories_ar() ) ) {
+		$value = '';
+	}
+	return $value;
 }
 
 /**
  * Sanitize return an non-negative Integer
  */
 function bonkers_sanitize_integer( $value ) {
-    return absint( $value );
+	return absint( $value );
 }
 
 /**
  * Sanitize return pro version text
  */
 function bonkers_pro_version( $input ) {
-    return $input;
+	return $input;
 }
 
 /**
  * Sanitize Any
  */
 function bonkers_sanitize_any( $input ) {
-    return $input;
+	return $input;
 }
 
 /**
@@ -264,7 +279,7 @@ function bonkers_sanitize_url( $url ) {
  * Sanitize Boolean
  */
 function bonkers_sanitize_bool( $string ) {
-	return (bool)$string;
+	return (bool) $string;
 }
 
 /**
@@ -272,15 +287,15 @@ function bonkers_sanitize_bool( $string ) {
  */
 function bonkers_sanitize_text_html( $str ) {
 	$args = array(
-			    'a' => array(
-			        'href' => array(),
-			        'title' => array()
-			    ),
-			    'br' => array(),
-			    'em' => array(),
-			    'strong' => array(),
-			    'span' => array(),
-			);
+		'a' => array(
+			'href' => array(),
+			'title' => array(),
+		),
+		'br' => array(),
+		'em' => array(),
+		'strong' => array(),
+		'span' => array(),
+	);
 	return wp_kses( $str, $args );
 }
 
@@ -295,7 +310,7 @@ function bonkers_saniteze_google_font_subsets( $subsets ) {
 				unset( $subsets[ $key ] );
 			}
 		}
-	}else{
+	} else {
 		if ( ! in_array( $subsets, $all_subsets ) ) {
 			return false;
 		}
@@ -311,7 +326,7 @@ function bonkers_saniteze_google_font_subsets( $subsets ) {
  */
 function bonkers_sanitize_multicheck( $values ) {
 
-    $multi_values = ( ! is_array( $values ) ) ? explode( ',', $values ) : $values;
+	$multi_values = ( ! is_array( $values ) ) ? explode( ',', $values ) : $values;
 	return ( ! empty( $multi_values ) ) ? array_map( 'sanitize_title', $multi_values ) : array();
 }
 
@@ -321,82 +336,11 @@ function bonkers_sanitize_multicheck( $values ) {
  */
 function bonkers_sanitize_lat_long( $coords ) {
 	if ( preg_match( '/^[-]?(([0-8]?[0-9])\.(\d+))|(90(\.0+)?),[-]?((((1[0-7][0-9])|([0-9]?[0-9]))\.(\d+))|180(\.0+)?)$/', $coords ) ) {
-	    return $coords;
+		return $coords;
 	} else {
-	    return 'error';
+		return 'error';
 	}
 }
-
-
-
-/**
- * Create the "PRO version" buttons
- */
-if ( ! function_exists( 'bonkers_pro_btns' ) ){
-	function bonkers_pro_btns( $args ){
-
-		$wp_customize = $args['wp_customize'];
-		$title = $args['title'];
-		$label = $args['label'];
-		if ( isset( $args['priority'] ) || array_key_exists( 'priority', $args ) ) {
-			$priority = $args['priority'];
-		}else{
-			$priority = 120;
-		}
-		if ( isset( $args['panel'] ) || array_key_exists( 'panel', $args ) ) {
-			$panel = $args['panel'];
-		}else{
-			$panel = '';
-		}
-
-		$section_id = sanitize_title( $title );
-
-		$wp_customize->add_section( $section_id , array(
-			'title'       => $title,
-			'priority'    => $priority,
-			'panel' => $panel,
-		) );
-		$wp_customize->add_setting( $section_id, array(
-			'sanitize_callback' => 'bonkers_pro_version'
-		) );
-		$wp_customize->add_control( new bonkers_Pro_Version( $wp_customize, $section_id, array(
-	        'section' => $section_id,
-	        'label' => $label
-		   )
-		) );
-	}
-}//end if function_exists
-
-/**
- * Display Text Control
- * Custom Control to display text
- */
-if ( class_exists( 'WP_Customize_Control' ) ) {
-	class bonkers_Display_Text_Control extends WP_Customize_Control {
-		/**
-		* Render the control's content.
-		*/
-		public function render_content() {
-
-	        $wp_kses_args = array(
-			    'a' => array(
-			        'href' => array(),
-			        'title' => array(),
-			        'data-section' => array(),
-			    ),
-			    'br' => array(),
-			    'em' => array(),
-			    'strong' => array(),
-			    'span' => array(),
-			);
-	        ?>
-			<p><?php echo wp_kses( $this->label, $wp_kses_args ); ?></p>
-		<?php
-		}
-	}
-}
-
-
 
 /*
 * AJAX call to retreive an image URI by its ID
@@ -405,9 +349,9 @@ add_action( 'wp_ajax_nopriv_bonkers_get_image_src', 'bonkers_get_image_src' );
 add_action( 'wp_ajax_bonkers_get_image_src', 'bonkers_get_image_src' );
 
 function bonkers_get_image_src() {
-	if ( isset( $_POST[ 'image_id' ] ) ) {
-        $image_id = sanitize_text_field( wp_unslash( $_GET[ 'image_id' ] ) );
-    }
+	if ( isset( $_POST['image_id'] ) ) {
+		$image_id = sanitize_text_field( wp_unslash( $_POST['image_id'] ) );
+	}
 	$image = wp_get_attachment_image_src( absint( $image_id ), 'full' );
 	$image = $image[0];
 	echo wp_kses_post( $image );

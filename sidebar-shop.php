@@ -1,14 +1,18 @@
 <?php
-if ( is_active_sidebar( 'shop-sidebar' ) && ! is_single() ) { 
+
+if ( is_active_sidebar( 'shop-sidebar' ) && ! is_single() ) {
+
 ?>
-    <aside id="sidebar" class="woocommerce-sidebar">
+	<aside id="sidebar" class="woocommerce-sidebar">
 
-        <?php
-		if (function_exists( 'dynamic_sidebar' ) && dynamic_sidebar( 'shop-sidebar' ) ) : else :
+		<?php
+		if ( function_exists( 'dynamic_sidebar' ) && dynamic_sidebar( 'shop-sidebar' ) ) : else :
 
-        endif;
-        ?>
+		endif;
+		?>
  
-        <div class="clearfix"></div>
+		<div class="clearfix"></div>
 	</aside>
-<?php }//if is_active_sidebar ?> 
+<?php
+}// End if().
+?>

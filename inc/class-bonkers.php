@@ -7,10 +7,17 @@ class Bonkers {
 	public $recommended_actions;
 
 	public $theme_slug = 'bonkers';
-	
+
 	function __construct() {
-		
+
 		$this->recommended_actions = apply_filters( 'bonkers_required_actions', array(
+			array(
+				'id'          => 'bonkers-import-data',
+				'title'       => esc_html__( 'Add sample content', 'bonkers' ),
+				'description' => esc_html__( 'Clicking the button below will add settings/widgets and recommended plugins to your WordPress installation. Click advanced to customize the import process.', 'bonkers' ),
+				'help'        => array( Epsilon_Import_Data::get_instance(), 'generate_import_data_container' ),
+				'check'       => Bonkers_Helper::check_installed_data(),
+			),
 			array(
 				'id'          => 'bonkers-install-bonkers-addons',
 				'title'       => Bonkers_Helper::create_plugin_title( __( 'Bonkers Addons', 'bonkers' ), 'bonkers-addons' ),
@@ -35,13 +42,12 @@ class Bonkers {
 				'type'        => 'plugin',
 				'plugin_slug' => 'contact-form-7',
 			),
-			array(
-				'id'          => 'bonkers-activate-jetpack-custom-content',
-				'title'       => __( 'Activate Projects from Jetpack.', 'bonkers' ),
-				'description' => __( 'It is highly recommended that you install the Contact Form 7.', 'bonkers' ),
-				'check'       => Bonkers_Helper::check_jetpack_module( 'custom-content-types' ),
-			),
 		) );
+
+		if ( is_customize_preview() ) {
+			$url                = 'themes.php?page=%1$s-welcome&tab=%2$s';
+			$this->recommended_actions[0]['help'] = '<a class="button button-primary" id="" href="' . esc_url( admin_url( sprintf( $url, 'bonkers', 'recommended-actions' ) ) ) . '">' . __( 'Import Demo Content', 'bonkers' ) . '</a>';
+		}
 
 		$this->init_epsilon();
 		$this->init_typography();
@@ -52,14 +58,14 @@ class Bonkers {
 
 	}
 
-	public function init_epsilon(){
+	public function init_epsilon() {
 
 		require get_template_directory() . '/inc/libraries/epsilon-framework/class-epsilon-autoloader.php';
 		new Epsilon_Framework();
 
 	}
 
-	public function init_typography(){
+	public function init_typography() {
 
 		$options = array(
 			'bonkers_typography_font_family',
@@ -74,7 +80,7 @@ class Bonkers {
 
 	}
 
-	public function init_customizer( $wp_customize ){
+	public function init_customizer( $wp_customize ) {
 
 		$current_theme = wp_get_theme();
 		$wp_customize->add_section( new Epsilon_Section_Recommended_Actions( $wp_customize, 'epsilon_recomended_section', array(
@@ -90,10 +96,10 @@ class Bonkers {
 			'wp_review'                    => true,
 			'priority'                     => 0,
 		) ) );
-		
+
 	}
 
-	public function init_welcome_screen(){
+	public function init_welcome_screen() {
 		if ( ! is_admin() ) {
 			return;
 		}

@@ -61,7 +61,7 @@ if ( ! class_exists( 'Bonkers_Helper' ) ) {
 		 * @return bool
 		 */
 		public static function has_plugin( $slug = null ) {
-	
+
 			$check = array(
 				'installed' => self::check_plugin_is_installed( $slug ),
 				'active'    => self::check_plugin_is_active( $slug ),
@@ -97,26 +97,9 @@ if ( ! class_exists( 'Bonkers_Helper' ) ) {
 		}
 
 		/**
-		 * @return bool
-		 */
-		public static function check_jetpack_module( $module ){
-
-			if ( ! self::has_plugin( 'jetpack' ) ) {
-				return false;
-			}
-
-			if ( class_exists( 'Jetpack' ) && ! Jetpack::is_module_active( $module ) ) {
-				return false;
-			}
-
-			return true;
-
-		}
-
-		/**
 		 * @return array
 		 */
-		public static function get_google_font_subsets(){
+		public static function get_google_font_subsets() {
 			return array(
 				'cyrillic'     => 'Cyrillic',
 				'cyrillic-ext' => 'Cyrillic Extended',
@@ -135,6 +118,18 @@ if ( ! class_exists( 'Bonkers_Helper' ) ) {
 				'telugu'       => 'Telugu',
 				'thai'         => 'Thai',
 			);
+		}
+
+		public static function check_installed_data() {
+
+			$import = get_option( 'bonkers_import_content' );
+
+			if ( $import ) {
+				return true;
+			}
+
+			return false;
+
 		}
 	}
 }// End if().

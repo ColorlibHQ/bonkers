@@ -9,7 +9,7 @@ function bonkers_custom_css() {
 	/*
 	Colors
 	*/
-	$heroColor = get_theme_mod( 'bonkers_hero_color', '#fd6848' );
+	$hero_color = get_theme_mod( 'bonkers_hero_color', '#fd6848' );
 	$headings_color = get_theme_mod( 'bonkers_headings_color', '#222222' );
 	$text_color = get_theme_mod( 'bonkers_text_color', '#777777' );
 	$link_color = get_theme_mod( 'bonkers_link_color', '#fd6848' );
@@ -21,7 +21,7 @@ function bonkers_custom_css() {
 	$header_bck_color = get_theme_mod( 'bonkers_header_bck_color', '#FFFFFF' );
 
 	$colors = array(
-		'heroColor'      => $heroColor,
+		'heroColor'      => $hero_color,
 		'headings_color' => $headings_color,
 		'text_color'     => $text_color,
 		'link_color'     => $link_color,
@@ -38,8 +38,6 @@ function bonkers_custom_css() {
 
 	wp_add_inline_style( 'bonkers_style', $custom_css );
 
-
-
 	/*
 	Typography
 	*/
@@ -55,10 +53,10 @@ function bonkers_custom_css() {
 		if ( isset( $bonkers_typography_font['json'] ) ) {
 			$parts = $bonkers_typography_font['json'];
 			if ( isset( $parts['font-family'] ) ) {
-				$bonkers_typography_font_family =  $parts['font-family'];
+				$bonkers_typography_font_family = $parts['font-family'];
 			}
 			if ( isset( $parts['font-size'] ) ) {
-				$bonkers_typography_font_size =  $parts['font-size'];
+				$bonkers_typography_font_size = $parts['font-size'];
 			}
 		}
 	}
@@ -68,15 +66,15 @@ function bonkers_custom_css() {
 		if ( isset( $bonkers_typography_font_headings['json'] ) ) {
 			$parts = $bonkers_typography_font_headings['json'];
 			if ( isset( $parts['font-family'] ) ) {
-				$bonkers_typography_font_family_headings =  $parts['font-family'];
+				$bonkers_typography_font_family_headings = $parts['font-family'];
 			}
 		}
 	}
 
 	$typography = array(
-		'font-family' 		   => $bonkers_typography_font_family,
+		'font-family'          => $bonkers_typography_font_family,
 		'font-family-headings' => $bonkers_typography_font_family_headings,
-		'font-size'     	   => $bonkers_typography_font_size,
+		'font-size'            => $bonkers_typography_font_size,
 	);
 
 	//Add Google Fonts
@@ -90,10 +88,10 @@ function bonkers_custom_css() {
 	}
 
 	$bonkers_google_font = '//fonts.googleapis.com/css?family=' . $bonkers_typography_font_family . ':400,700' . $bonkers_font_subset;
-	wp_enqueue_style( 'bonkers_google-font', $bonkers_google_font, array(), '1.0', 'all');
+	wp_enqueue_style( 'bonkers_google-font', $bonkers_google_font, array(), '1.0', 'all' );
 
 	$bonkers_google_font_headings = '//fonts.googleapis.com/css?family=' . $bonkers_typography_font_family_headings . ':400,700' . $bonkers_font_subset;
-	wp_enqueue_style( 'bonkers_google-font-headings', $bonkers_google_font_headings, array(), '1.0', 'all');
+	wp_enqueue_style( 'bonkers_google-font-headings', $bonkers_google_font_headings, array(), '1.0', 'all' );
 
 	$custom_css = bonkers_get_custom_typography_css( $typography );
 
@@ -123,11 +121,11 @@ function bonkers_get_custom_css( $colors ) {
 		'site_background_color'     => '#e08461',
 		'logo_color'     => '#222222',
 		'header_bck_color'     => '#FFFFFF',
-		
+
 	) );
-	$heroColor_darker = bonkers_darken_color( $colors['heroColor'], 1.1 );
+	$hero_color_darker = bonkers_darken_color( $colors['heroColor'], 1.1 );
 	$link_color_darker = bonkers_darken_color( $colors['link_color'], 1.2 );
-	$heroColor_rgb = hex2rgb( $colors['heroColor'] );
+	$hero_color_rgb = hex2rgb( $colors['heroColor'] );
 
 	$css = <<<CSS
 
@@ -296,14 +294,14 @@ function bonkers_get_custom_css( $colors ) {
 	.no-touch #ql_load_more:hover,
 	.no-touch .bonkers-mini-cart .woocommerce-mini-cart__buttons .button.checkout:hover
 	{
-		background-color: {$heroColor_darker};
+		background-color: {$hero_color_darker};
 	}
 
 	/* Faded Background Color */
 	.portfolio-container .portfolio-item .portfolio-item-hover,
 	.bonkers_team_member .bonkers_team_hover
 	{
-		background-color: rgba( {$heroColor_rgb['red']}, {$heroColor_rgb['green']}, {$heroColor_rgb['blue']}, 0.88 );
+		background-color: rgba( {$hero_color_rgb['red']}, {$hero_color_rgb['green']}, {$hero_color_rgb['blue']}, 0.88 );
 	}
 
 	/* Footer Background Color */
@@ -341,7 +339,7 @@ CSS;
  * @param array $typography typography.
  * @return string CSS.
  */
-function bonkers_get_custom_typography_css( $typography  ) {
+function bonkers_get_custom_typography_css( $typography ) {
 
 	//Default colors
 	$typography = wp_parse_args( $typography, array(

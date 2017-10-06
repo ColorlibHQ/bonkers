@@ -8,8 +8,8 @@ if ( ! class_exists( 'Jetpack' ) || ! Jetpack::is_module_active( 'infinite-scrol
 		$wp_query = $the_query;
 	}
 	$pagination = get_the_posts_pagination( array(
-	    'prev_text'          => esc_attr__( 'Previous page', 'bonkers' ),
-		'next_text'          => esc_attr__( 'Next page', 'bonkers' )
+		'prev_text'          => esc_attr__( 'Previous page', 'bonkers' ),
+		'next_text'          => esc_attr__( 'Next page', 'bonkers' ),
 	) );
 
 	if ( $pagination ) {

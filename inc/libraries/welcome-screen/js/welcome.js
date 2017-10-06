@@ -5,15 +5,11 @@ var welcomeScreenFunctions = {
   importDemoContent: function() {
     var self = this;
     jQuery( '.epsilon-ajax-button' ).click( function( e ) {
-      var action = jQuery( this ).attr( 'data-action' ) ? jQuery( this ).attr( 'data-action' ) : jQuery( this ).attr( 'id' ),
-          container = jQuery( this ).parents( '.action-required-box' ),
+      var container = jQuery( this ).parents( '.action-required-box' ),
           checkboxes = container.find( ':checkbox' ),
           importThis = {
             'plugins': [],
-            'content': [],
-            'sections': [],
-            'widgets': [],
-            'options': []
+            'bonkers_options': []
           };
 
       e.preventDefault();
@@ -30,10 +26,10 @@ var welcomeScreenFunctions = {
 
       if ( importThis[ 'plugins' ].length ) {
         jQuery( document ).on( 'epsilon-all-plugins-imported', function() {
-          self._importContent( importThis, action, container );
+          self._importContent( importThis[ 'bonkers_options' ], container );
         } );
       } else {
-        self._importContent( importThis, action, container );
+        self._importContent( importThis[ 'bonkers_options' ], container );
       }
 
     } );
@@ -48,9 +44,9 @@ var welcomeScreenFunctions = {
    *
    * @todo send "argument" with demo slug
    */
-  _importContent: function( $import, action, container ) {
+  _importContent: function( $import, container ) {
     var args = {
-      action: [ 'Epsilon_Import_Data', action ],
+      action: [ 'Epsilon_Import_Data', 'import_theme_content' ],
       nonce: welcomeScreen.ajax_nonce,
       args: $import
     };

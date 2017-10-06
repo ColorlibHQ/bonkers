@@ -12,28 +12,28 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 		<?php if ( has_post_thumbnail() ) : ?>
 		<div class="post-image">
-            <a href="<?php echo esc_url( get_permalink() ); ?>" rel="bookmark">
-                <?php the_post_thumbnail( 'bonkers_post' ); ?>
-            </a>
-        </div><!-- /post-image -->
-        <?php endif; ?>
+			<a href="<?php echo esc_url( get_permalink() ); ?>" rel="bookmark">
+				<?php the_post_thumbnail( 'bonkers_post' ); ?>
+			</a>
+		</div><!-- /post-image -->
+		<?php endif; ?>
 
-        <div class="post-content">
+		<div class="post-content">
 
 			<header class="entry-header">
-        		<?php the_title( sprintf( '<h2 class="post-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
-        	</header><!-- .entry-header -->
+				<?php the_title( sprintf( '<h2 class="post-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
+			</header><!-- .entry-header -->
 
 			<?php if ( 'post' === get_post_type() ) : ?>
 			<footer class="entry-footer">
 				<div class="metadata">
-	                <?php bonkers_metadata(); ?>
-	                <div class="clearfix"></div>
-	            </div><!-- /metadata -->
-            </footer><!-- .entry-footer -->
-            <?php endif; ?>
+					<?php bonkers_metadata(); ?>
+					<div class="clearfix"></div>
+				</div><!-- /metadata -->
+			</footer><!-- .entry-footer -->
+			<?php endif; ?>
 
-        	<div class="entry-content">
+			<div class="entry-content">
 				<?php
 					the_content();
 				?>

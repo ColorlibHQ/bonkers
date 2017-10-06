@@ -107,23 +107,3 @@ wp.customize.controlConstructor[ 'bonkers-checkbox-multiple' ] = wp.customize.Co
     } );
   }
 } );
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

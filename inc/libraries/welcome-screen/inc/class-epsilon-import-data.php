@@ -19,49 +19,16 @@ class Epsilon_Import_Data {
 	 *
 	 * @var array
 	 */
-	public $plugins = array();
+	public $plugins;
+
+	public $import_options = array();
+
 	/**
-	 * Array of content to register
-	 *
-	 * @var array
-	 */
-	public $content = array();
-	/**
-	 * Array of sections to register
-	 *
-	 * @var array
-	 */
-	public $sections = array();
-	/**
-	 * Array of options to register
-	 *
-	 * @var array
-	 */
-	public $options = array();
-	/**
-	 * Array of widgets
+	 * Array of widgets index for when we will insert widgets
 	 *
 	 * @var array
 	 */
 	public $widgets = array();
-	/**
-	 * How to import content, save as post meta or through theme mods
-	 *
-	 * @var string
-	 */
-	public $mode = 'post_meta';
-	/**
-	 * Slug of the demo, will default to "standard"
-	 *
-	 * @var string
-	 */
-	public $slug = 'standard';
-	/**
-	 * All demo slugs, so we can build our HTML
-	 *
-	 * @var array
-	 */
-	public $all_slugs = array();
 
 	/**
 	 * Epsilon_Import_Data constructor.
@@ -69,6 +36,11 @@ class Epsilon_Import_Data {
 	 * @param array $args
 	 */
 	public function __construct( $args = array() ) {
+		$this->plugins = array(
+			'bonkers-addons' => esc_html__( 'Bonkers Addons', 'epsilon-framework' ),
+			'jetpack' => esc_html__( 'Jetpack', 'epsilon-framework' ),
+			'contact-form-7' => esc_html__( 'Contact Form 7', 'epsilon-framework' ), 
+		);
 		$this->handle_json();
 	}
 
@@ -118,63 +90,9 @@ class Epsilon_Import_Data {
 			return false;
 		}
 
-		return $this->_parse_json( $json );
-	}
 
-	/**
-	 * Build our object
-	 *
-	 * @param $json
-	 *
-	 * @return bool
-	 */
-	private function _parse_json( $json ) {
-		foreach ( $json as $k => $v ) {
-			$this->all_slugs[] = $k;
-			foreach ( $v as $type => $content ) {
-				$this->{$type}[ $k ] = $content;
 
-				$this->check_content( $type, $k );
-			}
-		}
-
-		return true;
-	}
-
-	/**
-	 * @param $type
-	 * @param $id
-	 */
-	private function check_content( $type, $id ) {
-		foreach ( $this->{$type}[ $id ] as $index => $data ) {
-			if ( ! is_array( $data ) ) {
-				continue;
-			}
-
-			if ( ! isset( $data['content'] ) ) {
-				continue;
-			}
-
-			if ( ! is_array( $data['content'] ) ) {
-				continue;
-			}
-
-			foreach ( $data['content'] as $k => $v ) {
-				if ( ! is_array( $v ) ) {
-					if ( false !== strpos( $k, '_image' ) || ( false !== strpos( $k, '_background' ) && false === strpos( $k, '_color' ) ) ) {
-						$this->{$type}[ $id ][ $index ]['content'][ $k ] = get_template_directory_uri() . $v;
-					}
-
-					continue;
-				}
-
-				foreach ( $v as $fid => $fields ) {
-					if ( false !== strpos( $fid, '_image' ) || false !== strpos( $fid, '_background' ) ) {
-						$this->{$type}[ $id ][ $index ]['content'][ $k ][ $fid ] = get_template_directory_uri() . $fields;
-					}
-				}
-			}
-		}
+		$this->import_options = $json;
 	}
 
 	/**
@@ -185,56 +103,25 @@ class Epsilon_Import_Data {
 		$html .= '<a class="button epsilon-hidden-content-toggler" href="#" data-toggle="welcome-hidden-content">' . __( 'Advanced', 'epsilon-framework' ) . '</a></p>';
 		$html .= '<div class="import-content-container" id="welcome-hidden-content">';
 
-		foreach ( $this->all_slugs as $demo_slug ) {
-			$html .= '<div class="demo-content-container" data-slug="' . esc_attr( $demo_slug ) . '" >';
-			if ( defined( 'WPCF7_VERSION' ) ) {
-				unset( $this->plugins[ $demo_slug ]['contact-form-7'] );
+		$plugins_html = '';
+		foreach ( $this->plugins as $slug => $name ) {
+			if ( ! Bonkers_Helper::has_plugin( $slug ) ) {
+				$plugins_html .= $this->generate_checkbox( $slug, 'plugins', $name );
 			}
-			if ( ! empty( $this->plugins[ $demo_slug ] ) ) {
-				$html .= '<div class="checkbox-group">';
-				$html .= '<h4>' . __( 'Plugins', 'epsilon-framework' ) . '</h4>';
-				foreach ( $this->plugins[ $demo_slug ] as $k => $v ) {
-					$html .= $this->generate_checkbox( $k, 'plugins', $v );
-				}
-				$html .= '</div>';
-			}
+		}
 
-			if ( ! empty( $this->content[ $demo_slug ] ) ) {
-				$html .= '<div class="checkbox-group">';
-				$html .= '<h4>' . __( 'Content', 'medzone' ) . '</h4>';
-				foreach ( $this->content[ $demo_slug ] as $k => $v ) {
-					$html .= $this->generate_checkbox( $k, 'content', $v['label'] );
-				}
-				$html .= '</div>';
-			}
+		if ( '' != $plugins_html ) {
+			$html .= '<div class="checkbox-group">';
+			$html .= '<h4>' . __( 'Plugins', 'epsilon-framework' ) . '</h4>';
+			$html .= $plugins_html;
+			$html .= '</div>';
+		}
 
-			if ( ! empty( $this->sections[ $demo_slug ] ) ) {
-				$html .= '<div class="checkbox-group">';
-				$html .= '<h4>' . __( 'Sections', 'medzone' ) . '</h4>';
-				foreach ( $this->sections[ $demo_slug ] as $k => $v ) {
-					$html .= $this->generate_checkbox( $k, 'sections', $v['label'] );
-				}
-				$html .= '</div>';
-			}
-
-			if ( ! empty( $this->widgets[ $demo_slug ] ) ) {
-				$html .= '<div class="checkbox-group">';
-				$html .= '<h4>' . __( 'Widgets', 'medzone' ) . '</h4>';
-				foreach ( $this->widgets[ $demo_slug ] as $k => $v ) {
-					foreach ( $v as $id => $props ) {
-						$html .= $this->generate_checkbox( $k . '|' . $id, 'widgets', $props['title'] );
-					}
-				}
-				$html .= '</div>';
-			}
-
-			if ( ! empty( $this->options[ $demo_slug ] ) ) {
-				$html .= '<div class="checkbox-group">';
-				$html .= '<h4>' . __( 'Frontpage settings', 'medzone' ) . '</h4>';
-				foreach ( $this->options[ $demo_slug ] as $k => $v ) {
-					$html .= $this->generate_checkbox( $k, 'options', $v['label'] );
-				}
-				$html .= '</div>';
+		foreach ( $this->import_options as $section_id => $section ) {
+			$html .= '<div class="checkbox-group">';
+			$html .= '<h4>' . $section['title'] . '</h4>';
+			foreach ( $section['options'] as $option ) {
+				$html .= $this->generate_checkbox( $option['action'], 'bonkers_options', $option['title'] );
 			}
 			$html .= '</div>';
 		}
@@ -260,9 +147,9 @@ class Epsilon_Import_Data {
 	}
 
 	/**
-	 * Check if we have a static page
+	 * Check if we have a static page and if not add one
 	 */
-	public function check_static_page() {
+	public function set_frontpage() {
 		$front = get_option( 'show_on_front' );
 		if ( 'posts' === $front ) {
 			update_option( 'show_on_front', 'page' );
@@ -273,6 +160,9 @@ class Epsilon_Import_Data {
 					'post_status' => 'publish',
 				)
 			);
+
+			update_post_meta( $id, '_wp_page_template', 'page-templates/template-front-page.php' );
+
 			update_option( 'page_on_front', $id );
 		}
 
@@ -280,274 +170,426 @@ class Epsilon_Import_Data {
 	}
 
 	/**
-	 * Upload custom logo image
-	 *
-	 * @param $image
-	 *
-	 * @return int|object|void
-	 */
-	public function upload_logo( $image ) {
-		$logo = get_theme_mod( 'custom_logo', false );
-		/**
-		 * If there is a logo, don`t overwrite it
-		 */
-		if ( false !== $logo ) {
-			return;
-		}
-
-		require_once ABSPATH . 'wp-admin/includes/file.php';
-		require_once ABSPATH . 'wp-admin/includes/post.php';
-		require_once ABSPATH . 'wp-admin/includes/image.php';
-		require_once ABSPATH . 'wp-admin/includes/media.php';
-
-		$tmp = download_url( get_template_directory_uri() . $image );
-
-		$file = array(
-			'name'     => basename( 'machothemes-logo' . rand( 1, 123123123 ) ) . '.png',
-			'tmp_name' => $tmp,
-		);
-
-		if ( is_wp_error( $tmp ) ) {
-			unlink( $file['tmp_name'] );
-
-			return $tmp;
-		}
-
-		$id = media_handle_sideload( $file, 0, 'Custom Logo' );
-
-		if ( is_wp_error( $id ) ) {
-			unlink( $file['tmp_name'] );
-
-			return $id;
-		}
-
-		set_theme_mod( 'custom_logo', $id );
-	}
-
-	/**
-	 * Add the predefined sections automatically
+	 * Handle import
 	 *
 	 * @param string $args JSON String
 	 *
 	 * @return string
 	 *
-	 * @todo receive "argument" with demo slug and import accordingly
+	 * @todo receive "argument" with methods name
 	 */
-	public static function add_default_sections( $args = '' ) {
+	public static function import_theme_content( $args = '' ) {
 		$arr      = array();
 		$instance = self::get_instance();
 
-		foreach ( $args as $type => $what ) {
-			switch ( $type ) {
-				case 'sections':
-					$temp = $instance->add_theme_sections( $what );
-					break;
-				case 'content':
-					$temp = $instance->add_theme_content( $what );
-					break;
-				case 'options':
-					$temp = $instance->add_theme_options( $what );
-					break;
-				case 'widgets':
-					$temp = $instance->add_theme_widgets( $what );
-					break;
-				default:
-					$temp = null;
-					break;
+		foreach ( $args as $action ) {
+			if ( method_exists( $instance, $action ) ) {
+				$instance->{ $action }();
 			}
-			$arr[ $type ] = $temp;
 		}
+
+		update_option( 'bonkers_import_content', 1 );
 
 		return 'ok';
 	}
 
 	/**
-	 * Add default widgets
+	 * Add widgets to a certain sidebar
 	 *
-	 * @param $what
+	 * @param $sidebar
+	 * @param $widgets
 	 *
-	 * @return string
 	 */
-	public function add_theme_widgets( $what ) {
-		$import = array();
-		foreach ( $what as $widget ) {
-			$temp = explode( '|', $widget );
-			if ( 2 === count( $temp ) ) {
-				$import[ $temp[0] ] = $temp[1];
+	public function add_widgets_to_sidebar( $sidebar, $widgets ) {
+
+		if ( is_active_sidebar( $sidebar ) ) {
+			return;
+		}
+
+		$sidebar_widgets = array();
+		foreach ( $widgets as $widget_options ) {
+			$widget_id = $widget_options['id'];
+			unset( $widget_options['id'] );
+
+			if ( ! isset( $this->widgets[ $widget_id ] ) ) {
+				$this->widgets[ $widget_id ] = get_option( "widget_{$widget_id}" );
+			}
+
+			if ( empty( $this->widgets[ $widget_id ] ) || ( count( $this->widgets[ $widget_id ] ) == 1 && isset( $this->widgets[ $widget_id ]['_multiwidget'] ) ) ) {
+				$this->widgets[ $widget_id ] = array(
+					1 => $widget_options
+				);
+			}else{
+				array_push( $this->widgets[ $widget_id ], $widget_options );
+			}
+
+			$widget_index = $widget_id . '-' . end( array_keys( $this->widgets[ $widget_id ] ) );
+			array_push( $sidebar_widgets, $widget_index );
+
+		}
+
+		foreach ( $this->widgets as $widget_id => $widgets ) {
+			update_option( "widget_{$widget_id}", $widgets );
+		}
+
+		$sidebars = get_option( 'sidebars_widgets' );
+		$sidebars[ $sidebar ] = $sidebar_widgets;
+		update_option( 'sidebars_widgets', $sidebars );
+
+		$this->widgets = array();
+
+	}
+
+	/**
+	 * Add demo content for Welcome section
+	 */
+	public function populate_welcome_section(){
+
+		$options = array(
+			'bonkers_addons_welcome_title' => wp_kses_post( 'Every Great Company<br> Starts With An Idea' ),
+			'bonkers_addons_welcome_link_title' => esc_html( 'View More' ),
+			'bonkers_addons_welcome_link_url' => esc_url_raw( '#' ),
+			'bonkers_addons_welcome_image' => esc_url_raw( get_template_directory_uri() . '/images/StockSnap_1A3MXAT0M6.jpg' )
+		);
+
+		foreach ( $options as $option_name => $value ) {
+			$current_value = get_option( $option_name );
+			if ( ! $current_value ) {
+				update_option( $option_name, $value );
 			}
 		}
 
-		global $wp_registered_sidebars;
+	}
 
-		foreach ( $import as $sidebar => $widget ) {
-			$widget_type = preg_replace( '/-[0-9]+$/', '', $widget );
-			$widget_id   = str_replace( $widget_type . '-', '', $widget );
+	/**
+	 * Add demo content for Service section
+	 */
+	public function populate_services_section(){
 
-			$prop = array(
-				'available'            => false,
-				'sidebar_id'           => 'wp_inactive_widgets',
-				'sidebar_message_type' => 'error',
+		$widgets = array(
+			array(
+				'id' => 'service-widget',
+				'image_uri' => esc_url( get_template_directory_uri() . '/images/48.Dashboard.png' ),
+				'title' => esc_html__( 'Service Title', 'bonkers' ),
+				'text' => esc_html__( 'Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus.', 'bonkers' ),
+				'link_title' => esc_html__( 'Learn More', 'bonkers' ),
+				'link' => '#',
+			),
+			array(
+				'id' => 'service-widget',
+				'image_uri' => esc_url( get_template_directory_uri() . '/images/30.User.png' ),
+				'title' => esc_html__( 'Service Title', 'bonkers' ),
+				'text' => esc_html__( 'Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus.', 'bonkers' ),
+				'link_title' => esc_html__( 'Learn More', 'bonkers' ),
+				'link' => '#',
+			),
+			array(
+				'id' => 'service-widget',
+				'image_uri' => esc_url( get_template_directory_uri() . '/images/03.Office.png' ),
+				'title' => esc_html__( 'Service Title', 'bonkers' ),
+				'text' => esc_html__( 'Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus.', 'bonkers' ),
+				'link_title' => esc_html__( 'Learn More', 'bonkers' ),
+				'link' => '#',
+			)
+		);
+
+		$this->add_widgets_to_sidebar( 'services-section', $widgets );
+
+	}
+
+	/**
+	 * Add demo content for Image section
+	 */
+	public function populate_image_section(){
+
+		$options = array(
+			'bonkers_addons_image_title' => esc_html( 'Start Growing your Business' ),
+			'bonkers_addons_image_link_title' => esc_html( 'View More' ),
+			'bonkers_addons_image_link_url' => esc_url_raw( '#' ),
+			'bonkers_addons_image_image' => esc_url_raw( get_template_directory_uri() . '/images/StockSnap_JBW2PXDOL6.jpg' )
+		);
+
+		foreach ( $options as $option_name => $value ) {
+			$current_value = get_option( $option_name );
+			if ( ! $current_value ) {
+				update_option( $option_name, $value );
+			}
+		}
+
+	}
+
+	/**
+	 * Add demo content for Phone section
+	 */
+	public function populate_phone_section(){
+
+		$widgets = array(
+			array(
+				'id' => 'phone-feature-widget',
+				'image_uri' => esc_url( get_template_directory_uri() . '/images/48.Dashboard.png' ),
+				'title' => esc_html__( 'Feature Title', 'bonkers' ),
+				'text' => esc_html__( 'Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas sed diam eget risus varius blandit sit amet non magna.', 'bonkers' ),
+			),
+			array(
+				'id' => 'phone-feature-widget',
+				'image_uri' => esc_url( get_template_directory_uri() . '/images/48.Dashboard.png' ),
+				'title' => esc_html__( 'Feature Title', 'bonkers' ),
+				'text' => esc_html__( 'Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas sed diam eget risus varius blandit sit amet non magna.', 'bonkers' ),
+			),
+			array(
+				'id' => 'phone-feature-widget',
+				'image_uri' => esc_url( get_template_directory_uri() . '/images/48.Dashboard.png' ),
+				'title' => esc_html__( 'Feature Title', 'bonkers' ),
+				'text' => esc_html__( 'Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas sed diam eget risus varius blandit sit amet non magna.', 'bonkers' ),
+			)
+		);
+
+		$this->add_widgets_to_sidebar( 'phone-section-left', $widgets );
+		$this->add_widgets_to_sidebar( 'phone-section-right', $widgets );
+
+	}
+
+	/**
+	 * Add demo content for CTA section
+	 */
+	public function populate_cta_section(){
+
+		$options = array(
+			'bonkers_addons_cta_title' => esc_html( 'Start Creating Beautiful Sites Now!' ),
+			'bonkers_addons_cta_link_title' => esc_html( 'Sign Up' ),
+			'bonkers_addons_image_link_url' => esc_url_raw( '#' ),
+			'bonkers_addons_cta_image' => esc_url_raw( get_template_directory_uri() . '/images/StockSnap_R7GVMRJWW9.jpg' )
+		);
+
+		foreach ( $options as $option_name => $value ) {
+			$current_value = get_option( $option_name );
+			if ( ! $current_value ) {
+				update_option( $option_name, $value );
+			}
+		}
+
+	}
+
+	/**
+	 * Add demo content for Video section
+	 */
+	public function populate_video_section(){
+
+		$options = array(
+			'bonkers_addons_video_title' => esc_html( 'Your success is our most important priority' ),
+			'bonkers_addons_video_url' => esc_url_raw( 'https://www.youtube.com/watch?v=wevJGIJXDFc' )
+		);
+
+		foreach ( $options as $option_name => $value ) {
+			$current_value = get_option( $option_name );
+			if ( ! $current_value ) {
+				update_option( $option_name, $value );
+			}
+		}
+
+	}
+
+	/**
+	 * Add demo content for Team section
+	 */
+	public function populate_team_section(){
+
+		$options = array(
+			'bonkers_addons_team_title' => esc_html( 'The Team' ),
+		);
+
+		foreach ( $options as $option_name => $value ) {
+			$current_value = get_option( $option_name );
+			if ( ! $current_value ) {
+				update_option( $option_name, $value );
+			}
+		}
+
+		$widgets = array(
+			array(
+				'id' => 'team-member-widget',
+				'image_uri' => esc_url( get_template_directory_uri() . '/images/member1.jpg' ),
+				'title' => esc_html__( 'John Doe', 'bonkers' ),
+				'position' => esc_html__( 'CEO', 'bonkers' ),
+				'link_facebook' => esc_url_raw( '#' ),
+				'link_twitter' => esc_url_raw( '#' ),
+				'link_facebook' => esc_url_raw( '#' ),
+			),
+			array(
+				'id' => 'team-member-widget',
+				'image_uri' => esc_url( get_template_directory_uri() . '/images/member2.jpg' ),
+				'title' => esc_html__( 'John Doe', 'bonkers' ),
+				'position' => esc_html__( 'CEO', 'bonkers' ),
+				'link_facebook' => esc_url_raw( '#' ),
+				'link_twitter' => esc_url_raw( '#' ),
+				'link_facebook' => esc_url_raw( '#' ),
+			),
+			array(
+				'id' => 'team-member-widget',
+				'image_uri' => esc_url( get_template_directory_uri() . '/images/member1.jpg' ),
+				'title' => esc_html__( 'John Doe', 'bonkers' ),
+				'position' => esc_html__( 'CEO', 'bonkers' ),
+				'link_facebook' => esc_url_raw( '#' ),
+				'link_twitter' => esc_url_raw( '#' ),
+				'link_facebook' => esc_url_raw( '#' ),
+			),
+			array(
+				'id' => 'team-member-widget',
+				'image_uri' => esc_url( get_template_directory_uri() . '/images/member2.jpg' ),
+				'title' => esc_html__( 'John Doe', 'bonkers' ),
+				'position' => esc_html__( 'CEO', 'bonkers' ),
+				'link_facebook' => esc_url_raw( '#' ),
+				'link_twitter' => esc_url_raw( '#' ),
+				'link_facebook' => esc_url_raw( '#' ),
+			),
+			array(
+				'id' => 'team-member-widget',
+				'image_uri' => esc_url( get_template_directory_uri() . '/images/member1.jpg' ),
+				'title' => esc_html__( 'John Doe', 'bonkers' ),
+				'position' => esc_html__( 'CEO', 'bonkers' ),
+				'link_facebook' => esc_url_raw( '#' ),
+				'link_twitter' => esc_url_raw( '#' ),
+				'link_facebook' => esc_url_raw( '#' ),
+			)
+		);
+
+		$this->add_widgets_to_sidebar( 'team-section', $widgets );
+
+	}
+
+	/**
+	 * Add demo content for Subscribe section
+	 */
+	public function populate_subscribe_section(){
+
+		$options = array(
+			'bonkers_addons_subscribe_title' => esc_html( 'Subscribe' ),
+			'bonkers_addons_subscribe_link_title' => esc_html( 'Subscribe' ),
+			'bonkers_addons_subscribe_link_placeholder' => esc_html( 'Enter your email...' ),
+		);
+
+		foreach ( $options as $option_name => $value ) {
+			$current_value = get_option( $option_name );
+			if ( ! $current_value ) {
+				update_option( $option_name, $value );
+			}
+		}
+
+	}
+
+	/**
+	 * Add demo content for Clients section
+	 */
+	public function populate_clients_section(){
+
+		$options = array(
+			'bonkers_addons_team_title' => esc_html( 'THE CLIENTS' ),
+		);
+
+		foreach ( $options as $option_name => $value ) {
+			$current_value = get_option( $option_name );
+			if ( ! $current_value ) {
+				update_option( $option_name, $value );
+			}
+		}
+
+		$widgets = array(
+			array(
+				'id' => 'client-logo-widget',
+				'image_uri' => esc_url( get_template_directory_uri() . '/images/wordpress_logo.png' ),
+				'link' => esc_url_raw( '#' ),
+			),
+			array(
+				'id' => 'client-logo-widget',
+				'image_uri' => esc_url( get_template_directory_uri() . '/images/wordpress_logo.png' ),
+				'link' => esc_url_raw( '#' ),
+			),
+			array(
+				'id' => 'client-logo-widget',
+				'image_uri' => esc_url( get_template_directory_uri() . '/images/wordpress_logo.png' ),
+				'link' => esc_url_raw( '#' ),
+			),
+			array(
+				'id' => 'client-logo-widget',
+				'image_uri' => esc_url( get_template_directory_uri() . '/images/wordpress_logo.png' ),
+				'link' => esc_url_raw( '#' ),
+			),
+			array(
+				'id' => 'client-logo-widget',
+				'image_uri' => esc_url( get_template_directory_uri() . '/images/wordpress_logo.png' ),
+				'link' => esc_url_raw( '#' ),
+			)
+		);
+
+		$this->add_widgets_to_sidebar( 'clients-section', $widgets );
+
+	}
+	
+	/**
+	 * Add demo content for Contact section
+	 */
+	public function populate_contact_section(){
+
+		$options = array(
+			'bonkers_addons_contact_title' => esc_html( 'Contact' ),
+			'bonkers_addons_contact_address' => esc_html( 'Central Park, New York, NY, United States' ),
+			'bonkers_addons_contact_zoom' => absint( 13 ),
+		);
+
+		if ( Bonkers_Helper::has_plugin( 'contact-form-7' ) ) {
+			
+			// Search if we have a contact form
+			$cf7_forms_args = array(
+				'post_type' => 'wpcf7_contact_form',
+				'post_status' => 'publish',
+				'posts_per_page' => 1,
 			);
 
-			if ( isset( $wp_registered_sidebars[ $sidebar ] ) ) {
-				$prop['available']            = true;
-				$prop['sidebar_id']           = $sidebar;
-				$prop['sidebar_message_type'] = 'success';
-			}
+			$cf7_forms = get_posts( $cf7_forms_args );
 
-			$temp = array(
-				'_multiwidget' => 1,
-			);
+			if ( count( $cf7_forms ) > 0 ) {
 
-			$widget_instance   = get_option( 'widget_' . $widget_type );
-			$widget_instance   = ! empty( $widget_instance ) ? $widget_instance : $temp;
-			$widget_instance[] = $this->widgets[ $this->slug ][ $sidebar ][ $widget ];
+				$options['bonkers_addons_contact_form'] = $cf7_forms[0]->ID;
 
-			// Get the key it was given.
-			end( $widget_instance );
-			$new_id = key( $widget_instance );
+			}else{
 
-			if ( '0' === strval( $new_id ) ) {
-				$new_id = 1;
+				$cf7_form_args = array(
+					'post_title' => 'Demo Form',
+					'post_status' => 'publish',
+					'post_type' => 'wpcf7_contact_form',
+					'meta_input' => array(
+						'_form' => '<label> Your Name (required)
+    [text* your-name] </label>
 
-				$widget_instance[ $new_id ] = $widget_instance[0];
-				unset( $widget_instance[0] );
-			}
+<label> Your Email (required)
+    [email* your-email] </label>
 
-			if ( isset( $widget_instance['_multiwidget'] ) ) {
-				$multiwidget = $widget_instance['_multiwidget'];
-				unset( $widget_instance['_multiwidget'] );
-				$widget_instance['_multiwidget'] = $multiwidget;
-			}
+<label> Subject
+    [text your-subject] </label>
 
-			// Update option with new widget.
-			update_option( 'widget_' . $widget_type, $widget_instance );
+<label> Your Message
+    [textarea your-message] </label>
 
-			$sidebars_widgets = get_option( 'sidebars_widgets' );
-			if ( ! $sidebars_widgets ) {
-				$sidebars_widgets = array();
-			}
-
-			$new_instance_id   = $widget_type . '-' . $new_id;
-
-			// Add new instance to sidebar.
-			$sidebars_widgets[ $prop['sidebar_id'] ][] = $new_instance_id;
-			// Save the amended data.
-			update_option( 'sidebars_widgets', $sidebars_widgets );
-		}
-
-		return 'ok';
-	}
-
-	/**
-	 * Add default options
-	 *
-	 * @param $what
-	 *
-	 * @return string
-	 */
-	public function add_theme_options( $what ) {
-		$import = array();
-
-		foreach ( $what as $id ) {
-			if ( 'frontpage' === $id ) {
-				$this->check_static_page();
-				continue;
-			}
-
-			if ( 'logo' === $id ) {
-				if ( isset( $this->options[ $this->slug ][ $id ] ) ) {
-					$this->upload_logo( $this->options[ $this->slug ][ $id ]['content'] );
-				}
-
-				continue;
-			}
-
-			if ( isset( $this->options[ $this->slug ][ $id ] ) ) {
-				$import[ $this->options[ $this->slug ][ $id ]['setting'] ] = $this->options[ $this->slug ][ $id ]['content'];
-			}
-		}
-
-		foreach ( $import as $k => $v ) {
-			set_theme_mod( $k, $v );
-		}
-
-		return 'ok';
-	}
-
-	/**
-	 * Imports selected sections
-	 *
-	 * @todo later on, when we`ll move away from the "DRAFT PAGE" we need to modify
-	 *       Epsilon_Content_Backup::get_instance()->setting_page,
-	 *
-	 * @param $what
-	 *
-	 * @return string
-	 */
-	public function add_theme_sections( $what ) {
-		$import  = array();
-		$setting = '';
-		foreach ( $what as $id ) {
-			if ( isset( $this->sections[ $this->slug ][ $id ] ) ) {
-				$import[] = $this->sections[ $this->slug ][ $id ]['content'];
-				$setting  = $this->sections[ $this->slug ][ $id ]['setting'];
-			}
-		}
-
-		/**
-		 * Determine if we're saving theme options in post meta or in theme mods
-		 */
-		if ( 'post_meta' === $this->mode ) {
-			update_post_meta(
-				Epsilon_Content_Backup::get_instance()->setting_page,
-				$setting, array(
-					$setting => $import,
-				)
-			);
-
-			return 'ok';
-		}
-
-		set_theme_mod( $setting, $import );
-
-		return 'ok';
-	}
-
-	/**
-	 * Import sample content
-	 *
-	 * @todo later on, when we`ll move away from the "DRAFT PAGE" we need to modify
-	 *       Epsilon_Content_Backup::get_instance()->setting_page,
-	 */
-	public function add_theme_content( $what ) {
-		$import = array();
-		foreach ( $what as $id ) {
-			if ( isset( $this->content[ $this->slug ][ $id ] ) ) {
-				$import[ $this->content[ $this->slug ][ $id ]['setting'] ] = $this->content[ $this->slug ][ $id ]['content'];
-			}
-		}
-
-		/**
-		 * Determine if we're saving theme options in post meta or in theme mods
-		 */
-		if ( 'post_meta' === $this->mode ) {
-			foreach ( $import as $k => $v ) {
-				update_post_meta(
-					Epsilon_Content_Backup::get_instance()->setting_page,
-					$k, array(
-						$k => $v,
+[submit "Send"]',
 					)
 				);
+
+				$cf7_form_id = wp_insert_post( $cf7_form_args );
+				if( ! is_wp_error( $cf7_form_id ) ) {
+					$options['bonkers_addons_contact_form'] = $cf7_form_id;
+				}
+
 			}
 
-			return 'ok';
 		}
 
-		foreach ( $import as $k => $v ) {
-			set_theme_mod( $k, $v );
+		foreach ( $options as $option_name => $value ) {
+			$current_value = get_option( $option_name );
+			if ( ! $current_value ) {
+				update_option( $option_name, $value );
+			}
 		}
 
-		return 'ok';
 	}
+
 }
