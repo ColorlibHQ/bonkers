@@ -85,3 +85,11 @@ Images from pixabay
 License: https://pixabay.com/es/service/terms/#usage
 https://pixabay.com/photo-1274360/
 https://pixabay.com/photo-1690965/
+
+Icons
+03.Office.png - https://dribbble.com/shots/1569128-Freebie-48-Bubbles-Iconset
+30.User.png - https://dribbble.com/shots/1569128-Freebie-48-Bubbles-Iconset
+48.Dashboard.png - https://dribbble.com/shots/1569128-Freebie-48-Bubbles-Iconset
+
+The WordPress logo belongs to Automattic.
+Any other image included & distributed with the theme has been licensed under the GPL and is the creative work of Colorlib.com.
