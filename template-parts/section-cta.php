@@ -1,7 +1,6 @@
 <?php
 $bonkers_enable_section = get_option( 'bonkers_addons_cta_enable', true );
 if ( $bonkers_enable_section || is_customize_preview() ) :
-
 	$bonkers_cta_image = get_option( 'bonkers_addons_cta_image', esc_url( get_template_directory_uri() ) . '/images/StockSnap_R7GVMRJWW9.jpg' );
 	if ( is_numeric( $bonkers_cta_image ) ) {
 		$bonkers_cta_image = wp_get_attachment_url( $bonkers_cta_image );
