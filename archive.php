@@ -29,7 +29,7 @@ get_header(); ?>
 					/* Start the Loop */
 					while ( have_posts() ) : the_post();
 
-					    get_template_part( 'template-parts/content-portfolio', 'portfolio' );
+						get_template_part( 'template-parts/content-portfolio', 'portfolio' );
 
 					endwhile;
 					echo "</div><!-- .portfolio_container -->\n\n";
@@ -37,14 +37,13 @@ get_header(); ?>
 					get_template_part( 'template-parts/pagination', 'portfolio' );
 
 
-				}//is_portfolio_category()
-
-			}else{//is_tax()
-			?>
+				}
+			} else { //is_tax()
+						?>
 			
-			<div class="bonkers-post-wrapper">
+						<div class="bonkers-post-wrapper">
 			
-				<?php /* Start the Loop */ ?>
+							<?php /* Start the Loop */ ?>
 				<?php while ( have_posts() ) : the_post(); ?>
 
 					<?php
@@ -59,11 +58,12 @@ get_header(); ?>
 
 				<?php endwhile; ?>
 
-			</div><!-- /bonkers-post-wrapper -->
+						</div><!-- /bonkers-post-wrapper -->
 
-				<?php get_template_part( 'template-parts/pagination', 'archive' ); ?>
+							<?php get_template_part( 'template-parts/pagination', 'archive' ); ?>
 
-			<?php }//is_tax() ?>
+						<?php }// End if().
+?>
 
 		<?php else : ?>
 

@@ -18,9 +18,9 @@
 	
 	<?php if ( has_post_thumbnail() ) : ?>
 		<div class="post-image">
-            <?php the_post_thumbnail( 'bonkers_post_single' ); ?>
-        </div><!-- /post-image -->
-    <?php endif; ?>
+			<?php the_post_thumbnail( 'bonkers_post_single' ); ?>
+		</div><!-- /post-image -->
+	<?php endif; ?>
 
 
 		<div class="post-content">
@@ -28,13 +28,13 @@
 			<?php if ( 'post' === get_post_type() ) : ?>
 			<footer class="entry-footer">
 				<div class="metadata">
-		            <?php bonkers_metadata(); ?>
-		            <div class="clearfix"></div>
-		        </div><!-- /metadata -->
-		    </footer><!-- .entry-footer -->
-		    <?php endif; ?>
+					<?php bonkers_metadata(); ?>
+					<div class="clearfix"></div>
+				</div><!-- /metadata -->
+			</footer><!-- .entry-footer -->
+			<?php endif; ?>
 
-	    	<div class="entry-content">
+			<div class="entry-content">
 				<?php the_content(); ?>
 				<?php
 					wp_link_pages( array(

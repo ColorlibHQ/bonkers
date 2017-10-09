@@ -1,0 +1,61 @@
+{ 
+
+  "fontpage" : {
+
+    "title" : "Front Page Settings",
+    "options" : {
+      "setstaticfrontpage" : {
+        "title" : "Set Front Page as static page",
+        "action" : "set_frontpage"
+      }
+    }
+
+  },
+
+  "sections" : {
+    "title" : "Populate Sections with content",
+    "options" : {
+      "welcome" : {
+        "title" : "Welcome Section",
+        "action" : "populate_welcome_section"
+      },
+      "services" : {
+        "title" : "Services Section",
+        "action" : "populate_services_section"
+      },
+      "image" : {
+        "title" : "Image Section",
+        "action" : "populate_image_section"
+      },
+      "phone" : {
+        "title" : "Phone Section",
+        "action" : "populate_phone_section"
+      },
+      "cta" : {
+        "title" : "Call to Action Section",
+        "action" : "populate_cta_section"
+      },
+      "video" : {
+        "title" : "Video Section",
+        "action" : "populate_video_section"
+      },
+      "team" : {
+        "title" : "Team Section",
+        "action" : "populate_team_section"
+      },
+      "subscribe" : {
+        "title" : "Subscribe Section",
+        "action" : "populate_subscribe_section"
+      },
+      "clients" : {
+        "title" : "Clients Section",
+        "action" : "populate_clients_section"
+      },
+      "contact" : {
+        "title" : "Contact Section",
+        "action" : "populate_contact_section"
+      }
+    }
+  }
+
+}

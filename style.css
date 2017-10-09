@@ -89,6 +89,11 @@ Header
 #header .container {
   position: relative;
 }
+#header .flex-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 .logo_container .custom-logo-link {
   display: block;
   position: relative;
@@ -951,6 +956,9 @@ Image Section
 .bonkers-image-section .bonkers-image-section-text .bonkers-image-section-content .ql_border_btn {
   margin-top: 30px;
 }
+.bonkers-image-section .bonkers-image-section-text .bonkers-image-section-content .ql_border_btn:hover {
+  background-color: #fff;
+}
 .bonkers-image-section.bonkers-image-right .bonkers-image-section-image {
   right: 0;
 }
@@ -1061,6 +1069,10 @@ CTA Section
   z-index: 2;
   vertical-align: top;
 }
+.bonkers-cta-section .bonkers-cta-button:hover {
+  text-decoration: none;
+  color: #fff;
+}
 /*
 Video Section
 ---------------------------------------*/
@@ -1148,7 +1160,7 @@ Team Section
   width: 50px;
   border-bottom: 1px solid #999999;
 }
-.bonkers-team-section .bonkers-team-wrap .bonkers-team-member {
+.bonkers-team-section .bonkers-team-wrap .widget {
   width: 28%;
   display: inline-block;
   text-align: left;
@@ -1291,6 +1303,12 @@ Subscribe Section
   background-color: #fff;
   color: #2D80E2;
 }
+.bonkers-subscribe-section .bonkers-subscribe-content .bonkers-subscribre-form-wrapper .bonkers-subscribre-form .bonkers_subscribe_btn:hover,
+.bonkers-subscribe-section .bonkers-subscribe-content .bonkers-subscribre-form-wrapper .contact-form .bonkers_subscribe_btn:hover,
+.bonkers-subscribe-section .bonkers-subscribe-content .bonkers-subscribre-form-wrapper .bonkers-subscribre-form input[type="submit"]:hover,
+.bonkers-subscribe-section .bonkers-subscribe-content .bonkers-subscribre-form-wrapper .contact-form input[type="submit"]:hover {
+  text-decoration: none;
+}
 .bonkers-subscribe-section .bonkers-subscribe-content .bonkers-subscribre-form-wrapper .contact-form input {
   width: 100%;
   margin-right: 0;
@@ -1337,19 +1355,19 @@ Clients Section
   width: 50px;
   border-bottom: 1px solid #999999;
 }
-.bonkers-clients-section .bonkers-clients-wrap .bonkers-clients-logo {
+.bonkers-clients-section .bonkers-clients-wrap .widget {
   width: 17%;
   padding: 0 3.5%;
   display: inline-block;
   vertical-align: top;
 }
-.bonkers-clients-section .bonkers-clients-wrap .bonkers-clients-logo a {
+.bonkers-clients-section .bonkers-clients-wrap .widget a {
   display: block;
 }
-.bonkers-clients-section .bonkers-clients-wrap .bonkers-clients-logo a img {
+.bonkers-clients-section .bonkers-clients-wrap .widget a img {
   width: 100%;
 }
-.bonkers-clients-section .bonkers-clients-wrap .bonkers-clients-logo img {
+.bonkers-clients-section .bonkers-clients-wrap .widget img {
   width: 100%;
 }
 /*
@@ -1496,6 +1514,12 @@ Contact Section
 .no-touch .bonkers-contact-section .bonkers-contact-content .bonkers-contact-form .wpcf7-form input[type="submit"]:hover {
   background-color: #fff;
   color: #2D80E2;
+}
+.bonkers-contact-section .bonkers-contact-content .bonkers-contact-form form .contact-submit input[type="submit"]:hover,
+.bonkers-contact-section .bonkers-contact-content .bonkers-contact-form .wpcf7-form .contact-submit input[type="submit"]:hover,
+.bonkers-contact-section .bonkers-contact-content .bonkers-contact-form form input[type="submit"]:hover,
+.bonkers-contact-section .bonkers-contact-content .bonkers-contact-form .wpcf7-form input[type="submit"]:hover {
+  text-decoration: none;
 }
 /*
 ==========================================
@@ -4761,6 +4785,9 @@ img {
   background-color: #fff;
   color: #2D80E2;
 }
+.ql_border_btn:hover {
+  text-decoration: none;
+}
 /* Make Space between sections											*/
 /*----------------------------------------------------------------------*/
 .clear_space {
@@ -5717,4 +5744,3 @@ table th[class*="col-"] {
     border-bottom: 0;
   }
 }
-/*# sourceMappingURL=style.css.map */

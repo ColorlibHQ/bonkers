@@ -418,12 +418,7 @@
 				$( '.bonkers-contact-section .bonkers-contact-content .bonkers-contact-title' ).text( to );
 			} );
 		} );
-		//Button Text
-		wp.customize( 'bonkers_addons_contact_link_title', function( value ) {
-			value.bind( function( to ) {
-				$( '.bonkers-contact-section .bonkers-contact-form input.wpcf7-submit[type="submit"]' ).val( to );
-			} );
-		} );
+
 		//Enable/Disable Section
 		wp.customize( 'bonkers_addons[bonkers_addons_contact_enable]', function( value ) {
 			value.bind( function( to ) {
