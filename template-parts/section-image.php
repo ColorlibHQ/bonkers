@@ -23,7 +23,7 @@ endif; ?>>
 	<div class="bonkers-image-section-image" <?php if ( $bonkers_image_image ) : echo 'style="background-image: url(' . esc_url( $bonkers_image_image ) . ')"'; endif ?>>
 
 			</div><div class="bonkers-image-section-text">
-		<h3 class="bonkers-image-section-title"><?php echo esc_html( $bonkers_image_title ); ?></h3>
+		<h3 class="bonkers-image-section-title"><?php echo wp_kses_post( $bonkers_image_title ); ?></h3>
 		<div class="bonkers-image-section-content">
 			<?php
 			$bonkers_image_text = get_option( 'bonkers_addons_image_text' );
