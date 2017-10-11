@@ -74,7 +74,7 @@ endif;
  */
 function bonkers_categorized_blog() {
 	$all_the_cool_cats = get_transient( 'bonkers_categories' );
-	if ( false === $all_the_cool_cat ) {
+	if ( false === $all_the_cool_cats ) {
 		// Create an array of all the categories that are attached to posts.
 		$all_the_cool_cats = get_categories( array(
 			'fields'     => 'ids',
