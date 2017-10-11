@@ -1,5 +1,7 @@
 <?php
 $bonkers_enable_section = get_option( 'bonkers_addons_subscribe_enable', true );
+$bonkers_mailchimp_link = get_option( 'bonkers_addons_subscribe_mailchimp_link' );
+
 if ( $bonkers_enable_section || is_customize_preview() ) :
 ?>
 <div id="bonkers-subscribe-section" class="bonkers-subscribe-section">
@@ -17,14 +19,19 @@ if ( $bonkers_enable_section || is_customize_preview() ) :
 			<?php
 			$bonkers_subscribe_link_title = get_option( 'bonkers_addons_subscribe_link_title', esc_html__( 'Subscribe', 'bonkers' ) );
 			$bonkers_subscribe_link_placeholder = get_option( 'bonkers_addons_subscribe_link_placeholder', esc_html__( 'Enter your email...', 'bonkers' ) );
-			if ( class_exists( 'Jetpack' ) && Jetpack::is_module_active( 'contact-form' ) ) {
-				echo do_shortcode( '
-                    [contact-form submit_button_text="' . esc_html( $bonkers_subscribe_link_title ) . '"]
-                    [contact-field label="' . esc_attr__( 'Email', 'bonkers' ) . '" type="email" required="true" placeholder="' . esc_html( $bonkers_subscribe_link_placeholder ) . '" /]
-                    [/contact-form]
-                    ' );
+			if ( $bonkers_mailchimp_link ) { ?>
+				<form action="<?php echo esc_url( $bonkers_mailchimp_link ) ?>" method="post" target="_blank" class="contact-form commentsblock">
+					<div>
+						<input type="email" name="EMAIL" id="g6-email" value="" class="email" placeholder="<?php echo esc_attr( $bonkers_subscribe_link_placeholder ) ?>" required="" aria-required="true">
+					</div>
+				    <p class="contact-submit">
+						<input type="submit" name="subscribe" value="<?php echo esc_attr( $bonkers_subscribe_link_title ) ?>" class="pushbutton-wide">
+					</p>
+				</form>
+			<?php
 			};
 			?>
+			
 		</div>
 	</div>
 

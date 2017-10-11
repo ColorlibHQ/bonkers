@@ -38,7 +38,6 @@ class Epsilon_Import_Data {
 	public function __construct( $args = array() ) {
 		$this->plugins = array(
 			'bonkers-addons' => esc_html__( 'Bonkers Addons', 'epsilon-framework' ),
-			'jetpack' => esc_html__( 'Jetpack', 'epsilon-framework' ),
 			'contact-form-7' => esc_html__( 'Contact Form 7', 'epsilon-framework' ), 
 		);
 		$this->handle_json();
