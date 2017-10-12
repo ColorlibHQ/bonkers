@@ -9,14 +9,12 @@ function bonkers_custom_css() {
 	/*
 	Colors
 	*/
-	$hero_color = get_theme_mod( 'bonkers_hero_color', '#fd6848' );
+	$hero_color = get_theme_mod( 'bonkers_hero_color', '#2D80E2' );
 	$headings_color = get_theme_mod( 'bonkers_headings_color', '#222222' );
-	$text_color = get_theme_mod( 'bonkers_text_color', '#777777' );
-	$link_color = get_theme_mod( 'bonkers_link_color', '#fd6848' );
-	$content_background_color = get_theme_mod( 'bonkers_content_background_color', '#FFFFFF' );
+	$text_color = get_theme_mod( 'bonkers_text_color', '#808080' );
+	$link_color = get_theme_mod( 'bonkers_link_color', '#2D80E2' );
 	$footer_background = get_theme_mod( 'bonkers_footer_background', '#FFFFFF' );
-	$site_gradient = get_theme_mod( 'bonkers_site_gradient', '1' );
-	$site_background_color = get_theme_mod( 'bonkers_site_background_color', '#e08461' );
+	$site_background_color = get_theme_mod( 'bonkers_site_background_color', '#FFFFFF' );
 	$logo_color = get_theme_mod( 'bonkers_logo_color', '#222222' );
 	$header_bck_color = get_theme_mod( 'bonkers_header_bck_color', '#FFFFFF' );
 
@@ -25,9 +23,7 @@ function bonkers_custom_css() {
 		'headings_color' => $headings_color,
 		'text_color'     => $text_color,
 		'link_color'     => $link_color,
-		'content_background_color'     => $content_background_color,
 		'footer_background'     => $footer_background,
-		'site_gradient'     => $site_gradient,
 		'site_background_color'     => $site_background_color,
 		'logo_color'     => $logo_color,
 		'header_bck_color'     => $header_bck_color,
@@ -111,14 +107,12 @@ function bonkers_get_custom_css( $colors ) {
 
 	//Default colors
 	$colors = wp_parse_args( $colors, array(
-		'heroColor'            => '#fd6848',
+		'heroColor'            => '#2D80E2',
 		'headings_color'       => '#222222',
-		'text_color'           => '#777777',
-		'link_color'           => '#fd6848',
-		'content_background_color'           => '#FFFFFF',
-		'footer_background'     => '#FFFFFF',
-		'site_gradient'     => '1',
-		'site_background_color'     => '#e08461',
+		'text_color'           => '#808080',
+		'link_color'           => '#2D80E2',
+		'footer_background'     => '#222222',
+		'site_background_color'     => '#FFFFFF',
 		'logo_color'     => '#222222',
 		'header_bck_color'     => '#FFFFFF',
 
