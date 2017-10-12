@@ -323,14 +323,6 @@ Navigation Menu
   .navbar-fixed-bottom .navbar-right .menu-item-has-children .menu-item-has-children .dropdown-menu {
     border-radius: 4px 4px 0;
   }
-  .menu-item-has-children .menu-item-has-children > a:after {
-    float: right;
-    margin-top: 6px;
-    margin-right: -10px;
-    border-left: 4px dashed;
-    border-top: 4px solid transparent;
-    border-bottom: 4px solid transparent;
-  }
   .dropdown-menu-right .menu-item-has-children .menu-item-has-children > a:after,
   .navbar-right .menu-item-has-children .menu-item-has-children > a:after {
     float: left;
@@ -511,12 +503,13 @@ Search Button
   padding: 0 0 0 1.5em;
   background-color: #4d4d4d;
   border: none;
-  left: -999em;
+  left: 0;
   padding: 0.71428571428571em;
   position: absolute;
   top: 100%;
   z-index: 99999;
   border-radius: 0 3px 3px 3px;
+  visibility: hidden;
   /* Level 3 */
   /* Level 3 */
 }
@@ -540,14 +533,13 @@ Search Button
   border-radius: 2px;
 }
 .main-navigation ul ul ul {
-  left: -999em;
+  left: 100%;
   margin-top: -1px;
   top: 0;
 }
-.main-navigation ul ul li:hover > ul,
-.main-navigation ul ul li.focus > ul {
-  left: 100%;
-  right: auto;
+.main-navigation ul ul.align-right {
+  left: 0;
+  transform: translate(-100%);
 }
 .main-navigation ul li {
   position: relative;
@@ -569,8 +561,20 @@ Search Button
 }
 .main-navigation ul li:hover > ul,
 .main-navigation ul li.focus > ul {
+  visibility: visible;
+}
+.main-navigation ul.align-right {
   left: 0;
-  right: auto;
+  transform: translateX(-100%);
+}
+.main-navigation ul.align-right ul {
+  left: 0;
+  transform: translateX(-100%);
+}
+.main-navigation #primary-menu > li > ul.align-right {
+  transform: translateX(0);
+  right: 0;
+  left: auto;
 }
 .main-navigation > div > ul {
   display: block;
@@ -711,6 +715,7 @@ Search Button
     left: 0;
     width: 100%;
     padding-left: 15px;
+    transform: translateX(0);
   }
   .main-navigation ul ul a {
     color: #8c8c8c;
@@ -1583,7 +1588,6 @@ Contact Section
 .page-title {
   margin-bottom: 0;
   margin-top: 0;
-  background-color: #fff;
   padding-right: 20px;
   position: relative;
   display: inline-block;

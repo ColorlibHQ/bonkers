@@ -1,3 +1,19 @@
+
+// Align Sub Sub Menu
+function alignSubSubMenu() {
+    var windowWidth = jQuery( window ).width();
+    if( jQuery( '#header #site-navigation ul li.menu-item-has-children' ).length ) {
+        var subSubMenu = jQuery( '#header #site-navigation ul li.menu-item-has-children ul' );
+
+        jQuery( subSubMenu ).each( function() {
+            var width = jQuery( this ).width();
+            if( ( windowWidth - jQuery( this ).offset()['left'] ) < width ) {
+                jQuery( this ).addClass( 'align-right' )
+            }
+        });
+    }
+}
+
 jQuery(document).ready(function($) {
 
 
@@ -71,10 +87,13 @@ jQuery(document).ready(function($) {
     $('.dropdown-toggle').dropdown();
     $('*[data-toggle="tooltip"]').tooltip();
 
+    alignSubSubMenu();
 
 });
 
-
+jQuery(document).resize(function(){
+    alignSubSubMenu();
+});
 
 
 
