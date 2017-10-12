@@ -1576,7 +1576,6 @@ Contact Section
   position: relative;
   display: inline-block;
   margin-bottom: 0;
-  background-color: #fff;
   padding-right: 20px;
 }
 .post-title a {
@@ -3987,6 +3986,7 @@ a img.aligncenter {
   outline: none;
   text-align: center;
   width: auto;
+  height: auto;
 }
 .no-touch .search-form .search-submit:hover {
   text-decoration: none !important;

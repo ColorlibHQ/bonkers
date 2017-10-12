@@ -132,7 +132,8 @@ function bonkers_get_custom_css( $colors ) {
 		color: {$colors['headings_color']};
 	}
 	/* Link Color */
-	a{
+	a,
+	.single .post .entry-footer .metadata ul li a {
 		color: {$colors['link_color']};
 	}
 	a:hover{
@@ -174,7 +175,8 @@ function bonkers_get_custom_css( $colors ) {
 	.no-touch .bonkers-mini-cart .woocommerce-mini-cart__buttons .button:hover,
 	.bonkers-mini-cart .woocommerce-mini-cart__buttons .button.checkout,
 	.no-touch .main-navigation ul ul a:hover,
-	.bonkers-services-section .bonkers-service .bonkers-service-btn:after
+	.bonkers-services-section .bonkers-service .bonkers-service-btn:after,
+	#respond .form-submit #submit-respond
 	{
 		background-color: {$colors['heroColor']};
 	}
@@ -189,14 +191,14 @@ function bonkers_get_custom_css( $colors ) {
 	.ql_woocommerce_categories .ql_product_search:hover .woocommerce-product-search #woocommerce-product-search-field,
 	.touch .ql_woocommerce_categories .ql_product_search:hover .woocommerce-product-search #woocommerce-product-search-field
 	.ql_secundary_btn,
-	.bonkers-mini-cart .woocommerce-mini-cart__buttons .button
+	.bonkers-mini-cart .woocommerce-mini-cart__buttons .button,
+	.search-form .search-submit
 	{
 		border-color: {$colors['heroColor']};
 	}
 
 	/* Color */
 	.pagination li.active a:hover,
-	.single .post .entry-footer .metadata ul li a,
 	#comments .comment-list .comment.bypostauthor .comment-body,
 	#respond input,
 	#respond textarea,
@@ -244,7 +246,8 @@ function bonkers_get_custom_css( $colors ) {
 	.no-touch .bonkers-contact-section .bonkers-contact-content .bonkers-contact-form form .contact-submit input[type="submit"]:hover, 
 	.no-touch .bonkers-contact-section .bonkers-contact-content .bonkers-contact-form .wpcf7-form .contact-submit input[type="submit"]:hover, 
 	.no-touch .bonkers-contact-section .bonkers-contact-content .bonkers-contact-form form input[type="submit"]:hover, 
-	.no-touch .bonkers-contact-section .bonkers-contact-content .bonkers-contact-form .wpcf7-form input[type="submit"]:hover
+	.no-touch .bonkers-contact-section .bonkers-contact-content .bonkers-contact-form .wpcf7-form input[type="submit"]:hover,
+	.search-form .search-submit
 	{
 		color: {$colors['heroColor']};
 	}
