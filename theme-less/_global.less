@@ -353,3 +353,47 @@ textarea {
 textarea {
 	min-height: 100px;
 }
+
+/* WooCommerce																*/
+/*----------------------------------------------------------------------*/
+
+.woocommerce {
+
+	.quantity .qty {
+		padding: 0;
+	}
+
+	#main table > tbody > tr > td {
+		border: 0 none;
+	}
+
+	div.product {
+		form.cart {
+			.variations {
+				label {
+					color: #777;
+				}
+				td {
+					border: 0 none;
+				}
+				.label {
+					display: table-cell;
+				    text-align: left;
+				    font-size: inherit;
+				    font-weight: inherit;
+				    text-transform: capitalize;
+				}
+			}
+		}
+	}
+
+	 nav.woocommerce-pagination {
+	 	ul li {
+	 		a:focus,
+	 		a:hover,
+	 		span.current {
+	 			color: #fff;
+	 		}
+	 	}
+	 }
+}

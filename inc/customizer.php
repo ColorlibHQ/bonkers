@@ -15,9 +15,7 @@ function bonkers_customize_register( $wp_customize ) {
 	require_once get_template_directory() . '/inc/customizer-controls/class-bonkers-multiple-checkbox-control.php';
 	$wp_customize->register_control_type( 'Bonkers_Multiple_Checkbox_Control' );
 
-	$wp_customize->get_setting( 'blogname' )->transport         = 'postMessage';
 	$wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
-	$wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
 
 	/*
 	Colors
