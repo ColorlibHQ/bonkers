@@ -95,7 +95,7 @@ Header
   justify-content: space-between;
 }
 .logo_container .custom-logo-link {
-  display: block;
+  display: inline-block;
   position: relative;
   z-index: 4;
 }
