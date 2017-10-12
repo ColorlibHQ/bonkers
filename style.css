@@ -4961,6 +4961,9 @@ textarea {
     margin-bottom: 10px;
     margin-top: 30px;
   }
+  #header .flex-row {
+    display: block;
+  }
   .logo_container {
     position: relative;
     display: block;
@@ -5239,6 +5242,9 @@ textarea {
 	*/
   #header {
     padding: 0;
+  }
+  #header .flex-row {
+    display: block;
   }
   .logo_container {
     text-align: center;

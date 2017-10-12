@@ -55,7 +55,7 @@
 
 						</div><!-- /logo_container -->
 
-						<div class="col-md-9 nav-wrapper">
+						<div class="col-md-9 col-sm-12 col-xs-12 nav-wrapper">
 
 								<nav id="site-navigation" class="main-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Main Menu', 'bonkers' ); ?>">
 									<?php wp_nav_menu(
