@@ -10,7 +10,7 @@
  */
 
 ?>
-	<?php if ( ! is_page_template( 'template-front-page.php' ) ) { ?>
+	<?php if ( ! is_page_template( 'page-templates/template-front-page.php' ) ) { ?>
 
 			</div><!-- /#row -->
 
