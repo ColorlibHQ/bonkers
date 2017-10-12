@@ -26,6 +26,14 @@ jQuery(document).ready(function($) {
         });
     });//images loaded
 
+    if ( 'undefined' !== typeof wp && wp.customize && wp.customize.selectiveRefresh ) {
+        wp.customize.selectiveRefresh.bind( 'sidebar-updated', function( sidebarPartial ) {
+            if ( 'team-section' === sidebarPartial.sidebarId ) {
+                jQuery('.bonkers-team-wrap').flickity('reloadCells');
+            }
+        } );
+    }
+
     /*
     // Clients Section
     //===========================================================
@@ -43,6 +51,14 @@ jQuery(document).ready(function($) {
             percentPosition: true
         });
     });//images loaded
+
+    if ( 'undefined' !== typeof wp && wp.customize && wp.customize.selectiveRefresh ) {
+        wp.customize.selectiveRefresh.bind( 'sidebar-updated', function( sidebarPartial ) {
+            if ( 'clients-section' === sidebarPartial.sidebarId ) {
+                jQuery('.bonkers-clients-wrap').flickity('reloadCells');
+            }
+        } );
+    }
 
 
     $(".ql_scroll_top").click(function() {
