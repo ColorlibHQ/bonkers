@@ -25,7 +25,7 @@ add_thickbox();
 				<span class="recommended"><?php echo esc_html__( 'Recommended', 'epsilon-framework' ); ?></span>
 			<?php } ?>
 
-			<img src="<?php echo esc_url( $info['icon'] ); ?>" alt="plugin box image">
+			<img src="<?php echo esc_attr( $info['icon'] ); ?>" alt="plugin box image">
 			<span class="version"><?php echo esc_html__( 'Version:', 'epsilon-framework' ); ?><?php echo esc_html( $info['info']->version ); ?></span>
 			<span class="separator">|</span> <?php echo wp_kses_post( $info['info']->author ); ?>
 			<div class="action_bar <?php echo ( 'install' !== $info['needs'] && $info['active'] ) ? 'active' : ''; ?>">

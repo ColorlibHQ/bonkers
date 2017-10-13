@@ -15,9 +15,7 @@ function bonkers_customize_register( $wp_customize ) {
 	require_once get_template_directory() . '/inc/customizer-controls/class-bonkers-multiple-checkbox-control.php';
 	$wp_customize->register_control_type( 'Bonkers_Multiple_Checkbox_Control' );
 
-	$wp_customize->get_setting( 'blogname' )->transport         = 'postMessage';
 	$wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
-	$wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
 
 	/*
 	Colors
@@ -176,6 +174,63 @@ function bonkers_customize_register( $wp_customize ) {
 		'label'       => esc_html__( 'Google-Font subsets', 'bonkers' ),
 		'description' => esc_html__( 'The subsets used from Google\'s API.', 'bonkers' ),
 		'choices'     => Bonkers_Helper::get_google_font_subsets(),
+	) ) );
+
+	// Footer Settings
+	$wp_customize->add_section( 'bonkers_enable_footer_widgets', array(
+		'title'      => __( 'Footer Settings', 'bonkers' ),
+		'priority'    => 20,
+		'capability' => 'edit_theme_options',
+	) );
+
+	$wp_customize->add_setting( 'bonkers_enable_footer_widgets', array(
+		'sanitize_callback' => 'absint',
+		'default'           => '1',
+		'transport'         => 'postMessage',
+	) );
+	$wp_customize->add_control( new Epsilon_Control_Toggle( $wp_customize, 'bonkers_footer_widgets', array(
+		'type'      => 'epsilon-toggle',
+		'label'     => __( 'Show Footer Widgets ?', 'bonkers' ),
+		'section'   => 'bonkers_footer_options',
+	) ) );
+
+	$wp_customize->add_setting( 'bonkers_footer_columns', array(
+		'default'  => array(
+			'columnsCount' => 4,
+			'columns'      => array(
+				array(
+					'index' => 1,
+					'span'  => 3,
+				),
+				array(
+					'index' => 2,
+					'span'  => 3,
+				),
+				array(
+					'index' => 3,
+					'span'  => 3,
+				),
+				array(
+					'index' => 4,
+					'span'  => 3,
+				),
+			),
+		),
+		'transport'         => 'refresh',
+		'sanitize_callback' => 'sanitize_text_field',
+	) );
+
+	$wp_customize->add_control( new Epsilon_Control_Layouts( $wp_customize, 'bonkers_footer_columns', array(
+		'type'     => 'epsilon-layouts',
+		'section'  => 'bonkers_footer_options',
+		'layouts'  => array(
+			1 => get_template_directory_uri() . '/inc/libraries/epsilon-framework/assets/img/one-column.png',
+			2 => get_template_directory_uri() . '/inc/libraries/epsilon-framework/assets/img/two-column.png',
+			3 => get_template_directory_uri() . '/inc/libraries/epsilon-framework/assets/img/three-column.png',
+			4 => get_template_directory_uri() . '/inc/libraries/epsilon-framework/assets/img/four-column.png',
+		),
+		'min_span' => 2,
+		'label'    => esc_html__( 'Footer Columns', 'bonkers' ),
 	) ) );
 
 }

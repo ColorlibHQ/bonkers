@@ -38,7 +38,6 @@ class Epsilon_Import_Data {
 	public function __construct( $args = array() ) {
 		$this->plugins = array(
 			'bonkers-addons' => esc_html__( 'Bonkers Addons', 'epsilon-framework' ),
-			'jetpack' => esc_html__( 'Jetpack', 'epsilon-framework' ),
 			'contact-form-7' => esc_html__( 'Contact Form 7', 'epsilon-framework' ), 
 		);
 		$this->handle_json();
@@ -99,7 +98,7 @@ class Epsilon_Import_Data {
 	 * Build the HTML Container
 	 */
 	public function generate_import_data_container() {
-		$html = '<p><a class="button button-primary epsilon-ajax-button" id="add_default_sections" href="#">' . __( 'Import Demo Content', 'epsilon-framework' ) . '</a>';
+		$html = '<p><a class="button button-primary epsilon-ajax-button" id="add_default_sections" href="#">' . __( 'Click me to start the set-up process!', 'epsilon-framework' ) . '</a>';
 		$html .= '<a class="button epsilon-hidden-content-toggler" href="#" data-toggle="welcome-hidden-content">' . __( 'Advanced', 'epsilon-framework' ) . '</a></p>';
 		$html .= '<div class="import-content-container" id="welcome-hidden-content">';
 

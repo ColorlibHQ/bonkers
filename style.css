@@ -95,7 +95,7 @@ Header
   justify-content: space-between;
 }
 .logo_container .custom-logo-link {
-  display: block;
+  display: inline-block;
   position: relative;
   z-index: 4;
 }
@@ -323,14 +323,6 @@ Navigation Menu
   .navbar-fixed-bottom .navbar-right .menu-item-has-children .menu-item-has-children .dropdown-menu {
     border-radius: 4px 4px 0;
   }
-  .menu-item-has-children .menu-item-has-children > a:after {
-    float: right;
-    margin-top: 6px;
-    margin-right: -10px;
-    border-left: 4px dashed;
-    border-top: 4px solid transparent;
-    border-bottom: 4px solid transparent;
-  }
   .dropdown-menu-right .menu-item-has-children .menu-item-has-children > a:after,
   .navbar-right .menu-item-has-children .menu-item-has-children > a:after {
     float: left;
@@ -511,12 +503,13 @@ Search Button
   padding: 0 0 0 1.5em;
   background-color: #4d4d4d;
   border: none;
-  left: -999em;
+  left: 0;
   padding: 0.71428571428571em;
   position: absolute;
   top: 100%;
   z-index: 99999;
   border-radius: 0 3px 3px 3px;
+  visibility: hidden;
   /* Level 3 */
   /* Level 3 */
 }
@@ -540,14 +533,13 @@ Search Button
   border-radius: 2px;
 }
 .main-navigation ul ul ul {
-  left: -999em;
+  left: 100%;
   margin-top: -1px;
   top: 0;
 }
-.main-navigation ul ul li:hover > ul,
-.main-navigation ul ul li.focus > ul {
-  left: 100%;
-  right: auto;
+.main-navigation ul ul.align-right {
+  left: 0;
+  transform: translate(-100%);
 }
 .main-navigation ul li {
   position: relative;
@@ -569,8 +561,20 @@ Search Button
 }
 .main-navigation ul li:hover > ul,
 .main-navigation ul li.focus > ul {
+  visibility: visible;
+}
+.main-navigation ul.align-right {
   left: 0;
-  right: auto;
+  transform: translateX(-100%);
+}
+.main-navigation ul.align-right ul {
+  left: 0;
+  transform: translateX(-100%);
+}
+.main-navigation #primary-menu > li > ul.align-right {
+  transform: translateX(0);
+  right: 0;
+  left: auto;
 }
 .main-navigation > div > ul {
   display: block;
@@ -711,6 +715,7 @@ Search Button
     left: 0;
     width: 100%;
     padding-left: 15px;
+    transform: translateX(0);
   }
   .main-navigation ul ul a {
     color: #8c8c8c;
@@ -1571,7 +1576,6 @@ Contact Section
   position: relative;
   display: inline-block;
   margin-bottom: 0;
-  background-color: #fff;
   padding-right: 20px;
 }
 .post-title a {
@@ -1583,7 +1587,6 @@ Contact Section
 .page-title {
   margin-bottom: 0;
   margin-top: 0;
-  background-color: #fff;
   padding-right: 20px;
   position: relative;
   display: inline-block;
@@ -2725,6 +2728,11 @@ Footer Menu
 }
 #footer-menu ul li a:hover {
   background-color: transparent;
+}
+.sub-footer .theme-copyright {
+  border-left: 1px solid rgba(255, 255, 255, 0.06);
+  margin-left: 20px;
+  padding-left: 8px;
 }
 /*
 ==========================================
@@ -3983,6 +3991,7 @@ a img.aligncenter {
   outline: none;
   text-align: center;
   width: auto;
+  height: auto;
 }
 .no-touch .search-form .search-submit:hover {
   text-decoration: none !important;
@@ -4930,6 +4939,32 @@ textarea:focus {
 textarea {
   min-height: 100px;
 }
+/* WooCommerce																*/
+/*----------------------------------------------------------------------*/
+.woocommerce .quantity .qty {
+  padding: 0;
+}
+.woocommerce #main table > tbody > tr > td {
+  border: 0 none;
+}
+.woocommerce div.product form.cart .variations label {
+  color: #777;
+}
+.woocommerce div.product form.cart .variations td {
+  border: 0 none;
+}
+.woocommerce div.product form.cart .variations .label {
+  display: table-cell;
+  text-align: left;
+  font-size: inherit;
+  font-weight: inherit;
+  text-transform: capitalize;
+}
+.woocommerce nav.woocommerce-pagination ul li a:focus,
+.woocommerce nav.woocommerce-pagination ul li a:hover,
+.woocommerce nav.woocommerce-pagination ul li span.current {
+  color: #fff;
+}
 /*
 ==========================================
 15. Responsive Styles
@@ -4960,6 +4995,9 @@ textarea {
     width: 94%;
     margin-bottom: 10px;
     margin-top: 30px;
+  }
+  #header .flex-row {
+    display: block;
   }
   .logo_container {
     position: relative;
@@ -5194,8 +5232,14 @@ textarea {
   /*
 	Team Section
 	---------------------------------------*/
-  .bonkers-team-section .bonkers-team-wrap .bonkers-team-member {
-    width: 80%;
+  .bonkers-team-section .bonkers-team-wrap .widget {
+    width: 100%;
+  }
+  /*
+	Clients Section
+	---------------------------------------*/
+  .bonkers-clients-section .bonkers-clients-wrap .widget {
+    width: 50%;
   }
   /*
 	Subscribe Section
@@ -5239,6 +5283,9 @@ textarea {
 	*/
   #header {
     padding: 0;
+  }
+  #header .flex-row {
+    display: block;
   }
   .logo_container {
     text-align: center;
@@ -5406,8 +5453,14 @@ textarea {
   /*
 	Team Section
 	---------------------------------------*/
-  .bonkers-team-section .bonkers-team-wrap .bonkers-team-member {
-    width: 38%;
+  .bonkers-team-section .bonkers-team-wrap .widget {
+    width: 33%;
+  }
+  /*
+	Clients Section
+	---------------------------------------*/
+  .bonkers-clients-section .bonkers-clients-wrap .widget {
+    width: 33%;
   }
   /*
 	Subscribe Section

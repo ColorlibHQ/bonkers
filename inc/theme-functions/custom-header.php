@@ -23,12 +23,14 @@
 function bonkers_custom_header_setup() {
 	add_theme_support( 'custom-header', apply_filters( 'bonkers_custom_header_args', array(
 		'default-image'          => '',
-		'default-text-color'     => '8c8c8c',
 		'width'                  => 1425,
 		'height'                 => 152,
 		'flex-height'            => true,
 		'flex-width'            => true,
+		'header-text'			=> false,
 		'wp-head-callback'       => 'bonkers_header_style',
+		'admin-head-callback'       => 'bonkers_header_style',
+		'admin-preview-callback' => 'bonkers_header_style',
 	) ) );
 }
 add_action( 'after_setup_theme', 'bonkers_custom_header_setup' );

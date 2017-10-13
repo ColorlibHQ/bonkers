@@ -10,7 +10,7 @@
  */
 
 ?>
-	<?php if ( ! is_page_template( 'template-front-page.php' ) ) { ?>
+	<?php if ( ! is_page_template( 'page-templates/template-front-page.php' ) ) { ?>
 
 			</div><!-- /#row -->
 
@@ -22,66 +22,38 @@
 
 		
 
-		<?php
-		$footer_sections = array(
-			'first-footer-widgets' => false,
-			'second-footer-widgets' => false,
-			'third-footer-widgets' => false,
-			'fourth-footer-widgets' => false,
-		);
-		$footer_count = 0;
-		$footer_section_class = '';
+	<?php
 
-		foreach ( $footer_sections as $footer_section => $active ) {
-			if ( is_active_sidebar( $footer_section ) ) {
-				$footer_sections[ $footer_section ] = true;
-				$footer_count++;
-			}// End if().
-		}// End foreach().
+	$bonkers_footer_widgets = get_theme_mod( 'bonkers_enable_footer_widgets', true );
+	$sidebar_columns = get_theme_mod( 'bonkers_footer_columns' );
+	if ( $sidebar_columns ) {
+		$sidebar_columns = json_decode( $sidebar_columns, true );
+		$no_sidebar = $sidebar_columns['columnsCount'];
+	}else{
+		$no_sidebar = 4;
+	}
 
-		switch ( $footer_count ) {
-			case 1:
-				$footer_section_class = 'bonkers-footer-1-column';
-				break;
-			case 2:
-				$footer_section_class = 'bonkers-footer-2-column';
-				break;
-			case 3:
-				$footer_section_class = 'bonkers-footer-3-column';
-				break;
-			case 4:
-				$footer_section_class = 'bonkers-footer-4-column';
-				break;
-			default:
-				$footer_section_class = 'bonkers-footer-3-column';
-				break;
-		}
-
-		?>
+	?>
+		
 	<div class="clearfix"></div>
 	<div class="bonkers-footer-wrap">
 		<?php
 		/*
         *Only show the Footer sections that have widgets
         */
-		if ( $footer_count > 0 ) {
+		if ( $bonkers_footer_widgets ) {
 		?>
 
-		<footer id="footer" class="site-footer <?php echo esc_attr( $footer_section_class ); ?>">
+		<footer id="footer" class="site-footer">
 			<div class="container">
 				<div class="row">
 
 					<?php
-					foreach ( $footer_sections as $footer_section => $active ) {
-						if ( $active ) {
-							echo '<div class="footer-column">';
-
-							if ( is_active_sidebar( $footer_section ) ) { if ( function_exists( 'dynamic_sidebar' ) && dynamic_sidebar( $footer_section ) ) : else :
-
-								endif; }// End if().
-
-							echo '</div>';
-						}// End if().
+					for ($i=1; $i <= $no_sidebar; $i++) {
+						$footer_section = 'footer-widgets-' . $i;
+						echo '<div class="' . Bonkers_Helper::get_bootstrap_class( $no_sidebar ) . '">';
+						dynamic_sidebar( $footer_section );
+						echo '</div>';
 					}// End foreach().
 					?>
 				</div><!-- .row -->
@@ -103,7 +75,9 @@
 					<div class="col-md-7 col-sm-6">
 
 						<p><?php esc_html_e( '&copy; Copyright', 'bonkers' ); ?> <?php echo esc_html( date( 'Y' ) ); ?> <a rel="nofollow" href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php echo esc_html( bloginfo( 'name' ) ); ?></a></p>
-
+						<p class="theme-copyright">
+							<a href="https://colorlib.com/bonkers/"><?php esc_html_e( 'Theme : Bonkers', 'bonkers' ); ?></a>
+						</p>
 						<?php
 						if ( has_nav_menu( 'footer-menu' ) ) {
 							wp_nav_menu(

@@ -9,14 +9,12 @@ function bonkers_custom_css() {
 	/*
 	Colors
 	*/
-	$hero_color = get_theme_mod( 'bonkers_hero_color', '#fd6848' );
+	$hero_color = get_theme_mod( 'bonkers_hero_color', '#2D80E2' );
 	$headings_color = get_theme_mod( 'bonkers_headings_color', '#222222' );
-	$text_color = get_theme_mod( 'bonkers_text_color', '#777777' );
-	$link_color = get_theme_mod( 'bonkers_link_color', '#fd6848' );
-	$content_background_color = get_theme_mod( 'bonkers_content_background_color', '#FFFFFF' );
+	$text_color = get_theme_mod( 'bonkers_text_color', '#808080' );
+	$link_color = get_theme_mod( 'bonkers_link_color', '#2D80E2' );
 	$footer_background = get_theme_mod( 'bonkers_footer_background', '#FFFFFF' );
-	$site_gradient = get_theme_mod( 'bonkers_site_gradient', '1' );
-	$site_background_color = get_theme_mod( 'bonkers_site_background_color', '#e08461' );
+	$site_background_color = get_theme_mod( 'bonkers_site_background_color', '#FFFFFF' );
 	$logo_color = get_theme_mod( 'bonkers_logo_color', '#222222' );
 	$header_bck_color = get_theme_mod( 'bonkers_header_bck_color', '#FFFFFF' );
 
@@ -25,9 +23,7 @@ function bonkers_custom_css() {
 		'headings_color' => $headings_color,
 		'text_color'     => $text_color,
 		'link_color'     => $link_color,
-		'content_background_color'     => $content_background_color,
 		'footer_background'     => $footer_background,
-		'site_gradient'     => $site_gradient,
 		'site_background_color'     => $site_background_color,
 		'logo_color'     => $logo_color,
 		'header_bck_color'     => $header_bck_color,
@@ -111,14 +107,12 @@ function bonkers_get_custom_css( $colors ) {
 
 	//Default colors
 	$colors = wp_parse_args( $colors, array(
-		'heroColor'            => '#fd6848',
+		'heroColor'            => '#2D80E2',
 		'headings_color'       => '#222222',
-		'text_color'           => '#777777',
-		'link_color'           => '#fd6848',
-		'content_background_color'           => '#FFFFFF',
-		'footer_background'     => '#FFFFFF',
-		'site_gradient'     => '1',
-		'site_background_color'     => '#e08461',
+		'text_color'           => '#808080',
+		'link_color'           => '#2D80E2',
+		'footer_background'     => '#222222',
+		'site_background_color'     => '#FFFFFF',
 		'logo_color'     => '#222222',
 		'header_bck_color'     => '#FFFFFF',
 
@@ -138,7 +132,8 @@ function bonkers_get_custom_css( $colors ) {
 		color: {$colors['headings_color']};
 	}
 	/* Link Color */
-	a{
+	a,
+	.single .post .entry-footer .metadata ul li a {
 		color: {$colors['link_color']};
 	}
 	a:hover{
@@ -180,7 +175,8 @@ function bonkers_get_custom_css( $colors ) {
 	.no-touch .bonkers-mini-cart .woocommerce-mini-cart__buttons .button:hover,
 	.bonkers-mini-cart .woocommerce-mini-cart__buttons .button.checkout,
 	.no-touch .main-navigation ul ul a:hover,
-	.bonkers-services-section .bonkers-service .bonkers-service-btn:after
+	.bonkers-services-section .bonkers-service .bonkers-service-btn:after,
+	#respond .form-submit #submit-respond
 	{
 		background-color: {$colors['heroColor']};
 	}
@@ -195,14 +191,14 @@ function bonkers_get_custom_css( $colors ) {
 	.ql_woocommerce_categories .ql_product_search:hover .woocommerce-product-search #woocommerce-product-search-field,
 	.touch .ql_woocommerce_categories .ql_product_search:hover .woocommerce-product-search #woocommerce-product-search-field
 	.ql_secundary_btn,
-	.bonkers-mini-cart .woocommerce-mini-cart__buttons .button
+	.bonkers-mini-cart .woocommerce-mini-cart__buttons .button,
+	.search-form .search-submit
 	{
 		border-color: {$colors['heroColor']};
 	}
 
 	/* Color */
 	.pagination li.active a:hover,
-	.single .post .entry-footer .metadata ul li a,
 	#comments .comment-list .comment.bypostauthor .comment-body,
 	#respond input,
 	#respond textarea,
@@ -250,7 +246,8 @@ function bonkers_get_custom_css( $colors ) {
 	.no-touch .bonkers-contact-section .bonkers-contact-content .bonkers-contact-form form .contact-submit input[type="submit"]:hover, 
 	.no-touch .bonkers-contact-section .bonkers-contact-content .bonkers-contact-form .wpcf7-form .contact-submit input[type="submit"]:hover, 
 	.no-touch .bonkers-contact-section .bonkers-contact-content .bonkers-contact-form form input[type="submit"]:hover, 
-	.no-touch .bonkers-contact-section .bonkers-contact-content .bonkers-contact-form .wpcf7-form input[type="submit"]:hover
+	.no-touch .bonkers-contact-section .bonkers-contact-content .bonkers-contact-form .wpcf7-form input[type="submit"]:hover,
+	.search-form .search-submit
 	{
 		color: {$colors['heroColor']};
 	}

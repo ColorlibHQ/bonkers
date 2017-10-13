@@ -2,7 +2,14 @@
 
 class Bonkers {
 
-	public $recommended_plugins = array();
+	public $recommended_plugins = array(
+		'simple-custom-post-order'  => array(
+			'recommended' => false,
+		),
+		'fancybox-for-wordpress'    => array(
+			'recommended' => false,
+		),
+	);
 
 	public $recommended_actions;
 
@@ -13,7 +20,7 @@ class Bonkers {
 		$this->recommended_actions = apply_filters( 'bonkers_required_actions', array(
 			array(
 				'id'          => 'bonkers-import-data',
-				'title'       => esc_html__( 'Add sample content', 'bonkers' ),
+				'title'       => esc_html__( 'Easy 1-click theme setup', 'bonkers' ),
 				'description' => esc_html__( 'Clicking the button below will add settings/widgets and recommended plugins to your WordPress installation. Click advanced to customize the import process.', 'bonkers' ),
 				'help'        => array( Epsilon_Import_Data::get_instance(), 'generate_import_data_container' ),
 				'check'       => Bonkers_Helper::check_installed_data(),
@@ -27,14 +34,6 @@ class Bonkers {
 				'plugin_slug' => 'bonkers-addons',
 			),
 			array(
-				'id'          => 'bonkers-install-jetpack',
-				'title'       => Bonkers_Helper::create_plugin_title( __( 'Jetpack', 'bonkers' ), 'jetpack' ),
-				'description' => __( 'It is highly recommended that you install the Jetpack.', 'bonkers' ),
-				'check'       => Bonkers_Helper::has_plugin( 'jetpack' ),
-				'type'        => 'plugin',
-				'plugin_slug' => 'jetpack',
-			),
-			array(
 				'id'          => 'bonkers-install-contact-form-7',
 				'title'       => Bonkers_Helper::create_plugin_title( __( 'Contact Form 7', 'bonkers' ), 'contact-form-7' ),
 				'description' => __( 'It is highly recommended that you install the Contact Form 7.', 'bonkers' ),
@@ -45,8 +44,8 @@ class Bonkers {
 		) );
 
 		if ( is_customize_preview() ) {
-			$url                = 'themes.php?page=%1$s-welcome&tab=%2$s';
-			$this->recommended_actions[0]['help'] = '<a class="button button-primary" id="" href="' . esc_url( admin_url( sprintf( $url, 'bonkers', 'recommended-actions' ) ) ) . '">' . __( 'Import Demo Content', 'bonkers' ) . '</a>';
+			$url = 'themes.php?page=%1$s-welcome&tab=%2$s';
+			$this->recommended_actions[0]['help'] = '<a class="button button-primary" id="" href="' . esc_url( admin_url( sprintf( $url, 'bonkers', 'recommended-actions' ) ) ) . '">' . __( 'Easy 1-click theme setup', 'bonkers' ) . '</a>';
 		}
 
 		$this->init_epsilon();

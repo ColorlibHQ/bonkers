@@ -1,3 +1,19 @@
+
+// Align Sub Sub Menu
+function alignSubSubMenu() {
+    var windowWidth = jQuery( window ).width();
+    if( jQuery( '#header #site-navigation ul li.menu-item-has-children' ).length ) {
+        var subSubMenu = jQuery( '#header #site-navigation ul li.menu-item-has-children ul' );
+
+        jQuery( subSubMenu ).each( function() {
+            var width = jQuery( this ).width();
+            if( ( windowWidth - jQuery( this ).offset()['left'] ) < width ) {
+                jQuery( this ).addClass( 'align-right' )
+            }
+        });
+    }
+}
+
 jQuery(document).ready(function($) {
 
 
@@ -26,6 +42,14 @@ jQuery(document).ready(function($) {
         });
     });//images loaded
 
+    if ( 'undefined' !== typeof wp && wp.customize && wp.customize.selectiveRefresh ) {
+        wp.customize.selectiveRefresh.bind( 'sidebar-updated', function( sidebarPartial ) {
+            if ( 'team-section' === sidebarPartial.sidebarId ) {
+                jQuery('.bonkers-team-wrap').flickity('reloadCells');
+            }
+        } );
+    }
+
     /*
     // Clients Section
     //===========================================================
@@ -44,6 +68,14 @@ jQuery(document).ready(function($) {
         });
     });//images loaded
 
+    if ( 'undefined' !== typeof wp && wp.customize && wp.customize.selectiveRefresh ) {
+        wp.customize.selectiveRefresh.bind( 'sidebar-updated', function( sidebarPartial ) {
+            if ( 'clients-section' === sidebarPartial.sidebarId ) {
+                jQuery('.bonkers-clients-wrap').flickity('reloadCells');
+            }
+        } );
+    }
+
 
     $(".ql_scroll_top").click(function() {
         $("html, body").animate({
@@ -55,10 +87,13 @@ jQuery(document).ready(function($) {
     $('.dropdown-toggle').dropdown();
     $('*[data-toggle="tooltip"]').tooltip();
 
+    alignSubSubMenu();
 
 });
 
-
+jQuery(document).resize(function(){
+    alignSubSubMenu();
+});
 
 
 

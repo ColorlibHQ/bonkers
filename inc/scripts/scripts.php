@@ -77,7 +77,7 @@ if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 	wp_enqueue_script( 'bonkers_theme-custom', get_template_directory_uri() . '/js/script.js', array( 'jquery', 'bootstrap' ), '1.0', true );
 	$bonkers_custom_js = array(
 		'admin_ajax' => admin_url( 'admin-ajax.php' ),
-		'token' => wp_create_nonce( 'quemalabs-secret' ),
+		'token' => wp_create_nonce( 'colorlib-secret' ),
 	);
 	wp_localize_script( 'bonkers_theme-custom', 'bonkers', $bonkers_custom_js );
 	//=================================================================
