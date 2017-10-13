@@ -2729,6 +2729,11 @@ Footer Menu
 #footer-menu ul li a:hover {
   background-color: transparent;
 }
+.sub-footer .theme-copyright {
+  border-left: 1px solid rgba(255, 255, 255, 0.06);
+  margin-left: 20px;
+  padding-left: 8px;
+}
 /*
 ==========================================
 7. Comments
@@ -5227,8 +5232,14 @@ textarea {
   /*
 	Team Section
 	---------------------------------------*/
-  .bonkers-team-section .bonkers-team-wrap .bonkers-team-member {
-    width: 80%;
+  .bonkers-team-section .bonkers-team-wrap .widget {
+    width: 100%;
+  }
+  /*
+	Clients Section
+	---------------------------------------*/
+  .bonkers-clients-section .bonkers-clients-wrap .widget {
+    width: 50%;
   }
   /*
 	Subscribe Section
@@ -5442,8 +5453,14 @@ textarea {
   /*
 	Team Section
 	---------------------------------------*/
-  .bonkers-team-section .bonkers-team-wrap .bonkers-team-member {
-    width: 38%;
+  .bonkers-team-section .bonkers-team-wrap .widget {
+    width: 33%;
+  }
+  /*
+	Clients Section
+	---------------------------------------*/
+  .bonkers-clients-section .bonkers-clients-wrap .widget {
+    width: 33%;
   }
   /*
 	Subscribe Section

@@ -131,5 +131,25 @@ if ( ! class_exists( 'Bonkers_Helper' ) ) {
 			return false;
 
 		}
+
+		public static function get_bootstrap_class( $no_columns ) {
+			switch ( $no_columns ) {
+				case 1:
+					return 'col-md-12';
+					break;
+				case 2:
+					return 'col-md-6 col-sm-6 col-xs-12';
+					break;
+				case 3:
+					return 'col-md-4 col-sm-4 col-xs-12';
+					break;
+				case 3:
+					return 'col-md-3 col-sm-6 col-xs-12';
+					break;
+				default:
+					return 'col-md-12';
+					break;
+			}
+		}
 	}
 }// End if().
