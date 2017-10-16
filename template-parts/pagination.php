@@ -7,10 +7,12 @@ if ( ! class_exists( 'Jetpack' ) || ! Jetpack::is_module_active( 'infinite-scrol
 	if ( isset( $the_query ) ) {
 		$wp_query = $the_query;
 	}
-	$pagination = get_the_posts_pagination( array(
-		'prev_text'          => esc_attr__( 'Previous page', 'bonkers' ),
-		'next_text'          => esc_attr__( 'Next page', 'bonkers' ),
-	) );
+	$pagination = get_the_posts_pagination(
+		array(
+			'prev_text' => esc_attr__( 'Previous page', 'bonkers' ),
+			'next_text' => esc_attr__( 'Next page', 'bonkers' ),
+		)
+	);
 
 	if ( $pagination ) {
 		echo '<div class="pagination_wrap">';
@@ -20,4 +22,3 @@ if ( ! class_exists( 'Jetpack' ) || ! Jetpack::is_module_active( 'infinite-scrol
 	$wp_query = $temp_query;
 	wp_reset_postdata();
 endif;
-?>

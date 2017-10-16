@@ -3,10 +3,10 @@
 class Bonkers {
 
 	public $recommended_plugins = array(
-		'simple-custom-post-order'  => array(
+		'simple-custom-post-order' => array(
 			'recommended' => false,
 		),
-		'fancybox-for-wordpress'    => array(
+		'fancybox-for-wordpress'   => array(
 			'recommended' => false,
 		),
 	);
@@ -44,7 +44,7 @@ class Bonkers {
 		) );
 
 		if ( is_customize_preview() ) {
-			$url = 'themes.php?page=%1$s-welcome&tab=%2$s';
+			$url                                  = 'themes.php?page=%1$s-welcome&tab=%2$s';
 			$this->recommended_actions[0]['help'] = '<a class="button button-primary" id="" href="' . esc_url( admin_url( sprintf( $url, 'bonkers', 'recommended-actions' ) ) ) . '">' . __( 'Easy 1-click theme setup', 'bonkers' ) . '</a>';
 		}
 
@@ -71,7 +71,7 @@ class Bonkers {
 			'bonkers_typography_font_family_headings',
 		);
 
-		$handler = 'bonkers_style';
+		$handler            = 'bonkers_style';
 		$epsilon_typography = Epsilon_Typography::get_instance( $options, $handler );
 
 		// Remove Epsilon Google Font
@@ -106,11 +106,11 @@ class Bonkers {
 		require get_template_directory() . '/inc/libraries/welcome-screen/class-epsilon-welcome-screen.php';
 		Epsilon_Welcome_Screen::get_instance(
 			$config = array(
-				'theme-name'  => 'Bonkers',
-				'theme-slug'  => 'bonkers',
-				'actions'     => $this->recommended_actions,
-				'plugins'     => $this->recommended_plugins,
-				'edd'         => false,
+				'theme-name' => 'Bonkers',
+				'theme-slug' => 'bonkers',
+				'actions'    => $this->recommended_actions,
+				'plugins'    => $this->recommended_plugins,
+				'edd'        => false,
 			)
 		);
 

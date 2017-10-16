@@ -93,6 +93,7 @@ if ( ! class_exists( 'Bonkers_Helper' ) ) {
 		 */
 		public static function is_not_template_front_page() {
 			$page_id = get_option( 'page_on_front' );
+
 			return get_page_template_slug( $page_id ) == 'page-templates/template-front-page.php' ? true : false;
 		}
 
@@ -134,17 +135,32 @@ if ( ! class_exists( 'Bonkers_Helper' ) ) {
 
 		public static function get_bootstrap_class( $no_columns ) {
 			switch ( $no_columns ) {
-				case 1:
-					return 'col-md-12';
-					break;
 				case 2:
-					return 'col-md-6 col-sm-6 col-xs-12';
-					break;
-				case 3:
-					return 'col-md-4 col-sm-4 col-xs-12';
+					return 'col-md-2 col-sm-4 col-xs-12';
 					break;
 				case 3:
 					return 'col-md-3 col-sm-6 col-xs-12';
+					break;
+				case 4:
+					return 'col-md-4 col-sm-4 col-xs-12';
+					break;
+				case 5:
+					return 'col-md-5 col-sm-6 col-xs-12';
+					break;
+				case 6:
+					return 'col-md-6 col-sm-6 col-xs-12';
+					break;
+				case 7:
+					return 'col-md-7 col-sm-6 col-xs-12';
+					break;
+				case 8:
+					return 'col-md-8 col-sm-8 col-xs-12';
+					break;
+				case 9:
+					return 'col-md-9 col-sm-6 col-xs-12';
+					break;
+				case 10:
+					return 'col-md-10 col-sm-8 col-xs-12';
 					break;
 				default:
 					return 'col-md-12';

@@ -18,23 +18,44 @@
 
 	</main><!-- #main -->
 
-	<?php } ?>
-
-		
-
 	<?php
 
-	$bonkers_footer_widgets = get_theme_mod( 'bonkers_enable_footer_widgets', true );
-	$sidebar_columns = get_theme_mod( 'bonkers_footer_columns' );
-	if ( $sidebar_columns ) {
+}
+
+$bonkers_footer_widgets = get_theme_mod( 'bonkers_enable_footer_widgets', true );
+$sidebar_columns        = get_theme_mod( 'bonkers_footer_columns' );
+if ( '' != $sidebar_columns ) {
+	if ( ! is_array( $sidebar_columns ) ) {
 		$sidebar_columns = json_decode( $sidebar_columns, true );
-		$no_sidebar = $sidebar_columns['columnsCount'];
-	}else{
-		$no_sidebar = 4;
 	}
+	$no_sidebar = $sidebar_columns['columnsCount'];
+} else {
+	$sidebar_columns = array(
+		'columnsCount' => 4,
+		'columns'      => array(
+			1 => array(
+				'index' => 1,
+				'span'  => 3,
+			),
+			2 => array(
+				'index' => 2,
+				'span'  => 3,
+			),
+			3 => array(
+				'index' => 3,
+				'span'  => 3,
+			),
+			4 => array(
+				'index' => 4,
+				'span'  => 3,
+			),
+		),
+	);
+	$no_sidebar      = 4;
+}
 
 	?>
-		
+
 	<div class="clearfix"></div>
 	<div class="bonkers-footer-wrap">
 		<?php
@@ -49,9 +70,9 @@
 				<div class="row">
 
 					<?php
-					for ($i=1; $i <= $no_sidebar; $i++) {
+					for ( $i = 1; $i <= $no_sidebar; $i++ ) {
 						$footer_section = 'footer-widgets-' . $i;
-						echo '<div class="' . Bonkers_Helper::get_bootstrap_class( $no_sidebar ) . '">';
+						echo '<div class="' . Bonkers_Helper::get_bootstrap_class( $sidebar_columns['columns'][ $i ]['span'] ) . '">';
 						dynamic_sidebar( $footer_section );
 						echo '</div>';
 					}// End foreach().
@@ -64,12 +85,8 @@
 		?>
 
 
-
-
 		<div class="sub-footer">
-			<?php
-				echo '<div class="container">';
-			?>
+			<?php echo '<div class="container">'; ?>
 				<div class="row">
 
 					<div class="col-md-7 col-sm-6">
@@ -105,7 +122,6 @@
 	</div><!-- .footer-wrap -->
 
 </div><!-- /bonkers-site-wrap -->
-
 
 <?php wp_footer(); ?>
 

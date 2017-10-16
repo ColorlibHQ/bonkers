@@ -20,8 +20,11 @@ get_header(); ?>
 
 			<div class="bonkers-post-wrapper">
 
-				<?php /* Start the Loop */ ?>
-				<?php while ( have_posts() ) : the_post(); ?>
+				<?php ;/* Start the Loop */ ?>
+				<?php
+				while ( have_posts() ) :
+					the_post();
+?>
 
 					<?php
 						$post_format = get_post_format();
@@ -34,7 +37,7 @@ get_header(); ?>
 					?>
 
 				<?php endwhile; ?>
-				
+
 			</div><!-- /bonkers-post-wrapper -->
 
 			<?php get_template_part( 'template-parts/pagination', 'index' ); ?>
@@ -47,9 +50,6 @@ get_header(); ?>
 
 	</div><!-- /content -->
 
-	
 	<?php get_sidebar(); ?>
-	
-
 
 <?php get_footer(); ?>

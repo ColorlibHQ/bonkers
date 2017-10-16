@@ -1166,7 +1166,7 @@ Team Section
   border-bottom: 1px solid #999999;
 }
 .bonkers-team-section .bonkers-team-wrap .widget {
-  width: 28%;
+  width: 25%;
   display: inline-block;
   text-align: left;
   padding: 0 2.5%;
@@ -4964,6 +4964,18 @@ textarea {
 .woocommerce nav.woocommerce-pagination ul li a:hover,
 .woocommerce nav.woocommerce-pagination ul li span.current {
   color: #fff;
+}
+.woocommerce .cart .coupon {
+  margin-bottom: 20px;
+}
+.woocommerce .cart .coupon input.button {
+  float: left;
+  width: auto;
+}
+.woocommerce table.cart td.actions .input-text,
+.woocommerce-page #content table.cart td.actions .input-text,
+.woocommerce-page table.cart td.actions .input-text {
+  width: 200px;
 }
 /*
 ==========================================

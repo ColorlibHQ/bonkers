@@ -66,11 +66,9 @@ Customizer
 #accordion-section-bonkers_header_section .accordion-section-title::before {
   content: "\e923";
 }
-
 .epsilon-typography-container.group-of-one > div {
   width: 100%;
 }
-
 /*!
  *  Font Awesome 4.6.3 by @davegandy - http://fontawesome.io - @fontawesome
  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
@@ -2401,4 +2399,3 @@ Customizer
 .bonkers-icon-cart-plus:before {
   content: "\e903";
 }
-/*# sourceMappingURL=admin-styles.css.map */

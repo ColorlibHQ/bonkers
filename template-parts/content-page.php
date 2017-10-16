@@ -10,7 +10,6 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	
 	<?php
 	$bonkers_show_title = rwmb_meta( 'bonkers_show_title' );
 	if ( 'no' != $bonkers_show_title ) {

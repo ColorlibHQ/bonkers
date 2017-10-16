@@ -11,7 +11,10 @@ get_header(); ?>
 
 	<div id="content" class="site-content <?php echo esc_attr( bonkers_content_css_class() ); ?>" role="content">
 
-		<?php while ( have_posts() ) : the_post(); ?>
+		<?php
+		while ( have_posts() ) :
+			the_post();
+?>
 
 			<?php get_template_part( 'template-parts/content', 'single' ); ?>
 
@@ -24,10 +27,10 @@ get_header(); ?>
 				endif;
 			?>
 
-		<?php endwhile; // End of the loop. ?>
+		<?php endwhile; ?>
 
 	</div><!-- #content -->
-	
+
 <?php get_sidebar(); ?>
 
 <?php get_footer(); ?>

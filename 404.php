@@ -21,8 +21,7 @@ get_header(); ?>
 					<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'bonkers' ); ?></p>
 
 					<?php get_search_form(); ?>
-					
-					
+
 					<div class="clearfix"></div>
 					<div class="widgets-404">
 						<div class="row">
@@ -35,7 +34,7 @@ get_header(); ?>
 
 							<div class="col-md-3">
 
-								<?php if ( bonkers_categorized_blog() ) : // Only show the widget if site has multiple categories. ?>
+								<?php if ( bonkers_categorized_blog() ) : ?>
 								<div class="widget widget_categories">
 									<h2 class="widget-title"><?php esc_html_e( 'Most Used Categories', 'bonkers' ); ?></h2>
 									<ul>

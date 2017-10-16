@@ -15,7 +15,7 @@
 			<a href="<?php echo esc_url( get_permalink() ); ?>" rel="bookmark">
 				<?php
 				$bonkers_thumbnail_size = 'bonkers_post';
-				$bonkers_blog_layout = get_theme_mod( 'bonkers_blog_layout', 'layout-1' );
+				$bonkers_blog_layout    = get_theme_mod( 'bonkers_blog_layout', 'layout-1' );
 				if ( isset( $_GET['blog_layout'] ) && 'layout-4' == $_GET['blog_layout'] || 'layout-4' == $bonkers_blog_layout ) {
 					$bonkers_thumbnail_size = 'bonkers_post_wide';
 				}
@@ -30,9 +30,6 @@
 			<header class="entry-header">
 				<?php the_title( sprintf( '<h2 class="post-title"><a href="%s" rel="bookmark">', esc_url( get_permalink() ) ), '</a></h2>' ); ?>
 			</header><!-- .entry-header -->
-
-			
-
 			<div class="entry-content">
 				<?php
 					the_content();
