@@ -11,8 +11,8 @@ matrix:
   - php: '7.0'
   - php: '7.1'
     env:
-      - DEPLOY=1
-      - SNIFF=1
+    - DEPLOY=1
+    - SNIFF=1
 before_script:
 - export PHPCS_DIR=/tmp/phpcs
 - export SNIFFS_DIR=/tmp/sniffs
@@ -64,4 +64,13 @@ cache:
 after_success:
 - if [[ "$DEPLOY" == "1" ]]; then grunt build-archive; fi
 - if [[ "$DEPLOY" == "1" ]]; then sh set_tags.sh; fi
-
+deploy:
+  provider: releases
+  skip_cleanup: true
+  api_key:
+    secure: M/6P+P+ArsdWP/Ni4FdiP70h9gxSecZwaHEnWNpwDJ4E4rGfycVoHAFEiSv5nFTNu2UtHoD5qkPtqnQZr5BU7/fFBciZHuO9fHhuXAcuQh1zjWBMdfx9laf6TnLVmnA+2/3YL0QlaMnAbT6K/u/fyZ/xHN/SWB24wQlwvu5tPjg/AblnqoTifpgVdTEftzi/18i1zO4dlDAMk9OUsINj65yjxUs5cTBNh/cUHix6IaNPGkBLWbzBFHANtiTJDLymd1569TkqSgwFWIAjkn4QfeR1Gaek+m1Fo3ENvA37TbDadUiIsyhA3zqtgWkwx7xn0sIKTXCBj+cfhJ6MxDll3NzmgXFGs+AcePTKn7AzE9M1jZacg8pZm8lVu2tEE+wPAsp9o5shb8PhJXj8unbGD/4PF0wRbfq0SdACWQvJb12nItEHGD2RmAQFC2sszvCjENP6pbNSf+Um6FrfupP+nRKPJ1vF7gQgGpkeRdO5rLAHqVxfXs778wIbd5jCGzTHCL7tCAqMIA9+blq3cHzKKWTxk1PySVed70JLjZMEpP72MNVi3TdW2rZfX0rUg4RePNM4m9liaY2Iy7AMoSB8dZeW2QS9w02Hh/CR+EnjYNznsjeW2w0QP9KvViJSBm+7FYLGj2//vbZP0ANmzCuInGEihJhrCQvDSkjSQMhkOA4=
+  file: bonkers.zip
+  on:
+    repo: puikinsh/bonkers
+    branch: 'master'
+    condition: "$DEPLOY = 1"
