@@ -1,16 +1,15 @@
 <?php
 $bonkers_enable_section = get_option( 'bonkers_addons_phone_enable', true );
 if ( $bonkers_enable_section || is_customize_preview() ) :
-?>
-<div id="bonkers-phone-section" class="bonkers-phone-section" <?php if ( false == $bonkers_enable_section ) : echo 'style="display: none;"';
-endif; ?>>
+	?>
+	<div id="bonkers-phone-section" class="bonkers-phone-section" <<?php echo $bonkers_enable_section ? '' : 'style="display: none;"'; ?>>
 
 		<?php
 		if ( is_active_sidebar( 'phone-section-left' ) ) {
 
 			echo '<div class="bonkers-phone-services bonkers-phone-left">';
 
-				dynamic_sidebar( 'phone-section-left' );
+			dynamic_sidebar( 'phone-section-left' );
 
 			echo '</div>';
 		}
@@ -21,23 +20,23 @@ endif; ?>>
 		}
 		?>
 
-			<div class="bonkers-phone-image">
-				<div class="bonkers-phone-screenshot" <?php if ( $bonkers_phone_image ) : echo 'style="background-image: url(' . esc_url( $bonkers_phone_image ) . ')"'; endif ?>></div>
-				<img src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/phone_bck.png" alt="">
-			</div>
+		<div class="bonkers-phone-image">
+			<div class="bonkers-phone-screenshot" <?php echo $bonkers_phone_image ? 'style="background-image: url(' . esc_url( $bonkers_phone_image ) . ')"' : ''; ?>></div>
+			<img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/images/phone_bck.png" alt="">
+		</div>
 
 		<?php
 		if ( is_active_sidebar( 'phone-section-right' ) ) {
 
 			echo '<div class="bonkers-phone-services bonkers-phone-right">';
 
-				dynamic_sidebar( 'phone-section-right' );
+			dynamic_sidebar( 'phone-section-right' );
 
 			echo '</div>';
 
 		}
 		?>
 
-
 	</div><!-- bonkers-phone-section -->
-<?php endif;
+<?php
+endif;

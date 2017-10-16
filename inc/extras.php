@@ -11,6 +11,7 @@
  * Adds custom classes to the array of body classes.
  *
  * @param array $classes Classes for the body element.
+ *
  * @return array
  */
 function bonkers_body_classes( $classes ) {
@@ -26,7 +27,7 @@ function bonkers_body_classes( $classes ) {
 		$classes[] = 'ql_animations';
 	}
 
-		//Add class if there is Sidebar
+	//Add class if there is Sidebar
 	if ( is_active_sidebar( 'sidebar-1' ) ) {
 		$classes[] = 'bonkers-with-sidebar';
 	} else {
@@ -35,17 +36,18 @@ function bonkers_body_classes( $classes ) {
 
 	return $classes;
 }
+
 add_filter( 'body_class', 'bonkers_body_classes' );
 
 
 if ( ! function_exists( 'bonkers_new_content_more' ) ) {
 	function bonkers_new_content_more( $more ) {
-		   global $post;
-		   return ' <br><a href="' . esc_url( get_permalink() ) . '" class="more-link read-more">' . esc_html__( 'Read more', 'bonkers' ) . ' <i class="bonkers-icon-arrow-right"></i></a>';
+		global $post;
+
+		return ' <br><a href="' . esc_url( get_permalink() ) . '" class="more-link read-more">' . esc_html__( 'Read more', 'bonkers' ) . ' <i class="bonkers-icon-arrow-right"></i></a>';
 	}
 }// End if().
-	add_filter( 'the_content_more_link', 'bonkers_new_content_more' );
-
+add_filter( 'the_content_more_link', 'bonkers_new_content_more' );
 
 
 /**
@@ -54,28 +56,29 @@ if ( ! function_exists( 'bonkers_new_content_more' ) ) {
 function hex2rgb( $colour ) {
 	$colour = str_replace( '#', '', $colour );
 	if ( strlen( $colour ) == 6 ) {
-			list( $r, $g, $b ) = array( $colour[0] . $colour[1], $colour[2] . $colour[3], $colour[4] . $colour[5] );
+		list( $r, $g, $b ) = array( $colour[0] . $colour[1], $colour[2] . $colour[3], $colour[4] . $colour[5] );
 	} elseif ( strlen( $colour ) == 3 ) {
-			list( $r, $g, $b ) = array( $colour[0] . $colour[0], $colour[1] . $colour[1], $colour[2] . $colour[2] );
+		list( $r, $g, $b ) = array( $colour[0] . $colour[0], $colour[1] . $colour[1], $colour[2] . $colour[2] );
 	} else {
-			return false;
+		return false;
 	}
 	$r = hexdec( $r );
 	$g = hexdec( $g );
 	$b = hexdec( $b );
+
 	return array(
-		'red' => $r,
+		'red'   => $r,
 		'green' => $g,
-		'blue' => $b,
+		'blue'  => $b,
 	);
 }
 
 
 /**
-* Avoid undefined functions if Meta Box is not activated
-*
-* @return bool
-*/
+ * Avoid undefined functions if Meta Box is not activated
+ *
+ * @return bool
+ */
 if ( ! function_exists( 'rwmb_meta' ) ) {
 	function rwmb_meta( $key, $args = '', $post_id = null ) {
 		return false;
@@ -84,16 +87,16 @@ if ( ! function_exists( 'rwmb_meta' ) ) {
 
 
 /**
-* Display Portfolio or Post navigation
-*
-* @return html
-*/
+ * Display Portfolio or Post navigation
+ *
+ * @return html
+ */
 if ( ! function_exists( 'bonkers_post_navigation' ) ) {
 	function bonkers_post_navigation() {
 
-		$post_nav_bck = '';
+		$post_nav_bck      = '';
 		$post_nav_bck_next = '';
-		$prev_post = get_previous_post();
+		$prev_post         = get_previous_post();
 		if ( ! empty( $prev_post ) ) :
 			$portfolio_image = wp_get_attachment_image_src( get_post_thumbnail_id( $prev_post->ID ), 'bonkers_post' );
 			if ( ! empty( $portfolio_image ) ) {
@@ -109,46 +112,50 @@ if ( ! function_exists( 'bonkers_post_navigation' ) ) {
 		endif;
 
 		if ( ! empty( $prev_post ) || ! empty( $next_post ) ) :
-		?>
-			<nav class="navigation post-navigation" >
+			?>
+			<nav class="navigation post-navigation">
 				<div class="nav-links">
 					<?php if ( ! empty( $prev_post ) ) : ?>
-					<div class="nav-previous" <?php echo $post_nav_bck; ?>>
-						<?php
-						$prev_text = esc_html__( 'Previous Post', 'bonkers' );
-						?>
-						<a href="<?php echo esc_url( get_permalink( $prev_post->ID ) ); ?>" rel="prev"><span><?php echo $prev_text; ?></span><?php echo esc_html( $prev_post->post_title ); ?></a>
-					</div>
+						<div class="nav-previous" <?php echo $post_nav_bck; ?>>
+							<?php
+							$prev_text = esc_html__( 'Previous Post', 'bonkers' );
+							?>
+							<a href="<?php echo esc_url( get_permalink( $prev_post->ID ) ); ?>" rel="prev"><span><?php echo $prev_text; ?></span><?php echo esc_html( $prev_post->post_title ); ?>
+							</a>
+						</div>
 					<?php endif; ?>
 					<?php if ( ! empty( $next_post ) ) : ?>
-					<div class="nav-next" <?php echo $post_nav_bck_next; ?>>
-						<?php
-						$next_text = esc_html__( 'Next Post', 'bonkers' );
-						?>
-						<a href="<?php echo esc_url( get_permalink( $next_post->ID ) ); ?>" rel="next"><span><?php echo $next_text; ?></span><?php echo esc_html( $next_post->post_title ); ?></a>
-					</div>
+						<div class="nav-next" <?php echo $post_nav_bck_next; ?>>
+							<?php
+							$next_text = esc_html__( 'Next Post', 'bonkers' );
+							?>
+							<a href="<?php echo esc_url( get_permalink( $next_post->ID ) ); ?>" rel="next"><span><?php echo $next_text; ?></span><?php echo esc_html( $next_post->post_title ); ?>
+							</a>
+						</div>
 					<?php endif; ?>
 				</div>
 			</nav>
-		<?php endif;
+		<?php
+		endif;
 
 	}
 }// End if().
 
 /**
-* Return a darker color in HEX
-*
-* @return string
-*/
+ * Return a darker color in HEX
+ *
+ * @return string
+ */
 function bonkers_darken_color( $rgb, $darker = 2 ) {
 
-	$hash = (strpos( $rgb, '#' ) !== false) ? '#' : '';
-	$rgb = (strlen( $rgb ) == 7) ? str_replace( '#', '', $rgb ) : ((strlen( $rgb ) == 6) ? $rgb : false);
-	if ( strlen( $rgb ) != 6 ) { return $hash . '000000';
+	$hash = ( strpos( $rgb, '#' ) !== false ) ? '#' : '';
+	$rgb  = ( strlen( $rgb ) == 7 ) ? str_replace( '#', '', $rgb ) : ( ( strlen( $rgb ) == 6 ) ? $rgb : false );
+	if ( strlen( $rgb ) != 6 ) {
+		return $hash . '000000';
 	}
-	$darker = ($darker > 1) ? $darker : 1;
+	$darker = ( $darker > 1 ) ? $darker : 1;
 
-	list($r16,$g16,$b16) = str_split( $rgb,2 );
+	list( $r16, $g16, $b16 ) = str_split( $rgb, 2 );
 
 	$r = sprintf( '%02X', floor( hexdec( $r16 ) / $darker ) );
 	$g = sprintf( '%02X', floor( hexdec( $g16 ) / $darker ) );
@@ -158,13 +165,11 @@ function bonkers_darken_color( $rgb, $darker = 2 ) {
 }
 
 
-
-
 /**
-* Return CSS class for #content
-*
-* @return bool
-*/
+ * Return CSS class for #content
+ *
+ * @return bool
+ */
 if ( ! function_exists( 'bonkers_content_css_class' ) ) {
 	function bonkers_content_css_class() {
 
@@ -186,10 +191,10 @@ if ( ! function_exists( 'bonkers_content_css_class' ) ) {
 
 
 /**
-* Return CSS class for Main
-*
-* @return bool
-*/
+ * Return CSS class for Main
+ *
+ * @return bool
+ */
 if ( ! function_exists( 'bonkers_main_css_class' ) ) {
 	function bonkers_main_css_class() {
 		//Default
@@ -205,17 +210,15 @@ if ( ! function_exists( 'bonkers_main_css_class' ) ) {
 }
 
 
-
-
 /**
  * Return SVG markup.
  *
- * @param array $args {
- *     Parameters needed to display an SVG.
+ * @param array $args  {
+ *                     Parameters needed to display an SVG.
  *
- *     @type string $icon  Required SVG icon filename.
- *     @type string $title Optional SVG title.
- *     @type string $desc  Optional SVG description.
+ * @type string $icon  Required SVG icon filename.
+ * @type string $title Optional SVG title.
+ * @type string $desc  Optional SVG description.
  * }
  * @return string SVG markup.
  */
@@ -232,10 +235,10 @@ function bonkers_get_svg( $args = array() ) {
 
 	// Set defaults.
 	$defaults = array(
-		'icon'        => '',
-		'title'       => '',
-		'desc'        => '',
-		'fallback'    => false,
+		'icon'     => '',
+		'title'    => '',
+		'desc'     => '',
+		'fallback' => false,
 	);
 
 	// Parse args.
@@ -248,16 +251,16 @@ function bonkers_get_svg( $args = array() ) {
 	$aria_labelledby = '';
 
 	/*
-     * Twenty Seventeen doesn't use the SVG title or description attributes; non-decorative icons are described with .screen-reader-text.
-     *
-     * However, child themes can use the title and description to add information to non-decorative SVG icons to improve accessibility.
-     *
-     * Example 1 with title: <?php echo bonkers_get_svg( array( 'icon' => 'arrow-right', 'title' => __( 'This is the title', 'textdomain' ) ) ); ?>
-     *
-     * Example 2 with title and description: <?php echo bonkers_get_svg( array( 'icon' => 'arrow-right', 'title' => __( 'This is the title', 'textdomain' ), 'desc' => __( 'This is the description', 'textdomain' ) ) ); ?>
-     *
-     * See https://www.paciellogroup.com/blog/2013/12/using-aria-enhance-svg-accessibility/.
-     */
+	 * Twenty Seventeen doesn't use the SVG title or description attributes; non-decorative icons are described with .screen-reader-text.
+	 *
+	 * However, child themes can use the title and description to add information to non-decorative SVG icons to improve accessibility.
+	 *
+	 * Example 1 with title: <?php echo bonkers_get_svg( array( 'icon' => 'arrow-right', 'title' => __( 'This is the title', 'textdomain' ) ) ); ?>
+	 *
+	 * Example 2 with title and description: <?php echo bonkers_get_svg( array( 'icon' => 'arrow-right', 'title' => __( 'This is the title', 'textdomain' ), 'desc' => __( 'This is the description', 'textdomain' ) ) ); ?>
+	 *
+	 * See https://www.paciellogroup.com/blog/2013/12/using-aria-enhance-svg-accessibility/.
+	 */
 	if ( $args['title'] ) {
 		$aria_hidden     = '';
 		$unique_id       = uniqid();
@@ -282,12 +285,12 @@ function bonkers_get_svg( $args = array() ) {
 	}
 
 	/*
-     * Display the icon.
-     *
-     * The whitespace around `<use>` is intentional - it is a work around to a keyboard navigation bug in Safari 10.
-     *
-     * See https://core.trac.wordpress.org/ticket/38387.
-     */
+	 * Display the icon.
+	 *
+	 * The whitespace around `<use>` is intentional - it is a work around to a keyboard navigation bug in Safari 10.
+	 *
+	 * See https://core.trac.wordpress.org/ticket/38387.
+	 */
 	$svg .= ' <use href="#icon-' . esc_html( $args['icon'] ) . '" xlink:href="#icon-' . esc_html( $args['icon'] ) . '"></use> ';
 
 	// Add some markup to use as a fallback for browsers that do not support SVGs.
@@ -308,6 +311,7 @@ function bonkers_get_svg( $args = array() ) {
  * @param  object $item  The current menu item.
  * @param  array  $args  An array of wp_nav_menu() arguments.
  * @param  int    $depth Depth of menu item. Used for padding.
+ *
  * @return string $title The menu item's title with dropdown icon.
  */
 function bonkers_dropdown_icon_to_menu_link( $title, $item, $args, $depth ) {
@@ -321,6 +325,7 @@ function bonkers_dropdown_icon_to_menu_link( $title, $item, $args, $depth ) {
 
 	return $title;
 }
+
 add_filter( 'nav_menu_item_title', 'bonkers_dropdown_icon_to_menu_link', 10, 4 );
 
 /**
@@ -329,10 +334,11 @@ add_filter( 'nav_menu_item_title', 'bonkers_dropdown_icon_to_menu_link', 10, 4 )
  */
 function bonkers_get_option( $setting, $default ) {
 	$options = get_option( 'bonkers_addons', array() );
-	$value = $default;
+	$value   = $default;
 	if ( isset( $options[ $setting ] ) ) {
 		$value = $options[ $setting ];
 	}
+
 	return $value;
 }
 
@@ -340,9 +346,9 @@ function bonkers_get_coordinates() {
 	$default_coordinates = array(
 		'Central+Park%2C+New+York%2C+NY%2C+United+States' => array( '40.7828647', '-73.9675438' ),
 	);
-	$coordinates = get_option( 'bonkers_maps_coordinates' );
-	$all_coordinates = wp_parse_args( $coordinates, $default_coordinates );
-	$address = get_option( 'bonkers_addons_contact_address', 'Central Park, New York, NY, United States' );
+	$coordinates         = get_option( 'bonkers_maps_coordinates' );
+	$all_coordinates     = wp_parse_args( $coordinates, $default_coordinates );
+	$address             = get_option( 'bonkers_addons_contact_address', 'Central Park, New York, NY, United States' );
 
 	$encoded_adress = urlencode( $address );
 
@@ -358,8 +364,12 @@ function bonkers_get_coordinates() {
 		$g_response = json_decode( $response['body'], true );
 
 		if ( 'OK' == $g_response['status'] ) {
-			$coordinates[ $encoded_adress ] = array( $g_response['results'][0]['geometry']['location']['lat'], $g_response['results'][0]['geometry']['location']['lng'] );
+			$coordinates[ $encoded_adress ] = array(
+				$g_response['results'][0]['geometry']['location']['lat'],
+				$g_response['results'][0]['geometry']['location']['lng'],
+			);
 			update_option( 'bonkers_maps_coordinates', $coordinates );
+
 			return $coordinates[ $encoded_adress ];
 		}
 

@@ -9,24 +9,24 @@ function bonkers_custom_css() {
 	/*
 	Colors
 	*/
-	$hero_color = get_theme_mod( 'bonkers_hero_color', '#2D80E2' );
-	$headings_color = get_theme_mod( 'bonkers_headings_color', '#222222' );
-	$text_color = get_theme_mod( 'bonkers_text_color', '#808080' );
-	$link_color = get_theme_mod( 'bonkers_link_color', '#2D80E2' );
-	$footer_background = get_theme_mod( 'bonkers_footer_background', '#FFFFFF' );
+	$hero_color            = get_theme_mod( 'bonkers_hero_color', '#2D80E2' );
+	$headings_color        = get_theme_mod( 'bonkers_headings_color', '#222222' );
+	$text_color            = get_theme_mod( 'bonkers_text_color', '#808080' );
+	$link_color            = get_theme_mod( 'bonkers_link_color', '#2D80E2' );
+	$footer_background     = get_theme_mod( 'bonkers_footer_background', '#222222' );
 	$site_background_color = get_theme_mod( 'bonkers_site_background_color', '#FFFFFF' );
-	$logo_color = get_theme_mod( 'bonkers_logo_color', '#222222' );
-	$header_bck_color = get_theme_mod( 'bonkers_header_bck_color', '#FFFFFF' );
+	$logo_color            = get_theme_mod( 'bonkers_logo_color', '#222222' );
+	$header_bck_color      = get_theme_mod( 'bonkers_header_bck_color', '#FFFFFF' );
 
 	$colors = array(
-		'heroColor'      => $hero_color,
-		'headings_color' => $headings_color,
-		'text_color'     => $text_color,
-		'link_color'     => $link_color,
+		'heroColor'             => $hero_color,
+		'headings_color'        => $headings_color,
+		'text_color'            => $text_color,
+		'link_color'            => $link_color,
 		'footer_background'     => $footer_background,
-		'site_background_color'     => $site_background_color,
-		'logo_color'     => $logo_color,
-		'header_bck_color'     => $header_bck_color,
+		'site_background_color' => $site_background_color,
+		'logo_color'            => $logo_color,
+		'header_bck_color'      => $header_bck_color,
 
 	);
 
@@ -37,11 +37,11 @@ function bonkers_custom_css() {
 	/*
 	Typography
 	*/
-	$bonkers_typography_font = get_theme_mod( 'bonkers_typography_font_family' );
-	$bonkers_typography_font_headings = get_theme_mod( 'bonkers_typography_font_family_headings' );
-	$bonkers_typography_subsets = get_theme_mod( 'bonkers_typography_subsets', '' );
-	$bonkers_typography_font_size = '16';
-	$bonkers_typography_font_family = 'PT Sans';
+	$bonkers_typography_font                 = get_theme_mod( 'bonkers_typography_font_family' );
+	$bonkers_typography_font_headings        = get_theme_mod( 'bonkers_typography_font_family_headings' );
+	$bonkers_typography_subsets              = get_theme_mod( 'bonkers_typography_subsets', '' );
+	$bonkers_typography_font_size            = '16';
+	$bonkers_typography_font_family          = 'PT Sans';
 	$bonkers_typography_font_family_headings = 'PT Sans';
 
 	if ( $bonkers_typography_font ) {
@@ -93,33 +93,34 @@ function bonkers_custom_css() {
 
 	wp_add_inline_style( 'bonkers_style', $custom_css );
 }
-add_action( 'wp_enqueue_scripts', 'bonkers_custom_css' );
 
+add_action( 'wp_enqueue_scripts', 'bonkers_custom_css' );
 
 
 /**
  * Returns CSS for the color schemes.
  *
  * @param array $colors colors.
+ *
  * @return string CSS.
  */
 function bonkers_get_custom_css( $colors ) {
 
 	//Default colors
 	$colors = wp_parse_args( $colors, array(
-		'heroColor'            => '#2D80E2',
-		'headings_color'       => '#222222',
-		'text_color'           => '#808080',
-		'link_color'           => '#2D80E2',
+		'heroColor'             => '#2D80E2',
+		'headings_color'        => '#222222',
+		'text_color'            => '#808080',
+		'link_color'            => '#2D80E2',
 		'footer_background'     => '#222222',
-		'site_background_color'     => '#FFFFFF',
-		'logo_color'     => '#222222',
-		'header_bck_color'     => '#FFFFFF',
+		'site_background_color' => '#FFFFFF',
+		'logo_color'            => '#222222',
+		'header_bck_color'      => '#FFFFFF',
 
 	) );
 	$hero_color_darker = bonkers_darken_color( $colors['heroColor'], 1.1 );
 	$link_color_darker = bonkers_darken_color( $colors['link_color'], 1.2 );
-	$hero_color_rgb = hex2rgb( $colors['heroColor'] );
+	$hero_color_rgb    = hex2rgb( $colors['heroColor'] );
 
 	$css = <<<CSS
 
@@ -176,7 +177,8 @@ function bonkers_get_custom_css( $colors ) {
 	.bonkers-mini-cart .woocommerce-mini-cart__buttons .button.checkout,
 	.no-touch .main-navigation ul ul a:hover,
 	.bonkers-services-section .bonkers-service .bonkers-service-btn:after,
-	#respond .form-submit #submit-respond
+	#respond .form-submit #submit-respond,
+	.no-touch .search-form .search-submit:hover
 	{
 		background-color: {$colors['heroColor']};
 	}
@@ -247,7 +249,8 @@ function bonkers_get_custom_css( $colors ) {
 	.no-touch .bonkers-contact-section .bonkers-contact-content .bonkers-contact-form .wpcf7-form .contact-submit input[type="submit"]:hover, 
 	.no-touch .bonkers-contact-section .bonkers-contact-content .bonkers-contact-form form input[type="submit"]:hover, 
 	.no-touch .bonkers-contact-section .bonkers-contact-content .bonkers-contact-form .wpcf7-form input[type="submit"]:hover,
-	.search-form .search-submit
+	.search-form .search-submit,
+	.bonkers-image-section .bonkers-image-section-text .bonkers-image-section-content .ql_border_btn:hover
 	{
 		color: {$colors['heroColor']};
 	}
@@ -289,7 +292,9 @@ function bonkers_get_custom_css( $colors ) {
 	.contact-form input[type="submit"]:hover,
 	.no-touch .portfolio-load-wrapper .portfolio-load-more:hover,
 	.no-touch #ql_load_more:hover,
-	.no-touch .bonkers-mini-cart .woocommerce-mini-cart__buttons .button.checkout:hover
+	.no-touch .bonkers-mini-cart .woocommerce-mini-cart__buttons .button.checkout:hover,
+	.no-touch #respond .form-submit #submit-respond:hover,
+	.woocommerce a.button.alt:hover
 	{
 		background-color: {$hero_color_darker};
 	}
@@ -334,15 +339,16 @@ CSS;
  * Returns CSS for the typography styles.
  *
  * @param array $typography typography.
+ *
  * @return string CSS.
  */
 function bonkers_get_custom_typography_css( $typography ) {
 
 	//Default colors
 	$typography = wp_parse_args( $typography, array(
-		'font-family'           => '"PT Sans"',
-		'font-family-headings'  => '"PT Sans"',
-		'font-size'             => '16',
+		'font-family'          => '"PT Sans"',
+		'font-family-headings' => '"PT Sans"',
+		'font-size'            => '16',
 	) );
 
 	$css = <<<CSS

@@ -24,7 +24,7 @@
 <body <?php body_class(); ?>>
 
 	<div class="bonkers-site-wrap">
- 
+
 		<?php
 		$header_image = '';
 		if ( get_header_image() ) {
@@ -58,14 +58,16 @@
 						<div class="col-md-9 col-sm-12 col-xs-12 nav-wrapper">
 
 								<nav id="site-navigation" class="main-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Main Menu', 'bonkers' ); ?>">
-									<?php wp_nav_menu(
+									<?php
+									wp_nav_menu(
 										array(
 											'theme_location' => 'primary',
-											'menu_id'        => 'primary-menu',
+											'menu_id' => 'primary-menu',
 										)
-									); ?>
+									);
+									?>
 								</nav><!-- #site-navigation -->
-						
+
 						</div><!-- col-md-8 -->
 
 					</div><!-- row-->
@@ -80,5 +82,5 @@
 		<div id="container" class="container">
 
 			<div class="<?php echo esc_attr( bonkers_main_css_class() ); ?>">
-			
+
 		<?php } ?>

@@ -32,11 +32,11 @@ class Bonkers_Multiple_Checkbox_Control extends WP_Customize_Control {
 	 */
 	public function json() {
 
-		$json                 = parent::json();
-		$json['id']           = $this->id;
-		$json['link']         = $this->get_link();
-		$json['value']        = $this->value();
-		$json['choices']      = $this->choices;
+		$json            = parent::json();
+		$json['id']      = $this->id;
+		$json['link']    = $this->get_link();
+		$json['value']   = $this->value();
+		$json['choices'] = $this->choices;
 
 		return $json;
 

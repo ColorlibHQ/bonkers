@@ -27,7 +27,8 @@ get_header(); ?>
 
 					echo "<div class='portfolio-container masonry' data-post-type='" . esc_attr( get_post_type() ) . "'>\n\n";
 					/* Start the Loop */
-					while ( have_posts() ) : the_post();
+					while ( have_posts() ) :
+						the_post();
 
 						get_template_part( 'template-parts/content-portfolio', 'portfolio' );
 
@@ -40,11 +41,14 @@ get_header(); ?>
 				}
 			} else { //is_tax()
 						?>
-			
+
 						<div class="bonkers-post-wrapper">
-			
-							<?php /* Start the Loop */ ?>
-				<?php while ( have_posts() ) : the_post(); ?>
+
+							<?php ;/* Start the Loop */ ?>
+				<?php
+				while ( have_posts() ) :
+					the_post();
+?>
 
 					<?php
 
@@ -62,7 +66,8 @@ get_header(); ?>
 
 							<?php get_template_part( 'template-parts/pagination', 'archive' ); ?>
 
-						<?php }// End if().
+						<?php
+			}// End if().
 ?>
 
 		<?php else : ?>

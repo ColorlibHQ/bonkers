@@ -18,11 +18,10 @@
     "jQuery": false,
     "wp": false,
     "ajaxurl": false,
-    "PathLoader": false,
-    "WOW" : false,
-    "pixova_lite_localization" : false,
-    "viewportSize" : false,
-    "classie" : false,
-    "_" : false
+    "google": false,
+    "bonkersCustomizerAdmin" : false,
+    "bonkersCustomizer" : false,
+    "bonkersGMaps" : false,
+    "bonkersScreenReaderText" : false
   }
 }

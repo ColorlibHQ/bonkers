@@ -38,7 +38,7 @@ class Epsilon_Import_Data {
 	public function __construct( $args = array() ) {
 		$this->plugins = array(
 			'bonkers-addons' => esc_html__( 'Bonkers Addons', 'epsilon-framework' ),
-			'contact-form-7' => esc_html__( 'Contact Form 7', 'epsilon-framework' ), 
+			'contact-form-7' => esc_html__( 'Contact Form 7', 'epsilon-framework' ),
 		);
 		$this->handle_json();
 	}
@@ -89,8 +89,6 @@ class Epsilon_Import_Data {
 			return false;
 		}
 
-
-
 		$this->import_options = $json;
 	}
 
@@ -98,7 +96,7 @@ class Epsilon_Import_Data {
 	 * Build the HTML Container
 	 */
 	public function generate_import_data_container() {
-		$html = '<p><a class="button button-primary epsilon-ajax-button" id="add_default_sections" href="#">' . __( 'Click me to start the set-up process!', 'epsilon-framework' ) . '</a>';
+		$html  = '<p><a class="button button-primary epsilon-ajax-button" id="add_default_sections" href="#">' . __( 'Click me to start the set-up process!', 'epsilon-framework' ) . '</a>';
 		$html .= '<a class="button epsilon-hidden-content-toggler" href="#" data-toggle="welcome-hidden-content">' . __( 'Advanced', 'epsilon-framework' ) . '</a></p>';
 		$html .= '<div class="import-content-container" id="welcome-hidden-content">';
 
@@ -183,7 +181,7 @@ class Epsilon_Import_Data {
 
 		foreach ( $args as $action ) {
 			if ( method_exists( $instance, $action ) ) {
-				$instance->{ $action }();
+				$instance->{$action}();
 			}
 		}
 
@@ -216,9 +214,9 @@ class Epsilon_Import_Data {
 
 			if ( empty( $this->widgets[ $widget_id ] ) || ( count( $this->widgets[ $widget_id ] ) == 1 && isset( $this->widgets[ $widget_id ]['_multiwidget'] ) ) ) {
 				$this->widgets[ $widget_id ] = array(
-					1 => $widget_options
+					1 => $widget_options,
 				);
-			}else{
+			} else {
 				array_push( $this->widgets[ $widget_id ], $widget_options );
 			}
 
@@ -231,7 +229,7 @@ class Epsilon_Import_Data {
 			update_option( "widget_{$widget_id}", $widgets );
 		}
 
-		$sidebars = get_option( 'sidebars_widgets' );
+		$sidebars             = get_option( 'sidebars_widgets' );
 		$sidebars[ $sidebar ] = $sidebar_widgets;
 		update_option( 'sidebars_widgets', $sidebars );
 
@@ -242,13 +240,13 @@ class Epsilon_Import_Data {
 	/**
 	 * Add demo content for Welcome section
 	 */
-	public function populate_welcome_section(){
+	public function populate_welcome_section() {
 
 		$options = array(
-			'bonkers_addons_welcome_title' => wp_kses_post( 'Every Great Company<br> Starts With An Idea' ),
+			'bonkers_addons_welcome_title'      => wp_kses_post( 'Every Great Company<br> Starts With An Idea' ),
 			'bonkers_addons_welcome_link_title' => esc_html( 'View More' ),
-			'bonkers_addons_welcome_link_url' => esc_url_raw( '#' ),
-			'bonkers_addons_welcome_image' => esc_url_raw( get_template_directory_uri() . '/images/StockSnap_1A3MXAT0M6.jpg' )
+			'bonkers_addons_welcome_link_url'   => esc_url_raw( '#' ),
+			'bonkers_addons_welcome_image'      => esc_url_raw( get_template_directory_uri() . '/assets/images/StockSnap_1A3MXAT0M6.jpg' ),
 		);
 
 		foreach ( $options as $option_name => $value ) {
@@ -263,33 +261,33 @@ class Epsilon_Import_Data {
 	/**
 	 * Add demo content for Service section
 	 */
-	public function populate_services_section(){
+	public function populate_services_section() {
 
 		$widgets = array(
 			array(
-				'id' => 'service-widget',
-				'image_uri' => esc_url( get_template_directory_uri() . '/images/48.Dashboard.png' ),
-				'title' => esc_html__( 'Service Title', 'bonkers' ),
-				'text' => esc_html__( 'Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus.', 'bonkers' ),
+				'id'         => 'service-widget',
+				'image_uri'  => esc_url( get_template_directory_uri() . '/assets/images/48.Dashboard.png' ),
+				'title'      => esc_html__( 'Service Title', 'bonkers' ),
+				'text'       => esc_html__( 'Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus.', 'bonkers' ),
 				'link_title' => esc_html__( 'Learn More', 'bonkers' ),
-				'link' => '#',
+				'link'       => '#',
 			),
 			array(
-				'id' => 'service-widget',
-				'image_uri' => esc_url( get_template_directory_uri() . '/images/30.User.png' ),
-				'title' => esc_html__( 'Service Title', 'bonkers' ),
-				'text' => esc_html__( 'Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus.', 'bonkers' ),
+				'id'         => 'service-widget',
+				'image_uri'  => esc_url( get_template_directory_uri() . '/assets/images/30.User.png' ),
+				'title'      => esc_html__( 'Service Title', 'bonkers' ),
+				'text'       => esc_html__( 'Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus.', 'bonkers' ),
 				'link_title' => esc_html__( 'Learn More', 'bonkers' ),
-				'link' => '#',
+				'link'       => '#',
 			),
 			array(
-				'id' => 'service-widget',
-				'image_uri' => esc_url( get_template_directory_uri() . '/images/03.Office.png' ),
-				'title' => esc_html__( 'Service Title', 'bonkers' ),
-				'text' => esc_html__( 'Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus.', 'bonkers' ),
+				'id'         => 'service-widget',
+				'image_uri'  => esc_url( get_template_directory_uri() . '/assets/images/03.Office.png' ),
+				'title'      => esc_html__( 'Service Title', 'bonkers' ),
+				'text'       => esc_html__( 'Nullam id dolor id nibh ultricies vehicula ut id elit. Donec id elit non mi porta gravida at eget metus.', 'bonkers' ),
 				'link_title' => esc_html__( 'Learn More', 'bonkers' ),
-				'link' => '#',
-			)
+				'link'       => '#',
+			),
 		);
 
 		$this->add_widgets_to_sidebar( 'services-section', $widgets );
@@ -299,13 +297,13 @@ class Epsilon_Import_Data {
 	/**
 	 * Add demo content for Image section
 	 */
-	public function populate_image_section(){
+	public function populate_image_section() {
 
 		$options = array(
-			'bonkers_addons_image_title' => esc_html( 'Start Growing your Business' ),
+			'bonkers_addons_image_title'      => esc_html( 'Start Growing your Business' ),
 			'bonkers_addons_image_link_title' => esc_html( 'View More' ),
-			'bonkers_addons_image_link_url' => esc_url_raw( '#' ),
-			'bonkers_addons_image_image' => esc_url_raw( get_template_directory_uri() . '/images/StockSnap_JBW2PXDOL6.jpg' )
+			'bonkers_addons_image_link_url'   => esc_url_raw( '#' ),
+			'bonkers_addons_image_image'      => esc_url_raw( get_template_directory_uri() . '/assets/images/StockSnap_JBW2PXDOL6.jpg' ),
 		);
 
 		foreach ( $options as $option_name => $value ) {
@@ -320,27 +318,27 @@ class Epsilon_Import_Data {
 	/**
 	 * Add demo content for Phone section
 	 */
-	public function populate_phone_section(){
+	public function populate_phone_section() {
 
 		$widgets = array(
 			array(
-				'id' => 'phone-feature-widget',
-				'image_uri' => esc_url( get_template_directory_uri() . '/images/48.Dashboard.png' ),
-				'title' => esc_html__( 'Feature Title', 'bonkers' ),
-				'text' => esc_html__( 'Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas sed diam eget risus varius blandit sit amet non magna.', 'bonkers' ),
+				'id'        => 'phone-feature-widget',
+				'image_uri' => esc_url( get_template_directory_uri() . '/assets/images/48.Dashboard.png' ),
+				'title'     => esc_html__( 'Feature Title', 'bonkers' ),
+				'text'      => esc_html__( 'Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas sed diam eget risus varius blandit sit amet non magna.', 'bonkers' ),
 			),
 			array(
-				'id' => 'phone-feature-widget',
-				'image_uri' => esc_url( get_template_directory_uri() . '/images/48.Dashboard.png' ),
-				'title' => esc_html__( 'Feature Title', 'bonkers' ),
-				'text' => esc_html__( 'Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas sed diam eget risus varius blandit sit amet non magna.', 'bonkers' ),
+				'id'        => 'phone-feature-widget',
+				'image_uri' => esc_url( get_template_directory_uri() . '/assets/images/48.Dashboard.png' ),
+				'title'     => esc_html__( 'Feature Title', 'bonkers' ),
+				'text'      => esc_html__( 'Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas sed diam eget risus varius blandit sit amet non magna.', 'bonkers' ),
 			),
 			array(
-				'id' => 'phone-feature-widget',
-				'image_uri' => esc_url( get_template_directory_uri() . '/images/48.Dashboard.png' ),
-				'title' => esc_html__( 'Feature Title', 'bonkers' ),
-				'text' => esc_html__( 'Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas sed diam eget risus varius blandit sit amet non magna.', 'bonkers' ),
-			)
+				'id'        => 'phone-feature-widget',
+				'image_uri' => esc_url( get_template_directory_uri() . '/assets/images/48.Dashboard.png' ),
+				'title'     => esc_html__( 'Feature Title', 'bonkers' ),
+				'text'      => esc_html__( 'Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas sed diam eget risus varius blandit sit amet non magna.', 'bonkers' ),
+			),
 		);
 
 		$this->add_widgets_to_sidebar( 'phone-section-left', $widgets );
@@ -351,13 +349,13 @@ class Epsilon_Import_Data {
 	/**
 	 * Add demo content for CTA section
 	 */
-	public function populate_cta_section(){
+	public function populate_cta_section() {
 
 		$options = array(
-			'bonkers_addons_cta_title' => esc_html( 'Start Creating Beautiful Sites Now!' ),
+			'bonkers_addons_cta_title'      => esc_html( 'Start Creating Beautiful Sites Now!' ),
 			'bonkers_addons_cta_link_title' => esc_html( 'Sign Up' ),
 			'bonkers_addons_image_link_url' => esc_url_raw( '#' ),
-			'bonkers_addons_cta_image' => esc_url_raw( get_template_directory_uri() . '/images/StockSnap_R7GVMRJWW9.jpg' )
+			'bonkers_addons_cta_image'      => esc_url_raw( get_template_directory_uri() . '/assets/images/StockSnap_R7GVMRJWW9.jpg' ),
 		);
 
 		foreach ( $options as $option_name => $value ) {
@@ -372,11 +370,11 @@ class Epsilon_Import_Data {
 	/**
 	 * Add demo content for Video section
 	 */
-	public function populate_video_section(){
+	public function populate_video_section() {
 
 		$options = array(
 			'bonkers_addons_video_title' => esc_html( 'Your success is our most important priority' ),
-			'bonkers_addons_video_url' => esc_url_raw( 'https://www.youtube.com/watch?v=wevJGIJXDFc' )
+			'bonkers_addons_video_url'   => esc_url_raw( 'https://www.youtube.com/watch?v=wevJGIJXDFc' ),
 		);
 
 		foreach ( $options as $option_name => $value ) {
@@ -391,7 +389,7 @@ class Epsilon_Import_Data {
 	/**
 	 * Add demo content for Team section
 	 */
-	public function populate_team_section(){
+	public function populate_team_section() {
 
 		$options = array(
 			'bonkers_addons_team_title' => esc_html( 'The Team' ),
@@ -406,50 +404,50 @@ class Epsilon_Import_Data {
 
 		$widgets = array(
 			array(
-				'id' => 'team-member-widget',
-				'image_uri' => esc_url( get_template_directory_uri() . '/images/member1.jpg' ),
-				'title' => esc_html__( 'John Doe', 'bonkers' ),
-				'position' => esc_html__( 'CEO', 'bonkers' ),
+				'id'            => 'team-member-widget',
+				'image_uri'     => esc_url( get_template_directory_uri() . '/assets/images/member1.jpg' ),
+				'title'         => esc_html__( 'John Doe', 'bonkers' ),
+				'position'      => esc_html__( 'CEO', 'bonkers' ),
 				'link_facebook' => esc_url_raw( '#' ),
-				'link_twitter' => esc_url_raw( '#' ),
-				'link_facebook' => esc_url_raw( '#' ),
-			),
-			array(
-				'id' => 'team-member-widget',
-				'image_uri' => esc_url( get_template_directory_uri() . '/images/member2.jpg' ),
-				'title' => esc_html__( 'John Doe', 'bonkers' ),
-				'position' => esc_html__( 'CEO', 'bonkers' ),
-				'link_facebook' => esc_url_raw( '#' ),
-				'link_twitter' => esc_url_raw( '#' ),
+				'link_twitter'  => esc_url_raw( '#' ),
 				'link_facebook' => esc_url_raw( '#' ),
 			),
 			array(
-				'id' => 'team-member-widget',
-				'image_uri' => esc_url( get_template_directory_uri() . '/images/member1.jpg' ),
-				'title' => esc_html__( 'John Doe', 'bonkers' ),
-				'position' => esc_html__( 'CEO', 'bonkers' ),
+				'id'            => 'team-member-widget',
+				'image_uri'     => esc_url( get_template_directory_uri() . '/assets/images/member2.jpg' ),
+				'title'         => esc_html__( 'John Doe', 'bonkers' ),
+				'position'      => esc_html__( 'CEO', 'bonkers' ),
 				'link_facebook' => esc_url_raw( '#' ),
-				'link_twitter' => esc_url_raw( '#' ),
-				'link_facebook' => esc_url_raw( '#' ),
-			),
-			array(
-				'id' => 'team-member-widget',
-				'image_uri' => esc_url( get_template_directory_uri() . '/images/member2.jpg' ),
-				'title' => esc_html__( 'John Doe', 'bonkers' ),
-				'position' => esc_html__( 'CEO', 'bonkers' ),
-				'link_facebook' => esc_url_raw( '#' ),
-				'link_twitter' => esc_url_raw( '#' ),
+				'link_twitter'  => esc_url_raw( '#' ),
 				'link_facebook' => esc_url_raw( '#' ),
 			),
 			array(
-				'id' => 'team-member-widget',
-				'image_uri' => esc_url( get_template_directory_uri() . '/images/member1.jpg' ),
-				'title' => esc_html__( 'John Doe', 'bonkers' ),
-				'position' => esc_html__( 'CEO', 'bonkers' ),
+				'id'            => 'team-member-widget',
+				'image_uri'     => esc_url( get_template_directory_uri() . '/assets/images/member1.jpg' ),
+				'title'         => esc_html__( 'John Doe', 'bonkers' ),
+				'position'      => esc_html__( 'CEO', 'bonkers' ),
 				'link_facebook' => esc_url_raw( '#' ),
-				'link_twitter' => esc_url_raw( '#' ),
+				'link_twitter'  => esc_url_raw( '#' ),
 				'link_facebook' => esc_url_raw( '#' ),
-			)
+			),
+			array(
+				'id'            => 'team-member-widget',
+				'image_uri'     => esc_url( get_template_directory_uri() . '/assets/images/member2.jpg' ),
+				'title'         => esc_html__( 'John Doe', 'bonkers' ),
+				'position'      => esc_html__( 'CEO', 'bonkers' ),
+				'link_facebook' => esc_url_raw( '#' ),
+				'link_twitter'  => esc_url_raw( '#' ),
+				'link_facebook' => esc_url_raw( '#' ),
+			),
+			array(
+				'id'            => 'team-member-widget',
+				'image_uri'     => esc_url( get_template_directory_uri() . '/assets/images/member1.jpg' ),
+				'title'         => esc_html__( 'John Doe', 'bonkers' ),
+				'position'      => esc_html__( 'CEO', 'bonkers' ),
+				'link_facebook' => esc_url_raw( '#' ),
+				'link_twitter'  => esc_url_raw( '#' ),
+				'link_facebook' => esc_url_raw( '#' ),
+			),
 		);
 
 		$this->add_widgets_to_sidebar( 'team-section', $widgets );
@@ -459,11 +457,11 @@ class Epsilon_Import_Data {
 	/**
 	 * Add demo content for Subscribe section
 	 */
-	public function populate_subscribe_section(){
+	public function populate_subscribe_section() {
 
 		$options = array(
-			'bonkers_addons_subscribe_title' => esc_html( 'Subscribe' ),
-			'bonkers_addons_subscribe_link_title' => esc_html( 'Subscribe' ),
+			'bonkers_addons_subscribe_title'            => esc_html( 'Subscribe' ),
+			'bonkers_addons_subscribe_link_title'       => esc_html( 'Subscribe' ),
 			'bonkers_addons_subscribe_link_placeholder' => esc_html( 'Enter your email...' ),
 		);
 
@@ -479,7 +477,7 @@ class Epsilon_Import_Data {
 	/**
 	 * Add demo content for Clients section
 	 */
-	public function populate_clients_section(){
+	public function populate_clients_section() {
 
 		$options = array(
 			'bonkers_addons_team_title' => esc_html( 'THE CLIENTS' ),
@@ -494,53 +492,53 @@ class Epsilon_Import_Data {
 
 		$widgets = array(
 			array(
-				'id' => 'client-logo-widget',
-				'image_uri' => esc_url( get_template_directory_uri() . '/images/wordpress_logo.png' ),
-				'link' => esc_url_raw( '#' ),
+				'id'        => 'client-logo-widget',
+				'image_uri' => esc_url( get_template_directory_uri() . '/assets/images/wordpress_logo.png' ),
+				'link'      => esc_url_raw( '#' ),
 			),
 			array(
-				'id' => 'client-logo-widget',
-				'image_uri' => esc_url( get_template_directory_uri() . '/images/wordpress_logo.png' ),
-				'link' => esc_url_raw( '#' ),
+				'id'        => 'client-logo-widget',
+				'image_uri' => esc_url( get_template_directory_uri() . '/assets/images/wordpress_logo.png' ),
+				'link'      => esc_url_raw( '#' ),
 			),
 			array(
-				'id' => 'client-logo-widget',
-				'image_uri' => esc_url( get_template_directory_uri() . '/images/wordpress_logo.png' ),
-				'link' => esc_url_raw( '#' ),
+				'id'        => 'client-logo-widget',
+				'image_uri' => esc_url( get_template_directory_uri() . '/assets/images/wordpress_logo.png' ),
+				'link'      => esc_url_raw( '#' ),
 			),
 			array(
-				'id' => 'client-logo-widget',
-				'image_uri' => esc_url( get_template_directory_uri() . '/images/wordpress_logo.png' ),
-				'link' => esc_url_raw( '#' ),
+				'id'        => 'client-logo-widget',
+				'image_uri' => esc_url( get_template_directory_uri() . '/assets/images/wordpress_logo.png' ),
+				'link'      => esc_url_raw( '#' ),
 			),
 			array(
-				'id' => 'client-logo-widget',
-				'image_uri' => esc_url( get_template_directory_uri() . '/images/wordpress_logo.png' ),
-				'link' => esc_url_raw( '#' ),
-			)
+				'id'        => 'client-logo-widget',
+				'image_uri' => esc_url( get_template_directory_uri() . '/assets/images/wordpress_logo.png' ),
+				'link'      => esc_url_raw( '#' ),
+			),
 		);
 
 		$this->add_widgets_to_sidebar( 'clients-section', $widgets );
 
 	}
-	
+
 	/**
 	 * Add demo content for Contact section
 	 */
-	public function populate_contact_section(){
+	public function populate_contact_section() {
 
 		$options = array(
-			'bonkers_addons_contact_title' => esc_html( 'Contact' ),
+			'bonkers_addons_contact_title'   => esc_html( 'Contact' ),
 			'bonkers_addons_contact_address' => esc_html( 'Central Park, New York, NY, United States' ),
-			'bonkers_addons_contact_zoom' => absint( 13 ),
+			'bonkers_addons_contact_zoom'    => absint( 13 ),
 		);
 
 		if ( Bonkers_Helper::has_plugin( 'contact-form-7' ) ) {
-			
+
 			// Search if we have a contact form
 			$cf7_forms_args = array(
-				'post_type' => 'wpcf7_contact_form',
-				'post_status' => 'publish',
+				'post_type'      => 'wpcf7_contact_form',
+				'post_status'    => 'publish',
 				'posts_per_page' => 1,
 			);
 
@@ -550,13 +548,13 @@ class Epsilon_Import_Data {
 
 				$options['bonkers_addons_contact_form'] = $cf7_forms[0]->ID;
 
-			}else{
+			} else {
 
 				$cf7_form_args = array(
-					'post_title' => 'Demo Form',
+					'post_title'  => 'Demo Form',
 					'post_status' => 'publish',
-					'post_type' => 'wpcf7_contact_form',
-					'meta_input' => array(
+					'post_type'   => 'wpcf7_contact_form',
+					'meta_input'  => array(
 						'_form' => '<label> Your Name (required)
     [text* your-name] </label>
 
@@ -570,16 +568,14 @@ class Epsilon_Import_Data {
     [textarea your-message] </label>
 
 [submit "Send"]',
-					)
+					),
 				);
 
 				$cf7_form_id = wp_insert_post( $cf7_form_args );
-				if( ! is_wp_error( $cf7_form_id ) ) {
+				if ( ! is_wp_error( $cf7_form_id ) ) {
 					$options['bonkers_addons_contact_form'] = $cf7_form_id;
 				}
-
 			}
-
 		}
 
 		foreach ( $options as $option_name => $value ) {

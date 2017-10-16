@@ -86,13 +86,14 @@ module.exports = function(grunt) {
           yuicompress: false
         },
         files: {
-          "style.css": "style.less" // destination file and source file
+          "style.css": "style.less",
+          "assets/css/admin-styles.css": "assets/css/admin-styles.less",
         }
       }
     },
     watch: {
       styles: {
-        files: ['theme-less/*.less'], // which files to watch
+        files: ['assets/theme-less/*.less'], // which files to watch
         tasks: ['less'],
         options: {
           nospawn: true

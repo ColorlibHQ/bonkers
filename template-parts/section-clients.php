@@ -19,4 +19,5 @@ if ( $bonkers_enable_section || is_customize_preview() ) :
 	</div>
 
 	</div><!-- bonkers-clients-section -->
-<?php endif;
+<?php
+endif;
