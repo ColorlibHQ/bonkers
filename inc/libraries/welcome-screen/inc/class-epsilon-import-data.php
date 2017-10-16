@@ -96,7 +96,7 @@ class Epsilon_Import_Data {
 	 * Build the HTML Container
 	 */
 	public function generate_import_data_container() {
-		$html  = '<p><a class="button button-primary epsilon-ajax-button" id="add_default_sections" href="#">' . __( 'Click me to start the set-up process!', 'epsilon-framework' ) . '</a>';
+		$html = '<p><a class="button button-primary epsilon-ajax-button" id="add_default_sections" href="#">' . __( 'Click me to start the set-up process!', 'epsilon-framework' ) . '</a>';
 		$html .= '<a class="button epsilon-hidden-content-toggler" href="#" data-toggle="welcome-hidden-content">' . __( 'Advanced', 'epsilon-framework' ) . '</a></p>';
 		$html .= '<div class="import-content-container" id="welcome-hidden-content">';
 
@@ -555,19 +555,7 @@ class Epsilon_Import_Data {
 					'post_status' => 'publish',
 					'post_type'   => 'wpcf7_contact_form',
 					'meta_input'  => array(
-						'_form' => '<label> Your Name (required)
-    [text* your-name] </label>
-
-<label> Your Email (required)
-    [email* your-email] </label>
-
-<label> Subject
-    [text your-subject] </label>
-
-<label> Your Message
-    [textarea your-message] </label>
-
-[submit "Send"]',
+						'_form' => '<label> Your Name (required)[text* your-name] </label><label> Your Email (required)[email* your-email] </label><label> Subject[text your-subject] </label><label> Your Message[textarea your-message] </label>[submit "Send"]',
 					),
 				);
 

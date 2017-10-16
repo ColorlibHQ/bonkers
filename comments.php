@@ -100,40 +100,16 @@ if ( post_password_required() ) {
 		'comment_notes_after' => '',
 
 		// redefine your own textarea (the comment body)
-		'comment_field'       => '<div class="clearfix"></div><div class="input-wrap textarea">
-							  <label class="control-label" for="comment">' . esc_html__( 'Comment', 'bonkers' ) . '</label>
-							  <div class="controls-wrap">
-									<textarea class="input-xlarge" name="comment" id="comment" tabindex="4" rows="3"></textarea>
-							  </div>
-							</div>',
+		'comment_field'       => '<div class="clearfix"></div><div class="input-wrap textarea"><label class="control-label" for="comment">' . esc_html__( 'Comment', 'bonkers' ) . '</label><div class="controls-wrap"><textarea class="input-xlarge" name="comment" id="comment" tabindex="4" rows="3"></textarea></div></div>',
 
 		'id_submit'           => 'submit-respond',
 
 		'fields'              => apply_filters(
 			'comment_form_default_fields',
 			array(
-				'author' => '<div class="input-wrap">
-							  <label class="control-label" for="author">' . esc_html__( 'Name', 'bonkers' ) . '' . ( $req ? ' (*)' : '' ) . '</label>
-							  <div class="controls-wrap">
-									<i class="fa fa-user"></i>
-									<input class="input-xlarge" type="text" name="author" id="author" value="' . esc_attr( $comment_author ) . '" size="22" tabindex="1" ' . $aria_req . ' />
-									
-							  </div>
-							</div>',
-				'email'  => '<div class="input-wrap">
-							  <label class="control-label" for="email">' . esc_html__( 'Email', 'bonkers' ) . '' . ( $req ? ' (*)' : '' ) . '</label>
-							  <div class="controls-wrap">
-									<i class="fa fa-envelope"></i>
-									<input class="input-xlarge" type="text" name="email" id="email" value="' . esc_attr( $commenter['comment_author_email'] ) . '" size="22" tabindex="2" ' . $aria_req . ' />
-							  </div>
-							</div>',
-				'url'    => '<div class="input-wrap">
-							  <label class="control-label" for="url">' . esc_html__( 'Website', 'bonkers' ) . '</label>
-							  <div class="controls-wrap">
-									<i class="fa fa-link"></i>
-									<input class="input-xlarge" type="text" name="url" id="url" value="' . esc_attr( $commenter['comment_author_url'] ) . '" size="22" tabindex="3" />
-							  </div>
-							</div>',
+				'author' => '<div class="input-wrap"><label class="control-label" for="author">' . esc_html__( 'Name', 'bonkers' ) . '' . ( $req ? ' (*)' : '' ) . '</label><div class="controls-wrap"><i class="fa fa-user"></i><input class="input-xlarge" type="text" name="author" id="author" value="' . esc_attr( $comment_author ) . '" size="22" tabindex="1" ' . $aria_req . ' /></div></div>',
+				'email'  => '<div class="input-wrap"><label class="control-label" for="email">' . esc_html__( 'Email', 'bonkers' ) . '' . ( $req ? ' (*)' : '' ) . '</label><div class="controls-wrap"><i class="fa fa-envelope"></i><input class="input-xlarge" type="text" name="email" id="email" value="' . esc_attr( $commenter['comment_author_email'] ) . '" size="22" tabindex="2" ' . $aria_req . ' /></div></div>',
+				'url'    => '<div class="input-wrap"><label class="control-label" for="url">' . esc_html__( 'Website', 'bonkers' ) . '</label><div class="controls-wrap"><i class="fa fa-link"></i><input class="input-xlarge" type="text" name="url" id="url" value="' . esc_attr( $commenter['comment_author_url'] ) . '" size="22" tabindex="3" /></div></div>',
 			)
 		),
 
