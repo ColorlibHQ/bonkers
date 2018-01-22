@@ -110,4 +110,4 @@ function bonkers_category_transient_flusher() {
 	delete_transient( 'bonkers_categories' );
 }
 add_action( 'edit_category', 'bonkers_category_transient_flusher' );
-add_action( 'save_post',     'bonkers_category_transient_flusher' );
+add_action( 'save_post', 'bonkers_category_transient_flusher' );
