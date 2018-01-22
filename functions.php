@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Bonkers functions and definitions.
  *
@@ -6,6 +7,14 @@
  *
  * @package Bonkers
  */
+
+/**
+ * Bonkers only works with PHP 5.4 or later.
+ */
+if ( version_compare( phpversion(), '5.4', '<' ) ) {
+	require get_template_directory() . '/inc/back-compat.php';
+	return;
+}
 
 if ( ! function_exists( 'bonkers_setup' ) ) :
 	/**
