@@ -1,6 +1,6 @@
 // jscs:ignore validateLineBreaks
 // Align Sub Sub Menu
-function alignSubSubMenu() {
+function bonkersAlignSubSubMenu() {
   var windowWidth = jQuery( window ).width(),
       subSubMenu;
   if ( jQuery( '#header #site-navigation ul li.menu-item-has-children' ).length ) {
@@ -89,10 +89,10 @@ jQuery( document ).ready( function( $ ) {
   $( '.dropdown-toggle' ).dropdown();
   $( '*[data-toggle="tooltip"]' ).tooltip();
 
-  alignSubSubMenu();
+  bonkersAlignSubSubMenu();
 
 } );
 
 jQuery( document ).resize( function() {
-  alignSubSubMenu();
+  bonkersAlignSubSubMenu();
 } );
