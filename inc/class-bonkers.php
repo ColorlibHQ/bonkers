@@ -9,6 +9,9 @@ class Bonkers {
 		'fancybox-for-wordpress'   => array(
 			'recommended' => false,
 		),
+		'kali-forms'   => array(
+			'recommended' => true,
+		),
 	);
 
 	public $recommended_actions;
@@ -34,12 +37,12 @@ class Bonkers {
 				'plugin_slug' => 'bonkers-addons',
 			),
 			array(
-				'id'          => 'bonkers-install-contact-form-7',
-				'title'       => Bonkers_Helper::create_plugin_title( __( 'Contact Form 7', 'bonkers' ), 'contact-form-7' ),
-				'description' => __( 'It is highly recommended that you install the Contact Form 7.', 'bonkers' ),
-				'check'       => Bonkers_Helper::has_plugin( 'contact-form-7' ),
+				'id'          => 'bonkers-install-kali-forms',
+				'title'       => Bonkers_Helper::create_plugin_title( __( 'Kaliforms', 'bonkers' ), 'kali-forms' ),
+				'description' => __( 'It is highly recommended that you install the Kaliforms plugin.', 'bonkers' ),
+				'check'       => Bonkers_Helper::has_plugin( 'kali-forms' ),
 				'type'        => 'plugin',
-				'plugin_slug' => 'contact-form-7',
+				'plugin_slug' => 'kali-forms',
 			),
 		) );
 

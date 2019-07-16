@@ -38,7 +38,7 @@ class Epsilon_Import_Data {
 	public function __construct( $args = array() ) {
 		$this->plugins = array(
 			'bonkers-addons' => esc_html__( 'Bonkers Addons', 'epsilon-framework' ),
-			'contact-form-7' => esc_html__( 'Contact Form 7', 'epsilon-framework' ),
+			'kali-forms' => esc_html__( 'Kaliforms', 'epsilon-framework' ),
 		);
 		$this->handle_json();
 	}
@@ -532,39 +532,6 @@ class Epsilon_Import_Data {
 			'bonkers_addons_contact_address' => esc_html( 'Central Park, New York, NY, United States' ),
 			'bonkers_addons_contact_zoom'    => absint( 13 ),
 		);
-
-		if ( Bonkers_Helper::has_plugin( 'contact-form-7' ) ) {
-
-			// Search if we have a contact form
-			$cf7_forms_args = array(
-				'post_type'      => 'wpcf7_contact_form',
-				'post_status'    => 'publish',
-				'posts_per_page' => 1,
-			);
-
-			$cf7_forms = get_posts( $cf7_forms_args );
-
-			if ( count( $cf7_forms ) > 0 ) {
-
-				$options['bonkers_addons_contact_form'] = $cf7_forms[0]->ID;
-
-			} else {
-
-				$cf7_form_args = array(
-					'post_title'  => 'Demo Form',
-					'post_status' => 'publish',
-					'post_type'   => 'wpcf7_contact_form',
-					'meta_input'  => array(
-						'_form' => '<label> Your Name (required)[text* your-name] </label><label> Your Email (required)[email* your-email] </label><label> Subject[text your-subject] </label><label> Your Message[textarea your-message] </label>[submit "Send"]',
-					),
-				);
-
-				$cf7_form_id = wp_insert_post( $cf7_form_args );
-				if ( ! is_wp_error( $cf7_form_id ) ) {
-					$options['bonkers_addons_contact_form'] = $cf7_form_id;
-				}
-			}
-		}
 
 		foreach ( $options as $option_name => $value ) {
 			$current_value = get_option( $option_name );
