@@ -204,7 +204,9 @@ Navigation Menu
 .dropdown.open .dropdown-menu {
     display: none;
 }
-.no-touch .dropdown:hover > .dropdown-menu, .no-touch .dropdown.open:hover > .dropdown-menu, .no-touch .dropdown-submenu:hover > .dropdown-menu {
+.no-touch .dropdown:hover > .dropdown-menu,
+.no-touch .dropdown.open:hover > .dropdown-menu,
+.no-touch .dropdown-submenu:hover > .dropdown-menu {
     display: block;
     margin-top: 0; // remove the gap so it doesn't close
 }
@@ -222,14 +224,15 @@ Navigation Menu
 }
 #jqueryslidemenu ul.nav > li > ul > li{
 	&.current-menu-item, &.current_page_item, &.current_page_parent{
-			a:hover{
-				color: #fff !important;		
+			a:hover, a:focus {
+				color: #fff !important;
 			}
-		
+
 	}
 }
 
-.no-touch #jqueryslidemenu ul.nav > li > ul > li a:hover{
+.no-touch #jqueryslidemenu ul.nav > li > ul > li a:hover,
+.no-touch #jqueryslidemenu ul.nav > li > ul > li a:focus {
 	background-color: @heroColor;
 	color: #fff;
 }
@@ -487,7 +490,8 @@ Search Button
 	}
 
 
-	&:hover .search-field{
+	&:hover .search-field,
+	&:focus .search-field {
 		width: 100%;
 		padding: 6px 40px 6px 12px;
 	}

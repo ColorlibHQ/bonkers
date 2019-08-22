@@ -234,10 +234,14 @@ Navigation Menu
 }
 #jqueryslidemenu ul.nav > li > ul > li.current-menu-item a:hover,
 #jqueryslidemenu ul.nav > li > ul > li.current_page_item a:hover,
-#jqueryslidemenu ul.nav > li > ul > li.current_page_parent a:hover {
+#jqueryslidemenu ul.nav > li > ul > li.current_page_parent a:hover,
+#jqueryslidemenu ul.nav > li > ul > li.current-menu-item a:focus,
+#jqueryslidemenu ul.nav > li > ul > li.current_page_item a:focus,
+#jqueryslidemenu ul.nav > li > ul > li.current_page_parent a:focus {
   color: #fff !important;
 }
-.no-touch #jqueryslidemenu ul.nav > li > ul > li a:hover {
+.no-touch #jqueryslidemenu ul.nav > li > ul > li a:hover,
+.no-touch #jqueryslidemenu ul.nav > li > ul > li a:focus {
   background-color: #2D80E2;
   color: #fff;
 }
@@ -469,7 +473,8 @@ Search Button
   border: none;
   margin-bottom: 0;
 }
-.menu_wrap .search-form:hover .search-field {
+.menu_wrap .search-form:hover .search-field,
+.menu_wrap .search-form:focus .search-field {
   width: 100%;
   padding: 6px 40px 6px 12px;
 }
@@ -527,7 +532,8 @@ Search Button
   width: 16em;
   color: #fff;
 }
-.no-touch .main-navigation ul ul a:hover {
+.no-touch .main-navigation ul ul a:hover,
+.no-touch .main-navigation ul ul a:focus {
   background-color: #2D80E2;
   color: #fff;
   border-radius: 2px;
@@ -547,11 +553,13 @@ Search Button
   font-size: 14px;
   font-size: 0.875rem;
 }
-.no-touch .main-navigation ul li:hover {
+.no-touch .main-navigation ul li:hover,
+.no-touch .main-navigation ul li:focus-within {
   background-color: #4d4d4d;
   color: #fff;
 }
-.no-touch .main-navigation ul li:hover > a {
+.no-touch .main-navigation ul li:hover > a,
+.no-touch .main-navigation ul li:focus-within > a {
   color: #fff;
 }
 .main-navigation ul li li {
@@ -560,6 +568,7 @@ Search Button
   transition: background-color 0.2s ease-in-out;
 }
 .main-navigation ul li:hover > ul,
+.main-navigation ul li:focus-within > ul,
 .main-navigation ul li.focus > ul {
   visibility: visible;
 }
@@ -587,7 +596,8 @@ Search Button
   padding: 1.5em 1.42857142857143em;
   color: #8c8c8c;
 }
-.no-touch .main-navigation a:hover {
+.no-touch .main-navigation a:hover,
+.no-touch .main-navigation a:focus {
   color: #fff;
 }
 #bonkers-nav-btn {
@@ -723,11 +733,13 @@ Search Button
     width: 100%;
     padding: 0.5em;
   }
-  .main-navigation ul ul a:hover {
+  .main-navigation ul ul a:hover,
+  .main-navigation ul ul a:focus {
     background-color: transparent;
     color: #8c8c8c;
   }
-  .no-touch .main-navigation ul ul a:hover {
+  .no-touch .main-navigation ul ul a:hover,
+  .no-touch .main-navigation ul ul a:focus {
     color: #4d4d4d;
     background-color: transparent;
   }
@@ -744,11 +756,13 @@ Search Button
   .main-navigation ul ul li a {
     color: #8c8c8c;
   }
-  .main-navigation ul ul li a:hover {
+  .main-navigation ul ul li a:hover,
+  .main-navigation ul ul li a:focus {
     background-color: transparent;
     color: #8c8c8c;
   }
-  .no-touch .main-navigation ul ul li a:hover {
+  .no-touch .main-navigation ul ul li a:hover,
+  .no-touch .main-navigation ul ul li a:focus {
     color: #4d4d4d;
     background-color: transparent;
   }
@@ -762,12 +776,16 @@ Search Button
     font-weight: normal;
   }
   .main-navigation ul li:hover,
-  .no-touch .main-navigation ul li:hover {
+  .main-navigation ul li:focus-within,
+  .no-touch .main-navigation ul li:hover,
+  .no-touch .main-navigation ul li:focus-within {
     background-color: transparent;
     color: inherit;
   }
   .main-navigation ul li:hover > a,
-  .no-touch .main-navigation ul li:hover > a {
+  .main-navigation ul li:focus-within > a,
+  .no-touch .main-navigation ul li:hover > a,
+  .no-touch .main-navigation ul li:focus-within > a {
     color: #8c8c8c;
   }
   .main-navigation ul li li {
@@ -871,7 +889,8 @@ Welcome Section
   border-color: #fff;
   color: #fff;
 }
-.bonkers-welcome-section .bonkers-welcome-intro .ql_border_btn:hover {
+.bonkers-welcome-section .bonkers-welcome-intro .ql_border_btn:hover,
+.bonkers-welcome-section .bonkers-welcome-intro .ql_border_btn:focus {
   background-color: #fff;
   color: #2D80E2;
 }
@@ -894,7 +913,8 @@ Services Section
   display: inline-block;
   position: relative;
 }
-.bonkers-services-section .bonkers-service .bonkers-service-btn:hover {
+.bonkers-services-section .bonkers-service .bonkers-service-btn:hover,
+.bonkers-services-section .bonkers-service .bonkers-service-btn:focus {
   text-decoration: none;
 }
 .bonkers-services-section .bonkers-service .bonkers-service-btn:after {
@@ -910,7 +930,8 @@ Services Section
   height: 1px;
   background-color: #2D80E2;
 }
-.bonkers-services-section .bonkers-service .bonkers-service-btn:hover:after {
+.bonkers-services-section .bonkers-service .bonkers-service-btn:hover:after,
+.bonkers-services-section .bonkers-service .bonkers-service-btn:focus:after {
   width: 100%;
 }
 /*
@@ -961,7 +982,8 @@ Image Section
 .bonkers-image-section .bonkers-image-section-text .bonkers-image-section-content .ql_border_btn {
   margin-top: 30px;
 }
-.bonkers-image-section .bonkers-image-section-text .bonkers-image-section-content .ql_border_btn:hover {
+.bonkers-image-section .bonkers-image-section-text .bonkers-image-section-content .ql_border_btn:hover,
+.bonkers-image-section .bonkers-image-section-text .bonkers-image-section-content .ql_border_btn:focus {
   background-color: #fff;
 }
 .bonkers-image-section.bonkers-image-right .bonkers-image-section-image {
@@ -1074,7 +1096,8 @@ CTA Section
   z-index: 2;
   vertical-align: top;
 }
-.bonkers-cta-section .bonkers-cta-button:hover {
+.bonkers-cta-section .bonkers-cta-button:hover,
+.bonkers-cta-section .bonkers-cta-button:focus {
   text-decoration: none;
   color: #fff;
 }
@@ -1208,7 +1231,8 @@ Team Section
   padding: 2px;
   color: #999999;
 }
-.bonkers-team-section .bonkers-team-wrap .bonkers-team-member .bonker-team-content .bonkers-team-social li a:hover {
+.bonkers-team-section .bonkers-team-wrap .bonkers-team-member .bonker-team-content .bonkers-team-social li a:hover,
+.bonkers-team-section .bonkers-team-wrap .bonkers-team-member .bonker-team-content .bonkers-team-social li a:focus {
   color: #4d4d4d;
 }
 .bonkers-team-section .bonkers-team-wrap .bonkers-team-member .bonker-team-content .bonkers-team-social li a i {
@@ -1284,7 +1308,11 @@ Subscribe Section
 .no-touch .bonkers-subscribe-section .bonkers-subscribe-content .bonkers-subscribre-form-wrapper .bonkers-subscribre-form .bonkers_subscribe_btn:hover,
 .no-touch .bonkers-subscribe-section .bonkers-subscribe-content .bonkers-subscribre-form-wrapper .contact-form .bonkers_subscribe_btn:hover,
 .no-touch .bonkers-subscribe-section .bonkers-subscribe-content .bonkers-subscribre-form-wrapper .bonkers-subscribre-form input[type="submit"]:hover,
-.no-touch .bonkers-subscribe-section .bonkers-subscribe-content .bonkers-subscribre-form-wrapper .contact-form input[type="submit"]:hover {
+.no-touch .bonkers-subscribe-section .bonkers-subscribe-content .bonkers-subscribre-form-wrapper .contact-form input[type="submit"]:hover,
+.no-touch .bonkers-subscribe-section .bonkers-subscribe-content .bonkers-subscribre-form-wrapper .bonkers-subscribre-form .bonkers_subscribe_btn:focus,
+.no-touch .bonkers-subscribe-section .bonkers-subscribe-content .bonkers-subscribre-form-wrapper .contact-form .bonkers_subscribe_btn:focus,
+.no-touch .bonkers-subscribe-section .bonkers-subscribe-content .bonkers-subscribre-form-wrapper .bonkers-subscribre-form input[type="submit"]:focus,
+.no-touch .bonkers-subscribe-section .bonkers-subscribe-content .bonkers-subscribre-form-wrapper .contact-form input[type="submit"]:focus {
   text-decoration: none !important;
   background-color: #1e75dc;
   color: #fff;
@@ -1292,11 +1320,7 @@ Subscribe Section
 .bonkers-subscribe-section .bonkers-subscribe-content .bonkers-subscribre-form-wrapper .bonkers-subscribre-form .bonkers_subscribe_btn:active,
 .bonkers-subscribe-section .bonkers-subscribe-content .bonkers-subscribre-form-wrapper .contact-form .bonkers_subscribe_btn:active,
 .bonkers-subscribe-section .bonkers-subscribe-content .bonkers-subscribre-form-wrapper .bonkers-subscribre-form input[type="submit"]:active,
-.bonkers-subscribe-section .bonkers-subscribe-content .bonkers-subscribre-form-wrapper .contact-form input[type="submit"]:active,
-.bonkers-subscribe-section .bonkers-subscribe-content .bonkers-subscribre-form-wrapper .bonkers-subscribre-form .bonkers_subscribe_btn:focus,
-.bonkers-subscribe-section .bonkers-subscribe-content .bonkers-subscribre-form-wrapper .contact-form .bonkers_subscribe_btn:focus,
-.bonkers-subscribe-section .bonkers-subscribe-content .bonkers-subscribre-form-wrapper .bonkers-subscribre-form input[type="submit"]:focus,
-.bonkers-subscribe-section .bonkers-subscribe-content .bonkers-subscribre-form-wrapper .contact-form input[type="submit"]:focus {
+.bonkers-subscribe-section .bonkers-subscribe-content .bonkers-subscribre-form-wrapper .contact-form input[type="submit"]:active {
   position: relative;
   bottom: -1px;
   text-decoration: none;
@@ -1304,14 +1328,22 @@ Subscribe Section
 .no-touch .bonkers-subscribe-section .bonkers-subscribe-content .bonkers-subscribre-form-wrapper .bonkers-subscribre-form .bonkers_subscribe_btn:hover,
 .no-touch .bonkers-subscribe-section .bonkers-subscribe-content .bonkers-subscribre-form-wrapper .contact-form .bonkers_subscribe_btn:hover,
 .no-touch .bonkers-subscribe-section .bonkers-subscribe-content .bonkers-subscribre-form-wrapper .bonkers-subscribre-form input[type="submit"]:hover,
-.no-touch .bonkers-subscribe-section .bonkers-subscribe-content .bonkers-subscribre-form-wrapper .contact-form input[type="submit"]:hover {
+.no-touch .bonkers-subscribe-section .bonkers-subscribe-content .bonkers-subscribre-form-wrapper .contact-form input[type="submit"]:hover,
+.no-touch .bonkers-subscribe-section .bonkers-subscribe-content .bonkers-subscribre-form-wrapper .bonkers-subscribre-form .bonkers_subscribe_btn:focus,
+.no-touch .bonkers-subscribe-section .bonkers-subscribe-content .bonkers-subscribre-form-wrapper .contact-form .bonkers_subscribe_btn:focus,
+.no-touch .bonkers-subscribe-section .bonkers-subscribe-content .bonkers-subscribre-form-wrapper .bonkers-subscribre-form input[type="submit"]:focus,
+.no-touch .bonkers-subscribe-section .bonkers-subscribe-content .bonkers-subscribre-form-wrapper .contact-form input[type="submit"]:focus {
   background-color: #fff;
   color: #2D80E2;
 }
 .bonkers-subscribe-section .bonkers-subscribe-content .bonkers-subscribre-form-wrapper .bonkers-subscribre-form .bonkers_subscribe_btn:hover,
 .bonkers-subscribe-section .bonkers-subscribe-content .bonkers-subscribre-form-wrapper .contact-form .bonkers_subscribe_btn:hover,
 .bonkers-subscribe-section .bonkers-subscribe-content .bonkers-subscribre-form-wrapper .bonkers-subscribre-form input[type="submit"]:hover,
-.bonkers-subscribe-section .bonkers-subscribe-content .bonkers-subscribre-form-wrapper .contact-form input[type="submit"]:hover {
+.bonkers-subscribe-section .bonkers-subscribe-content .bonkers-subscribre-form-wrapper .contact-form input[type="submit"]:hover,
+.bonkers-subscribe-section .bonkers-subscribe-content .bonkers-subscribre-form-wrapper .bonkers-subscribre-form .bonkers_subscribe_btn:focus,
+.bonkers-subscribe-section .bonkers-subscribe-content .bonkers-subscribre-form-wrapper .contact-form .bonkers_subscribe_btn:focus,
+.bonkers-subscribe-section .bonkers-subscribe-content .bonkers-subscribre-form-wrapper .bonkers-subscribre-form input[type="submit"]:focus,
+.bonkers-subscribe-section .bonkers-subscribe-content .bonkers-subscribre-form-wrapper .contact-form input[type="submit"]:focus {
   text-decoration: none;
 }
 .bonkers-subscribe-section .bonkers-subscribe-content .bonkers-subscribre-form-wrapper .contact-form input {
@@ -1374,6 +1406,9 @@ Clients Section
 }
 .bonkers-clients-section .bonkers-clients-wrap .widget img {
   width: 100%;
+}
+.bonkers-clients-section .bonkers-clients-logo a:focus {
+  outline: 1px solid;
 }
 /*
 Contact Section
@@ -1496,7 +1531,11 @@ Contact Section
 .no-touch .bonkers-contact-section .bonkers-contact-content .bonkers-contact-form form .contact-submit input[type="submit"]:hover,
 .no-touch .bonkers-contact-section .bonkers-contact-content .bonkers-contact-form .wpcf7-form .contact-submit input[type="submit"]:hover,
 .no-touch .bonkers-contact-section .bonkers-contact-content .bonkers-contact-form form input[type="submit"]:hover,
-.no-touch .bonkers-contact-section .bonkers-contact-content .bonkers-contact-form .wpcf7-form input[type="submit"]:hover {
+.no-touch .bonkers-contact-section .bonkers-contact-content .bonkers-contact-form .wpcf7-form input[type="submit"]:hover,
+.no-touch .bonkers-contact-section .bonkers-contact-content .bonkers-contact-form form .contact-submit input[type="submit"]:focus,
+.no-touch .bonkers-contact-section .bonkers-contact-content .bonkers-contact-form .wpcf7-form .contact-submit input[type="submit"]:focus,
+.no-touch .bonkers-contact-section .bonkers-contact-content .bonkers-contact-form form input[type="submit"]:focus,
+.no-touch .bonkers-contact-section .bonkers-contact-content .bonkers-contact-form .wpcf7-form input[type="submit"]:focus {
   text-decoration: none !important;
   background-color: #1e75dc;
   color: #fff;
@@ -1504,11 +1543,7 @@ Contact Section
 .bonkers-contact-section .bonkers-contact-content .bonkers-contact-form form .contact-submit input[type="submit"]:active,
 .bonkers-contact-section .bonkers-contact-content .bonkers-contact-form .wpcf7-form .contact-submit input[type="submit"]:active,
 .bonkers-contact-section .bonkers-contact-content .bonkers-contact-form form input[type="submit"]:active,
-.bonkers-contact-section .bonkers-contact-content .bonkers-contact-form .wpcf7-form input[type="submit"]:active,
-.bonkers-contact-section .bonkers-contact-content .bonkers-contact-form form .contact-submit input[type="submit"]:focus,
-.bonkers-contact-section .bonkers-contact-content .bonkers-contact-form .wpcf7-form .contact-submit input[type="submit"]:focus,
-.bonkers-contact-section .bonkers-contact-content .bonkers-contact-form form input[type="submit"]:focus,
-.bonkers-contact-section .bonkers-contact-content .bonkers-contact-form .wpcf7-form input[type="submit"]:focus {
+.bonkers-contact-section .bonkers-contact-content .bonkers-contact-form .wpcf7-form input[type="submit"]:active {
   position: relative;
   bottom: -1px;
   text-decoration: none;
@@ -1516,14 +1551,22 @@ Contact Section
 .no-touch .bonkers-contact-section .bonkers-contact-content .bonkers-contact-form form .contact-submit input[type="submit"]:hover,
 .no-touch .bonkers-contact-section .bonkers-contact-content .bonkers-contact-form .wpcf7-form .contact-submit input[type="submit"]:hover,
 .no-touch .bonkers-contact-section .bonkers-contact-content .bonkers-contact-form form input[type="submit"]:hover,
-.no-touch .bonkers-contact-section .bonkers-contact-content .bonkers-contact-form .wpcf7-form input[type="submit"]:hover {
+.no-touch .bonkers-contact-section .bonkers-contact-content .bonkers-contact-form .wpcf7-form input[type="submit"]:hover,
+.no-touch .bonkers-contact-section .bonkers-contact-content .bonkers-contact-form form .contact-submit input[type="submit"]:focus,
+.no-touch .bonkers-contact-section .bonkers-contact-content .bonkers-contact-form .wpcf7-form .contact-submit input[type="submit"]:focus,
+.no-touch .bonkers-contact-section .bonkers-contact-content .bonkers-contact-form form input[type="submit"]:focus,
+.no-touch .bonkers-contact-section .bonkers-contact-content .bonkers-contact-form .wpcf7-form input[type="submit"]:focus {
   background-color: #fff;
   color: #2D80E2;
 }
 .bonkers-contact-section .bonkers-contact-content .bonkers-contact-form form .contact-submit input[type="submit"]:hover,
 .bonkers-contact-section .bonkers-contact-content .bonkers-contact-form .wpcf7-form .contact-submit input[type="submit"]:hover,
 .bonkers-contact-section .bonkers-contact-content .bonkers-contact-form form input[type="submit"]:hover,
-.bonkers-contact-section .bonkers-contact-content .bonkers-contact-form .wpcf7-form input[type="submit"]:hover {
+.bonkers-contact-section .bonkers-contact-content .bonkers-contact-form .wpcf7-form input[type="submit"]:hover,
+.bonkers-contact-section .bonkers-contact-content .bonkers-contact-form form .contact-submit input[type="submit"]:focus,
+.bonkers-contact-section .bonkers-contact-content .bonkers-contact-form .wpcf7-form .contact-submit input[type="submit"]:focus,
+.bonkers-contact-section .bonkers-contact-content .bonkers-contact-form form input[type="submit"]:focus,
+.bonkers-contact-section .bonkers-contact-content .bonkers-contact-form .wpcf7-form input[type="submit"]:focus {
   text-decoration: none;
 }
 /*
@@ -1714,7 +1757,9 @@ Contact Section
   color: #4d4d4d;
 }
 .post-image a:hover::before,
-.post-image a:hover::after {
+.post-image a:focus::before,
+.post-image a:hover::after,
+.post-image a:focus::after {
   opacity: 1;
 }
 .post-image img {
@@ -1768,7 +1813,8 @@ Contact Section
   text-decoration: none;
   color: #999999;
 }
-.metadata ul li a:hover {
+.metadata ul li a:hover,
+.metadata ul li a:focus {
   text-decoration: underline;
   color: #8c8c8c;
 }
@@ -1816,7 +1862,8 @@ Contact Section
   color: #fff;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
 }
-.pagination a:hover {
+.pagination a:hover,
+.pagination a:focus {
   background-color: #4d4d4d;
   color: #fff;
   cursor: pointer;
@@ -1826,7 +1873,8 @@ Contact Section
   color: #fff;
   border-color: #2D80E2;
 }
-.pagination li.active a:hover {
+.pagination li.active a:hover,
+.pagination li.active a:focus {
   background-color: #fff;
   color: #2D80E2;
   border-color: #2D80E2;
@@ -1969,7 +2017,8 @@ Widgets
   -o-transition: all 200ms;
   transition: all 200ms;
 }
-#sidebar .widget > ul li > a:hover {
+#sidebar .widget > ul li > a:hover,
+#sidebar .widget > ul li > a:focus {
   text-indent: 10px;
   text-decoration: none;
 }
@@ -2040,7 +2089,8 @@ Recent Comments Widget
   background: none;
   padding: 0;
 }
-#sidebar .widget_recent_comments ul li a:hover {
+#sidebar .widget_recent_comments ul li a:hover,
+#sidebar .widget_recent_comments ul li a:focus {
   background: none;
 }
 /*
@@ -2073,7 +2123,8 @@ Tag Widget
   border-radius: 3px;
   outline: none;
 }
-#sidebar .widget_tag ul li a:hover {
+#sidebar .widget_tag ul li a:hover,
+#sidebar .widget_tag ul li a:focus {
   color: #999999;
   text-decoration: none;
   background-color: #FFFFFF;
@@ -2180,7 +2231,8 @@ Footer
 #footer h4 {
   color: #fff;
 }
-#footer a:hover {
+#footer a:hover,
+#footer a:focus {
   text-decoration: underline;
 }
 #footer select {
@@ -2220,7 +2272,9 @@ footer ol li > a {
   position: relative;
 }
 #footer ul li > a:hover,
-footer ol li > a:hover {
+footer ol li > a:hover,
+#footer ul li > a:focus,
+footer ol li > a:focus {
   text-decoration: none;
 }
 #footer ul li > a:after,
@@ -2238,7 +2292,9 @@ footer ol li > a:after {
   background-color: rgba(255, 255, 255, 0.1);
 }
 #footer ul li > a:hover:after,
-footer ol li > a:hover:after {
+footer ol li > a:hover:after,
+#footer ul li > a:focus:after,
+footer ol li > a:focus:after {
   width: 100%;
 }
 #footer .widget ul li:first-child {
@@ -2286,7 +2342,8 @@ footer ol li > a:hover:after {
 #footer .widget_recent_entries ul li a {
   text-decoration: none;
 }
-#footer .widget_recent_entries ul li a:hover {
+#footer .widget_recent_entries ul li a:hover,
+#footer .widget_recent_entries ul li a:focus {
   text-decoration: none !important;
 }
 .widget_recent_entries a {
@@ -2322,7 +2379,8 @@ Subfooter
 .sub-footer a {
   color: #8c8c8c;
 }
-.sub-footer a:hover {
+.sub-footer a:hover,
+.sub-footer a:focus {
   color: #8c8c8c;
   text-decoration: underline;
 }
@@ -2366,7 +2424,9 @@ Social Nav
   border-radius: 3px;
 }
 .nav_social li a:hover,
-.widget #menu-social li a:hover {
+.nav_social li a:focus,
+.widget #menu-social li a:hover,
+.widget #menu-social li a:focus {
   color: #fff;
 }
 .nav_social li a::before,
@@ -2402,7 +2462,9 @@ Social Nav
   height: 28px;
 }
 .nav_social li a:hover::before,
-.widget #menu-social li a:hover::before {
+.nav_social li a:focus::before,
+.widget #menu-social li a:hover::before,
+.widget #menu-social li a:focus::before {
   color: #fff;
   -webkit-animation: social_icons_anim 500ms ease;
   -o-animation: social_icons_anim 500ms ease;
@@ -2501,7 +2563,9 @@ Social Nav
   content: "\f09a";
 }
 .nav_social li a[href*="facebook.com"]:hover,
-#menu-social li a[href*="facebook.com"]:hover {
+.nav_social li a[href*="facebook.com"]:focus,
+#menu-social li a[href*="facebook.com"]:hover,
+#menu-social li a[href*="facebook.com"]:focus {
   background-color: #3B5998;
 }
 .nav_social li a[href*="twitter.com"]::before,
@@ -2509,7 +2573,9 @@ Social Nav
   content: "\f099";
 }
 .nav_social li a[href*="twitter.com"]:hover,
-#menu-social li a[href*="twitter.com"]:hover {
+.nav_social li a[href*="twitter.com"]:focus,
+#menu-social li a[href*="twitter.com"]:hover,
+#menu-social li a[href*="twitter.com"]:focus {
   background-color: #33CCFF;
 }
 .nav_social li a[href*="dribbble.com"]::before,
@@ -2517,7 +2583,9 @@ Social Nav
   content: "\f17d";
 }
 .nav_social li a[href*="dribbble.com"]:hover,
-#menu-social li a[href*="dribbble.com"]:hover {
+.nav_social li a[href*="dribbble.com"]:focus,
+#menu-social li a[href*="dribbble.com"]:hover,
+#menu-social li a[href*="dribbble.com"]:focus {
   background-color: #C5376D;
 }
 .nav_social li a[href*="instagram.com"]::before,
@@ -2525,7 +2593,9 @@ Social Nav
   content: "\f16d";
 }
 .nav_social li a[href*="instagram.com"]:hover,
-#menu-social li a[href*="instagram.com"]:hover {
+.nav_social li a[href*="instagram.com"]:focus,
+#menu-social li a[href*="instagram.com"]:hover,
+#menu-social li a[href*="instagram.com"]:focus {
   background-color: #e33567;
 }
 .nav_social li a[href*="flickr.com"]::before,
@@ -2533,7 +2603,9 @@ Social Nav
   content: "\f16e";
 }
 .nav_social li a[href*="flickr.com"]:hover,
-#menu-social li a[href*="flickr.com"]:hover {
+.nav_social li a[href*="flickr.com"]:focus,
+#menu-social li a[href*="flickr.com"]:hover,
+#menu-social li a[href*="flickr.com"]:focus {
   background-color: #FF0084;
 }
 .nav_social li a[href*="youtube.com"]::before,
@@ -2541,6 +2613,7 @@ Social Nav
   content: "\f167";
 }
 .nav_social li a[href*="youtube.com"]:hover,
+.nav_social li a[href*="youtube.com"]:focus,
 #menu-social li a[href*="youtube.com"]:hover {
   background-color: #C1302A;
 }
@@ -2549,7 +2622,9 @@ Social Nav
   content: "\f09b";
 }
 .nav_social li a[href*="github.com"]:hover,
-#menu-social li a[href*="github.com"]:hover {
+.nav_social li a[href*="github.com"]:focus,
+#menu-social li a[href*="github.com"]:hover,
+#menu-social li a[href*="github.com"]:focus {
   background-color: #2f2f2f;
 }
 .nav_social li a[href*="vimeo.com"]::before,
@@ -2557,7 +2632,9 @@ Social Nav
   content: "\f194";
 }
 .nav_social li a[href*="vimeo.com"]:hover,
-#menu-social li a[href*="vimeo.com"]:hover {
+.nav_social li a[href*="vimeo.com"]:focus,
+#menu-social li a[href*="vimeo.com"]:hover,
+#menu-social li a[href*="vimeo.com"]:focus {
   background-color: #1AB7EA;
 }
 .nav_social li a[href*="foursquare.com"]::before,
@@ -2565,7 +2642,9 @@ Social Nav
   content: "\f180";
 }
 .nav_social li a[href*="foursquare.com"]:hover,
-#menu-social li a[href*="foursquare.com"]:hover {
+.nav_social li a[href*="foursquare.com"]:focus,
+#menu-social li a[href*="foursquare.com"]:hover,
+#menu-social li a[href*="foursquare.com"]:focus {
   background-color: #1DAFEC;
 }
 .nav_social li a[href*="skype.com"]::before,
@@ -2573,7 +2652,9 @@ Social Nav
   content: "\f17e";
 }
 .nav_social li a[href*="skype.com"]:hover,
-#menu-social li a[href*="skype.com"]:hover {
+.nav_social li a[href*="skype.com"]:focus,
+#menu-social li a[href*="skype.com"]:hover,
+#menu-social li a[href*="skype.com"]:focus {
   background-color: #00AFF0;
 }
 .nav_social li a[href*="plus.google.com"]::before,
@@ -2581,7 +2662,9 @@ Social Nav
   content: "\f0d5";
 }
 .nav_social li a[href*="plus.google.com"]:hover,
-#menu-social li a[href*="plus.google.com"]:hover {
+.nav_social li a[href*="plus.google.com"]:focus,
+#menu-social li a[href*="plus.google.com"]:hover,
+#menu-social li a[href*="plus.google.com"]:focus {
   background-color: #D5402B;
 }
 .nav_social li a[href*="tumblr.com"]::before,
@@ -2589,7 +2672,9 @@ Social Nav
   content: "\f173";
 }
 .nav_social li a[href*="tumblr.com"]:hover,
-#menu-social li a[href*="tumblr.com"]:hover {
+.nav_social li a[href*="tumblr.com"]:focus,
+#menu-social li a[href*="tumblr.com"]:hover,
+#menu-social li a[href*="tumblr.com"]:focus {
   background-color: #343B4A;
 }
 .nav_social li a[href*="linkedin.com"]::before,
@@ -2597,7 +2682,9 @@ Social Nav
   content: "\f0e1";
 }
 .nav_social li a[href*="linkedin.com"]:hover,
-#menu-social li a[href*="linkedin.com"]:hover {
+.nav_social li a[href*="linkedin.com"]:focus,
+#menu-social li a[href*="linkedin.com"]:hover,
+#menu-social li a[href*="linkedin.com"]:focus {
   background-color: #0073B2;
 }
 .nav_social li a[href*="pinterest.com"]::before,
@@ -2605,7 +2692,9 @@ Social Nav
   content: "\f231";
 }
 .nav_social li a[href*="pinterest.com"]:hover,
-#menu-social li a[href*="pinterest.com"]:hover {
+.nav_social li a[href*="pinterest.com"]:focus,
+#menu-social li a[href*="pinterest.com"]:hover,
+#menu-social li a[href*="pinterest.com"]:focus {
   background-color: #CB2027;
 }
 .nav_social li a[href*="/feed/"]::before,
@@ -2613,7 +2702,9 @@ Social Nav
   content: "\f09e";
 }
 .nav_social li a[href*="/feed/"]:hover,
-#menu-social li a[href*="/feed/"]:hover {
+.nav_social li a[href*="/feed/"]:focus,
+#menu-social li a[href*="/feed/"]:hover,
+#menu-social li a[href*="/feed/"]:focus {
   background-color: #FF6600;
 }
 .nav_social li a[href*="wordpress.com"]::before,
@@ -2621,7 +2712,9 @@ Social Nav
   content: "\f19a";
 }
 .nav_social li a[href*="wordpress.com"]:hover,
-#menu-social li a[href*="wordpress.com"]:hover {
+.nav_social li a[href*="wordpress.com"]:focus,
+#menu-social li a[href*="wordpress.com"]:hover,
+#menu-social li a[href*="wordpress.com"]:focus {
   background-color: #21759b;
 }
 .nav_social li a[href*="wordpress.org"]::before,
@@ -2629,7 +2722,9 @@ Social Nav
   content: "\f19a";
 }
 .nav_social li a[href*="wordpress.org"]:hover,
-#menu-social li a[href*="wordpress.org"]:hover {
+.nav_social li a[href*="wordpress.org"]:focus,
+#menu-social li a[href*="wordpress.org"]:hover,
+#menu-social li a[href*="wordpress.org"]:focus {
   background-color: #21759b;
 }
 .nav_social li a[href*="tripadvisor.com"]::before,
@@ -2637,7 +2732,9 @@ Social Nav
   content: "\f262";
 }
 .nav_social li a[href*="tripadvisor.com"]:hover,
-#menu-social li a[href*="tripadvisor.com"]:hover {
+.nav_social li a[href*="tripadvisor.com"]:focus,
+#menu-social li a[href*="tripadvisor.com"]:hover,
+#menu-social li a[href*="tripadvisor.com"]:focus {
   background-color: #1d973c;
 }
 .nav_social li a[href*="yelp.com"]::before,
@@ -2645,7 +2742,9 @@ Social Nav
   content: "\f1e9";
 }
 .nav_social li a[href*="yelp.com"]:hover,
-#menu-social li a[href*="yelp.com"]:hover {
+.nav_social li a[href*="yelp.com"]:focus,
+#menu-social li a[href*="yelp.com"]:hover,
+#menu-social li a[href*="yelp.com"]:focus {
   background-color: #db000b;
 }
 .nav_social li a[href*="tel:"]::before,
@@ -2653,7 +2752,9 @@ Social Nav
   content: "\f095";
 }
 .nav_social li a[href*="tel:"]:hover,
-#menu-social li a[href*="tel:"]:hover {
+.nav_social li a[href*="tel:"]:focus,
+#menu-social li a[href*="tel:"]:hover,
+#menu-social li a[href*="tel:"]:focus {
   background-color: #0073e5;
 }
 .nav_social li a[href*="whatsapp:"]::before,
@@ -2661,7 +2762,9 @@ Social Nav
   content: "\f232";
 }
 .nav_social li a[href*="whatsapp:"]:hover,
-#menu-social li a[href*="whatsapp:"]:hover {
+.nav_social li a[href*="whatsapp:"]:focus,
+#menu-social li a[href*="whatsapp:"]:hover,
+#menu-social li a[href*="whatsapp:"]:focus {
   background-color: #00c547;
 }
 .nav_social li a[href*="vk.com"]::before,
@@ -2669,7 +2772,9 @@ Social Nav
   content: "\f189";
 }
 .nav_social li a[href*="vk.com"]:hover,
-#menu-social li a[href*="vk.com"]:hover {
+.nav_social li a[href*="vk.com"]:focus,
+#menu-social li a[href*="vk.com"]:hover,
+#menu-social li a[href*="vk.com"]:focus {
   background-color: #39739b;
 }
 .nav_social li a[href*="500px.com"]::before,
@@ -2677,7 +2782,9 @@ Social Nav
   content: "\f26e";
 }
 .nav_social li a[href*="500px.com"]:hover,
-#menu-social li a[href*="500px.com"]:hover {
+.nav_social li a[href*="500px.com"]:focus,
+#menu-social li a[href*="500px.com"]:hover,
+#menu-social li a[href*="500px.com"]:focus {
   background-color: #0098e7;
 }
 .nav_social li a[href*="snapchat.com"]::before,
@@ -2685,7 +2792,9 @@ Social Nav
   content: "\f2ac";
 }
 .nav_social li a[href*="snapchat.com"]:hover,
-#menu-social li a[href*="napchat.com"]:hover {
+.nav_social li a[href*="snapchat.com"]:focus,
+#menu-social li a[href*="napchat.com"]:hover,
+#menu-social li a[href*="napchat.com"]:focus {
   background-color: #f4ed1d;
 }
 .nav_social li a[href*="behance.net"]::before,
@@ -2693,7 +2802,9 @@ Social Nav
   content: "\f1b4";
 }
 .nav_social li a[href*="behance.net"]:hover,
-#menu-social li a[href*="behance.net"]:hover {
+.nav_social li a[href*="behance.net"]:focus,
+#menu-social li a[href*="behance.net"]:hover,
+#menu-social li a[href*="behance.net"]:focus {
   background-color: #0077ff;
 }
 .nav_social li a[href*="amazon."]::before,
@@ -2701,7 +2812,9 @@ Social Nav
   content: "\f270";
 }
 .nav_social li a[href*="amazon."]:hover,
-#menu-social li a[href*="amazon."]:hover {
+.nav_social li a[href*="amazon."]:focus,
+#menu-social li a[href*="amazon."]:hover,
+#menu-social li a[href*="amazon."]:focus {
   background-color: #ff9900;
 }
 /*
@@ -2921,13 +3034,13 @@ Footer Menu
   transition: box-shadow 500ms, background 200ms;
   margin-bottom: 0;
 }
-.no-touch #respond .form-submit #submit-respond:hover {
+.no-touch #respond .form-submit #submit-respond:hover,
+.no-touch #respond .form-submit #submit-respond:focus {
   text-decoration: none !important;
   background-color: #1e75dc;
   color: #fff;
 }
-#respond .form-submit #submit-respond:active,
-#respond .form-submit #submit-respond:focus {
+#respond .form-submit #submit-respond:active {
   position: relative;
   bottom: -1px;
   text-decoration: none;
@@ -3391,7 +3504,8 @@ Sidebar
   -webkit-box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
 }
-.no-touch .glaciar_team_member:hover {
+.no-touch .glaciar_team_member:hover,
+.no-touch .glaciar_team_member:focus {
   -webkit-box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
 }
@@ -3483,7 +3597,8 @@ Sidebar
   padding-bottom: 100%;
   vertical-align: middle;
 }
-.no-touch .glaciar_team_member:hover .glaciar_team_hover {
+.no-touch .glaciar_team_member:hover .glaciar_team_hover,
+.no-touch .glaciar_team_member:focus-within .glaciar_team_hover {
   opacity: 1;
   -webkit-transform: translate(0, 0);
   -ms-transform: translate(0, 0);
@@ -3491,7 +3606,9 @@ Sidebar
   transform: translate(0, 0);
 }
 .no-touch .glaciar_team_member:hover .glaciar_team_hover .glaciar_team_member_text,
-.no-touch .glaciar_team_member:hover .glaciar_team_hover .glaciar_team_member_social_icons {
+.no-touch .glaciar_team_member:focus-within .glaciar_team_hover .glaciar_team_member_text,
+.no-touch .glaciar_team_member:hover .glaciar_team_hover .glaciar_team_member_social_icons,
+.no-touch .glaciar_team_member:focus-within .glaciar_team_hover .glaciar_team_member_social_icons {
   opacity: 1;
   -webkit-transform: translate(0, 0);
   -ms-transform: translate(0, 0);
@@ -3776,7 +3893,8 @@ a img.aligncenter {
 .widget_archive ul li a {
   display: inline-block !important;
 }
-.widget_archive ul li a:hover {
+.widget_archive ul li a:hover,
+.widget_archive ul li a:focus {
   background-color: transparent!important;
 }
 .widget select {
@@ -3849,7 +3967,8 @@ a img.aligncenter {
 .widget_categories ul li a {
   display: inline-block !important;
 }
-.widget_categories ul li a:hover {
+.widget_categories ul li a:hover,
+.widget_categories ul li a:focus {
   background-color: transparent!important;
 }
 /* Recent Comments Widget
@@ -3870,7 +3989,8 @@ a img.aligncenter {
 }
 /* Recent Entries Widget
 -------------------------------------- */
-.widget_recent_entries ul li a:hover {
+.widget_recent_entries ul li a:hover,
+.widget_recent_entries ul li a:focus {
   text-indent: 0!important;
   background-color: transparent!important;
   text-decoration: underline;
@@ -3993,13 +4113,13 @@ a img.aligncenter {
   width: auto;
   height: auto;
 }
-.no-touch .search-form .search-submit:hover {
+.no-touch .search-form .search-submit:hover,
+.no-touch .search-form .search-submit:focus {
   text-decoration: none !important;
   background-color: #1e75dc;
   color: #fff;
 }
-.search-form .search-submit:active,
-.search-form .search-submit:focus {
+.search-form .search-submit:active {
   position: relative;
   bottom: -1px;
   text-decoration: none;
@@ -4020,7 +4140,8 @@ a img.aligncenter {
   box-shadow: none;
   margin-bottom: 0;
 }
-.widget_search .search-form .search-submit:hover {
+.widget_search .search-form .search-submit:hover,
+.widget_search .search-form .search-submit:focus {
   background: none;
   box-shadow: none;
 }
@@ -4116,11 +4237,15 @@ a img.aligncenter {
   text-overflow: ellipsis;
 }
 .post-navigation .nav-next a:hover,
-.post-navigation .nav-previous a:hover {
+.post-navigation .nav-previous a:hover,
+.post-navigation .nav-next a:focus,
+.post-navigation .nav-previous a:focus {
   background-color: transparent;
 }
 .post-navigation .nav-next a:hover::before,
-.post-navigation .nav-previous a:hover::before {
+.post-navigation .nav-previous a:hover::before,
+.post-navigation .nav-next a:focus::before,
+.post-navigation .nav-previous a:focus::before {
   background-color: #2D80E2;
   color: #fff;
   -webkit-transform: translate(0, 0);
@@ -4233,13 +4358,13 @@ a img.aligncenter {
   clear: both;
   display: block;
 }
-.no-touch .post-password-form input[type='submit']:hover {
+.no-touch .post-password-form input[type='submit']:hover,
+.no-touch .post-password-form input[type='submit']:focus {
   text-decoration: none !important;
   background-color: #1e75dc;
   color: #fff;
 }
-.post-password-form input[type='submit']:active,
-.post-password-form input[type='submit']:focus {
+.post-password-form input[type='submit']:active {
   position: relative;
   bottom: -1px;
   text-decoration: none;
@@ -4336,7 +4461,8 @@ a img.aligncenter {
   transition: background-color 200ms;
   padding: 6px 15px;
 }
-.wpcf7 input[type="submit"]:hover {
+.wpcf7 input[type="submit"]:hover,
+.wpcf7 input[type="submit"]:focus {
   background-color: #8c8c8c;
   color: #fff;
 }
@@ -4387,7 +4513,8 @@ a img.aligncenter {
   -o-transition: transform 300ms;
   transition: transform 300ms;
 }
-.wpb_wrapper .products .product-category a:hover img {
+.wpb_wrapper .products .product-category a:hover img,
+.wpb_wrapper .products .product-category a:focus img {
   -webkit-transform: scale(1.1);
   -ms-transform: scale(1.1);
   -o-transform: scale(1.1);
@@ -4406,7 +4533,8 @@ a img.aligncenter {
   -o-transition: transform 300ms;
   transition: transform 300ms;
 }
-.wpb_wrapper .products .product-category a:hover h3 {
+.wpb_wrapper .products .product-category a:hover h3,
+.wpb_wrapper .products .product-category a:focus h3 {
   -webkit-transform: scale(1.1);
   -ms-transform: scale(1.1);
   -o-transform: scale(1.1);
@@ -4425,7 +4553,8 @@ a img.aligncenter {
   font-weight: bold;
   text-transform: uppercase;
 }
-.ql_slider_btn:hover {
+.ql_slider_btn:hover,
+.ql_slider_btn:focus {
   text-decoration: none;
 }
 .ql_slider_btn.black {
@@ -4452,7 +4581,8 @@ a img.aligncenter {
   border: 2px solid #999999;
   color: #999999;
 }
-.widget_yikes_mc_widget input[type="submit"]:hover {
+.widget_yikes_mc_widget input[type="submit"]:hover,
+.widget_yikes_mc_widget input[type="submit"]:focus {
   background-color: #eeeeee;
   border: 2px solid #eeeeee;
   color: #8c8c8c;
@@ -4488,7 +4618,8 @@ a img.aligncenter {
 .null-instagram-feed .instagram-pics li a img {
   border-radius: 3px !important;
 }
-.null-instagram-feed .instagram-pics li a:hover {
+.null-instagram-feed .instagram-pics li a:hover,
+.null-instagram-feed .instagram-pics li a:focus {
   opacity: 1;
 }
 .null-instagram-feed .instagram-pics li a::after {
@@ -4626,18 +4757,21 @@ img {
   position: relative;
   margin-right: 20px;
 }
-.read-more:hover {
+.read-more:hover,
+.read-more:focus {
   color: #4d4d4d;
   text-decoration: none;
 }
-.read-more:hover i {
+.read-more:hover i,
+.read-more:focus i {
   -webkit-transform: translate(25px, -50%);
   -ms-transform: translate(25px, -50%);
   -o-transform: translate(25px, -50%);
   transform: translate(25px, -50%);
   opacity: 1;
 }
-.read-more:hover::before {
+.read-more:hover::before,
+.read-more:focus::before {
   width: 0;
 }
 .read-more i {
@@ -4675,7 +4809,8 @@ img {
   background-color: #fff;
   padding: 1.875rem;
 }
-.ql_background_hover:hover {
+.ql_background_hover:hover,
+.ql_background_hover:focus {
   -webkit-box-shadow: 0 3px 8px 1px rgba(0, 0, 0, 0.1);
   box-shadow: 0 3px 8px 1px rgba(0, 0, 0, 0.1);
 }
@@ -4689,7 +4824,8 @@ img {
   -webkit-box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
 }
-.no-touch .ql_shadow_w_hover:hover {
+.no-touch .ql_shadow_w_hover:hover,
+.no-touch .ql_shadow_w_hover:focus {
   -webkit-box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
 }
@@ -4712,13 +4848,13 @@ img {
   -o-transition: box-shadow 500ms, background 200ms;
   transition: box-shadow 500ms, background 200ms;
 }
-.no-touch .ql_primary_btn:hover {
+.no-touch .ql_primary_btn:hover,
+.no-touch .ql_primary_btn:focus {
   text-decoration: none !important;
   background-color: #1e75dc;
   color: #fff;
 }
-.ql_primary_btn:active,
-.ql_primary_btn:focus {
+.ql_primary_btn:active {
   position: relative;
   bottom: -1px;
   text-decoration: none;
@@ -4746,13 +4882,13 @@ img {
   outline: none;
   text-align: center;
 }
-.no-touch .ql_secundary_btn:hover {
+.no-touch .ql_secundary_btn:hover,
+.no-touch .ql_secundary_btn:focus {
   text-decoration: none !important;
   background-color: #1e75dc;
   color: #fff;
 }
-.ql_secundary_btn:active,
-.ql_secundary_btn:focus {
+.ql_secundary_btn:active {
   position: relative;
   bottom: -1px;
   text-decoration: none;
@@ -4779,22 +4915,24 @@ img {
   outline: none;
   text-align: center;
 }
-.no-touch .ql_border_btn:hover {
+.no-touch .ql_border_btn:hover,
+.no-touch .ql_border_btn:focus {
   text-decoration: none !important;
   background-color: #1e75dc;
   color: #fff;
 }
-.ql_border_btn:active,
-.ql_border_btn:focus {
+.ql_border_btn:active {
   position: relative;
   bottom: -1px;
   text-decoration: none;
 }
-.no-touch .ql_border_btn:hover {
+.no-touch .ql_border_btn:hover,
+.no-touch .ql_border_btn:focus {
   background-color: #fff;
   color: #2D80E2;
 }
-.ql_border_btn:hover {
+.ql_border_btn:hover,
+.ql_border_btn:focus {
   text-decoration: none;
 }
 /* Make Space between sections											*/
@@ -4826,7 +4964,8 @@ img {
   opacity: 0;
   border-radius: 2px;
 }
-.ql_thumbnail_hover:hover:before {
+.ql_thumbnail_hover:hover:before,
+.ql_thumbnail_hover:focus:before {
   opacity: 1;
 }
 .ql_thumbnail_hover:after {
@@ -4854,7 +4993,8 @@ img {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-.ql_thumbnail_hover:hover:after {
+.ql_thumbnail_hover:hover:after,
+.ql_thumbnail_hover:focus:after {
   top: 50%;
   opacity: 1;
 }
@@ -4863,7 +5003,8 @@ img {
   -o-transition: transform 800ms;
   transition: transform 800ms;
 }
-.ql_thumbnail_hover:hover img {
+.ql_thumbnail_hover:hover img,
+.ql_thumbnail_hover:focus img {
   -webkit-transform: scale(1.1);
   -ms-transform: scale(1.1);
   -o-transform: scale(1.1);
@@ -4900,7 +5041,6 @@ textarea {
 input:focus,
 textarea:focus {
   border-color: #66afe9;
-  outline: 0;
   -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
   box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
 }

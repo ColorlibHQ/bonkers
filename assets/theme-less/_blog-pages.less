@@ -52,7 +52,7 @@
 	margin-bottom: 0;
 	margin-top: 0;
 	padding-right: 20px;
-	
+
 	position: relative;
 	display: inline-block;
 
@@ -142,7 +142,7 @@
 		 a{
 			display:block;
 			text-align: center;
-			
+
 
 				&::before{
 					content: "";
@@ -181,7 +181,7 @@
 					color: @gray-dark;
 				}
 
-				&:hover{
+				&:hover, &:focus {
 					&::before, &::after{
 						opacity: 1;
 					}
@@ -241,7 +241,7 @@
 	text-decoration: none;
 	color: @gray-light;
 
-		&:hover{
+		&:hover, &:focus {
 			text-decoration: underline;
 			color: @gray;
 		}
@@ -301,7 +301,8 @@
 	color: #fff;
 	text-shadow: 0 1px 1px rgba(0,0,0,0.2);
 }
-.pagination a:hover{
+.pagination a:hover,
+.pagination a:focus {
 	background-color: @gray-dark;
 	color: #fff;
 	cursor: pointer;
@@ -313,7 +314,8 @@
 	color: @contrastColor;
 	border-color: @heroColor;
 }
-.pagination li.active a:hover{
+.pagination li.active a:hover,
+.pagination li.active a:focus {
 	background-color: @contrastColor;
 	color: @heroColor;
 	border-color: @heroColor;

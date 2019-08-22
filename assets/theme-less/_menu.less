@@ -4,7 +4,7 @@
 .main-navigation {
 	display: inline-block;
 	width: auto;
-		
+
 		/* Level 1 */
 		ul {
 			list-style: none;
@@ -19,7 +19,7 @@
 				.js &{
 					display: block;
 				}
-				
+
 				/* Level 2 */
 				ul{
 					padding: 0 0 0 1.5em;
@@ -49,15 +49,16 @@
 							width: 16em;
 							color: #fff;
 
-								.no-touch &:hover{
+								.no-touch &:hover,
+								.no-touch &:focus {
 									background-color: @heroColor;
 									color: #fff;
 									border-radius: 2px;
 								}
 						}
 
-						
-						
+
+
 						/* Level 3 */
 						ul {
 							left: 100%;
@@ -66,20 +67,21 @@
 						}
 
 						/* Level 3 */
-						
+
 				}
 
 				ul.align-right {
 					left: 0;
 					transform:translate( -100% );
 				}
-				
+
 				li {
 					position: relative;
 					display: inline-block;
 					.font-size(14);
 
-						.no-touch &:hover{
+						.no-touch &:hover,
+						.no-touch &:focus-within {
 							background-color: @gray-dark;
 				    		color: #fff;
 
@@ -87,8 +89,8 @@
 				    				color: #fff;
 				    			}
 						}
-						
-						li, 
+
+						li,
 						&:last-child{
 							//border: 0;
 						}
@@ -105,6 +107,7 @@
 						}
 
 						&:hover > ul,
+						&:focus-within > ul,
 						&.focus > ul {
 							visibility: visible;
 						}
@@ -140,7 +143,7 @@
 			padding: 1.5em 1.42857142857143em;
 			color: @gray;
 
-				.no-touch &:hover{				
+				.no-touch &:hover, .no-touch &:focus {
 		    		color: #fff;
 				}
 		}
@@ -308,7 +311,7 @@
 
 	.main-navigation {
 		display: block;
-			
+
 			/* Level 1 */
 			ul {
 
@@ -338,16 +341,17 @@
 								width: 100%;
 								padding: 0.5em;
 
-									&:hover{
+									&:hover, &:focus {
 										background-color: transparent;
 										color: @gray;
 									}
-									.no-touch &:hover{
+									.no-touch &:hover,
+									.no-touch &:focus {
 										color: @gray-dark;
 										background-color: transparent;
 									}
 							}
-							
+
 							/* Level 3 */
 							ul{
 
@@ -367,11 +371,12 @@
 									a{
 										color: @gray;
 
-											&:hover{
+											&:hover, &:focus {
 												background-color: transparent;
 												color: @gray;
 											}
-											.no-touch &:hover{
+											.no-touch &:hover,
+											.no-touch &:focus {
 												color: @gray-dark;
 												background-color: transparent;
 											}
@@ -379,7 +384,7 @@
 							}
 
 					}
-					
+
 					li {
 						display: block;
 						.font-size(16);
@@ -388,8 +393,10 @@
     					position: relative;
     					font-weight: normal;
 
-	    					&:hover,
-	    					.no-touch &:hover{
+							&:hover,
+							&:focus-within,
+							.no-touch &:hover,
+							.no-touch &:focus-within {
 								background-color: transparent;
 					    		color: inherit;
 
@@ -463,7 +470,7 @@
 @media (min-width: @screen-sm-min) and (max-width: @screen-sm-max) {
 
 	.main-navigation {
-			
+
 			a{
 				padding: 1.07142857142857em 1.21428571428571em;
 			}

@@ -106,7 +106,7 @@ img {
 	position: relative;
 	margin-right: 20px;
 
-		&:hover{
+		&:hover, &:focus {
 			color: @gray-dark;
 			text-decoration: none;
 
@@ -118,7 +118,7 @@ img {
 					width: 0;
 				}
 		}
-		
+
 
 		i{
 			.font-size(16);
@@ -144,7 +144,7 @@ img {
 .ql_background_hover {
 	.ql_background;
 
-	&:hover {
+	&:hover, &:focus {
 		.box-shadow( 0 3px 8px 1px rgba(0,0,0,0.1) );
 	}
 }
@@ -157,7 +157,7 @@ img {
 .ql_shadow_w_hover {
 	.box-shadow( 0 15px 35px rgba(0,0,0,0.2) );
 
-	.no-touch &:hover {
+	.no-touch &:hover, .no-touch &:focus {
 		.box-shadow( 0 15px 35px rgba(0,0,0,0.4) );
 	}
 }
@@ -177,14 +177,13 @@ img {
 	.font-size(16);
 	.transition(~ "box-shadow 500ms, background 200ms");
 
-	.no-touch &:hover {
+	.no-touch &:hover, .no-touch &:focus {
 		text-decoration: none !important;
 		background-color: darken( @heroColor, 4%);
 		color: #fff;
 	}
 
-	&:active,
-	&:focus {
+	&:active {
 		position: relative;
 		bottom: -1px;
 		text-decoration: none;
@@ -210,12 +209,12 @@ img {
 	outline: none;
 	text-align: center;
 
-		.no-touch &:hover {
+		.no-touch &:hover, .no-touch &:focus {
 			background-color: #fff;
 			color: @heroColor;
 		}
 
-		&:hover {
+		&:hover, &:focus {
 			text-decoration:none;
 		}
 }
@@ -253,7 +252,7 @@ img {
 		border-radius: @border-radius-small;
 	}
 
-	&:hover:before {
+	&:hover:before, &:focus:before  {
 		opacity: 1;
 	}
 
@@ -276,7 +275,7 @@ img {
 		-moz-osx-font-smoothing: grayscale;
 	}
 
-	&:hover:after {
+	&:hover:after, &:focus:after {
 		top: 50%;
 		opacity: 1;
 	}
@@ -285,7 +284,7 @@ img {
 		.transition( transform 800ms );
 	}
 
-	&:hover img {
+	&:hover img, &:focus img {
 		.scale(1.1);
 	}
 }
