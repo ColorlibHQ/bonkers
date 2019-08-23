@@ -38,8 +38,8 @@ class Bonkers {
 			),
 			array(
 				'id'          => 'bonkers-install-kali-forms',
-				'title'       => Bonkers_Helper::create_plugin_title( __( 'Kaliforms', 'bonkers' ), 'kali-forms' ),
-				'description' => __( 'It is highly recommended that you install the Kaliforms plugin.', 'bonkers' ),
+				'title'       => Bonkers_Helper::create_plugin_title( __( 'Kali Forms', 'bonkers' ), 'kali-forms' ),
+				'description' => __( 'It is highly recommended that you install the Kali Forms plugin.', 'bonkers' ),
 				'check'       => Bonkers_Helper::has_plugin( 'kali-forms' ),
 				'type'        => 'plugin',
 				'plugin_slug' => 'kali-forms',

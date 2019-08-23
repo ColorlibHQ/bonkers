@@ -38,7 +38,7 @@ class Epsilon_Import_Data {
 	public function __construct( $args = array() ) {
 		$this->plugins = array(
 			'bonkers-addons' => esc_html__( 'Bonkers Addons', 'epsilon-framework' ),
-			'kali-forms' => esc_html__( 'Kaliforms', 'epsilon-framework' ),
+			'kali-forms' => esc_html__( 'Kali Forms', 'epsilon-framework' ),
 		);
 		$this->handle_json();
 	}
