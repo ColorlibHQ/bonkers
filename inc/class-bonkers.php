@@ -3,15 +3,12 @@
 class Bonkers {
 
 	public $recommended_plugins = array(
-		'simple-custom-post-order' => array(
-			'recommended' => false,
-		),
-		'fancybox-for-wordpress'   => array(
-			'recommended' => false,
-		),
-		'kali-forms'   => array(
-			'recommended' => true,
-		),
+		'fancybox-for-wordpress'           => array( 'recommended' => false ),
+		'simple-custom-post-order'         => array( 'recommended' => false ),
+		'kali-forms'                       => array( 'recommended' => true ),
+		'colorlib-404-customizer'          => array( 'recommended' => false ),
+		'colorlib-coming-soon-maintenance' => array( 'recommended' => false ),
+		'colorlib-login-customizer'        => array( 'recommended' => false ),
 	);
 
 	public $recommended_actions;
