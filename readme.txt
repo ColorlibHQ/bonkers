@@ -82,11 +82,8 @@ License: https://stocksnap.io/license
 https://stocksnap.io/photo/1A3MXAT0M6
 https://stocksnap.io/photo/JBW2PXDOL6
 https://stocksnap.io/photo/R7GVMRJWW9
-
-Images from pixabay
-License: https://pixabay.com/es/service/terms/#usage
-https://pixabay.com/photo-1274360/
-https://pixabay.com/photo-1690965/
+https://stocksnap.io/photo/woman-model-TJHZP9PY4F
+https://stocksnap.io/photo/confident-business-TMACJ6VLZH
 
 Icons
 03.Office.png - https://dribbble.com/shots/1569128-Freebie-48-Bubbles-Iconset
@@ -97,6 +94,10 @@ The WordPress logo belongs to Automattic.
 Any other image included & distributed with the theme has been licensed under the GPL and is the creative work of Colorlib.com.
 
 == Changelog ==
+
+= 1.0.5 =
+* Released: October 18, 2019
+- Security Fix
 
 = 1.0.2 =
 * Released: January 31, 2018
