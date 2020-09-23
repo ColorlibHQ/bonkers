@@ -95,6 +95,10 @@ Any other image included & distributed with the theme has been licensed under th
 
 == Changelog ==
 
+=1.0.6=
+- Small fixes
+- Security fix
+
 = 1.0.5 =
 * Released: October 18, 2019
 - Security Fix

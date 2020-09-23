@@ -107,7 +107,7 @@ module.exports = function(grunt) {
   // Build task
   grunt.registerTask( 'build-archive', [
       'textdomain',
-      'less',
+      // 'less',
       'clean:init',
       'copy',
       'compress:build',
