@@ -22,7 +22,7 @@ if ( $bonkers_enable_section || is_customize_preview() ) :
 				<div class="bonkers-contact-form">
 					<?php
 					if ( $bonkers_contact_form ) {
-						echo do_shortcode( '[contact-form-7 id="' . esc_attr( $bonkers_contact_form ) . '"]' );
+						echo defined('KALIFORMS_VERSION') ? do_shortcode( '[kaliform id="' . absint( $bonkers_contact_form ) . '"]' ) : do_shortcode( '[contact-form-7 id="' . absint( $bonkers_contact_form ) . '"]' );
 					}
 					?>
 				</div>

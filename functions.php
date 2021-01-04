@@ -194,6 +194,11 @@ function bonkers_wp_admin_style() {
 }
 add_action( 'admin_enqueue_scripts', 'bonkers_wp_admin_style' );
 
+if ( ! function_exists( 'wp_body_open' ) ) {
+    function wp_body_open() {
+        do_action( 'wp_body_open' );
+    }
+}
 
 /**
  * Custom template tags for this theme.

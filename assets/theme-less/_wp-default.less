@@ -222,7 +222,8 @@ a img.aligncenter {
 .widget_archive ul li a{
     display: inline-block!important;
 }
-.widget_archive ul li a:hover{
+.widget_archive ul li a:hover,
+.widget_archive ul li a:focus {
     background-color: transparent!important;
 }
 .widget select{
@@ -254,7 +255,8 @@ a img.aligncenter {
 .widget_categories ul li a{
     display: inline-block!important;
 }
-.widget_categories ul li a:hover{
+.widget_categories ul li a:hover,
+.widget_categories ul li a:focus {
     background-color: transparent!important;
 }
 /* Recent Comments Widget
@@ -277,11 +279,11 @@ a img.aligncenter {
 
 /* Recent Entries Widget
 -------------------------------------- */
-.widget_recent_entries ul li a:hover{
+.widget_recent_entries ul li a:hover,
+.widget_recent_entries ul li a:focus {
     text-indent: 0!important;
     background-color: transparent!important;
     text-decoration: underline;
-
 }
 /* RSS Widget
 -------------------------------------- */
@@ -407,7 +409,7 @@ a img.aligncenter {
     line-height:0;
     box-shadow: none;
     margin-bottom: 0;
-        &:hover{
+        &:hover, &:focus {
             background: none;
             box-shadow: none;
         }
@@ -493,7 +495,7 @@ a img.aligncenter {
                     overflow: hidden;
                     text-overflow: ellipsis;
 
-                        &:hover{
+                        &:hover, &:focus {
                             background-color: transparent;
 
                                 &::before{
@@ -600,7 +602,7 @@ a img.aligncenter {
 .error-404{
     .page-header{
         text-align: center;
-            
+
             .page-title{
                 padding-bottom: 1.21951219512195em;
             }

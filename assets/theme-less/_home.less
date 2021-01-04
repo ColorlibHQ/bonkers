@@ -45,7 +45,7 @@ Welcome Section
 					border-color: #fff;
 					color: #fff;
 
-						&:hover{
+						&:hover, &:focus {
 							background-color: #fff;
 							color: @heroColor;
 						}
@@ -73,8 +73,8 @@ Services Section
 					margin-top: 10px;
 					display: inline-block;
 					position: relative;
-						
-						&:hover{
+
+						&:hover, &:focus {
 							text-decoration: none;
 						}
 
@@ -90,7 +90,7 @@ Services Section
 							background-color: @heroColor;
 						}
 
-						&:hover:after{
+						&:hover:after, &:focus:after {
 							width: 100%;
 						}
 
@@ -107,7 +107,7 @@ Image Section
 .bonkers-image-section{
 	position: relative;
 	background-color: #111111;
-	
+
 
     	.bonkers-image-section-image{
     		background-position: center;
@@ -117,7 +117,7 @@ Image Section
 		    top: 0;
 		    bottom: 0;
 		    width: 50%;
-				
+
 				&::before{
 					content: "";
 					display: block;
@@ -152,7 +152,7 @@ Image Section
     					.ql_border_btn {
     						margin-top: 30px;
 
-    						&:hover {
+    						&:hover, &:focus {
     							background-color: #fff;
     						}
     					}
@@ -179,7 +179,7 @@ Phone Section
 .bonkers-phone-section{
 	background-color: @gray-lighter2;
 	padding: 70px 7%;
-	
+
 		.bonkers-phone-services{
 			display: inline-block;
 			width: 35%;
@@ -293,7 +293,7 @@ CTA Section
 			z-index: 2;
 			vertical-align: top;
 
-			&:hover {
+			&:hover, &:focus {
 				text-decoration: none;
 				color: #fff;
 			}
@@ -307,7 +307,7 @@ Video Section
 	padding: 70px 20%;
 	text-align: center;
 	position: relative;
-		
+
 		&::before{
 			content: "";
 			display: block;
@@ -338,7 +338,7 @@ Video Section
 					top: 0;
 					left: 0;
 
-						
+
 				}
 				.wp-video-shortcode{
 					.box-shadow(0 5px 30px rgba(0,0,0,0.20));
@@ -388,7 +388,7 @@ Team Section
 					border-bottom: 1px solid @gray-light;
 				}
 		}
-		
+
 		.bonkers-team-wrap{
 
 				.widget {
@@ -441,22 +441,22 @@ Team Section
 													padding: 2px;
 													color: @gray-light;
 
-														&:hover{
+														&:hover, &:focus {
 															color: @gray-dark;
 														}
 
 														i{
 															.font-size(18);
-														}	
+														}
 												}
 
-												
+
 										}
 								}
 						}
 				}
 		}
-		
+
 
 }
 
@@ -478,7 +478,7 @@ Subscribe Section
 				}
 
 				.bonkers-subscribre-form-wrapper{
-						
+
 						.bonkers-subscribre-form, .contact-form{
 
 								& > div{
@@ -564,7 +564,7 @@ Clients Section
 					border-bottom: 1px solid @gray-light;
 				}
 		}
-		
+
 		.bonkers-clients-wrap{
 
 				.widget {
@@ -586,8 +586,10 @@ Clients Section
 						}
 				}
 		}
-		
 
+		.bonkers-clients-logo a:focus {
+			outline: 1px solid;
+		}
 }
 
 
@@ -612,7 +614,7 @@ Contact Section
 					height: 100%;
 				}
 		}
-		
+
 		.bonkers-contact-content{
 			width: 40%;
 			margin-left: 55%;
@@ -655,7 +657,7 @@ Contact Section
 				.bonkers-contact-form{
 
 						form, .wpcf7-form{
-								
+
 								div{
 									margin-bottom: 15px;
 								}

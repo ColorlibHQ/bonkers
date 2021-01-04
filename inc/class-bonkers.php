@@ -3,12 +3,12 @@
 class Bonkers {
 
 	public $recommended_plugins = array(
-		'simple-custom-post-order' => array(
-			'recommended' => false,
-		),
-		'fancybox-for-wordpress'   => array(
-			'recommended' => false,
-		),
+		'fancybox-for-wordpress'           => array( 'recommended' => false ),
+		'simple-custom-post-order'         => array( 'recommended' => false ),
+		'kali-forms'                       => array( 'recommended' => true ),
+		'colorlib-404-customizer'          => array( 'recommended' => false ),
+		'colorlib-coming-soon-maintenance' => array( 'recommended' => false ),
+		'colorlib-login-customizer'        => array( 'recommended' => false ),
 	);
 
 	public $recommended_actions;
@@ -34,12 +34,12 @@ class Bonkers {
 				'plugin_slug' => 'bonkers-addons',
 			),
 			array(
-				'id'          => 'bonkers-install-contact-form-7',
-				'title'       => Bonkers_Helper::create_plugin_title( __( 'Contact Form 7', 'bonkers' ), 'contact-form-7' ),
-				'description' => __( 'It is highly recommended that you install the Contact Form 7.', 'bonkers' ),
-				'check'       => Bonkers_Helper::has_plugin( 'contact-form-7' ),
+				'id'          => 'bonkers-install-kali-forms',
+				'title'       => Bonkers_Helper::create_plugin_title( __( 'Kali Forms', 'bonkers' ), 'kali-forms' ),
+				'description' => __( 'It is highly recommended that you install the Kali Forms plugin.', 'bonkers' ),
+				'check'       => Bonkers_Helper::has_plugin( 'kali-forms' ),
 				'type'        => 'plugin',
-				'plugin_slug' => 'contact-form-7',
+				'plugin_slug' => 'kali-forms',
 			),
 		) );
 

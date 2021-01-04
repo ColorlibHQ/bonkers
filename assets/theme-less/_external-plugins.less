@@ -39,7 +39,8 @@
 	.transition(background-color 200ms);
 	padding: 6px 15px;
 }
-.wpcf7 input[type="submit"]:hover{
+.wpcf7 input[type="submit"]:hover,
+.wpcf7 input[type="submit"]:focus {
 	background-color: @gray;
 	color: #fff;
 }
@@ -93,7 +94,8 @@
 	.scale(1);
 	.transition( transform 300ms );
 }
-.wpb_wrapper .products .product-category a:hover img{
+.wpb_wrapper .products .product-category a:hover img,
+.wpb_wrapper .products .product-category a:focus img {
 	.scale(1.1);
 	z-index: 1;
 	position: relative;
@@ -107,7 +109,8 @@
 	position: relative;
 	.transition( transform 300ms );
 }
-.wpb_wrapper .products .product-category a:hover h3{
+.wpb_wrapper .products .product-category a:hover h3,
+.wpb_wrapper .products .product-category a:focus h3 {
 	.scale(1.1);
 }
 .wpb_wrapper .products .product-category .count{
@@ -126,7 +129,8 @@
 	font-weight: bold;
 	text-transform: uppercase;
 }
-.ql_slider_btn:hover{
+.ql_slider_btn:hover,
+.ql_slider_btn:focus {
 	text-decoration: none;
 }
 .ql_slider_btn.black{
@@ -157,7 +161,8 @@
 	border: 2px solid @gray-light;
 	color: @gray-light;
 }
-.widget_yikes_mc_widget input[type="submit"]:hover{
+.widget_yikes_mc_widget input[type="submit"]:hover,
+.widget_yikes_mc_widget input[type="submit"]:focus {
 	background-color: @gray-lighter;
 	border: 2px solid @gray-lighter;
 	color: @gray;
@@ -196,7 +201,7 @@
 								border-radius: 3px !important;
 							}
 						.transition(opacity 300ms) !important;
-							&:hover{
+							&:hover, &:focus {
 								opacity: 1;
 							}
 

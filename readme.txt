@@ -1,12 +1,20 @@
 === Bonkers ===
+Contributors: Colorlib
+Requires at least: WordPress 4.7
+Tested up to: WordPress 4.9.2
+Version: 1.0.2
+License: GPLv3 or later
+License URI: http://www.gnu.org/licenses/gpl-3.0.en.html
+Tags: blog, portfolio, two-columns, custom-background, threaded-comments, custom-menu, featured-images, sticky-post, translation-ready
+
+== Description ==
 
 Bonkers is a beautiful one page WordPress theme.
 
-Author: Colorlib
+= Create a Front Page =
 
-License: GPLv3 or later
-License URI: http://www.gnu.org/licenses/gpl-3.0.en.html
-
+Create a new page and select "Front Page" as template.
+Then you can make this page your home page by going to Settings > Reading > Front page displays, and selecting your new page under "Front page" option.
 
 == Installation ==
 	
@@ -14,13 +22,7 @@ License URI: http://www.gnu.org/licenses/gpl-3.0.en.html
 2. Click Upload and Choose File, then select the theme's .zip file. Click Install Now.
 3. Click Activate to use your new theme right away.
 
-= Create a Front Page =
-
-Create a new page and select "Front Page" as template.
-Then you can make this page your home page by going to Settings > Reading > Front page displays, and selecting your new page under "Front page" option.
-
-
-== Credits ==
+== Copyright ==
 
 Bonkers WordPress Theme, Copyright 2017 Colorlib
 Bonkers is distributed under the terms of the GNU GPL
@@ -80,11 +82,8 @@ License: https://stocksnap.io/license
 https://stocksnap.io/photo/1A3MXAT0M6
 https://stocksnap.io/photo/JBW2PXDOL6
 https://stocksnap.io/photo/R7GVMRJWW9
-
-Images from pixabay
-License: https://pixabay.com/es/service/terms/#usage
-https://pixabay.com/photo-1274360/
-https://pixabay.com/photo-1690965/
+https://stocksnap.io/photo/woman-model-TJHZP9PY4F
+https://stocksnap.io/photo/confident-business-TMACJ6VLZH
 
 Icons
 03.Office.png - https://dribbble.com/shots/1569128-Freebie-48-Bubbles-Iconset
@@ -93,3 +92,26 @@ Icons
 
 The WordPress logo belongs to Automattic.
 Any other image included & distributed with the theme has been licensed under the GPL and is the creative work of Colorlib.com.
+
+== Changelog ==
+
+=1.0.6=
+- Small fixes
+- Security fix
+
+= 1.0.5 =
+* Released: October 18, 2019
+- Security Fix
+
+= 1.0.2 =
+* Released: January 31, 2018
+- Prefixed js function
+- Formatted readme.txt
+
+= 1.0.1 =
+* Released: January 22, 2018
+- Added subject tags - WordPress Review
+
+= 1.0.1 =
+* Released: October 16, 2017
+- Initial Release

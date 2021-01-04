@@ -24,7 +24,7 @@
 			opacity: 0;
 			.transition( ~"opacity 200ms, transform 500ms cubic-bezier(0.075, 0.82, 0.165, 1)" );
 			.translate( -30%; 0);
-				
+
 				.glaciar_team_member_text{
 					position: absolute;
 					left: 19%;
@@ -89,7 +89,8 @@
 					}
 				}
 		}
-		.no-touch &:hover .glaciar_team_hover{
+		.no-touch &:hover .glaciar_team_hover,
+		.no-touch &:focus-within .glaciar_team_hover {
 			opacity: 1;
 			.translate( 0; 0);
 
