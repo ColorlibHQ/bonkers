@@ -4,7 +4,7 @@
    ------------------------------
    Enable/Disable Section */
   wp.customize( 'bonkers_addons[bonkers_addons_welcome_enable]', function( value ) {
-    value.bind( function( to ) {
+    value.on( function( to ) {
       if ( true === to ) {
         $( '.bonkers-welcome-section' ).show();
       } else {
@@ -18,7 +18,7 @@
    ------------------------------
    Enable/Disable Section */
   wp.customize( 'bonkers_addons[bonkers_addons_services_enable]', function( value ) {
-    value.bind( function( to ) {
+    value.on( function( to ) {
       if ( true === to ) {
         $( '.bonkers-services-section' ).show();
       } else {
@@ -32,7 +32,7 @@
    ------------------------------
    Enable/Disable Section */
   wp.customize( 'bonkers_addons[bonkers_addons_image_enable]', function( value ) {
-    value.bind( function( to ) {
+    value.on( function( to ) {
       if ( true === to ) {
         $( '.bonkers-image-section' ).show();
       } else {
@@ -46,7 +46,7 @@
    ------------------------------
    Enable/Disable Section */
   wp.customize( 'bonkers_addons[bonkers_addons_phone_enable]', function( value ) {
-    value.bind( function( to ) {
+    value.on( function( to ) {
       if ( true === to ) {
         $( '.bonkers-phone-section' ).show();
       } else {
@@ -60,7 +60,7 @@
    ------------------------------
    Enable/Disable Section */
   wp.customize( 'bonkers_addons[bonkers_addons_cta_enable]', function( value ) {
-    value.bind( function( to ) {
+    value.on( function( to ) {
       if ( true === to ) {
         $( '.bonkers-cta-section' ).show();
       } else {
@@ -74,7 +74,7 @@
    ------------------------------
    Enable/Disable Section */
   wp.customize( 'bonkers_addons[bonkers_addons_video_enable]', function( value ) {
-    value.bind( function( to ) {
+    value.on( function( to ) {
       if ( true === to ) {
         $( '.bonkers-video-section' ).show();
       } else {
@@ -88,7 +88,7 @@
    ------------------------------
    Enable/Disable Section */
   wp.customize( 'bonkers_addons[bonkers_addons_team_enable]', function( value ) {
-    value.bind( function( to ) {
+    value.on( function( to ) {
       if ( true === to ) {
         $( '.bonkers-team-section' ).show();
       } else {
@@ -102,7 +102,7 @@
    ------------------------------
    Enable/Disable Section */
   wp.customize( 'bonkers_addons[bonkers_addons_subscribe_enable]', function( value ) {
-    value.bind( function( to ) {
+    value.on( function( to ) {
       if ( true === to ) {
         $( '.bonkers-subscribe-section' ).show();
       } else {
@@ -116,7 +116,7 @@
    ------------------------------
    Enable/Disable Section */
   wp.customize( 'bonkers_addons[bonkers_addons_contact_enable]', function( value ) {
-    value.bind( function( to ) {
+    value.on( function( to ) {
       if ( true === to ) {
         $( '.bonkers-contact-section' ).show();
       } else {
