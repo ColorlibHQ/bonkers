@@ -15,7 +15,7 @@ function bonkersAlignSubSubMenu() {
   }
 }
 
-jQuery( document ).ready( function( $ ) {
+jQuery(function( $ ) {
 
   var $bonkersTeamWrap, $bonkersClientsWrap;
 
@@ -46,7 +46,7 @@ jQuery( document ).ready( function( $ ) {
   } );
 
   if ( 'undefined' !== typeof wp && wp.customize && wp.customize.selectiveRefresh ) {
-    wp.customize.selectiveRefresh.on( 'sidebar-updated', function( sidebarPartial ) {
+    wp.customize.selectiveRefresh.bind( 'sidebar-updated', function( sidebarPartial ) {
       if ( 'team-section' === sidebarPartial.sidebarId ) {
         jQuery( '.bonkers-team-wrap' ).flickity( 'reloadCells' );
       }
@@ -72,7 +72,7 @@ jQuery( document ).ready( function( $ ) {
   } );
 
   if ( 'undefined' !== typeof wp && wp.customize && wp.customize.selectiveRefresh ) {
-    wp.customize.selectiveRefresh.on( 'sidebar-updated', function( sidebarPartial ) {
+    wp.customize.selectiveRefresh.bind( 'sidebar-updated', function( sidebarPartial ) {
       if ( 'clients-section' === sidebarPartial.sidebarId ) {
         jQuery( '.bonkers-clients-wrap' ).flickity( 'reloadCells' );
       }
@@ -91,7 +91,7 @@ jQuery( document ).ready( function( $ ) {
 
   bonkersAlignSubSubMenu();
 
-} );
+});
 
 jQuery( document ).resize( function() {
   bonkersAlignSubSubMenu();
