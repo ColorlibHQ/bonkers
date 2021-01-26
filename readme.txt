@@ -96,6 +96,7 @@ Any other image included & distributed with the theme has been licensed under th
 == Changelog ==
 =1.0.7=
 - Compatibility with jquery 3.0
+- Fixed front page template
 
 =1.0.6=
 - Small fixes
