@@ -46,7 +46,7 @@ jQuery( document ).ready( function( $ ) {
   } );
 
   if ( 'undefined' !== typeof wp && wp.customize && wp.customize.selectiveRefresh ) {
-    wp.customize.selectiveRefresh.bind( 'sidebar-updated', function( sidebarPartial ) {
+    wp.customize.selectiveRefresh.on( 'sidebar-updated', function( sidebarPartial ) {
       if ( 'team-section' === sidebarPartial.sidebarId ) {
         jQuery( '.bonkers-team-wrap' ).flickity( 'reloadCells' );
       }
@@ -72,14 +72,14 @@ jQuery( document ).ready( function( $ ) {
   } );
 
   if ( 'undefined' !== typeof wp && wp.customize && wp.customize.selectiveRefresh ) {
-    wp.customize.selectiveRefresh.bind( 'sidebar-updated', function( sidebarPartial ) {
+    wp.customize.selectiveRefresh.on( 'sidebar-updated', function( sidebarPartial ) {
       if ( 'clients-section' === sidebarPartial.sidebarId ) {
         jQuery( '.bonkers-clients-wrap' ).flickity( 'reloadCells' );
       }
     } );
   }
 
-  $( '.ql_scroll_top' ).click( function() {
+  $( '.ql_scroll_top' ).on('click', function() {
     $( 'html, body' ).animate( {
       scrollTop: 0
     }, 'slow' );

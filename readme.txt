@@ -2,7 +2,7 @@
 Contributors: Colorlib
 Requires at least: WordPress 4.7
 Tested up to: WordPress 4.9.2
-Version: 1.0.2
+Version: 1.0.7
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.en.html
 Tags: blog, portfolio, two-columns, custom-background, threaded-comments, custom-menu, featured-images, sticky-post, translation-ready
@@ -94,6 +94,8 @@ The WordPress logo belongs to Automattic.
 Any other image included & distributed with the theme has been licensed under the GPL and is the creative work of Colorlib.com.
 
 == Changelog ==
+=1.0.7=
+- Compatibility with jquery 3.0
 
 =1.0.6=
 - Small fixes
