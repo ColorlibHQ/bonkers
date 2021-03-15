@@ -94,6 +94,9 @@ The WordPress logo belongs to Automattic.
 Any other image included & distributed with the theme has been licensed under the GPL and is the creative work of Colorlib.com.
 
 == Changelog ==
+=1.0.8=
+- Small Typo Fix
+
 =1.0.7=
 - Compatibility with jquery 3.0
 - Fixed front page template
