@@ -1,5 +1,6 @@
 <?php
 /**
+ * Template Name: Front Page
  * The template for Front Page
  *
  * @link    https://codex.wordpress.org/Template_Hierarchy

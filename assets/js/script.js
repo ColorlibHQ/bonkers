@@ -15,7 +15,7 @@ function bonkersAlignSubSubMenu() {
   }
 }
 
-jQuery( document ).ready( function( $ ) {
+jQuery(function( $ ) {
 
   var $bonkersTeamWrap, $bonkersClientsWrap;
 
@@ -79,7 +79,7 @@ jQuery( document ).ready( function( $ ) {
     } );
   }
 
-  $( '.ql_scroll_top' ).click( function() {
+  $( '.ql_scroll_top' ).on('click', function() {
     $( 'html, body' ).animate( {
       scrollTop: 0
     }, 'slow' );
@@ -91,7 +91,7 @@ jQuery( document ).ready( function( $ ) {
 
   bonkersAlignSubSubMenu();
 
-} );
+});
 
 jQuery( document ).resize( function() {
   bonkersAlignSubSubMenu();
