@@ -9,6 +9,8 @@ class Bonkers {
 		'colorlib-404-customizer'          => array( 'recommended' => false ),
 		'colorlib-coming-soon-maintenance' => array( 'recommended' => false ),
 		'colorlib-login-customizer'        => array( 'recommended' => false ),
+		'kb-support'                       => array( 'recommended' => false ),
+		'rsvp'                             => array( 'recommended' => false ),
 	);
 
 	public $recommended_actions;
@@ -28,7 +30,7 @@ class Bonkers {
 			array(
 				'id'          => 'bonkers-install-bonkers-addons',
 				'title'       => Bonkers_Helper::create_plugin_title( __( 'Bonkers Addons', 'bonkers' ), 'bonkers-addons' ),
-				'description' => __( 'It is highly recommended that you install the Illdy Companion.', 'bonkers' ),
+				'description' => __( 'It is highly recommended that you install the Bonkers Companion.', 'bonkers' ),
 				'check'       => Bonkers_Helper::has_plugin( 'bonkers-addons' ),
 				'type'        => 'plugin',
 				'plugin_slug' => 'bonkers-addons',

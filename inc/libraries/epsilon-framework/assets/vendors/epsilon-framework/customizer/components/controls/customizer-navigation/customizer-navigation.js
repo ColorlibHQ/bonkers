@@ -15,7 +15,7 @@ EpsilonFramework.customizerNavigation = {
         if ( jQuery( this ).attr( 'data-doubled' ) ) {
           wp.customize.section( jQuery( this ).attr( 'data-customizer-section' ) ).headContainer.trigger( 'click' );
         } else {
-          wp.customize.section( jQuery( this ).attr( 'data-customizer-section' ) ).focus();
+          wp.customize.section( jQuery( this ).attr( 'data-customizer-section' ) ).trigger('focus');
         }
 
       }
