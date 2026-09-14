@@ -1,123 +1,58 @@
 <?php
+/**
+ * Theme bootstrap.
+ *
+ * Until 1.1.0 this loaded the bundled Epsilon framework -- around 5,700 lines
+ * across 125 files -- to provide a recommended-actions panel, a welcome screen,
+ * a typography control and a couple of Customizer widgets. All of it is now core
+ * WordPress, so the theme needs no bundled framework and no companion plugin to
+ * configure.
+ *
+ * @package Bonkers
+ */
+
+defined( 'ABSPATH' ) || exit;
 
 class Bonkers {
 
-	public $recommended_plugins = array(
-		'fancybox-for-wordpress'           => array( 'recommended' => false ),
-		'simple-custom-post-order'         => array( 'recommended' => false ),
-		'kali-forms'                       => array( 'recommended' => true ),
-		'colorlib-404-customizer'          => array( 'recommended' => false ),
-		'colorlib-coming-soon-maintenance' => array( 'recommended' => false ),
-		'colorlib-login-customizer'        => array( 'recommended' => false ),
-		'kb-support'                       => array( 'recommended' => false ),
-		'rsvp'                             => array( 'recommended' => false ),
-	);
-
-	public $recommended_actions;
-
+	/**
+	 * @var string
+	 */
 	public $theme_slug = 'bonkers';
 
-	function __construct() {
+	public function __construct() {
+		/*
+		 * The recommended actions are translated, and this constructor runs while
+		 * functions.php is still being included -- long before init. Building them
+		 * here pulled the text domain in early enough that WordPress 6.7+ reported
+		 * _load_textdomain_just_in_time was called incorrectly on every page load.
+		 * Everything translated is therefore deferred to init.
+		 */
+		add_action( 'init', array( $this, 'init_recommended_actions' ), 5 );
 
-		$this->recommended_actions = apply_filters( 'bonkers_required_actions', array(
-			array(
-				'id'          => 'bonkers-import-data',
-				'title'       => esc_html__( 'Easy 1-click theme setup', 'bonkers' ),
-				'description' => esc_html__( 'Clicking the button below will add settings/widgets and recommended plugins to your WordPress installation. Click advanced to customize the import process.', 'bonkers' ),
-				'help'        => array( Epsilon_Import_Data::get_instance(), 'generate_import_data_container' ),
-				'check'       => Bonkers_Helper::check_installed_data(),
-			),
-			array(
-				'id'          => 'bonkers-install-bonkers-addons',
-				'title'       => Bonkers_Helper::create_plugin_title( __( 'Bonkers Addons', 'bonkers' ), 'bonkers-addons' ),
-				'description' => __( 'It is highly recommended that you install the Bonkers Companion.', 'bonkers' ),
-				'check'       => Bonkers_Helper::has_plugin( 'bonkers-addons' ),
-				'type'        => 'plugin',
-				'plugin_slug' => 'bonkers-addons',
-			),
-			array(
-				'id'          => 'bonkers-install-kali-forms',
-				'title'       => Bonkers_Helper::create_plugin_title( __( 'Kali Forms', 'bonkers' ), 'kali-forms' ),
-				'description' => __( 'It is highly recommended that you install the Kali Forms plugin.', 'bonkers' ),
-				'check'       => Bonkers_Helper::has_plugin( 'kali-forms' ),
-				'type'        => 'plugin',
-				'plugin_slug' => 'kali-forms',
-			),
-		) );
-
-		if ( is_customize_preview() ) {
-			$url                                  = 'themes.php?page=%1$s-welcome&tab=%2$s';
-			$this->recommended_actions[0]['help'] = '<a class="button button-primary" id="" href="' . esc_url( admin_url( sprintf( $url, 'bonkers', 'recommended-actions' ) ) ) . '">' . __( 'Easy 1-click theme setup', 'bonkers' ) . '</a>';
-		}
-
-		$this->init_epsilon();
-		$this->init_typography();
-		$this->init_welcome_screen();
-
-		// Hooks
-		add_action( 'customize_register', array( $this, 'init_customizer' ) );
-
+		add_action( 'customize_register', array( $this, 'register_customizer_controls' ), 5 );
 	}
 
-	public function init_epsilon() {
+	/**
+	 * The Customizer set-up panel.
+	 */
+	public function init_recommended_actions() {
+		require_once get_template_directory() . '/inc/libraries/class-bonkers-recommended-actions.php';
 
-		require get_template_directory() . '/inc/libraries/epsilon-framework/class-epsilon-autoloader.php';
-		new Epsilon_Framework();
-
+		new Bonkers_Recommended_Actions();
 	}
 
-	public function init_typography() {
-
-		$options = array(
-			'bonkers_typography_font_family',
-			'bonkers_typography_font_family_headings',
-		);
-
-		$handler            = 'bonkers_style';
-		$epsilon_typography = Epsilon_Typography::get_instance( $options, $handler );
-
-		// Remove Epsilon Google Font
-		remove_action( 'wp_enqueue_scripts', array( $epsilon_typography, 'enqueue' ) );
-
+	/**
+	 * Load the theme's own Customizer controls.
+	 *
+	 * These replace Epsilon_Control_Typography, Epsilon_Control_Toggle and
+	 * Epsilon_Control_Layouts; inc/customizer.php registers them.
+	 *
+	 * @param WP_Customize_Manager $wp_customize Customizer instance.
+	 */
+	public function register_customizer_controls( $wp_customize ) {
+		require_once get_template_directory() . '/inc/customizer-controls/class-bonkers-customize-controls.php';
 	}
-
-	public function init_customizer( $wp_customize ) {
-
-		$current_theme = wp_get_theme();
-		$wp_customize->add_section( new Epsilon_Section_Recommended_Actions( $wp_customize, 'epsilon_recomended_section', array(
-			'title'                        => esc_html__( 'Recomended Actions', 'bonkers' ),
-			'social_text'                  => esc_html( $current_theme->get( 'Author' ) ) . esc_html__( ' is social :', 'bonkers' ),
-			'plugin_text'                  => esc_html__( 'Recomended Plugins :', 'bonkers' ),
-			'actions'                      => $this->recommended_actions,
-			'plugins'                      => $this->recommended_plugins,
-			'theme_specific_option'        => $this->theme_slug . '_show_required_actions',
-			'theme_specific_plugin_option' => $this->theme_slug . '_show_required_plugins',
-			'facebook'                     => 'https://www.facebook.com/colorlib',
-			'twitter'                      => 'https://twitter.com/colorlib',
-			'wp_review'                    => true,
-			'priority'                     => 0,
-		) ) );
-
-	}
-
-	public function init_welcome_screen() {
-		if ( ! is_admin() ) {
-			return;
-		}
-
-		require get_template_directory() . '/inc/libraries/welcome-screen/class-epsilon-welcome-screen.php';
-		Epsilon_Welcome_Screen::get_instance(
-			$config = array(
-				'theme-name' => 'Bonkers',
-				'theme-slug' => 'bonkers',
-				'actions'    => $this->recommended_actions,
-				'plugins'    => $this->recommended_plugins,
-				'edd'        => false,
-			)
-		);
-
-	}
-
 }
 
 new Bonkers();

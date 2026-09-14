@@ -237,9 +237,6 @@ require get_template_directory() . '/inc/theme-functions/retina-logo.php';
 // Bonkers Helper Class
 require get_template_directory() . '/inc/class-bonkers-helper.php';
 
-// Bonkers Import Demo Class
-require get_template_directory() . '/inc/libraries/welcome-screen/inc/class-epsilon-import-data.php';
-
 // Bonkers Class
 require get_template_directory() . '/inc/class-bonkers.php';
 

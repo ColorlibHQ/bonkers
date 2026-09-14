@@ -129,9 +129,10 @@ function bonkers_customize_register( $wp_customize ) {
 		'sanitize_callback' => 'sanitize_text_field',
 		'transport'         => 'postMessage',
 	) );
-	$wp_customize->add_control( new Epsilon_Control_Typography( $wp_customize, 'bonkers_typography_font_family', array(
+	$wp_customize->add_control( new Bonkers_Customize_Control_Typography( $wp_customize, 'bonkers_typography_font_family', array(
 		'section'       => 'bonkers_typography_section',
 		'label'         => esc_html__( 'Body Text', 'bonkers' ),
+		'show_size'     => true,
 		'stylesheet'    => 'bonkers_style',
 		'choices'       => array(
 			'font-family',
@@ -150,7 +151,7 @@ function bonkers_customize_register( $wp_customize ) {
 		'sanitize_callback' => 'sanitize_text_field',
 		'transport'         => 'postMessage',
 	) );
-	$wp_customize->add_control( new Epsilon_Control_Typography( $wp_customize, 'bonkers_typography_font_family_headings', array(
+	$wp_customize->add_control( new Bonkers_Customize_Control_Typography( $wp_customize, 'bonkers_typography_font_family_headings', array(
 		'section'       => 'bonkers_typography_section',
 		'label'         => esc_html__( 'Headings', 'bonkers' ),
 		'stylesheet'    => 'bonkers_style',
@@ -187,8 +188,8 @@ function bonkers_customize_register( $wp_customize ) {
 		'default'           => '1',
 		'transport'         => 'refresh',
 	) );
-	$wp_customize->add_control( new Epsilon_Control_Toggle( $wp_customize, 'bonkers_enable_footer_widgets', array(
-		'type'    => 'epsilon-toggle',
+	$wp_customize->add_control( new Bonkers_Customize_Control_Toggle( $wp_customize, 'bonkers_enable_footer_widgets', array(
+		'type'    => 'bonkers-toggle',
 		'label'   => __( 'Show Footer Widgets ?', 'bonkers' ),
 		'section' => 'bonkers_footer_options',
 	) ) );
@@ -219,16 +220,9 @@ function bonkers_customize_register( $wp_customize ) {
 		'sanitize_callback' => 'sanitize_text_field',
 	) );
 
-	$wp_customize->add_control( new Epsilon_Control_Layouts( $wp_customize, 'bonkers_footer_columns', array(
-		'type'     => 'epsilon-layouts',
+	$wp_customize->add_control( new Bonkers_Customize_Control_Layouts( $wp_customize, 'bonkers_footer_columns', array(
+		'type'     => 'bonkers-layouts',
 		'section'  => 'bonkers_footer_options',
-		'layouts'  => array(
-			1 => get_template_directory_uri() . '/inc/libraries/epsilon-framework/assets/img/one-column.png',
-			2 => get_template_directory_uri() . '/inc/libraries/epsilon-framework/assets/img/two-column.png',
-			3 => get_template_directory_uri() . '/inc/libraries/epsilon-framework/assets/img/three-column.png',
-			4 => get_template_directory_uri() . '/inc/libraries/epsilon-framework/assets/img/four-column.png',
-		),
-		'min_span' => 2,
 		'label'    => esc_html__( 'Footer Columns', 'bonkers' ),
 	) ) );
 
@@ -269,6 +263,24 @@ function bonkers_customize_js() {
 		'sortableText' => esc_html__( 'Drag & Drop the sections to change order', 'bonkers' ),
 	) );
 
+	$version = wp_get_theme()->get( 'Version' );
+
+	// Drives the theme's own typography and footer-column controls, which replaced
+	// the ones the bundled framework used to provide.
+	wp_enqueue_script(
+		'bonkers-customizer-controls',
+		get_template_directory_uri() . '/assets/js/customizer-controls.js',
+		array( 'customize-controls' ),
+		$version,
+		true
+	);
+
+	wp_enqueue_style(
+		'bonkers-customizer-controls',
+		get_template_directory_uri() . '/assets/css/customizer-controls.css',
+		array(),
+		$version
+	);
 }
 
 add_action( 'customize_controls_enqueue_scripts', 'bonkers_customize_js', 99 );
