@@ -86,9 +86,6 @@ jQuery(function( $ ) {
     return false;
   } );
 
-  $( '.dropdown-toggle' ).dropdown();
-  $( '*[data-toggle="tooltip"]' ).tooltip();
-
   bonkersAlignSubSubMenu();
 
 });

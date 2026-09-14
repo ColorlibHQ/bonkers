@@ -49,7 +49,7 @@
 								<p class="site-title"><?php echo wp_kses_post( $logo ); ?></p>
 							<?php endif; ?>
 
-							<button id="bonkers-nav-btn" type="button" class="menu-toggle" data-toggle="collapse" aria-controls="primary-menu" aria-expanded="false">
+							<button id="bonkers-nav-btn" type="button" class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
 									<i class="fa fa-navicon"></i>
 							</button>
 

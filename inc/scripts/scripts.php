@@ -1,15 +1,7 @@
 <?php
 
-//HTML5 Shiv ==============================================
-wp_enqueue_script( 'html5shiv', get_template_directory_uri() . '/assets/js/vendor/html5shiv.js', array(), '3.7.3', true );
-//=================================================================
-
 //hoverIntent Plugin ==============================================
 wp_enqueue_script( 'hoverIntent' );
-//=================================================================
-
-//Modernizr Plugin ================================================
-wp_enqueue_script( 'bonkers_modernizr', get_template_directory_uri() . '/assets/js/vendor/modernizr.min.js', '2.8.3', true );
 //=================================================================
 
 //Pace  ===========================================================
@@ -17,7 +9,7 @@ wp_enqueue_script( 'pace', get_template_directory_uri() . '/assets/js/vendor/pac
 //=================================================================
 
 //Imageloaded  ===========================================================
-wp_enqueue_script( 'imagesloaded', true );
+wp_enqueue_script( 'imagesloaded' );
 //=================================================================
 
 //Flickity  ===========================================================
@@ -44,10 +36,6 @@ if ( $bonkers_contact_key ) {
 		wp_localize_script( 'bonkers_google_maps_custom', 'bonkersGMaps', $bonkers_g_maps );
 	}
 }
-//=================================================================
-
-//Bootstrap JS ========================================
-wp_enqueue_script( 'bootstrap', get_template_directory_uri() . '/assets/js/vendor/bootstrap.min.js', array(), '3.3.7', true );
 //=================================================================
 
 //Comment Reply ===================================================
@@ -80,8 +68,7 @@ wp_localize_script( 'bonkers-navigation', 'bonkersScreenReaderText', $bonkers_l1
 //Customs Scripts =================================================
 wp_enqueue_script( 'bonkers_theme-custom', get_template_directory_uri() . '/assets/js/script.js', array(
 	'jquery',
-	'bootstrap',
-), '1.0', true );
+), wp_get_theme()->get( 'Version' ), true );
 $bonkers_custom_js = array(
 	'admin_ajax' => admin_url( 'admin-ajax.php' ),
 	'token'      => wp_create_nonce( 'colorlib-secret' ),

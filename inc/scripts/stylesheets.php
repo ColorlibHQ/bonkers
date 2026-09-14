@@ -1,6 +1,11 @@
 <?php
 	//Bootstrap =======================================================
-	wp_enqueue_style( 'bootstrap', get_template_directory_uri() . '/assets/css/bootstrap.css', array(), '3.3.7', 'all' );
+	// The theme referenced .container, .row and the column classes and nothing
+	// else from Bootstrap, so grid.css carries those -- with this build's own
+	// custom gutters and breakpoints -- instead of the whole 164 KB stylesheet.
+	$bonkers_version = wp_get_theme()->get( 'Version' );
+	wp_enqueue_style( 'bonkers-base', get_template_directory_uri() . '/assets/css/base.css', array(), $bonkers_version );
+	wp_enqueue_style( 'bonkers-grid', get_template_directory_uri() . '/assets/css/grid.css', array( 'bonkers-base' ), $bonkers_version );
 	//=================================================================
 
 	//Flickity ======================================================
