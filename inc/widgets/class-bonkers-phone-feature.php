@@ -40,9 +40,13 @@ class Bonkers_Phone_Feature extends WP_Widget {
 		?>
 			<div class="bonkers-phone-service">
 
-							<?php if ( ! empty( $instance['image_uri'] ) ) : ?>
-					<img src="<?php echo esc_url( $instance['image_uri'] ); ?>" alt="" class="bonkers-phone-icon"/>
-				<?php endif; ?>
+							<?php
+				echo bonkers_icon_markup(
+					isset( $instance['image_uri'] ) ? $instance['image_uri'] : '',
+					isset( $instance['icon'] ) ? $instance['icon'] : '',
+					'bonkers-phone-icon'
+				); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped in the helper.
+				?>
 
 				<div class="bonkers-phone-service-content">
 					<h4>
@@ -103,6 +107,7 @@ endif;
 		$instance['title'] = sanitize_text_field( $new_instance['title'] );
 
 		$instance['image_uri'] = esc_url_raw( $new_instance['image_uri'] );
+		$instance['icon']      = isset( $new_instance['icon'] ) ? sanitize_text_field( $new_instance['icon'] ) : '';
 
 		return $instance;
 
@@ -157,6 +162,11 @@ endif;
 				   name="<?php echo esc_attr( $this->get_field_name( 'image_uri' ) ); ?>" value="<?php esc_attr_e( 'Upload Image', 'bonkers' ); ?>"
 				   style="margin-top:5px;"/>
 
+		</p>
+		<p>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'icon' ) ); ?>"><?php esc_html_e( 'Or an icon class', 'bonkers' ); ?></label>
+			<input class="widefat" type="text" id="<?php echo esc_attr( $this->get_field_id( 'icon' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'icon' ) ); ?>" value="<?php echo esc_attr( isset( $instance['icon'] ) ? $instance['icon'] : '' ); ?>" placeholder="fa fa-mobile" />
+			<small><?php esc_html_e( 'Any Font Awesome class. Used when no image is set.', 'bonkers' ); ?></small>
 		</p>
 
 

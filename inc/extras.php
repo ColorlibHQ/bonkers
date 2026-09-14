@@ -518,3 +518,41 @@ function bonkers_work_query() {
 
 	return $query;
 }
+
+/**
+ * Icon markup for a widget that can carry either an uploaded image or an icon class.
+ *
+ * The section widgets only ever accepted an image URL, so every icon meant
+ * uploading a file -- and a site that had not done that got a bare column of
+ * text. Font Awesome already ships with the theme, so a class name is the
+ * cheaper option and it recolours with the design.
+ *
+ * @param string $image_uri Image URL, or ''.
+ * @param string $icon      Icon class such as "fa fa-pencil", or ''.
+ * @param string $class     Class for the rendered element.
+ *
+ * @return string
+ */
+function bonkers_icon_markup( $image_uri, $icon, $class ) {
+	$image_uri = trim( (string) $image_uri );
+	$icon      = trim( (string) $icon );
+
+	if ( '' !== $image_uri ) {
+		return sprintf(
+			'<img src="%s" alt="" class="%s" loading="lazy" />',
+			esc_url( $image_uri ),
+			esc_attr( $class )
+		);
+	}
+
+	if ( '' === $icon ) {
+		return '';
+	}
+
+	// Decorative: the heading beside it already carries the meaning.
+	return sprintf(
+		'<span class="%s %s" aria-hidden="true"></span>',
+		esc_attr( $class . '-glyph' ),
+		esc_attr( $icon )
+	);
+}

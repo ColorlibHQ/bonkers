@@ -572,3 +572,114 @@ img { max-width: 100%; height: auto; }
 .bonkers-contact-section.no-map .bonkers-contact-address {
 	color: var(--bk-body);
 }
+
+/* -------------------------------------------------- icons (1.1.0) */
+
+/*
+ * The section widgets take either an uploaded image or a Font Awesome class.
+ * The glyph variant is styled to match the image one so a section can mix both.
+ */
+.bonkers-service-icon-glyph,
+.bonkers-phone-icon-glyph {
+	display: inline-grid;
+	place-items: center;
+	width: 52px;
+	height: 52px;
+	margin-bottom: 1.1rem;
+	border-radius: 14px;
+	background: var(--bk-surface);
+	color: var(--bk-ink);
+	font-size: 22px;
+	line-height: 1;
+	transition: background-color .22s var(--bk-ease), color .22s var(--bk-ease);
+}
+
+.bonkers-service:hover .bonkers-service-icon-glyph {
+	background: var(--bk-ink);
+	color: #fff;
+}
+
+.bonkers-phone-section .bonkers-phone-icon-glyph {
+	margin-inline: auto;
+}
+
+/* -------------------------------------------------- short rows centre (1.1.0) */
+
+/*
+ * A row that does not fill its width used to sit hard left, so three team cards
+ * or four client logos looked like a mistake on a wide screen rather than a
+ * deliberate group. Centring the row fixes every one of those sections at once
+ * and changes nothing when the row is full.
+ */
+.bonkers-clients-section .row,
+.bonkers-testimonials-section .row,
+.bonkers-stats-section .row,
+.bonkers-work-section .row {
+	justify-content: center;
+}
+
+/* Flickity centres its own cells; ask it to when there are too few to fill. */
+.bonkers-team-section .flickity-slider {
+	display: flex;
+	justify-content: center;
+}
+
+/* -------------------------------------------------- subscribe alignment */
+
+/*
+ * The form is a flex row of [input][button] and was being centred as a block
+ * while its own contents stayed left, which read as a missing element on the
+ * left-hand side. Centring the content and letting the input own the remaining
+ * width lines the two up under the heading.
+ */
+.bonkers-subscribe-section .bonkers-subscribe-content,
+.bonkers-subscribe-section .bonkers-subscribe-text,
+.bonkers-subscribe-section .bonkers-subscribe-title {
+	text-align: center;
+}
+
+.bonkers-subscribe-section .bonkers-subscribe-form-wrapper {
+	display: flex;
+	justify-content: center;
+}
+
+.bonkers-subscribe-section .bonkers-subscribe-form {
+	width: 100%;
+	max-width: 520px;
+	margin-inline: auto;
+}
+
+/* -------------------------------------------------- subscribe padding */
+
+/*
+ * style.css pads this section with a percentage on each side -- 25% at desktop,
+ * which is 360px at 1440. The section now wraps its content in a .container, so
+ * the two stacked: the content started 380px in and ran 130px past the right
+ * edge, and the form inside it looked pushed off-centre with a gap on its left.
+ * The container owns the horizontal measure now.
+ */
+.bonkers-subscribe-section {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+/* -------------------------------------------------- carousels with few items */
+
+/*
+ * Clients and team are Flickity carousels, not rows, so `justify-content` on a
+ * .row never reached them. When the cells do not fill the track they sit hard
+ * left and read as a mistake; centring the slider groups them instead. Flickity
+ * still scrolls normally once there are enough to overflow.
+ */
+.bonkers-clients-section .flickity-slider,
+.bonkers-team-section .flickity-slider {
+	display: flex;
+	justify-content: center;
+}
+
+/* Keep the carousels inside the page rather than bleeding past the right edge. */
+.bonkers-clients-wrap,
+.bonkers-team-wrap {
+	max-width: 1230px;
+	margin-inline: auto;
+}
