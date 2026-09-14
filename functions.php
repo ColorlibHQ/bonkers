@@ -237,6 +237,9 @@ require get_template_directory() . '/inc/theme-functions/retina-logo.php';
 // Bonkers Helper Class
 require get_template_directory() . '/inc/class-bonkers-helper.php';
 
+// Front-page section widgets
+require get_template_directory() . '/inc/widgets/widgets.php';
+
 // Bonkers Class
 require get_template_directory() . '/inc/class-bonkers.php';
 

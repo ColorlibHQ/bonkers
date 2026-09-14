@@ -42,8 +42,21 @@ html {
 	margin-right: -20px;
 }
 
-/* A stray child of .row that is not a column should still take a full line. */
-.row > *:not([class*="col-"]) {
+/*
+ * Widgets in a .row are wrapped by register_sidebar's before_widget, so the
+ * element carrying the column class is the wrapper's CHILD, not the flex item.
+ * Under the old float grid that still laid out correctly; as a flex container it
+ * made every widget full width and stacked the three front-page services.
+ *
+ * display:contents removes the wrapper from layout so the column inside it
+ * becomes the actual flex child, which is what the markup always meant.
+ */
+.row > .widget {
+	display: contents;
+}
+
+/* A stray non-column child of .row should still take a full line. */
+.row > *:not([class*="col-"]):not(.widget) {
 	flex: 0 0 100%;
 	max-width: 100%;
 }
