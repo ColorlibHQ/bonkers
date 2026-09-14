@@ -1,10 +1,11 @@
 /*
 Theme Name: Bonkers
 Theme URI: https://colorlib.com/wp/themes/bonkers/
-Description: Premium Portfolio theme
-Version: 1.0.9
-Tested in PHP up to: 8.0.7
-Requires PHP: 5.4.0
+Description: Bonkers is a free portfolio and blog theme for showing work rather than describing it: a full-width project grid, a filterable portfolio, and post layouts built for long reading. It needs no page builder and no companion plugin to configure, and supports the block editor through theme.json, block patterns and block styles.
+Version: 1.1.0
+Requires at least: 5.2
+Tested up to: 7.1
+Requires PHP: 7.4
 Author: Colorlib
 Author URI: https://colorlib.com
 License: GNU General Public License v2 or later

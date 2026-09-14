@@ -329,53 +329,123 @@ function bonkers_dropdown_icon_to_menu_link( $title, $item, $args, $depth ) {
 add_filter( 'nav_menu_item_title', 'bonkers_dropdown_icon_to_menu_link', 10, 4 );
 
 /**
- * Retrieve Serialized Options
+ * A front-page section option.
  *
+ * These settings used to live only in the Bonkers Addons plugin, as flat
+ * `bonkers_addons_{name}` options. The theme now owns them in the Customizer, so
+ * a fresh install configures itself with no plugin -- but the plugin's option is
+ * still read when the theme mod has never been set, which is what keeps the
+ * existing installs (and the demo) rendering exactly as before.
+ *
+ * @param string $name    Option name without the `bonkers_addons_` prefix.
+ * @param mixed  $default Returned when neither source has a value.
+ *
+ * @return mixed
+ */
+function bonkers_option( $name, $default = '' ) {
+	$mod = get_theme_mod( 'bonkers_' . $name, null );
+
+	if ( null !== $mod && '' !== $mod ) {
+		return $mod;
+	}
+
+	return get_option( 'bonkers_addons_' . $name, $default );
+}
+
+/**
+ * Back-compat shim.
+ *
+ * Read the serialized `bonkers_addons` array, which nothing ever wrote. Kept
+ * because a child theme may call it.
+ *
+ * @deprecated 1.1.0 Use bonkers_option().
  */
 function bonkers_get_option( $setting, $default ) {
 	$options = get_option( 'bonkers_addons', array() );
-	$value   = $default;
-	if ( isset( $options[ $setting ] ) ) {
-		$value = $options[ $setting ];
-	}
 
-	return $value;
+	return isset( $options[ $setting ] ) ? $options[ $setting ] : $default;
 }
 
+/**
+ * The Google Maps API key for this site.
+ *
+ * Themes must not ship third-party credentials. Until 1.1.0 the geocoding call
+ * below carried a hardcoded Colorlib key, which meant every install on the
+ * internet geocoded through one account -- and once billing lapsed on it the
+ * lookup returned REQUEST_DENIED, so the map silently stopped working for
+ * everyone rather than failing loudly for anyone.
+ *
+ * The key now belongs to the site. The theme mod is the new home; the option is
+ * where Bonkers Addons used to keep it, and is read so existing installs keep
+ * their map without touching anything.
+ *
+ * @return string Empty when the site has not set one.
+ */
+function bonkers_maps_api_key() {
+	$key = get_theme_mod( 'bonkers_maps_api_key', '' );
+
+	if ( '' === $key ) {
+		$key = (string) get_option( 'bonkers_addons_contact_key', '' );
+	}
+
+	return trim( $key );
+}
+
+/**
+ * Geocode the contact address, caching the result per address.
+ *
+ * @return array|false [ lat, lng ], or false when there is no key or the
+ *                     lookup fails -- callers fall back to plain text.
+ */
 function bonkers_get_coordinates() {
 	$default_coordinates = array(
 		'Central+Park%2C+New+York%2C+NY%2C+United+States' => array( '40.7828647', '-73.9675438' ),
 	);
-	$coordinates         = get_option( 'bonkers_maps_coordinates' );
-	$all_coordinates     = wp_parse_args( $coordinates, $default_coordinates );
-	$address             = get_option( 'bonkers_addons_contact_address', 'Central Park, New York, NY, United States' );
 
-	$encoded_adress = urlencode( $address );
+	$coordinates     = get_option( 'bonkers_maps_coordinates' );
+	$all_coordinates = wp_parse_args( $coordinates, $default_coordinates );
+	$address         = bonkers_option( 'contact_address', __( 'Central Park, New York, NY, United States', 'bonkers' ) );
+	$encoded_adress  = rawurlencode( $address );
 
 	if ( isset( $all_coordinates[ $encoded_adress ] ) ) {
 		return $all_coordinates[ $encoded_adress ];
 	}
 
-	$gm_geocoding_api_url = 'https://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyBDd-_yIs7FYbgDz-_74JS5Ehk6Qg61DjA&address=' . $encoded_adress;
+	$key = bonkers_maps_api_key();
 
-	$response = wp_remote_get( $gm_geocoding_api_url );
-
-	if ( is_array( $response ) ) {
-		$g_response = json_decode( $response['body'], true );
-
-		if ( 'OK' == $g_response['status'] ) {
-			$coordinates[ $encoded_adress ] = array(
-				$g_response['results'][0]['geometry']['location']['lat'],
-				$g_response['results'][0]['geometry']['location']['lng'],
-			);
-			update_option( 'bonkers_maps_coordinates', $coordinates );
-
-			return $coordinates[ $encoded_adress ];
-		}
-
+	if ( '' === $key ) {
 		return false;
 	}
 
-	return false;
+	$response = wp_remote_get(
+		add_query_arg(
+			array(
+				'key'     => rawurlencode( $key ),
+				'address' => $encoded_adress,
+			),
+			'https://maps.googleapis.com/maps/api/geocode/json'
+		)
+	);
 
+	if ( is_wp_error( $response ) ) {
+		return false;
+	}
+
+	$g_response = json_decode( wp_remote_retrieve_body( $response ), true );
+
+	if ( ! is_array( $g_response ) || ! isset( $g_response['status'] ) || 'OK' !== $g_response['status'] ) {
+		return false;
+	}
+
+	if ( empty( $g_response['results'][0]['geometry']['location'] ) ) {
+		return false;
+	}
+
+	$location = $g_response['results'][0]['geometry']['location'];
+
+	$coordinates                    = is_array( $coordinates ) ? $coordinates : array();
+	$coordinates[ $encoded_adress ] = array( $location['lat'], $location['lng'] );
+	update_option( 'bonkers_maps_coordinates', $coordinates );
+
+	return $coordinates[ $encoded_adress ];
 }
