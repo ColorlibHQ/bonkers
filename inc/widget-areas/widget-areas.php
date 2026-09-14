@@ -124,6 +124,28 @@ $sidebars = array(
 	),
 );
 
+/*
+ * Widget areas for the two sections added in 1.1.0. Registered with the same
+ * before/after markup as the others so the column classes the widgets emit land
+ * directly in the .row.
+ */
+foreach ( array(
+	'testimonials-section' => __( 'Front Page: Testimonials', 'bonkers' ),
+	'stats-section'        => __( 'Front Page: Numbers', 'bonkers' ),
+) as $bonkers_id => $bonkers_name ) {
+	register_sidebar(
+		array(
+			'name'          => $bonkers_name,
+			'id'            => $bonkers_id,
+			'description'   => __( 'Drop the matching Bonkers widget in here. An empty area hides its section.', 'bonkers' ),
+			'before_widget' => '<div class="widget">',
+			'after_widget'  => '</div>',
+			'before_title'  => '<h4>',
+			'after_title'   => '</h4>',
+		)
+	);
+}
+
 $sidebar_columns = get_theme_mod( 'bonkers_footer_columns' );
 if ( $sidebar_columns ) {
 	$sidebar_columns = json_decode( $sidebar_columns, true );

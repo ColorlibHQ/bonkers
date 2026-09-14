@@ -28,6 +28,9 @@ function bonkers_widget_classes() {
 		'Bonkers_Client_Logo'   => 'class-bonkers-client-logo.php',
 		'Bonkers_Phone_Feature' => 'class-bonkers-phone-feature.php',
 		'Bonkers_Contact_Info'  => 'class-bonkers-contact-info.php',
+		// New in 1.1.0, so the plugin has no copy to defer to.
+		'Bonkers_Testimonial'   => 'class-bonkers-testimonial.php',
+		'Bonkers_Stat'          => 'class-bonkers-stat.php',
 	);
 }
 

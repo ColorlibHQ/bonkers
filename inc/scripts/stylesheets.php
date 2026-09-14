@@ -14,4 +14,9 @@
 	//=================================================================
 
 
-	wp_enqueue_style( 'bonkers_style', get_stylesheet_uri() );
+	wp_enqueue_style( 'bonkers_style', get_stylesheet_uri(), array(), $bonkers_version );
+
+	// Layered on top of the compiled stylesheet and the colour scheme, so it wins
+	// on equal specificity without !important. See the file header for why the
+	// refresh is not folded into the SASS source.
+	wp_enqueue_style( 'bonkers-refresh', get_template_directory_uri() . '/assets/css/refresh.css', array( 'bonkers_style' ), $bonkers_version );

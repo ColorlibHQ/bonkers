@@ -17,10 +17,11 @@ wp_enqueue_script( 'flickity', get_template_directory_uri() . '/assets/js/vendor
 //=================================================================
 
 //Google Maps  ===========================================================
-$bonkers_contact_key = get_option( 'bonkers_addons_contact_key' );
+// Via the helper so a key set in the Customizer works, not only the old option.
+$bonkers_contact_key = bonkers_maps_api_key();
 if ( $bonkers_contact_key ) {
 
-	wp_enqueue_script( 'google-maps', '//maps.googleapis.com/maps/api/js?key=' . esc_attr( $bonkers_contact_key ), array(), '1.0.0', true );
+	wp_enqueue_script( 'google-maps', 'https://maps.googleapis.com/maps/api/js?key=' . rawurlencode( $bonkers_contact_key ), array(), '1.0.0', true );
 
 	$bonkers_contact_lat_long = bonkers_get_coordinates();
 

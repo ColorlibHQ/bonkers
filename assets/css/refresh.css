@@ -1,0 +1,574 @@
+/**
+ * Design refresh.
+ *
+ * A layer on top of the compiled stylesheet rather than a rewrite of it: the SASS
+ * source is not the source of truth any more (assets/css is newer than the LESS
+ * it came from), and the layout itself is staying put. Everything here is type,
+ * spacing, colour and component treatment.
+ *
+ * Loaded after style.css and the colour scheme, so it wins on equal specificity
+ * without needing !important.
+ *
+ * @package Bonkers
+ */
+
+:root {
+	/* Type scale. Fluid between a 360px phone and a 1440px desktop. */
+	--bk-text:        clamp(1rem, 0.96rem + 0.18vw, 1.0625rem);
+	--bk-lead:        clamp(1.125rem, 1.05rem + 0.32vw, 1.3125rem);
+	--bk-h4:          clamp(1.0625rem, 1rem + 0.28vw, 1.25rem);
+	--bk-h3:          clamp(1.375rem, 1.2rem + 0.75vw, 1.75rem);
+	--bk-h2:          clamp(1.75rem, 1.35rem + 1.7vw, 2.75rem);
+	--bk-display:     clamp(2.25rem, 1.4rem + 3.6vw, 4.5rem);
+
+	--bk-lh-tight:    1.14;
+	--bk-lh-body:     1.65;
+
+	/* Spacing rhythm. */
+	--bk-section-y:   clamp(3.5rem, 2.2rem + 5.4vw, 7rem);
+	--bk-gap:         clamp(1.5rem, 1rem + 2vw, 2.75rem);
+
+	/*
+	 * The stock body colour was #808080, which is about 3.9:1 on white and fails
+	 * WCAG AA for body text. This is 7.1:1 and still reads as grey next to the
+	 * near-black headings.
+	 */
+	--bk-ink:         #24282e;
+	--bk-body:        #50575f;
+	--bk-muted:       #6b7280;
+	--bk-rule:        #e6e8eb;
+	--bk-surface:     #f6f7f8;
+	--bk-radius:      14px;
+	--bk-radius-sm:   10px;
+	--bk-shadow:      0 1px 2px rgba(16, 24, 40, .04), 0 12px 28px -12px rgba(16, 24, 40, .16);
+	--bk-shadow-lift: 0 2px 4px rgba(16, 24, 40, .05), 0 22px 44px -16px rgba(16, 24, 40, .22);
+	--bk-ease:        cubic-bezier(.22, .61, .36, 1);
+}
+
+/* -------------------------------------------------- type */
+
+body {
+	font-size: var(--bk-text);
+	line-height: var(--bk-lh-body);
+	color: var(--bk-body);
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	line-height: var(--bk-lh-tight);
+	letter-spacing: -0.012em;
+	color: var(--bk-ink);
+}
+
+h2 { font-size: var(--bk-h2); }
+h3 { font-size: var(--bk-h3); }
+h4 { font-size: var(--bk-h4); }
+
+/* Long-form text gets a readable measure instead of running the full column. */
+.entry-content > p,
+.entry-content > ul,
+.entry-content > ol,
+.entry-content > blockquote {
+	max-width: 68ch;
+}
+
+.entry-content > * + * {
+	margin-top: 1.1em;
+}
+
+blockquote {
+	border-left: 3px solid currentColor;
+	color: var(--bk-ink);
+	font-size: var(--bk-lead);
+	line-height: 1.45;
+}
+
+/* -------------------------------------------------- rhythm */
+
+.bonkers-services-section,
+.bonkers-team-section,
+.bonkers-clients-section,
+.bonkers-video-section,
+.bonkers-subscribe-section,
+.bonkers-work-section,
+.bonkers-testimonials-section,
+.bonkers-stats-section {
+	padding-top: var(--bk-section-y);
+	padding-bottom: var(--bk-section-y);
+}
+
+.bonkers-section-title,
+.bonkers-video-title {
+	font-size: var(--bk-h2);
+	margin-bottom: .5em;
+}
+
+/* An intro paragraph under a section title, centred and measured. */
+.bonkers-section-intro {
+	max-width: 62ch;
+	margin: 0 auto clamp(2rem, 1.2rem + 2.4vw, 3.25rem);
+	text-align: center;
+	font-size: var(--bk-lead);
+	color: var(--bk-muted);
+}
+
+/* -------------------------------------------------- hero */
+
+.bonkers-welcome-section .bonkers-welcome-title,
+.bonkers-welcome-title {
+	font-size: var(--bk-display);
+	letter-spacing: -0.022em;
+	text-wrap: balance;
+}
+
+.bonkers-welcome-section {
+	position: relative;
+}
+
+/* Keeps the headline legible whatever the photograph behind it does. */
+.bonkers-welcome-section::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(180deg, rgba(10, 12, 16, .30) 0%, rgba(10, 12, 16, .58) 100%);
+	pointer-events: none;
+	z-index: 0;
+}
+
+.bonkers-welcome-section > * {
+	position: relative;
+	z-index: 1;
+}
+
+/* -------------------------------------------------- buttons */
+
+.bonkers-service-btn,
+.bonkers-welcome-link,
+.bonkers-image-section-link,
+.bonkers-cta-link,
+.bonkers-subscribe-submit,
+.bonkers-work-more,
+.btn-bonkers {
+	display: inline-flex;
+	align-items: center;
+	gap: .5em;
+	padding: .8em 1.5em;
+	border-radius: 999px;
+	font-weight: 700;
+	font-size: .9375rem;
+	letter-spacing: .02em;
+	text-decoration: none;
+	border: 1px solid transparent;
+	transition: transform .18s var(--bk-ease), box-shadow .18s var(--bk-ease), background-color .18s var(--bk-ease), color .18s var(--bk-ease);
+}
+
+.bonkers-service-btn:hover,
+.bonkers-welcome-link:hover,
+.bonkers-image-section-link:hover,
+.bonkers-cta-link:hover,
+.bonkers-subscribe-submit:hover,
+.bonkers-work-more:hover {
+	transform: translateY(-1px);
+	box-shadow: var(--bk-shadow);
+}
+
+/* Focus has to stay visible for anyone using a keyboard. */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+	outline: 2px solid currentColor;
+	outline-offset: 3px;
+	border-radius: 4px;
+}
+
+/* -------------------------------------------------- services */
+
+.bonkers-services-section .bonkers-service {
+	padding: clamp(1.5rem, 1.1rem + 1.4vw, 2.25rem);
+	border: 1px solid var(--bk-rule);
+	border-radius: var(--bk-radius);
+	background: #fff;
+	text-align: left;
+	transition: transform .22s var(--bk-ease), box-shadow .22s var(--bk-ease), border-color .22s var(--bk-ease);
+}
+
+.bonkers-services-section .bonkers-service:hover {
+	transform: translateY(-3px);
+	border-color: transparent;
+	box-shadow: var(--bk-shadow-lift);
+}
+
+.bonkers-services-section .bonkers-service-title,
+.bonkers-services-section h4 {
+	font-size: var(--bk-h4);
+	margin: 0 0 .5em;
+}
+
+.bonkers-services-section .bonkers-service-icon {
+	width: 44px;
+	height: 44px;
+	margin-bottom: 1rem;
+}
+
+/* The row itself needs breathing space between cards. */
+.bonkers-services-section .row,
+.bonkers-team-section .row,
+.bonkers-clients-section .row {
+	row-gap: var(--bk-gap);
+}
+
+/* -------------------------------------------------- team */
+
+.bonkers-team-member {
+	padding: 1.5rem;
+	border-radius: var(--bk-radius);
+	background: #fff;
+	border: 1px solid var(--bk-rule);
+	text-align: center;
+	transition: transform .22s var(--bk-ease), box-shadow .22s var(--bk-ease);
+}
+
+.bonkers-team-member:hover {
+	transform: translateY(-3px);
+	box-shadow: var(--bk-shadow-lift);
+}
+
+.bonkers-team-image {
+	width: 108px;
+	height: 108px;
+	object-fit: cover;
+	border-radius: 50%;
+	margin: 0 auto 1rem;
+	display: block;
+}
+
+.bonkers-team-name { font-size: var(--bk-h4); margin: 0 0 .15em; }
+.bonkers-team-position { color: var(--bk-muted); font-size: .9375rem; }
+
+.bonkers-team-social {
+	display: flex;
+	justify-content: center;
+	gap: .35rem;
+	margin: 1rem 0 0;
+	padding: 0;
+	list-style: none;
+}
+
+.bonkers-team-social a {
+	display: grid;
+	place-items: center;
+	width: 34px;
+	height: 34px;
+	border-radius: 50%;
+	background: var(--bk-surface);
+	color: var(--bk-ink);
+	transition: background-color .18s var(--bk-ease), color .18s var(--bk-ease);
+}
+
+.bonkers-team-social a:hover { background: var(--bk-ink); color: #fff; }
+
+/* -------------------------------------------------- clients */
+
+.bonkers-clients-section .bonkers-client-logo img {
+	width: 100%;
+	height: 88px;
+	object-fit: contain;
+	filter: grayscale(1);
+	opacity: .55;
+	transition: filter .22s var(--bk-ease), opacity .22s var(--bk-ease);
+}
+
+.bonkers-clients-section .bonkers-client-logo:hover img {
+	filter: grayscale(0);
+	opacity: 1;
+}
+
+/* -------------------------------------------------- video */
+
+.bonkers-video-video {
+	max-width: 960px;
+	margin-inline: auto;
+}
+
+/* A 16:9 box so the embed stops being a fixed-height black rectangle. */
+.bonkers-video-embed {
+	position: relative;
+	aspect-ratio: 16 / 9;
+	border-radius: var(--bk-radius);
+	overflow: hidden;
+	box-shadow: var(--bk-shadow-lift);
+	background: #0d1117;
+}
+
+.bonkers-video-embed iframe,
+.bonkers-video-embed video {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	border: 0;
+}
+
+/* -------------------------------------------------- subscribe */
+
+.bonkers-subscribe-content { text-align: center; }
+
+.bonkers-subscribe-form {
+	display: flex;
+	flex-wrap: wrap;
+	gap: .625rem;
+	justify-content: center;
+	max-width: 520px;
+	margin: 1.75rem auto 0;
+}
+
+.bonkers-subscribe-email {
+	flex: 1 1 260px;
+	min-width: 0;
+	padding: .85em 1.15em;
+	border-radius: 999px;
+	border: 1px solid var(--bk-rule);
+	background: #fff;
+	font-size: 1rem;
+	color: var(--bk-ink);
+}
+
+.bonkers-subscribe-setup {
+	color: var(--bk-muted);
+	font-style: italic;
+}
+
+/* -------------------------------------------------- contact */
+
+.bonkers-contact-section.no-map {
+	padding-block: var(--bk-section-y);
+	background: var(--bk-surface);
+}
+
+/* Without a map the panel has no map to sit on, so it stops floating. */
+.bonkers-contact-section.no-map .bonkers-contact-content {
+	position: static;
+	max-width: 640px;
+	margin-inline: auto;
+	text-align: center;
+	background: transparent;
+}
+
+.bonkers-contact-address {
+	font-style: normal;
+	font-size: var(--bk-lead);
+	line-height: 1.5;
+	color: var(--bk-body);
+}
+
+.bonkers-contact-map-link {
+	display: inline-block;
+	margin-top: .75rem;
+	font-weight: 700;
+}
+
+/* -------------------------------------------------- posts */
+
+.bonkers-post-card {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	background: #fff;
+	border: 1px solid var(--bk-rule);
+	border-radius: var(--bk-radius);
+	overflow: hidden;
+	transition: transform .22s var(--bk-ease), box-shadow .22s var(--bk-ease);
+}
+
+.bonkers-post-card:hover {
+	transform: translateY(-3px);
+	box-shadow: var(--bk-shadow-lift);
+}
+
+.bonkers-post-card__media {
+	aspect-ratio: 4 / 3;
+	overflow: hidden;
+	background: var(--bk-surface);
+}
+
+.bonkers-post-card__media img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform .4s var(--bk-ease);
+}
+
+.bonkers-post-card:hover .bonkers-post-card__media img { transform: scale(1.04); }
+
+.bonkers-post-card__body { padding: 1.25rem 1.375rem 1.5rem; }
+.bonkers-post-card__meta { font-size: .8125rem; color: var(--bk-muted); letter-spacing: .04em; text-transform: uppercase; }
+.bonkers-post-card__title { font-size: var(--bk-h4); margin: .4em 0 .35em; }
+.bonkers-post-card__title a { color: inherit; text-decoration: none; }
+
+/* -------------------------------------------------- images */
+
+img { max-width: 100%; height: auto; }
+
+/* -------------------------------------------------- motion */
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: .001ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: .001ms !important;
+		scroll-behavior: auto !important;
+	}
+}
+
+/* -------------------------------------------------- testimonials (1.1.0) */
+
+.bonkers-testimonial__card {
+	margin: 0;
+	height: 100%;
+	padding: clamp(1.5rem, 1.1rem + 1.4vw, 2.125rem);
+	background: #fff;
+	border: 1px solid var(--bk-rule);
+	border-radius: var(--bk-radius);
+	display: flex;
+	flex-direction: column;
+	gap: 1.25rem;
+	transition: transform .22s var(--bk-ease), box-shadow .22s var(--bk-ease);
+}
+
+.bonkers-testimonial__card:hover {
+	transform: translateY(-3px);
+	box-shadow: var(--bk-shadow-lift);
+}
+
+.bonkers-testimonial__quote {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: var(--bk-lead);
+	line-height: 1.5;
+	color: var(--bk-ink);
+}
+
+.bonkers-testimonial__quote p { margin: 0; }
+.bonkers-testimonial__quote p + p { margin-top: .6em; }
+
+.bonkers-testimonial__by {
+	display: flex;
+	align-items: center;
+	gap: .75rem;
+	margin-top: auto;
+}
+
+.bonkers-testimonial__avatar {
+	width: 44px;
+	height: 44px;
+	border-radius: 50%;
+	object-fit: cover;
+	flex: 0 0 auto;
+}
+
+.bonkers-testimonial__meta { display: flex; flex-direction: column; line-height: 1.3; }
+.bonkers-testimonial__name { font-weight: 700; color: var(--bk-ink); }
+.bonkers-testimonial__role { font-size: .875rem; color: var(--bk-muted); }
+
+/* -------------------------------------------------- numbers (1.1.0) */
+
+.bonkers-stats-section { background: var(--bk-surface); }
+
+.bonkers-stat { text-align: center; }
+
+.bonkers-stat__value {
+	display: block;
+	font-size: clamp(2.25rem, 1.6rem + 2.6vw, 3.5rem);
+	font-weight: 700;
+	line-height: 1.05;
+	letter-spacing: -0.02em;
+	color: var(--bk-ink);
+}
+
+.bonkers-stat__caption {
+	display: block;
+	margin-top: .35rem;
+	font-size: .875rem;
+	letter-spacing: .06em;
+	text-transform: uppercase;
+	color: var(--bk-muted);
+}
+
+/* -------------------------------------------------- work (1.1.0) */
+
+.bonkers-work-more-wrap { text-align: center; margin: clamp(2rem, 1.4rem + 1.8vw, 3rem) 0 0; }
+
+/* -------------------------------------------------- overriding the old build */
+
+/*
+ * These three rules exist only to beat selectors in the compiled stylesheet that
+ * are more specific than the refresh needs to be. Each names the selector it is
+ * answering so the reason survives.
+ */
+
+/*
+ * style.css: `.bonkers-team-section .bonkers-team-wrap .bonkers-team-member
+ * .bonkers-team-image { width: 40% }` -- four classes, so a single-class rule
+ * loses and the avatar renders as a 95x108 ellipse instead of a circle.
+ */
+.bonkers-team-section .bonkers-team-wrap .bonkers-team-member .bonkers-team-image,
+.bonkers-team-section .bonkers-team-member .bonkers-team-image {
+	display: block;
+	width: 108px;
+	height: 108px;
+	aspect-ratio: 1;
+	margin: 0 auto 1rem;
+	padding: 0;
+	border: 0;
+	object-fit: cover;
+}
+
+/*
+ * style.css gives .bonkers-video-video `padding-bottom: 56.2%` -- the old
+ * ratio hack, which expects an absolutely positioned child. The embed now sizes
+ * itself with aspect-ratio, so the padding was adding a screen-height of empty
+ * space underneath the video.
+ */
+.bonkers-video-section .bonkers-video-video {
+	padding-bottom: 0;
+	position: static;
+}
+
+/*
+ * The same section paints a grey band with ::before sized to `bottom: 40%`,
+ * which assumed the old height. Full-height is what it was always trying to be.
+ */
+.bonkers-video-section::before {
+	bottom: 0;
+}
+
+/*
+ * No column rules for the team section: it is a Flickity carousel, not a .row,
+ * so its slides are sized by the script. Adding flex-basis here squeezed each
+ * card from 360px to 96px.
+ */
+.bonkers-team-section .bonkers-team-member {
+	height: 100%;
+}
+
+/*
+ * The contact panel's text is white because it was designed to sit on top of the
+ * dark map. With no API key there is no map, so white on the light section
+ * measured 1.07:1 -- the heading was invisible rather than merely low contrast.
+ * Inside .no-map it takes the normal ink colours.
+ */
+.bonkers-contact-section.no-map .bonkers-contact-title,
+.bonkers-contact-section.no-map .bonkers-contact-content,
+.bonkers-contact-section.no-map .bonkers-contact-content p {
+	color: var(--bk-ink);
+}
+
+.bonkers-contact-section.no-map .bonkers-contact-address {
+	color: var(--bk-body);
+}

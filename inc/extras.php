@@ -449,3 +449,72 @@ function bonkers_get_coordinates() {
 
 	return $coordinates[ $encoded_adress ];
 }
+
+/**
+ * Markup for whatever the video URL points at.
+ *
+ * A YouTube or Vimeo link is an oEmbed; an .mp4 or .webm is a file for the
+ * [video] shortcode. Passing the first kind to the second is what made the
+ * section render a black box before 1.1.0.
+ *
+ * @param string $url Video URL.
+ *
+ * @return string Empty when there is nothing embeddable.
+ */
+function bonkers_video_embed( $url ) {
+	$url = trim( (string) $url );
+
+	if ( '' === $url ) {
+		return '';
+	}
+
+	$extension = strtolower( (string) pathinfo( wp_parse_url( $url, PHP_URL_PATH ) ?? '', PATHINFO_EXTENSION ) );
+
+	if ( in_array( $extension, wp_get_video_extensions(), true ) ) {
+		return do_shortcode( '[video src="' . esc_url( $url ) . '"]' );
+	}
+
+	$oembed = wp_oembed_get( $url );
+
+	if ( $oembed ) {
+		return '<div class="bonkers-video-embed">' . $oembed . '</div>';
+	}
+
+	return '';
+}
+
+/**
+ * The posts the front-page work grid shows.
+ *
+ * Prefers the Portfolio type that Bonkers Addons registers, and falls back to
+ * ordinary posts so the section is not empty on a plain install.
+ *
+ * @return WP_Query
+ */
+function bonkers_work_query() {
+	$count = max( 1, (int) bonkers_option( 'work_count', 6 ) );
+	$type  = post_type_exists( 'portfolio' ) ? 'portfolio' : 'post';
+
+	$query = new WP_Query(
+		array(
+			'post_type'           => $type,
+			'posts_per_page'      => $count,
+			'ignore_sticky_posts' => true,
+			'no_found_rows'       => true,
+		)
+	);
+
+	// A site with the plugin active but nothing in it yet should still show work.
+	if ( 'portfolio' === $type && ! $query->have_posts() ) {
+		$query = new WP_Query(
+			array(
+				'post_type'           => 'post',
+				'posts_per_page'      => $count,
+				'ignore_sticky_posts' => true,
+				'no_found_rows'       => true,
+			)
+		);
+	}
+
+	return $query;
+}
