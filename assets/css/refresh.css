@@ -982,3 +982,43 @@ a.bonkers-contact-value:hover {
 	margin-left: auto;
 	margin-right: auto;
 }
+
+/* -------------------------------------------------- title side rules on small screens */
+
+/*
+ * The house section title draws a 50px rule 70px outside each side of the text.
+ * That only fits while the title is short relative to the screen: at 390px,
+ * "Restaurants we shoot for" fills 13-377px and its right-hand rule ends at 447,
+ * which made the whole page scroll sideways. Below tablet width the rules go;
+ * above it the title is capped so the rules always stay inside the container.
+ */
+@media (max-width: 767px) {
+	.bonkers-team-section .bonkers-section-title::before,
+	.bonkers-team-section .bonkers-section-title::after,
+	.bonkers-clients-section .bonkers-section-title::before,
+	.bonkers-clients-section .bonkers-section-title::after,
+	.bonkers-work-section .bonkers-section-title::before,
+	.bonkers-work-section .bonkers-section-title::after,
+	.bonkers-testimonials-section .bonkers-section-title::before,
+	.bonkers-testimonials-section .bonkers-section-title::after,
+	.bonkers-contact-section .bonkers-contact-content .bonkers-contact-title::before,
+	.bonkers-contact-section .bonkers-contact-content .bonkers-contact-title::after {
+		display: none;
+	}
+}
+
+.bonkers-team-section .bonkers-section-title,
+.bonkers-clients-section .bonkers-section-title,
+.bonkers-work-section .bonkers-section-title,
+.bonkers-testimonials-section .bonkers-section-title {
+	max-width: calc(100% - 160px);
+}
+
+@media (max-width: 767px) {
+	.bonkers-team-section .bonkers-section-title,
+	.bonkers-clients-section .bonkers-section-title,
+	.bonkers-work-section .bonkers-section-title,
+	.bonkers-testimonials-section .bonkers-section-title {
+		max-width: 100%;
+	}
+}
