@@ -21,7 +21,8 @@ $bonkers_address       = bonkers_option( 'contact_address', '' );
 // Read through the helper, not the raw option: since 1.1.0 the key can also come
 // from the Customizer, and reading the option directly missed that.
 $bonkers_has_map       = '' !== bonkers_maps_api_key() && false !== bonkers_get_coordinates();
-$bonkers_has_form      = $bonkers_contact_form && ( defined( 'KALIFORMS_VERSION' ) || defined( 'WPCF7_VERSION' ) );
+$bonkers_form_html     = bonkers_contact_form_html( $bonkers_contact_form );
+$bonkers_has_form      = '' !== $bonkers_form_html;
 ?>
 <div id="bonkers-contact-section" class="bonkers-contact-section <?php echo $bonkers_has_map ? 'has-map' : 'no-map'; ?>" <?php echo $bonkers_enable_section ? '' : 'style="display: none;"'; ?>>
 
@@ -49,11 +50,7 @@ $bonkers_has_form      = $bonkers_contact_form && ( defined( 'KALIFORMS_VERSION'
 
 		<?php if ( $bonkers_has_form ) : ?>
 			<div class="bonkers-contact-form">
-				<?php
-				echo defined( 'KALIFORMS_VERSION' )
-					? do_shortcode( '[kaliform id="' . absint( $bonkers_contact_form ) . '"]' )
-					: do_shortcode( '[contact-form-7 id="' . absint( $bonkers_contact_form ) . '"]' );
-				?>
+				<?php echo $bonkers_form_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- form plugin output. ?>
 			</div>
 		<?php endif; ?>
 	</div>

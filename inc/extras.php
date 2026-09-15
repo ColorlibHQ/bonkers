@@ -581,3 +581,41 @@ function bonkers_icon_markup( $image_uri, $icon, $class ) {
 		esc_attr( $icon )
 	);
 }
+
+/**
+ * The shortcode that renders the configured contact form.
+ *
+ * The form is stored as a bare post id, and more than one form plugin can be
+ * active at once. Guessing by "which plugin is installed" picks the wrong one:
+ * the demo had a Contact Form 7 form but Kali Forms was also active, so the
+ * theme emitted [kaliform id="6"] for a form Kali had never heard of and the
+ * section printed the form's title as plain text. Resolve by looking at what
+ * the id actually is.
+ *
+ * @param int|string $form_id Configured form id.
+ *
+ * @return string Rendered form, or '' when nothing can render it.
+ */
+function bonkers_contact_form_html( $form_id ) {
+	$form_id = absint( $form_id );
+
+	if ( ! $form_id ) {
+		return '';
+	}
+
+	$type = get_post_type( $form_id );
+
+	if ( 'wpcf7_contact_form' === $type && defined( 'WPCF7_VERSION' ) ) {
+		return do_shortcode( '[contact-form-7 id="' . $form_id . '"]' );
+	}
+
+	if ( 'kaliforms_forms' === $type && defined( 'KALIFORMS_VERSION' ) ) {
+		return do_shortcode( '[kaliform id="' . $form_id . '"]' );
+	}
+
+	if ( 'wpforms' === $type && function_exists( 'wpforms' ) ) {
+		return do_shortcode( '[wpforms id="' . $form_id . '"]' );
+	}
+
+	return '';
+}
