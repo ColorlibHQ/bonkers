@@ -453,9 +453,14 @@ function bonkers_get_coordinates() {
 /**
  * Markup for whatever the video URL points at.
  *
- * A YouTube or Vimeo link is an oEmbed; an .mp4 or .webm is a file for the
- * [video] shortcode. Passing the first kind to the second is what made the
- * section render a black box before 1.1.0.
+ * YouTube and Vimeo are built directly rather than through wp_oembed_get(),
+ * because oEmbed is an outbound HTTP request made while the page renders: on a
+ * host that cannot reach the provider it returns nothing and the section
+ * silently disappears, which is what happened on the demo server. Building the
+ * iframe from the video id needs no network at all, and lets us use YouTube's
+ * no-cookie host.
+ *
+ * Anything else still goes through oEmbed, and a media file through [video].
  *
  * @param string $url Video URL.
  *
@@ -468,10 +473,30 @@ function bonkers_video_embed( $url ) {
 		return '';
 	}
 
-	$extension = strtolower( (string) pathinfo( wp_parse_url( $url, PHP_URL_PATH ) ?? '', PATHINFO_EXTENSION ) );
+	$path      = wp_parse_url( $url, PHP_URL_PATH );
+	$extension = strtolower( (string) pathinfo( $path ? $path : '', PATHINFO_EXTENSION ) );
 
 	if ( in_array( $extension, wp_get_video_extensions(), true ) ) {
 		return do_shortcode( '[video src="' . esc_url( $url ) . '"]' );
+	}
+
+	$frame = '';
+
+	if ( preg_match( '#(?:youtube\.com/(?:watch\?v=|embed/|v/|shorts/)|youtu\.be/)([A-Za-z0-9_-]{6,})#i', $url, $m ) ) {
+		$frame = sprintf(
+			'https://www.youtube-nocookie.com/embed/%s?rel=0',
+			rawurlencode( $m[1] )
+		);
+	} elseif ( preg_match( '#vimeo\.com/(?:video/)?(\d+)#i', $url, $m ) ) {
+		$frame = sprintf( 'https://player.vimeo.com/video/%s', rawurlencode( $m[1] ) );
+	}
+
+	if ( $frame ) {
+		return sprintf(
+			'<div class="bonkers-video-embed"><iframe src="%s" title="%s" loading="lazy" allowfullscreen allow="accelerometer; encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin"></iframe></div>',
+			esc_url( $frame ),
+			esc_attr__( 'Video', 'bonkers' )
+		);
 	}
 
 	$oembed = wp_oembed_get( $url );

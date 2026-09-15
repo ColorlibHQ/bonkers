@@ -2,6 +2,19 @@
   'use strict';
 
   $( document ).ready( function( $ ) {
+    /*
+     * The Maps API is a third-party script: an invalid key, a referrer
+     * restriction, an ad blocker or an offline visitor all leave `google`
+     * undefined. Reaching straight for google.maps threw a ReferenceError that
+     * stopped every later script on the page, and left an empty grey box where
+     * the map should be. Bail quietly instead and let the markup fall back.
+     */
+    if ( typeof google === 'undefined' || ! google.maps || typeof bonkersGMaps === 'undefined' ) {
+      $( '#bonkers-map' ).closest( '.bonkers-contact-map' ).remove();
+      $( '.bonkers-contact-section' ).removeClass( 'has-map' ).addClass( 'no-map' );
+      return;
+    }
+
     var lat = parseFloat( bonkersGMaps.lat ),
         lon = parseFloat( bonkersGMaps.lon );
 
