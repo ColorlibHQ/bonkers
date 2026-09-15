@@ -19,7 +19,7 @@ if ( ! $bonkers_enable_section && ! is_customize_preview() ) {
 $bonkers_video_url   = bonkers_option( 'video_url', '' );
 $bonkers_video_title = bonkers_option( 'video_title', esc_html__( 'Your success is our most important priority', 'bonkers' ) );
 $bonkers_video_text  = bonkers_option( 'video_text', '' );
-$bonkers_video_embed = bonkers_video_embed( $bonkers_video_url );
+$bonkers_video_embed = bonkers_video_embed( $bonkers_video_url, bonkers_option( 'video_poster', '' ) );
 
 // A section whose only purpose is the video is not worth a band of empty space.
 if ( '' === $bonkers_video_embed && ! is_customize_preview() ) {

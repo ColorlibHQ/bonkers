@@ -277,20 +277,6 @@ select:focus-visible {
 
 /* -------------------------------------------------- clients */
 
-.bonkers-clients-section .bonkers-client-logo img {
-	width: 100%;
-	height: 88px;
-	object-fit: contain;
-	filter: grayscale(1);
-	opacity: .55;
-	transition: filter .22s var(--bk-ease), opacity .22s var(--bk-ease);
-}
-
-.bonkers-clients-section .bonkers-client-logo:hover img {
-	filter: grayscale(0);
-	opacity: 1;
-}
-
 /* -------------------------------------------------- video */
 
 .bonkers-video-video {
@@ -315,6 +301,11 @@ select:focus-visible {
 	width: 100%;
 	height: 100%;
 	border: 0;
+}
+
+.bonkers-video-embed video {
+	object-fit: cover;
+	background: #0d1117;
 }
 
 /* -------------------------------------------------- subscribe */
@@ -347,33 +338,6 @@ select:focus-visible {
 }
 
 /* -------------------------------------------------- contact */
-
-.bonkers-contact-section.no-map {
-	padding-block: var(--bk-section-y);
-	background: var(--bk-surface);
-}
-
-/* Without a map the panel has no map to sit on, so it stops floating. */
-.bonkers-contact-section.no-map .bonkers-contact-content {
-	position: static;
-	max-width: 640px;
-	margin-inline: auto;
-	text-align: center;
-	background: transparent;
-}
-
-.bonkers-contact-address {
-	font-style: normal;
-	font-size: var(--bk-lead);
-	line-height: 1.5;
-	color: var(--bk-body);
-}
-
-.bonkers-contact-map-link {
-	display: inline-block;
-	margin-top: .75rem;
-	font-weight: 700;
-}
 
 /* -------------------------------------------------- posts */
 
@@ -562,23 +526,7 @@ img { max-width: 100%; height: auto; }
 	height: 100%;
 }
 
-/*
- * The contact panel's text is white because it was designed to sit on top of the
- * dark map. With no API key there is no map, so white on the light section
- * measured 1.07:1 -- the heading was invisible rather than merely low contrast.
- * Inside .no-map it takes the normal ink colours.
- */
-.bonkers-contact-section.no-map .bonkers-contact-title,
-.bonkers-contact-section.no-map .bonkers-contact-content,
-.bonkers-contact-section.no-map .bonkers-contact-content p {
-	color: var(--bk-ink);
-}
-
-.bonkers-contact-section.no-map .bonkers-contact-address {
-	color: var(--bk-body);
-}
-
-/* -------------------------------------------------- icons (1.1.0) */
+.bonkers-contact-section.no-map /* -------------------------------------------------- icons (1.1.0) */
 
 /*
  * The section widgets take either an uploaded image or a Font Awesome class.
@@ -687,4 +635,350 @@ img { max-width: 100%; height: auto; }
 .bonkers-team-wrap {
 	max-width: 1230px;
 	margin-inline: auto;
+}
+
+/* -------------------------------------------------- contact, no map (1.1.0) */
+
+/*
+ * The two-column layout used when there is no map to float a panel over. It
+ * shares no classes with the dark map panel, so none of the compiled stylesheet's
+ * four-deep field rules reach it.
+ */
+.bonkers-contact-section.no-map {
+	padding: var(--bk-section-y) 0;
+	background: var(--bk-surface);
+}
+
+.bonkers-contact-layout {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr);
+	gap: clamp(2rem, 1.2rem + 3vw, 4.5rem);
+	align-items: start;
+}
+
+@media (min-width: 992px) {
+	.bonkers-contact-layout.has-form {
+		grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+	}
+}
+
+.bonkers-contact-layout.no-form {
+	max-width: 640px;
+	margin-inline: auto;
+}
+
+.bonkers-contact-heading {
+	margin: 0 0 .45em;
+	font-size: var(--bk-h2);
+	text-align: left;
+}
+
+.bonkers-contact-intro {
+	margin: 0 0 2rem;
+	max-width: 46ch;
+	font-size: var(--bk-lead);
+	line-height: 1.55;
+	color: var(--bk-body);
+}
+
+.bonkers-contact-details {
+	display: grid;
+	gap: 1.35rem;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.bonkers-contact-details li {
+	display: grid;
+	grid-template-columns: 46px minmax(0, 1fr);
+	gap: 1rem;
+	align-items: start;
+}
+
+.bonkers-contact-icon {
+	display: grid;
+	place-items: center;
+	width: 46px;
+	height: 46px;
+	border-radius: 12px;
+	background: #fff;
+	border: 1px solid var(--bk-rule);
+	color: var(--bk-ink);
+	font-size: 18px;
+}
+
+.bonkers-contact-label {
+	display: block;
+	margin-bottom: .15rem;
+	font-size: .75rem;
+	font-weight: 700;
+	letter-spacing: .08em;
+	text-transform: uppercase;
+	color: var(--bk-muted);
+}
+
+.bonkers-contact-value,
+.bonkers-contact-details address {
+	display: block;
+	margin: 0;
+	font-style: normal;
+	font-size: 1.0625rem;
+	font-weight: 600;
+	line-height: 1.45;
+	color: var(--bk-ink);
+	text-decoration: none;
+}
+
+a.bonkers-contact-value:hover {
+	text-decoration: underline;
+	text-underline-offset: 3px;
+}
+
+.bonkers-contact-map-link {
+	display: inline-block;
+	margin-top: .3rem;
+	font-size: .9375rem;
+	font-weight: 600;
+}
+
+/* The form sits in a card. */
+.bonkers-contact-card {
+	padding: clamp(1.5rem, 1rem + 2.2vw, 2.75rem);
+	background: #fff;
+	border: 1px solid var(--bk-rule);
+	border-radius: 18px;
+	box-shadow: var(--bk-shadow);
+}
+
+.bonkers-contact-card form p {
+	margin: 0 0 1.15rem;
+}
+
+/* Contact Form 7 puts a <br> inside each label; the field goes on its own line anyway. */
+.bonkers-contact-card label br {
+	display: none;
+}
+
+.bonkers-contact-card label {
+	display: block;
+	font-size: .875rem;
+	font-weight: 700;
+	color: var(--bk-ink);
+}
+
+.bonkers-contact-card .wpcf7-form-control-wrap {
+	display: block;
+	margin-top: .45rem;
+}
+
+/* A helper for putting two fields side by side in a form's own markup. */
+.bonkers-form-row {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	column-gap: 1rem;
+}
+
+.bonkers-contact-card input[type="text"],
+.bonkers-contact-card input[type="email"],
+.bonkers-contact-card input[type="tel"],
+.bonkers-contact-card input[type="url"],
+.bonkers-contact-card input[type="number"],
+.bonkers-contact-card select,
+.bonkers-contact-card textarea {
+	display: block;
+	width: 100%;
+	margin: 0;
+	padding: .85em 1em;
+	border: 1px solid #d3d7dd;
+	border-radius: 10px;
+	background: #fff;
+	font: inherit;
+	font-size: 1rem;
+	font-weight: 400;
+	color: var(--bk-ink);
+	box-shadow: none;
+	transition: border-color .15s var(--bk-ease), box-shadow .15s var(--bk-ease);
+}
+
+.bonkers-contact-card textarea {
+	min-height: 150px;
+	resize: vertical;
+}
+
+.bonkers-contact-card input::placeholder,
+.bonkers-contact-card textarea::placeholder {
+	color: #9aa1a9;
+}
+
+.bonkers-contact-card input:focus,
+.bonkers-contact-card select:focus,
+.bonkers-contact-card textarea:focus {
+	outline: none;
+	border-color: var(--bk-ink);
+	box-shadow: 0 0 0 3px rgba(36, 40, 46, .12);
+}
+
+.bonkers-contact-card input[type="submit"],
+.bonkers-contact-card button[type="submit"] {
+	appearance: none;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: auto;
+	margin: .35rem 0 0;
+	padding: .95em 2em;
+	border: 0;
+	border-radius: 999px;
+	background: var(--bk-ink);
+	color: #fff;
+	font: inherit;
+	font-size: .9375rem;
+	font-weight: 700;
+	letter-spacing: .02em;
+	cursor: pointer;
+	transition: background-color .18s var(--bk-ease), transform .18s var(--bk-ease), box-shadow .18s var(--bk-ease);
+}
+
+.bonkers-contact-card input[type="submit"]:hover,
+.bonkers-contact-card button[type="submit"]:hover {
+	background: #000;
+	transform: translateY(-1px);
+	box-shadow: var(--bk-shadow);
+}
+
+.bonkers-contact-card input[type="submit"]:focus-visible,
+.bonkers-contact-card button[type="submit"]:focus-visible {
+	outline: 2px solid var(--bk-ink);
+	outline-offset: 3px;
+}
+
+.bonkers-contact-card .wpcf7-not-valid-tip {
+	margin-top: .35rem;
+	font-size: .8125rem;
+}
+
+.bonkers-contact-card .wpcf7-response-output {
+	margin: 1rem 0 0;
+	padding: .8rem 1rem;
+	border-radius: 10px;
+	font-size: .9375rem;
+}
+
+.bonkers-contact-card .wpcf7-spinner {
+	margin: 0 0 0 .75rem;
+	vertical-align: middle;
+}
+
+/* -------------------------------------------------- client logos (1.1.0) */
+
+/*
+ * style.css sizes each logo cell at 17% with 3.5% padding either side and forces
+ * the image to width:100% of what is left -- about 123px at 1440, and less than
+ * that of actual ink once a logo's own whitespace is counted. Logos are now sized
+ * by HEIGHT, which is what makes a row of differently shaped marks look even:
+ * a wide wordmark and a square monogram get the same visual weight.
+ *
+ * The cells stay a Flickity carousel. Six to a row on a desktop fills the track
+ * exactly, so it sits still; fewer columns on smaller screens lets it scroll.
+ */
+.bonkers-clients-section .bonkers-clients-wrap .widget {
+	width: 50%;
+	padding: 0 clamp(.75rem, 1.5vw, 1.5rem);
+}
+
+@media (min-width: 768px) {
+	.bonkers-clients-section .bonkers-clients-wrap .widget {
+		width: 33.3333%;
+	}
+}
+
+@media (min-width: 1100px) {
+	.bonkers-clients-section .bonkers-clients-wrap .widget {
+		width: 16.6666%;
+	}
+}
+
+.bonkers-clients-section .bonkers-clients-logo {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 96px;
+}
+
+.bonkers-clients-section .bonkers-clients-logo a {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+}
+
+.bonkers-clients-section .bonkers-clients-wrap .widget img,
+.bonkers-clients-section .bonkers-clients-wrap .widget a img {
+	width: auto;
+	max-width: 100%;
+	height: clamp(44px, 1.6vw + 32px, 60px);
+	object-fit: contain;
+	filter: grayscale(1);
+	opacity: .72;
+	transition: filter .22s var(--bk-ease), opacity .22s var(--bk-ease);
+}
+
+.bonkers-clients-section .bonkers-clients-wrap .widget a:hover img,
+.bonkers-clients-section .bonkers-clients-wrap .widget a:focus-visible img {
+	filter: grayscale(0);
+	opacity: 1;
+}
+
+/* -------------------------------------------------- section titles for the new sections (1.1.0) */
+
+/*
+ * Work and Testimonials are new, and their titles came out as plain left-aligned
+ * headings beside the original sections' centred, uppercase titles with a rule
+ * either side. These declarations are copied from style.css's own rules for the
+ * team section title (including its media queries), so the new sections match
+ * the house style rather than an approximation of it.
+ */
+.bonkers-work-section .bonkers-section-title, .bonkers-testimonials-section .bonkers-section-title {
+	text-transform: uppercase;
+	margin-bottom: 50px;
+	position: relative;
+	display: inline-block;
+}
+
+.bonkers-work-section .bonkers-section-title::before, .bonkers-testimonials-section .bonkers-section-title::before {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: -70px;
+	-webkit-transform: translate(0, -50%);
+	-ms-transform: translate(0, -50%);
+	-o-transform: translate(0, -50%);
+	transform: translate(0, -50%);
+	height: 1px;
+	width: 50px;
+	border-bottom: 1px solid #999999;
+}
+
+.bonkers-work-section .bonkers-section-title::after, .bonkers-testimonials-section .bonkers-section-title::after {
+	content: '';
+	position: absolute;
+	top: 50%;
+	right: -70px;
+	-webkit-transform: translate(0, -50%);
+	-ms-transform: translate(0, -50%);
+	-o-transform: translate(0, -50%);
+	transform: translate(0, -50%);
+	height: 1px;
+	width: 50px;
+	border-bottom: 1px solid #999999;
+}
+
+/* inline-block titles centre only inside a centred parent; table does it alone. */
+.bonkers-work-section .container > .bonkers-section-title,
+.bonkers-testimonials-section .container > .bonkers-section-title {
+	display: table;
+	margin-left: auto;
+	margin-right: auto;
 }

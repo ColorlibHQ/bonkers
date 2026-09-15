@@ -462,11 +462,12 @@ function bonkers_get_coordinates() {
  *
  * Anything else still goes through oEmbed, and a media file through [video].
  *
- * @param string $url Video URL.
+ * @param string     $url    Video URL.
+ * @param string|int $poster Poster image URL or attachment id, for a self-hosted file.
  *
  * @return string Empty when there is nothing embeddable.
  */
-function bonkers_video_embed( $url ) {
+function bonkers_video_embed( $url, $poster = '' ) {
 	$url = trim( (string) $url );
 
 	if ( '' === $url ) {
@@ -476,8 +477,26 @@ function bonkers_video_embed( $url ) {
 	$path      = wp_parse_url( $url, PHP_URL_PATH );
 	$extension = strtolower( (string) pathinfo( $path ? $path : '', PATHINFO_EXTENSION ) );
 
+	/*
+	 * A self-hosted file gets a native <video> rather than the [video] shortcode.
+	 * The shortcode loads MediaElement's script and stylesheet and gives the
+	 * player fixed pixel dimensions, which fight the 16:9 box the section draws;
+	 * the native element sizes to that box, takes a poster, and makes no extra
+	 * request.
+	 */
 	if ( in_array( $extension, wp_get_video_extensions(), true ) ) {
-		return do_shortcode( '[video src="' . esc_url( $url ) . '"]' );
+		if ( is_numeric( $poster ) ) {
+			$poster = wp_get_attachment_url( (int) $poster );
+		}
+
+		$type = wp_check_filetype( $path ? $path : '' );
+
+		return sprintf(
+			'<div class="bonkers-video-embed is-file"><video controls preload="metadata" playsinline%s><source src="%s" type="%s" /></video></div>',
+			$poster ? ' poster="' . esc_url( $poster ) . '"' : '',
+			esc_url( $url ),
+			esc_attr( $type['type'] ? $type['type'] : 'video/' . $extension )
+		);
 	}
 
 	$frame = '';

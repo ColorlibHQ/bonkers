@@ -2,7 +2,7 @@
 $bonkers_enable_section = get_option( 'bonkers_addons_phone_enable', true );
 if ( $bonkers_enable_section || is_customize_preview() ) :
 	?>
-	<div id="bonkers-phone-section" class="bonkers-phone-section" <<?php echo $bonkers_enable_section ? '' : 'style="display: none;"'; ?>>
+	<div id="bonkers-phone-section" class="bonkers-phone-section" <?php echo $bonkers_enable_section ? '' : 'style="display: none;"'; ?>>
 
 		<?php
 		if ( is_active_sidebar( 'phone-section-left' ) ) {
