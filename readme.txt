@@ -14,7 +14,7 @@ Bonkers is a one-page WordPress theme for studios and freelancers who would rath
 
 It needs no page builder and no companion plugin. The front page sections, the widgets that fill them and the colour and typography options are all part of the theme.
 
-Bonkers also supports the block editor. A theme.json carries the palette, the fluid type scale and the content and wide widths, so blocks look the same while you edit them as they do once published. Eight block patterns rebuild the front page sections out of core blocks, and eight block styles offer the theme's own looks to core blocks: outline buttons, rounded and framed images, cards, plain quotations, short rules and checklists.
+Bonkers also supports the block editor. A theme.json carries the palette, the fluid type scale and the content and wide widths, so blocks look the same while you edit them as they do once published. Eight block patterns rebuild the front page sections out of core blocks, and nine block styles offer the theme's own looks to core blocks: outline buttons, rounded, framed and tile-cropped images, cards, plain quotations, short rules and checklists.
 
 = Create a Front Page =
 
@@ -29,7 +29,7 @@ Then you can make this page your home page by going to Settings > Reading > Fron
 
 == Copyright ==
 
-Bonkers WordPress Theme, Copyright 2017 Colorlib
+Bonkers WordPress Theme, Copyright 2017-2026 Colorlib
 Bonkers is distributed under the terms of the GNU GPL
 
 This program is free software: you can redistribute it and/or modify
@@ -48,39 +48,22 @@ Underscores
 (C) 2012-2015 Automattic, Inc., [GPLv2 or later](https://www.gnu.org/licenses/gpl-2.0.html)
 Source: http://underscores.me/
 
-Font Awesome icon font, Created by Dave Gandy
-Font Awesome licensed under SIL OFL 1.1 · Code licensed under MIT License
-Source: http://fortawesome.github.io/
-
-Bootstrap Created by @mdo and @fat.
+Bootstrap 3.3.7, by @mdo and @fat
+Portions of its base styles are adapted in assets/css/base.css.
 Code licensed under MIT
-Source: http://getbootstrap.com
+Source: https://getbootstrap.com
 
 48 Bubbles Iconset by Umar Irshad
 License: Open Source
 Source: https://dribbble.com/shots/1569128-Freebie-48-Bubbles-Iconset
 
-Modernizr by Faruk, Paul, Alex, Ryan, Patrick, Stu, and Richard | MIT License
-License: https://opensource.org/licenses/MIT
-Source: https://modernizr.com
-
-imagesLoaded by Metafizzy | MIT License
-License: http://desandro.mit-license.org/
-Source: http://imagesloaded.desandro.com
-
 Flickity by Metafizzy | GPLv3
-License: http://isotope.metafizzy.co/license.html
-Source: http://isotope.metafizzy.co/
+License: https://flickity.metafizzy.co/license.html
+Source: https://flickity.metafizzy.co/
 
 Pace
 License: https://raw.githubusercontent.com/HubSpot/pace/master/LICENSE
 Source: http://github.hubspot.com/pace/docs/welcome/
-
-HTML5 Shiv by @afarkas @jdalton @jon_neal @rem
-License: MIT/GPL2 Licensed
-Source: https://github.com/afarkas/html5shiv
-
-[PT Sans](https://fonts.google.com/specimen/PT+Sans) by ParaType - Licensed under the [SIL Open Font License, 1.1](http://scripts.sil.org/OFL).
 
 PT Sans
 Copyright (c) ParaType Ltd
@@ -113,11 +96,13 @@ Any other image included & distributed with the theme has been licensed under th
 =1.1.0=
 - Added block editor support: theme.json with the theme's palette, fluid type scale and layout widths
 - Added eight block patterns rebuilding the front page sections out of core blocks
-- Added eight block styles: outline buttons, rounded and framed images, cards, plain quotations, short rules and checklists
+- Added nine block styles: outline buttons, rounded, framed and tile-cropped images, cards, plain quotations, short rules and checklists
 - Added wide and full alignment, responsive embeds and editor styles
+- Added a Full width page template
 - Fixed the editor loading a stylesheet that no longer ships with the theme
 - Dropped Bootstrap; the grid the theme actually used is now a 4 KB stylesheet
 - Folded the front page widgets into the theme, so no companion plugin is needed
+- Added a Front Page Sections panel to the Customizer, with controls for every section
 - Added work, testimonials and numbers sections, and widgets for them
 - Added footer widget areas and styling, and the footer now skips empty columns
 - Raised the accent and the team social icons to AA contrast
@@ -126,6 +111,12 @@ Any other image included & distributed with the theme has been licensed under th
 - Removed the Google-font subsets option, which no longer had an API to subset
 - Trimmed the bundled icon font to woff2 and woff, from six formats
 - Removed the hardcoded Google Maps key; the address falls back to plain text
+- Fixed section icons disappearing when the Bonkers Addons plugin is also active; the theme's widgets now take precedence
+- Fixed the clients and image sections following another section's on/off switch
+- Fixed the contact form's submit label sitting off-centre
+- Fixed the PHP version check, which still enforced 5.4 against a stated 7.4
+- Regenerated the translation template, and documented every placeholder for translators
+- Licensed the theme GPLv3 or later throughout, which the bundled Flickity requires
 
 =1.0.9=
 - Updated colorlibHQ/bonkers from WPChill/bonkers

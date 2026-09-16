@@ -1,0 +1,6 @@
+# Kept out of `git archive`, so a release zip built from the repo carries only
+# what a site needs. The WordPress.org uploader flags hidden files, and
+# package.json is build tooling, not part of the theme.
+.gitattributes export-ignore
+.gitignore export-ignore
+package.json export-ignore
