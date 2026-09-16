@@ -1,6 +1,6 @@
 <?php
 
-class Bonkers_Team_Member extends WP_Widget {
+class Bonkers_Team_Member_Widget extends WP_Widget {
 
 	/**
 	 * Register widget with WordPress.
@@ -282,6 +282,3 @@ endif;
 	}
 
 }
-
-
-register_widget( 'Bonkers_Team_Member' );

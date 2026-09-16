@@ -1,6 +1,6 @@
 <?php
 
-class Bonkers_Phone_Feature extends WP_Widget {
+class Bonkers_Phone_Feature_Widget extends WP_Widget {
 
 	/**
 	 * Register widget with WordPress.
@@ -193,5 +193,3 @@ endif;
 	}
 
 }
-
-register_widget( 'Bonkers_Phone_Feature' );

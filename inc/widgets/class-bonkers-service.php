@@ -1,6 +1,6 @@
 <?php
 
-class Bonkers_Service extends WP_Widget {
+class Bonkers_Service_Widget extends WP_Widget {
 
 	/**
 	 * Register widget with WordPress.
@@ -224,6 +224,3 @@ endif;
 	}
 
 }
-
-
-register_widget( 'Bonkers_Service' );

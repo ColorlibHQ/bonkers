@@ -1,6 +1,6 @@
 <?php
 
-class Bonkers_Client_Logo extends WP_Widget {
+class Bonkers_Client_Logo_Widget extends WP_Widget {
 
 	/**
 	 * Register widget with WordPress.
@@ -139,6 +139,3 @@ class Bonkers_Client_Logo extends WP_Widget {
 	}
 
 }
-
-
-register_widget( 'Bonkers_Client_Logo' );

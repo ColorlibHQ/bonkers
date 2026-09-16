@@ -1,6 +1,6 @@
 <?php
 
-class Bonkers_Contact_Info extends WP_Widget {
+class Bonkers_Contact_Info_Widget extends WP_Widget {
 
 	/**
 	 * Register widget with WordPress.
@@ -166,6 +166,3 @@ endif;
 	}
 
 }
-
-
-register_widget( 'Bonkers_Contact_Info' );
