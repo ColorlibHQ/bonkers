@@ -1107,7 +1107,7 @@ a.bonkers-contact-value:hover {
 	display: block;
 	padding-bottom: .5rem;
 	font-size: .8125rem;
-	color: rgba(255, 255, 255, .45);
+	color: rgba(255, 255, 255, .55);
 }
 
 /* The theme's own contact widget, used here for the studio details. */
@@ -1152,6 +1152,21 @@ a.bonkers-contact-value:hover {
 
 #footer .widget input::placeholder {
 	color: rgba(255, 255, 255, .45);
+}
+
+/* The sub-footer ships #666 on a near-black band, which measures 3.66:1 and
+ * fails AA for body text. These are the same hues, taken up to legible. */
+.sub-footer {
+	color: rgba(255, 255, 255, .62);
+}
+
+.sub-footer a {
+	color: rgba(255, 255, 255, .78);
+}
+
+.sub-footer a:hover,
+.sub-footer a:focus-visible {
+	color: #fff;
 }
 
 /* Sub-footer: the copyright and menu carry left divider rules that only make
