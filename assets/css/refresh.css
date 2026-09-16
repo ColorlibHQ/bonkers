@@ -275,6 +275,23 @@ select:focus-visible {
 
 .bonkers-team-social a:hover { background: var(--bk-ink); color: #fff; }
 
+/*
+ * style.css colours these marks five classes deep (.bonkers-team-section
+ * .bonkers-team-wrap .bonkers-team-member .bonker-team-content
+ * .bonkers-team-social li a), so the rules above win the chip background but
+ * lose the mark: hover painted #4d4d4d on a near-black chip, 1.65:1 measured.
+ * Matching its chain is what takes both.
+ */
+.bonkers-team-section .bonkers-team-wrap .bonkers-team-member .bonker-team-content .bonkers-team-social li a {
+	color: var(--bk-ink);
+}
+
+.bonkers-team-section .bonkers-team-wrap .bonkers-team-member .bonker-team-content .bonkers-team-social li a:hover,
+.bonkers-team-section .bonkers-team-wrap .bonkers-team-member .bonker-team-content .bonkers-team-social li a:focus,
+.bonkers-team-section .bonkers-team-wrap .bonkers-team-member .bonker-team-content .bonkers-team-social li a:focus-visible {
+	color: #fff;
+}
+
 /* -------------------------------------------------- clients */
 
 /* -------------------------------------------------- video */

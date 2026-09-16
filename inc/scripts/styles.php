@@ -9,10 +9,10 @@ function bonkers_custom_css() {
 	/*
 	Colors
 	*/
-	$hero_color            = get_theme_mod( 'bonkers_hero_color', '#2D80E2' );
+	$hero_color            = get_theme_mod( 'bonkers_hero_color', '#1E63B8' );
 	$headings_color        = get_theme_mod( 'bonkers_headings_color', '#222222' );
 	$text_color            = get_theme_mod( 'bonkers_text_color', '#808080' );
-	$link_color            = get_theme_mod( 'bonkers_link_color', '#2D80E2' );
+	$link_color            = get_theme_mod( 'bonkers_link_color', '#1E63B8' );
 	$footer_background     = get_theme_mod( 'bonkers_footer_background', '#222222' );
 	$site_background_color = get_theme_mod( 'bonkers_site_background_color', '#FFFFFF' );
 	$logo_color            = get_theme_mod( 'bonkers_logo_color', '#222222' );
@@ -108,10 +108,10 @@ function bonkers_get_custom_css( $colors ) {
 
 	//Default colors
 	$colors = wp_parse_args( $colors, array(
-		'heroColor'             => '#2D80E2',
+		'heroColor'             => '#1E63B8',
 		'headings_color'        => '#222222',
 		'text_color'            => '#808080',
-		'link_color'            => '#2D80E2',
+		'link_color'            => '#1E63B8',
 		'footer_background'     => '#222222',
 		'site_background_color' => '#FFFFFF',
 		'logo_color'            => '#222222',

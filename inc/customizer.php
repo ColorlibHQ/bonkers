@@ -24,7 +24,7 @@ function bonkers_customize_register( $wp_customize ) {
 	Featured
 	------------------------------ */
 	$wp_customize->add_setting( 'bonkers_hero_color', array(
-		'default'           => '#2D80E2',
+		'default'           => '#1E63B8',
 		'transport'         => 'refresh',
 		'sanitize_callback' => 'sanitize_hex_color',
 		'type'              => 'theme_mod',
@@ -80,7 +80,7 @@ function bonkers_customize_register( $wp_customize ) {
 	Link
 	------------------------------ */
 	$wp_customize->add_setting( 'bonkers_link_color', array(
-		'default'           => '#2D80E2',
+		'default'           => '#1E63B8',
 		'transport'         => 'refresh',
 		'sanitize_callback' => 'sanitize_hex_color',
 		'type'              => 'theme_mod',
