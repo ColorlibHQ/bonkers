@@ -580,6 +580,12 @@ img { max-width: 100%; height: auto; }
 }
 
 .bonkers-phone-section .bonkers-phone-image .bonkers-phone-screenshot {
+	/*
+	 * The frame carries a CSS filter, which makes it a stacking context and so
+	 * paints with the positioned boxes, after this one in tree order. Without a
+	 * z-index the drawing covers the picture and the screen goes black.
+	 */
+	z-index: 1;
 	top: 3.57%;
 	left: 5.95%;
 	width: 88.1%;
