@@ -15,7 +15,12 @@ function bonkers_customize_register( $wp_customize ) {
 	require_once get_template_directory() . '/inc/customizer-controls/class-bonkers-multiple-checkbox-control.php';
 	$wp_customize->register_control_type( 'Bonkers_Multiple_Checkbox_Control' );
 
-	$wp_customize->get_setting( 'blogdescription' )->transport = 'postMessage';
+	// Core registers this itself, but not in every context a Customizer object
+	// can be built in, and assigning to null is fatal.
+	$bonkers_blogdescription = $wp_customize->get_setting( 'blogdescription' );
+	if ( $bonkers_blogdescription ) {
+		$bonkers_blogdescription->transport = 'postMessage';
+	}
 
 	/*
 	Colors
