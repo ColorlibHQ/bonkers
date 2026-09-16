@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 840" width="420" height="840" aria-hidden="true" focusable="false">
+	<defs>
+		<linearGradient id="bk-phone-rim" x1="0" y1="0" x2="1" y2="0">
+			<stop offset="0" stop-color="#9aa1aa"/>
+			<stop offset=".045" stop-color="#4c525b"/>
+			<stop offset=".5" stop-color="#31363e"/>
+			<stop offset=".955" stop-color="#4c525b"/>
+			<stop offset="1" stop-color="#9aa1aa"/>
+		</linearGradient>
+		<linearGradient id="bk-phone-body" x1="0" y1="0" x2=".85" y2="1">
+			<stop offset="0" stop-color="#474d56"/>
+			<stop offset=".42" stop-color="#2c313a"/>
+			<stop offset="1" stop-color="#1b1f25"/>
+		</linearGradient>
+		<filter id="bk-phone-shadow" x="-25%" y="-12%" width="150%" height="130%">
+			<feDropShadow dx="0" dy="12" stdDeviation="15" flood-color="#0d1015" flood-opacity=".26"/>
+		</filter>
+	</defs>
+
+	<!-- Side controls, drawn first so the body edge laps over their inner half. -->
+	<g fill="#464c55">
+		<rect x="9" y="196" width="8" height="36" rx="4"/>
+		<rect x="9" y="256" width="8" height="64" rx="4"/>
+		<rect x="9" y="336" width="8" height="64" rx="4"/>
+		<rect x="403" y="272" width="8" height="96" rx="4"/>
+	</g>
+
+	<!-- Body: a polished rail around a darker back. -->
+	<rect x="15" y="20" width="390" height="800" rx="56" fill="url(#bk-phone-rim)" filter="url(#bk-phone-shadow)"/>
+	<rect x="18.5" y="23.5" width="383" height="793" rx="52.5" fill="url(#bk-phone-body)"/>
+
+	<!-- Screen well. The section's own picture is laid over this by CSS; the
+	     colour only shows if no picture has been set. -->
+	<rect x="27" y="32" width="366" height="776" rx="44" fill="#0b0d10"/>
+</svg>

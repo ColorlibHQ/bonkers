@@ -22,7 +22,7 @@ if ( $bonkers_enable_section || is_customize_preview() ) :
 
 		<div class="bonkers-phone-image">
 			<div class="bonkers-phone-screenshot" <?php echo $bonkers_phone_image ? 'style="background-image: url(' . esc_url( $bonkers_phone_image ) . ')"' : ''; ?>></div>
-			<img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/images/phone_bck.png" alt="">
+			<img src="<?php echo esc_url( get_template_directory_uri() ); ?>/assets/images/phone-frame.svg" width="420" height="840" alt="">
 		</div>
 
 		<?php

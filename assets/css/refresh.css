@@ -556,6 +556,42 @@ img { max-width: 100%; height: auto; }
 	margin-inline: auto;
 }
 
+/* -------------------------------------------------- phone mockup (1.1.0) */
+
+/*
+ * The shipped frame was an iPhone-6-era body: a 16.5% bezel on every side and
+ * a home button, which dated the whole section on its own. phone-frame.svg is
+ * a current handset, so the picture fills nearly the entire face. The insets
+ * below are measured off that drawing: a 366x776 screen on a 420x840 canvas.
+ */
+.bonkers-phone-section .bonkers-phone-image img {
+	display: block;
+	width: 100%;
+	height: auto;
+}
+
+.bonkers-phone-section .bonkers-phone-image .bonkers-phone-screenshot {
+	top: 3.81%;
+	left: 6.43%;
+	width: 87.14%;
+	height: 92.38%;
+	border-radius: 12% / 5.7%;
+	background-color: #0b0d10;
+}
+
+/* The camera cutout belongs over the picture, the way it sits on the device. */
+.bonkers-phone-section .bonkers-phone-screenshot::before {
+	content: "";
+	position: absolute;
+	top: 1.9%;
+	left: 50%;
+	width: 29%;
+	aspect-ratio: 125 / 36;
+	transform: translateX(-50%);
+	border-radius: 999px;
+	background: #0b0d10;
+}
+
 /* -------------------------------------------------- short rows centre (1.1.0) */
 
 /*
