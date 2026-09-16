@@ -45,6 +45,41 @@ the editor with add_editor_style(), so a block looks the same in both.
 	box-shadow: var(--bk-shadow);
 }
 
+/*
+ * Tile: crops every image in a row to one shape. Photographs come in whatever
+ * proportions the camera gave them -- the three bundled here range from 4:3 to
+ * a 3.8:1 strip -- and a grid of those reads as a mistake rather than a grid.
+ */
+.wp-block-image.is-style-bonkers-tile img {
+	width: 100%;
+	aspect-ratio: 4 / 3;
+	object-fit: cover;
+	border-radius: var(--bk-radius);
+}
+
+/* -------------------------------------------------- wide and full alignment */
+
+/*
+ * Pages are laid out inside a fixed .container, so wide and full blocks fill
+ * the content column rather than bleeding to the window edge. Bleeding past the
+ * container needs viewport maths (calc(50% - 50vw)), and 50vw counts the
+ * scrollbar -- which is how this theme got a sideways wobble once already. The
+ * column is 1270px here, so a full-width band still reads as a band.
+ */
+.bonkers-full-width .alignwide,
+.bonkers-full-width .alignfull {
+	width: 100%;
+	max-width: none;
+	margin-left: 0;
+	margin-right: 0;
+}
+
+/* Inside the normal content measure, a wide block may still use the full column. */
+.entry-content .alignwide,
+.entry-content .alignfull {
+	max-width: none;
+}
+
 /* -------------------------------------------------- group / columns as cards */
 
 .wp-block-group.is-style-bonkers-card {

@@ -24,24 +24,24 @@ $bonkers_images = get_template_directory_uri() . '/assets/images/';
 	<div class="wp-block-columns alignwide" style="margin-top:var(--wp--preset--spacing--50)">
 		<!-- wp:column -->
 		<div class="wp-block-column">
-			<!-- wp:image {"sizeSlug":"large","linkDestination":"none","className":"is-style-bonkers-rounded"} -->
-			<figure class="wp-block-image size-large is-style-bonkers-rounded"><img src="<?php echo esc_url( $bonkers_images . 'StockSnap_1A3MXAT0M6.jpg' ); ?>" alt=""/><figcaption class="wp-element-caption"><?php echo esc_html_x( 'Project name', 'Pattern caption', 'bonkers' ); ?></figcaption></figure>
+			<!-- wp:image {"sizeSlug":"large","linkDestination":"none","className":"is-style-bonkers-tile"} -->
+			<figure class="wp-block-image size-large is-style-bonkers-tile"><img src="<?php echo esc_url( $bonkers_images . 'StockSnap_1A3MXAT0M6.jpg' ); ?>" alt=""/><figcaption class="wp-element-caption"><?php echo esc_html_x( 'Project name', 'Pattern caption', 'bonkers' ); ?></figcaption></figure>
 			<!-- /wp:image -->
 		</div>
 		<!-- /wp:column -->
 
 		<!-- wp:column -->
 		<div class="wp-block-column">
-			<!-- wp:image {"sizeSlug":"large","linkDestination":"none","className":"is-style-bonkers-rounded"} -->
-			<figure class="wp-block-image size-large is-style-bonkers-rounded"><img src="<?php echo esc_url( $bonkers_images . 'StockSnap_JBW2PXDOL6.jpg' ); ?>" alt=""/><figcaption class="wp-element-caption"><?php echo esc_html_x( 'Project name', 'Pattern caption', 'bonkers' ); ?></figcaption></figure>
+			<!-- wp:image {"sizeSlug":"large","linkDestination":"none","className":"is-style-bonkers-tile"} -->
+			<figure class="wp-block-image size-large is-style-bonkers-tile"><img src="<?php echo esc_url( $bonkers_images . 'StockSnap_JBW2PXDOL6.jpg' ); ?>" alt=""/><figcaption class="wp-element-caption"><?php echo esc_html_x( 'Project name', 'Pattern caption', 'bonkers' ); ?></figcaption></figure>
 			<!-- /wp:image -->
 		</div>
 		<!-- /wp:column -->
 
 		<!-- wp:column -->
 		<div class="wp-block-column">
-			<!-- wp:image {"sizeSlug":"large","linkDestination":"none","className":"is-style-bonkers-rounded"} -->
-			<figure class="wp-block-image size-large is-style-bonkers-rounded"><img src="<?php echo esc_url( $bonkers_images . 'StockSnap_R7GVMRJWW9.jpg' ); ?>" alt=""/><figcaption class="wp-element-caption"><?php echo esc_html_x( 'Project name', 'Pattern caption', 'bonkers' ); ?></figcaption></figure>
+			<!-- wp:image {"sizeSlug":"large","linkDestination":"none","className":"is-style-bonkers-tile"} -->
+			<figure class="wp-block-image size-large is-style-bonkers-tile"><img src="<?php echo esc_url( $bonkers_images . 'StockSnap_R7GVMRJWW9.jpg' ); ?>" alt=""/><figcaption class="wp-element-caption"><?php echo esc_html_x( 'Project name', 'Pattern caption', 'bonkers' ); ?></figcaption></figure>
 			<!-- /wp:image -->
 		</div>
 		<!-- /wp:column -->

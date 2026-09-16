@@ -173,7 +173,9 @@ function bonkers_darken_color( $rgb, $darker = 2 ) {
 if ( ! function_exists( 'bonkers_content_css_class' ) ) {
 	function bonkers_content_css_class() {
 
-		if ( is_page_template( 'template-full-width.php' ) ) {
+		// The file lives in page-templates/, so that is the name the page stores.
+		// The bare name is kept for any page saved before it moved.
+		if ( is_page_template( array( 'page-templates/template-full-width.php', 'template-full-width.php' ) ) ) {
 			return 'col-md-12';
 		}
 		if ( is_page_template( 'template-fullscreen.php' ) ) {

@@ -9,8 +9,8 @@
  */
 
 ?>
-<!-- wp:cover {"overlayColor":"dark","dimRatio":60,"minHeight":520,"align":"full","layout":{"type":"constrained"}} -->
-<div class="wp-block-cover alignfull" style="min-height:520px"><span aria-hidden="true" class="wp-block-cover__background has-dark-background-color has-background-dim-60 has-background-dim"></span><div class="wp-block-cover__inner-container">
+<!-- wp:cover {"overlayColor":"dark","dimRatio":100,"minHeight":520,"align":"full","layout":{"type":"constrained"}} -->
+<div class="wp-block-cover alignfull" style="min-height:520px"><span aria-hidden="true" class="wp-block-cover__background has-dark-background-color has-background-dim-100 has-background-dim"></span><div class="wp-block-cover__inner-container">
 	<!-- wp:heading {"textAlign":"center","level":1,"textColor":"base","fontSize":"xx-large"} -->
 	<h1 class="wp-block-heading has-text-align-center has-base-color has-text-color has-xx-large-font-size"><?php echo esc_html_x( 'Work worth showing', 'Pattern headline', 'bonkers' ); ?></h1>
 	<!-- /wp:heading -->

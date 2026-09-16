@@ -60,6 +60,11 @@ if ( ! function_exists( 'bonkers_register_block_styles' ) ) :
 				'label' => esc_html__( 'Framed', 'bonkers' ),
 			),
 			array(
+				'block' => 'core/image',
+				'name'  => 'bonkers-tile',
+				'label' => esc_html__( 'Tile', 'bonkers' ),
+			),
+			array(
 				'block' => 'core/group',
 				'name'  => 'bonkers-card',
 				'label' => esc_html__( 'Card', 'bonkers' ),
