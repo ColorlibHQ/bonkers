@@ -62,7 +62,26 @@ if ( '' != $sidebar_columns ) {
 		/*
         *Only show the Footer sections that have widgets
         */
-		if ( $bonkers_footer_widgets ) {
+		/*
+		 * Work out which columns actually have widgets first. The loop below used
+		 * to print a wrapper div per registered area whether or not anything was
+		 * in it, so a site that had not filled the footer still rendered four
+		 * empty grid columns inside an empty dark band -- which is what the
+		 * comment above always claimed it avoided.
+		 */
+		$bonkers_active_columns = array();
+
+		for ( $i = 1; $i <= $no_sidebar; $i++ ) {
+			if ( is_active_sidebar( 'footer-widgets-' . $i ) ) {
+				$bonkers_active_columns[] = $i;
+			}
+		}
+
+		// When only some columns are filled, share the row between those, rather
+		// than leaving the gaps where the empty ones used to be.
+		$bonkers_even_span = (int) floor( 12 / max( 1, count( $bonkers_active_columns ) ) );
+
+		if ( $bonkers_footer_widgets && $bonkers_active_columns ) {
 		?>
 
 		<footer id="footer" class="site-footer">
@@ -70,10 +89,19 @@ if ( '' != $sidebar_columns ) {
 				<div class="row">
 
 					<?php
-					for ( $i = 1; $i <= $no_sidebar; $i++ ) {
-						$footer_section = 'footer-widgets-' . $i;
-						echo '<div class="' . Bonkers_Helper::get_bootstrap_class( $sidebar_columns['columns'][ $i ]['span'] ) . '">';
-						dynamic_sidebar( $footer_section );
+					foreach ( $bonkers_active_columns as $i ) {
+						$span = count( $bonkers_active_columns ) === $no_sidebar && isset( $sidebar_columns['columns'][ $i ]['span'] )
+							? (int) $sidebar_columns['columns'][ $i ]['span']
+							: $bonkers_even_span;
+
+						$class = Bonkers_Helper::get_bootstrap_class( $span );
+
+						if ( ! $class ) {
+							$class = 'col-md-' . max( 1, min( 12, $span ) ) . ' col-sm-6 col-xs-12';
+						}
+
+						echo '<div class="' . esc_attr( $class ) . '">';
+						dynamic_sidebar( 'footer-widgets-' . $i );
 						echo '</div>';
 					}// End foreach().
 					?>
@@ -112,9 +140,11 @@ if ( '' != $sidebar_columns ) {
 						}
 						?>
 					</div>
-					<div class="col-md-5 col-sm-6">
-						<?php get_template_part( '/template-parts/social-menu', 'footer' ); ?>
-					</div>
+					<?php if ( has_nav_menu( 'social' ) ) : ?>
+						<div class="col-md-5 col-sm-6">
+							<?php get_template_part( '/template-parts/social-menu', 'footer' ); ?>
+						</div>
+					<?php endif; ?>
 
 				</div><!-- .row -->
 			</div><!-- .container -->

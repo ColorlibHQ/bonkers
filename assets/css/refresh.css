@@ -1022,3 +1022,105 @@ a.bonkers-contact-value:hover {
 		max-width: 100%;
 	}
 }
+
+/* -------------------------------------------------- footer widgets (1.1.0) */
+
+/*
+ * The footer band is dark but the compiled stylesheet only sizes its columns --
+ * it never styles the widgets inside, because the demo never had any. These are
+ * the defaults a filled footer needs: readable text on #222, headings that read
+ * as headings, and lists that do not look like body copy.
+ */
+.site-footer {
+	padding: clamp(3rem, 2rem + 3vw, 4.5rem) 0 clamp(1.5rem, 1rem + 2vw, 2.5rem);
+	color: rgba(255, 255, 255, .72);
+}
+
+.site-footer .widget {
+	margin-bottom: 2rem;
+}
+
+.site-footer .widget-title,
+.site-footer h4 {
+	margin: 0 0 1.1rem;
+	color: #fff;
+	font-size: 1rem;
+	letter-spacing: .08em;
+	text-transform: uppercase;
+}
+
+.site-footer p {
+	margin: 0 0 1rem;
+	line-height: 1.65;
+}
+
+.site-footer a {
+	color: rgba(255, 255, 255, .78);
+	text-decoration: none;
+	transition: color .18s var(--bk-ease);
+}
+
+.site-footer a:hover,
+.site-footer a:focus-visible {
+	color: #fff;
+}
+
+.site-footer ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.site-footer li {
+	padding: .45rem 0;
+	border-bottom: 1px solid rgba(255, 255, 255, .08);
+}
+
+.site-footer li:last-child {
+	border-bottom: 0;
+}
+
+/* Recent posts: the date belongs under the title, not inline with it. */
+.site-footer .widget_recent_entries .post-date {
+	display: block;
+	margin-top: .15rem;
+	font-size: .8125rem;
+	color: rgba(255, 255, 255, .5);
+}
+
+/* The theme's own contact widget, used here for the studio details. */
+.site-footer .bonkers-contact-info li,
+.site-footer .location,
+.site-footer .phone,
+.site-footer .email,
+.site-footer .website {
+	display: flex;
+	align-items: flex-start;
+	gap: .65rem;
+	padding: .45rem 0;
+	border-bottom: 0;
+}
+
+.site-footer .fa {
+	width: 1.15em;
+	margin-top: .2em;
+	color: rgba(255, 255, 255, .5);
+	flex: 0 0 auto;
+}
+
+.site-footer .search-field,
+.site-footer input[type="search"],
+.site-footer input[type="text"],
+.site-footer input[type="email"] {
+	width: 100%;
+	padding: .7em .9em;
+	border: 1px solid rgba(255, 255, 255, .18);
+	border-radius: 10px;
+	background: rgba(255, 255, 255, .06);
+	color: #fff;
+	font: inherit;
+}
+
+.site-footer input::placeholder {
+	color: rgba(255, 255, 255, .45);
+}
