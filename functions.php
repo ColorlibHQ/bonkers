@@ -81,6 +81,15 @@ if ( ! function_exists( 'bonkers_setup' ) ) :
 		 */
 		add_theme_support( 'customize-selective-refresh-widgets' );
 
+		/*
+		 * Block editor. theme.json carries the palette, type scale and layout
+		 * widths; these are the supports it cannot declare on its own.
+		 */
+		add_theme_support( 'align-wide' );
+		add_theme_support( 'responsive-embeds' );
+		add_theme_support( 'editor-styles' );
+		add_theme_support( 'wp-block-styles' );
+
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus(
 			array(
@@ -126,7 +135,7 @@ if ( ! function_exists( 'bonkers_setup' ) ) :
 
 			// Styles for TinyMCE
 			$font_url = str_replace( ',', '%2C', '//fonts.googleapis.com/css?family=PT+Sans:300,400,700' );
-			add_editor_style( array( 'assets/css/bootstrap.css', 'assets/css/editor-style.css', $font_url ) );
+			add_editor_style( array( 'assets/css/blocks.css', 'assets/css/editor-style.css', $font_url ) );
 
 	}
 endif; // bonkers_setup
@@ -246,6 +255,11 @@ require get_template_directory() . '/inc/class-bonkers.php';
 /**
  * Customizer
  *
+ * Customizer additions.
+ */
+require get_template_directory() . '/inc/blocks.php';
+
+/**
  * Customizer additions.
  */
 require get_template_directory() . '/inc/customizer.php';

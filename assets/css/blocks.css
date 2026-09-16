@@ -1,0 +1,115 @@
+/*
+Block styles
+--------------------------------------------------------------
+Styles for the block styles registered in inc/blocks.php, plus the handful of
+design tokens they rely on. This file is loaded on the front end and handed to
+the editor with add_editor_style(), so a block looks the same in both.
+*/
+
+:root {
+	--bk-ink: #24282e;
+	--bk-body: #50575f;
+	--bk-muted: #6b7280;
+	--bk-rule: #e6e8eb;
+	--bk-surface: #f6f7f8;
+	--bk-accent: #1e63b8;
+	--bk-radius: 14px;
+	--bk-radius-sm: 10px;
+	--bk-shadow: 0 1px 2px rgba(16, 24, 40, .04), 0 12px 28px -12px rgba(16, 24, 40, .16);
+	--bk-ease: cubic-bezier(.22, .61, .36, 1);
+}
+
+/* -------------------------------------------------- button: outline */
+
+.wp-block-button.is-style-bonkers-outline > .wp-block-button__link {
+	background-color: transparent;
+	color: var(--bk-accent);
+	border: 1px solid currentColor;
+	transition: background-color .18s var(--bk-ease), color .18s var(--bk-ease);
+}
+
+.wp-block-button.is-style-bonkers-outline > .wp-block-button__link:hover,
+.wp-block-button.is-style-bonkers-outline > .wp-block-button__link:focus {
+	background-color: var(--bk-accent);
+	color: #fff;
+}
+
+/* -------------------------------------------------- image */
+
+.wp-block-image.is-style-bonkers-rounded img {
+	border-radius: var(--bk-radius);
+}
+
+.wp-block-image.is-style-bonkers-framed img {
+	border-radius: var(--bk-radius);
+	box-shadow: var(--bk-shadow);
+}
+
+/* -------------------------------------------------- group / columns as cards */
+
+.wp-block-group.is-style-bonkers-card {
+	padding: clamp(1.25rem, 1rem + 1vw, 2rem);
+	border: 1px solid var(--bk-rule);
+	border-radius: var(--bk-radius);
+	background-color: #fff;
+}
+
+.wp-block-columns.is-style-bonkers-cards > .wp-block-column {
+	padding: clamp(1.25rem, 1rem + 1vw, 2rem);
+	border: 1px solid var(--bk-rule);
+	border-radius: var(--bk-radius);
+	background-color: #fff;
+}
+
+/* -------------------------------------------------- quote: plain */
+
+.wp-block-quote.is-style-bonkers-plain {
+	padding-left: 0;
+	border-left: 0;
+	text-align: center;
+}
+
+.wp-block-quote.is-style-bonkers-plain cite {
+	display: block;
+	margin-top: .8rem;
+	color: var(--bk-muted);
+	font-size: .9375rem;
+	font-style: normal;
+}
+
+/* -------------------------------------------------- separator: short rule */
+
+.wp-block-separator.is-style-bonkers-short {
+	width: 64px;
+	height: 3px;
+	margin-left: auto;
+	margin-right: auto;
+	border: 0;
+	background-color: var(--bk-accent);
+	opacity: 1;
+}
+
+/* -------------------------------------------------- list: checklist */
+
+.wp-block-list.is-style-bonkers-checks {
+	padding-left: 0;
+	list-style: none;
+}
+
+.wp-block-list.is-style-bonkers-checks > li {
+	position: relative;
+	padding-left: 1.75rem;
+	margin-bottom: .5rem;
+}
+
+.wp-block-list.is-style-bonkers-checks > li::before {
+	content: "";
+	position: absolute;
+	top: .45em;
+	left: 0;
+	width: .55rem;
+	height: .95rem;
+	border: solid var(--bk-accent);
+	border-width: 0 2px 2px 0;
+	transform: rotate(45deg);
+}

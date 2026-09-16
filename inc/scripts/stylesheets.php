@@ -20,3 +20,7 @@
 	// on equal specificity without !important. See the file header for why the
 	// refresh is not folded into the SASS source.
 	wp_enqueue_style( 'bonkers-refresh', get_template_directory_uri() . '/assets/css/refresh.css', array( 'bonkers_style' ), $bonkers_version );
+
+	// Block styles. Also handed to the editor in functions.php, so a block looks
+	// the same while you are editing it as it does once published.
+	wp_enqueue_style( 'bonkers-blocks', get_template_directory_uri() . '/assets/css/blocks.css', array( 'bonkers-refresh' ), $bonkers_version );

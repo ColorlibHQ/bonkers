@@ -1,0 +1,148 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 2,
+	"settings": {
+		"appearanceTools": true,
+		"useRootPaddingAwareAlignments": true,
+		"layout": {
+			"contentSize": "780px",
+			"wideSize": "1270px"
+		},
+		"color": {
+			"defaultPalette": false,
+			"defaultGradients": false,
+			"custom": true,
+			"customDuotone": false,
+			"palette": [
+				{ "slug": "primary", "color": "#1e63b8", "name": "Primary" },
+				{ "slug": "ink", "color": "#24282e", "name": "Headings" },
+				{ "slug": "body", "color": "#50575f", "name": "Body text" },
+				{ "slug": "muted", "color": "#6b7280", "name": "Muted" },
+				{ "slug": "rule", "color": "#e6e8eb", "name": "Rule" },
+				{ "slug": "surface", "color": "#f6f7f8", "name": "Surface" },
+				{ "slug": "dark", "color": "#222222", "name": "Dark" },
+				{ "slug": "base", "color": "#ffffff", "name": "Base" }
+			]
+		},
+		"typography": {
+			"fluid": true,
+			"customFontSize": true,
+			"fontFamilies": [
+				{
+					"slug": "pt-sans",
+					"name": "PT Sans",
+					"fontFamily": "'PT Sans', Helvetica, Arial, sans-serif"
+				}
+			],
+			"fontSizes": [
+				{
+					"slug": "small",
+					"name": "Small",
+					"size": "0.875rem",
+					"fluid": { "min": "0.8125rem", "max": "0.875rem" }
+				},
+				{
+					"slug": "medium",
+					"name": "Medium",
+					"size": "1rem",
+					"fluid": { "min": "1rem", "max": "1.0625rem" }
+				},
+				{
+					"slug": "large",
+					"name": "Large",
+					"size": "1.3125rem",
+					"fluid": { "min": "1.125rem", "max": "1.3125rem" }
+				},
+				{
+					"slug": "x-large",
+					"name": "Extra large",
+					"size": "2.75rem",
+					"fluid": { "min": "1.75rem", "max": "2.75rem" }
+				},
+				{
+					"slug": "xx-large",
+					"name": "Display",
+					"size": "4.5rem",
+					"fluid": { "min": "2.25rem", "max": "4.5rem" }
+				}
+			]
+		},
+		"spacing": {
+			"units": [ "px", "em", "rem", "vh", "vw", "%" ],
+			"spacingSizes": [
+				{ "slug": "20", "name": "1", "size": "0.75rem" },
+				{ "slug": "30", "name": "2", "size": "1.25rem" },
+				{ "slug": "40", "name": "3", "size": "2rem" },
+				{ "slug": "50", "name": "4", "size": "3rem" },
+				{ "slug": "60", "name": "5", "size": "4.5rem" },
+				{ "slug": "70", "name": "6", "size": "6rem" }
+			]
+		}
+	},
+	"styles": {
+		"color": {
+			"background": "var:preset|color|base",
+			"text": "var:preset|color|body"
+		},
+		"typography": {
+			"fontFamily": "var:preset|font-family|pt-sans",
+			"fontSize": "var:preset|font-size|medium",
+			"lineHeight": "1.65"
+		},
+		"spacing": {
+			"blockGap": "1.1rem"
+		},
+		"elements": {
+			"link": {
+				"color": { "text": "var:preset|color|primary" },
+				"typography": { "textDecoration": "underline" },
+				":hover": { "typography": { "textDecoration": "none" } }
+			},
+			"heading": {
+				"color": { "text": "var:preset|color|ink" },
+				"typography": { "fontWeight": "700", "lineHeight": "1.14" }
+			},
+			"button": {
+				"color": {
+					"background": "var:preset|color|primary",
+					"text": "var:preset|color|base"
+				},
+				"border": { "radius": "3px" },
+				"spacing": {
+					"padding": { "top": "0.85rem", "right": "1.9rem", "bottom": "0.85rem", "left": "1.9rem" }
+				},
+				"typography": {
+					"fontSize": "var:preset|font-size|medium",
+					"fontWeight": "500",
+					"textDecoration": "none",
+					"textTransform": "uppercase"
+				},
+				":hover": {
+					"color": { "background": "var:preset|color|ink", "text": "var:preset|color|base" }
+				},
+				":focus": {
+					"color": { "background": "var:preset|color|ink", "text": "var:preset|color|base" }
+				}
+			}
+		},
+		"blocks": {
+			"core/quote": {
+				"color": { "text": "var:preset|color|ink" },
+				"typography": { "fontSize": "var:preset|font-size|large", "lineHeight": "1.45" }
+			},
+			"core/separator": {
+				"color": { "text": "var:preset|color|rule" }
+			},
+			"core/pullquote": {
+				"color": { "text": "var:preset|color|ink" },
+				"typography": { "fontSize": "var:preset|font-size|large" }
+			},
+			"core/code": {
+				"color": { "background": "var:preset|color|surface", "text": "var:preset|color|ink" }
+			},
+			"core/table": {
+				"typography": { "fontSize": "var:preset|font-size|small" }
+			}
+		}
+	}
+}

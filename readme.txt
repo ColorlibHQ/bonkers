@@ -1,15 +1,20 @@
 === Bonkers ===
 Contributors: Colorlib
-Requires at least: WordPress 4.7
-Tested up to: WordPress 5.7.2
-Version: 1.0.9
+Requires at least: 6.1
+Tested up to: 7.1
+Requires PHP: 7.4
+Version: 1.1.0
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.en.html
-Tags: blog, portfolio, two-columns, custom-background, threaded-comments, custom-menu, featured-images, sticky-post, translation-ready
+Tags: blog, portfolio, photography, two-columns, custom-background, custom-colors, custom-header, custom-logo, custom-menu, editor-style, featured-images, footer-widgets, full-width-template, block-patterns, block-styles, wide-blocks, sticky-post, theme-options, threaded-comments, translation-ready
 
 == Description ==
 
-Bonkers is a beautiful one page WordPress theme.
+Bonkers is a one-page WordPress theme for studios and freelancers who would rather show work than describe it: a front page assembled from widget sections, a filterable portfolio, and post layouts built for reading.
+
+It needs no page builder and no companion plugin. The front page sections, the widgets that fill them and the colour and typography options are all part of the theme.
+
+Bonkers also supports the block editor. A theme.json carries the palette, the fluid type scale and the content and wide widths, so blocks look the same while you edit them as they do once published. Eight block patterns rebuild the front page sections out of core blocks, and eight block styles offer the theme's own looks to core blocks: outline buttons, rounded and framed images, cards, plain quotations, short rules and checklists.
 
 = Create a Front Page =
 
@@ -94,6 +99,20 @@ The WordPress logo belongs to Automattic.
 Any other image included & distributed with the theme has been licensed under the GPL and is the creative work of Colorlib.com.
 
 == Changelog ==
+=1.1.0=
+- Added block editor support: theme.json with the theme's palette, fluid type scale and layout widths
+- Added eight block patterns rebuilding the front page sections out of core blocks
+- Added eight block styles: outline buttons, rounded and framed images, cards, plain quotations, short rules and checklists
+- Added wide and full alignment, responsive embeds and editor styles
+- Fixed the editor loading a stylesheet that no longer ships with the theme
+- Dropped Bootstrap; the grid the theme actually used is now a 4 KB stylesheet
+- Folded the front page widgets into the theme, so no companion plugin is needed
+- Added work, testimonials and numbers sections, and widgets for them
+- Added footer widget areas and styling, and the footer now skips empty columns
+- Raised the accent and the team social icons to AA contrast
+- Replaced the phone mockup with a current handset drawn as vector
+- Removed the hardcoded Google Maps key; the address falls back to plain text
+
 =1.0.9=
 - Updated colorlibHQ/bonkers from WPChill/bonkers
 - version bump
