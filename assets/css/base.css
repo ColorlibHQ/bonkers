@@ -1255,7 +1255,7 @@ tbody.collapse.in {
  * -------------------------- */
 @font-face {
   font-family: 'FontAwesome';
-  src: url('../less/font-awesome/fonts/fontawesome-webfont.woff2?v=4.6.3') format('woff2'), url('../less/font-awesome/fonts/fontawesome-webfont.woff?v=4.6.3') format('woff');
+  src: url('../fonts/fontawesome-webfont.woff2?v=4.6.3') format('woff2'), url('../fonts/fontawesome-webfont.woff?v=4.6.3') format('woff');
   font-weight: normal;
   font-style: normal;
 }
@@ -3353,7 +3353,7 @@ tbody.collapse.in {
 }
 @font-face {
   font-family: 'bonkers';
-  src: url('../less/font-bonkers/fonts/bonkers.ttf?63yd7z') format('truetype'), url('../less/font-bonkers/fonts/bonkers.woff?63yd7z') format('woff'), url('../less/font-bonkers/fonts/bonkers.svg?63yd7z#bonkers') format('svg');
+  src: url('../fonts/bonkers.woff?63yd7z') format('woff');
   font-weight: normal;
   font-style: normal;
 }
