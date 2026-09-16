@@ -263,3 +263,8 @@ require get_template_directory() . '/inc/blocks.php';
  * Customizer additions.
  */
 require get_template_directory() . '/inc/customizer.php';
+
+/**
+ * Customizer controls for the front page sections.
+ */
+require get_template_directory() . '/inc/customizer-front-page.php';

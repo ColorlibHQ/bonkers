@@ -1,5 +1,5 @@
 <?php
-$bonkers_enable_section = get_option( 'bonkers_addons_phone_enable', true );
+$bonkers_enable_section = bonkers_option( 'phone_enable', true );
 if ( $bonkers_enable_section || is_customize_preview() ) :
 	?>
 	<div id="bonkers-phone-section" class="bonkers-phone-section" <?php echo $bonkers_enable_section ? '' : 'style="display: none;"'; ?>>
@@ -14,7 +14,7 @@ if ( $bonkers_enable_section || is_customize_preview() ) :
 			echo '</div>';
 		}
 
-		$bonkers_phone_image = get_option( 'bonkers_addons_phone_image' );
+		$bonkers_phone_image = bonkers_option( 'phone_image' );
 		if ( is_numeric( $bonkers_phone_image ) ) {
 			$bonkers_phone_image = wp_get_attachment_url( $bonkers_phone_image );
 		}

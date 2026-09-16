@@ -358,27 +358,6 @@ function bonkers_sanitize_text_html( $str ) {
 }
 
 /**
- * Sanitize Google Font Subsets
- */
-function bonkers_saniteze_google_font_subsets( $subsets ) {
-	$all_subsets = array_keys( Bonkers_Helper::get_google_font_subsets() );
-	if ( is_array( $subsets ) ) {
-		foreach ( $subsets as $key => $subset ) {
-			if ( ! in_array( $subset, $all_subsets ) ) {
-				unset( $subsets[ $key ] );
-			}
-		}
-	} else {
-		if ( ! in_array( $subsets, $all_subsets ) ) {
-			return false;
-		}
-	}
-
-	return $subsets;
-
-}
-
-/**
  * Sanitize array for multicheck
  * http://stackoverflow.com/a/22007205
  */

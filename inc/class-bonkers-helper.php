@@ -97,31 +97,7 @@ if ( ! class_exists( 'Bonkers_Helper' ) ) {
 			return get_page_template_slug( $page_id ) == 'page-templates/template-front-page.php' ? true : false;
 		}
 
-		/**
-		 * @return array
-		 */
-		public static function get_google_font_subsets() {
-			return array(
-				'cyrillic'     => 'Cyrillic',
-				'cyrillic-ext' => 'Cyrillic Extended',
-				'devanagari'   => 'Devanagari',
-				'greek'        => 'Greek',
-				'greek-ext'    => 'Greek Extended',
-				'khmer'        => 'Khmer',
-				'latin'        => 'Latin',
-				'latin-ext'    => 'Latin Extended',
-				'vietnamese'   => 'Vietnamese',
-				'hebrew'       => 'Hebrew',
-				'arabic'       => 'Arabic',
-				'bengali'      => 'Bengali',
-				'gujarati'     => 'Gujarati',
-				'tamil'        => 'Tamil',
-				'telugu'       => 'Telugu',
-				'thai'         => 'Thai',
-			);
-		}
-
-		public static function check_installed_data() {
+				public static function check_installed_data() {
 
 			$import = get_option( 'bonkers_import_content' );
 
