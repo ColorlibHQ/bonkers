@@ -166,17 +166,6 @@ function bonkers_customize_register( $wp_customize ) {
 		),
 	) ) );
 
-	$wp_customize->add_setting( 'bonkers_typography_subsets', array(
-		'sanitize_callback' => 'bonkers_saniteze_google_font_subsets',
-		'transport'         => 'refresh',
-	) );
-	$wp_customize->add_control( new Bonkers_Multiple_Checkbox_Control( $wp_customize, 'bonkers_typography_subsets', array(
-		'section'     => 'bonkers_typography_section',
-		'label'       => esc_html__( 'Google-Font subsets', 'bonkers' ),
-		'description' => esc_html__( 'The subsets used from Google\'s API.', 'bonkers' ),
-		'choices'     => Bonkers_Helper::get_google_font_subsets(),
-	) ) );
-
 	// Footer Settings
 	$wp_customize->add_section( 'bonkers_footer_options', array(
 		'title'      => __( 'Footer Settings', 'bonkers' ),

@@ -82,6 +82,17 @@ Source: https://github.com/afarkas/html5shiv
 
 [PT Sans](https://fonts.google.com/specimen/PT+Sans) by ParaType - Licensed under the [SIL Open Font License, 1.1](http://scripts.sil.org/OFL).
 
+PT Sans
+Copyright (c) ParaType Ltd
+License: SIL Open Font License, Version 1.1
+https://scripts.sil.org/OFL
+Bundled in assets/fonts and declared in assets/css/fonts.css.
+
+Font Awesome 4.6.3 by @davegandy
+Font files: SIL OF License 1.1 - http://scripts.sil.org/OFL
+Code: MIT License - http://opensource.org/licenses/mit-license.html
+http://fontawesome.io
+
 Images from StockSnap.io
 License: https://stocksnap.io/license
 https://stocksnap.io/photo/1A3MXAT0M6
@@ -111,6 +122,9 @@ Any other image included & distributed with the theme has been licensed under th
 - Added footer widget areas and styling, and the footer now skips empty columns
 - Raised the accent and the team social icons to AA contrast
 - Replaced the phone mockup with a current handset drawn as vector
+- Bundled PT Sans with the theme; no font is fetched from Google on any page load
+- Removed the Google-font subsets option, which no longer had an API to subset
+- Trimmed the bundled icon font to woff2 and woff, from six formats
 - Removed the hardcoded Google Maps key; the address falls back to plain text
 
 =1.0.9=

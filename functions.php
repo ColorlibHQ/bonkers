@@ -133,9 +133,9 @@ if ( ! function_exists( 'bonkers_setup' ) ) :
 				)
 			);
 
-			// Styles for TinyMCE
-			$font_url = str_replace( ',', '%2C', '//fonts.googleapis.com/css?family=PT+Sans:300,400,700' );
-			add_editor_style( array( 'assets/css/blocks.css', 'assets/css/editor-style.css', $font_url ) );
+			// Editor styles. The typeface is bundled with the theme, so the editor
+			// fetches nothing from a third party either.
+			add_editor_style( array( 'assets/css/fonts.css', 'assets/css/blocks.css', 'assets/css/editor-style.css' ) );
 
 	}
 endif; // bonkers_setup

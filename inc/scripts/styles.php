@@ -39,7 +39,6 @@ function bonkers_custom_css() {
 	*/
 	$bonkers_typography_font                 = get_theme_mod( 'bonkers_typography_font_family' );
 	$bonkers_typography_font_headings        = get_theme_mod( 'bonkers_typography_font_family_headings' );
-	$bonkers_typography_subsets              = get_theme_mod( 'bonkers_typography_subsets', '' );
 	$bonkers_typography_font_size            = '16';
 	$bonkers_typography_font_family          = 'PT Sans';
 	$bonkers_typography_font_family_headings = 'PT Sans';
@@ -73,21 +72,12 @@ function bonkers_custom_css() {
 		'font-size'            => $bonkers_typography_font_size,
 	);
 
-	//Add Google Fonts
-	$bonkers_font_subset = '';
-	if ( is_array( $bonkers_typography_subsets ) ) {
-		$bonkers_font_subset = '&subset=';
-		foreach ( $bonkers_typography_subsets as $subset ) {
-			$bonkers_font_subset .= $subset . ',';
-		}
-		$bonkers_font_subset = rtrim( $bonkers_font_subset, ',' );
-	}
-
-	$bonkers_google_font = '//fonts.googleapis.com/css?family=' . $bonkers_typography_font_family . ':400,700' . $bonkers_font_subset;
-	wp_enqueue_style( 'bonkers_google-font', $bonkers_google_font, array(), '1.0', 'all' );
-
-	$bonkers_google_font_headings = '//fonts.googleapis.com/css?family=' . $bonkers_typography_font_family_headings . ':400,700' . $bonkers_font_subset;
-	wp_enqueue_style( 'bonkers_google-font-headings', $bonkers_google_font_headings, array(), '1.0', 'all' );
+	/*
+	 * Nothing is fetched from fonts.googleapis.com any more. PT Sans ships with
+	 * the theme (assets/fonts, declared in assets/css/fonts.css), which is what
+	 * the typography control has always claimed and what the theme directory
+	 * requires. The chosen family is applied as a font stack below.
+	 */
 
 	$custom_css = bonkers_get_custom_typography_css( $typography );
 

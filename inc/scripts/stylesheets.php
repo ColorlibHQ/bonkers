@@ -4,6 +4,10 @@
 	// else from Bootstrap, so grid.css carries those -- with this build's own
 	// custom gutters and breakpoints -- instead of the whole 164 KB stylesheet.
 	$bonkers_version = wp_get_theme()->get( 'Version' );
+
+	// The theme's own typeface, bundled. Registered first so every stylesheet
+	// after it can rely on the family being declared.
+	wp_enqueue_style( 'bonkers-fonts', get_template_directory_uri() . '/assets/css/fonts.css', array(), $bonkers_version );
 	wp_enqueue_style( 'bonkers-base', get_template_directory_uri() . '/assets/css/base.css', array(), $bonkers_version );
 	wp_enqueue_style( 'bonkers-grid', get_template_directory_uri() . '/assets/css/grid.css', array( 'bonkers-base' ), $bonkers_version );
 	//=================================================================
