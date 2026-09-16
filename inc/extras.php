@@ -257,9 +257,9 @@ function bonkers_get_svg( $args = array() ) {
 	 *
 	 * However, child themes can use the title and description to add information to non-decorative SVG icons to improve accessibility.
 	 *
-	 * Example 1 with title: <?php echo bonkers_get_svg( array( 'icon' => 'arrow-right', 'title' => __( 'This is the title', 'textdomain' ) ) ); ?>
+	 * Example 1 with title: <?php echo bonkers_get_svg( array( 'icon' => 'arrow-right', 'title' => __( 'This is the title', 'bonkers' ) ) ); ?>
 	 *
-	 * Example 2 with title and description: <?php echo bonkers_get_svg( array( 'icon' => 'arrow-right', 'title' => __( 'This is the title', 'textdomain' ), 'desc' => __( 'This is the description', 'textdomain' ) ) ); ?>
+	 * Example 2 with title and description: <?php echo bonkers_get_svg( array( 'icon' => 'arrow-right', 'title' => __( 'This is the title', 'bonkers' ), 'desc' => __( 'This is the description', 'bonkers' ) ) ); ?>
 	 *
 	 * See https://www.paciellogroup.com/blog/2013/12/using-aria-enhance-svg-accessibility/.
 	 */

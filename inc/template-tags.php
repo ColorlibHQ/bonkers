@@ -31,6 +31,7 @@ if ( ! function_exists( 'bonkers_metadata' ) ) :
 			echo '<li class="meta_date">' . $time_string . '</li>';
 
 			$byline = sprintf(
+				/* translators: %s: post author name. */
 				esc_html_x( 'by %s', 'post author', 'bonkers' ),
 				'<span class="author vcard"><a class="url fn n" href="' . esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ) . '">' . esc_html( get_the_author() ) . '</a></span>'
 			);
@@ -42,11 +43,13 @@ if ( ! function_exists( 'bonkers_metadata' ) ) :
 			/* translators: used between list items, there is a space after the comma */
 			$categories_list = get_the_category_list( esc_html__( ', ', 'bonkers' ) );
 			if ( $categories_list && bonkers_categorized_blog() ) {
+				/* translators: %1$s: list of categories the post is in. */
 				printf( '<li class="meta_categories"><span class="cat-links">' . esc_html__( 'In %1$s', 'bonkers' ) . '</span></li>', $categories_list ); // WPCS: XSS OK.
 			}
 			/* translators: used between list items, there is a space after the comma */
 			$tags_list = get_the_tag_list( '', esc_html__( ', ', 'bonkers' ) );
 			if ( $tags_list ) {
+				/* translators: %1$s: list of tags on the post. */
 				printf( '<li class="meta_tags"><span class="tags-links">' . esc_html__( 'Tagged %1$s', 'bonkers' ) . '</span></li>', $tags_list ); // WPCS: XSS OK.
 			}
 		}

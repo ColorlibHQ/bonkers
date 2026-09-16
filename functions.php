@@ -9,9 +9,9 @@
  */
 
 /**
- * Bonkers only works with PHP 5.4 or later.
+ * Bonkers only works with PHP 7.4 or later, which is what style.css declares.
  */
-if ( version_compare( phpversion(), '5.4', '<' ) ) {
+if ( version_compare( phpversion(), '7.4', '<' ) ) {
 	require get_template_directory() . '/inc/back-compat.php';
 	return;
 }
