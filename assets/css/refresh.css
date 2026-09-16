@@ -1031,17 +1031,17 @@ a.bonkers-contact-value:hover {
  * the defaults a filled footer needs: readable text on #222, headings that read
  * as headings, and lists that do not look like body copy.
  */
-.site-footer {
+#footer.site-footer {
 	padding: clamp(3rem, 2rem + 3vw, 4.5rem) 0 clamp(1.5rem, 1rem + 2vw, 2.5rem);
 	color: rgba(255, 255, 255, .72);
 }
 
-.site-footer .widget {
+#footer .widget {
 	margin-bottom: 2rem;
 }
 
-.site-footer .widget-title,
-.site-footer h4 {
+#footer .widget-title,
+#footer .widget h4 {
 	margin: 0 0 1.1rem;
 	color: #fff;
 	font-size: 1rem;
@@ -1049,69 +1049,98 @@ a.bonkers-contact-value:hover {
 	text-transform: uppercase;
 }
 
-.site-footer p {
+#footer .widget p {
+	padding-top: 0;
 	margin: 0 0 1rem;
 	line-height: 1.65;
 }
 
-.site-footer a {
+#footer .widget p:last-child {
+	margin-bottom: 0;
+}
+
+#footer .widget a {
 	color: rgba(255, 255, 255, .78);
+	font-size: inherit;
 	text-decoration: none;
 	transition: color .18s var(--bk-ease);
 }
 
-.site-footer a:hover,
-.site-footer a:focus-visible {
+#footer .widget a:hover,
+#footer .widget a:focus-visible {
 	color: #fff;
+	text-decoration: none;
 }
 
-.site-footer ul {
+#footer .widget ul {
 	margin: 0;
 	padding: 0;
 	list-style: none;
 }
 
-.site-footer li {
-	padding: .45rem 0;
+/* The theme lays every footer list item out as a 46%-wide inline-block, so a
+ * single menu breaks into two ragged columns. Footer widgets read as lists. */
+#footer .widget ul li,
+#footer .widget ol li {
+	display: block;
+	width: auto;
+	margin-right: 0;
+	padding: 0;
 	border-bottom: 1px solid rgba(255, 255, 255, .08);
 }
 
-.site-footer li:last-child {
+#footer .widget ul li:last-child,
+#footer .widget ol li:last-child {
 	border-bottom: 0;
 }
 
-/* Recent posts: the date belongs under the title, not inline with it. */
-.site-footer .widget_recent_entries .post-date {
+#footer .widget ul li > a {
+	padding: .5rem 0;
+}
+
+/* Recent posts: the date is a caption under the title, not a second list row. */
+#footer .widget_recent_entries ul li > a {
+	padding-bottom: .1rem;
+}
+
+#footer .widget_recent_entries .post-date {
 	display: block;
-	margin-top: .15rem;
+	padding-bottom: .5rem;
 	font-size: .8125rem;
-	color: rgba(255, 255, 255, .5);
+	color: rgba(255, 255, 255, .45);
 }
 
 /* The theme's own contact widget, used here for the studio details. */
-.site-footer .bonkers-contact-info li,
-.site-footer .location,
-.site-footer .phone,
-.site-footer .email,
-.site-footer .website {
+#footer .widget_contact_info li,
+#footer .widget .bonkers-contact-info li,
+#footer .widget .location,
+#footer .widget .phone,
+#footer .widget .email,
+#footer .widget .website {
 	display: flex;
 	align-items: flex-start;
 	gap: .65rem;
+	margin-bottom: 0;
 	padding: .45rem 0;
 	border-bottom: 0;
 }
 
-.site-footer .fa {
+#footer .widget .fa {
 	width: 1.15em;
 	margin-top: .2em;
+	margin-right: 0;
 	color: rgba(255, 255, 255, .5);
 	flex: 0 0 auto;
 }
 
-.site-footer .search-field,
-.site-footer input[type="search"],
-.site-footer input[type="text"],
-.site-footer input[type="email"] {
+#footer .widget_contact_info li a {
+	display: inline;
+}
+
+#footer .widget .search-field,
+#footer .widget input[type="search"],
+#footer .widget input[type="text"],
+#footer .widget input[type="email"] {
 	width: 100%;
 	padding: .7em .9em;
 	border: 1px solid rgba(255, 255, 255, .18);
@@ -1121,6 +1150,27 @@ a.bonkers-contact-value:hover {
 	font: inherit;
 }
 
-.site-footer input::placeholder {
+#footer .widget input::placeholder {
 	color: rgba(255, 255, 255, .45);
+}
+
+/* Sub-footer: the copyright and menu carry left divider rules that only make
+ * sense while they sit side by side. Stacked and centred they dangle. */
+@media (max-width: 767px) {
+	.sub-footer .theme-copyright,
+	.sub-footer #footer-menu {
+		display: block;
+		margin-left: 0;
+		padding-left: 0;
+		border-left: 0;
+		text-align: center;
+	}
+
+	.sub-footer #footer-menu ul {
+		text-align: center;
+	}
+
+	.sub-footer #footer-menu ul li a {
+		padding: 4px 10px;
+	}
 }
