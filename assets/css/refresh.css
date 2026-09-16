@@ -894,6 +894,13 @@ a.bonkers-contact-value:hover {
 	align-items: center;
 	justify-content: center;
 	width: auto;
+	/*
+	 * style.css gives every input a flat height: 42px. With the padding below
+	 * and border-box sizing that leaves a 13.5px content box holding a 24.75px
+	 * line, so the label cannot sit centred in it. The padding sizes the button.
+	 */
+	height: auto;
+	min-height: 0;
 	margin: .35rem 0 0;
 	padding: .95em 2em;
 	border: 0;
