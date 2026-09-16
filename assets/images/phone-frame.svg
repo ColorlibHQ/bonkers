@@ -14,11 +14,14 @@
 			<stop offset=".5" stop-color="#f1f2f4"/>
 			<stop offset="1" stop-color="#eaecef"/>
 		</linearGradient>
-		<!-- Wide and faint: the shadow, not an outline, is what lifts it off. -->
-		<filter id="bk-phone-shadow" x="-30%" y="-15%" width="160%" height="140%">
-			<feDropShadow dx="0" dy="18" stdDeviation="26" flood-color="#2b3138" flood-opacity=".10"/>
-		</filter>
 	</defs>
+
+	<!--
+	There is deliberately no drop shadow in here. An SVG filter is clipped by
+	this viewBox, and a soft shadow needs far more room than the margin around
+	the body, so it ended in a straight line across the background. The shadow
+	is a CSS filter on the <img> instead, where nothing clips it.
+	-->
 
 	<!-- Side controls, drawn first so the body edge laps over their inner half. -->
 	<g fill="#e2e5e9">
@@ -28,7 +31,7 @@
 		<rect x="403" y="272" width="8" height="96" rx="4"/>
 	</g>
 
-	<rect x="15" y="20" width="390" height="800" rx="56" fill="url(#bk-phone-rim)" filter="url(#bk-phone-shadow)"/>
+	<rect x="15" y="20" width="390" height="800" rx="56" fill="url(#bk-phone-rim)"/>
 	<rect x="18.5" y="23.5" width="383" height="793" rx="52.5" fill="url(#bk-phone-body)"/>
 	<rect x="15.5" y="20.5" width="389" height="799" rx="55.5" fill="none" stroke="rgba(20,24,30,.07)" stroke-width="1"/>
 

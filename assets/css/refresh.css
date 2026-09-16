@@ -568,6 +568,15 @@ img { max-width: 100%; height: auto; }
 	display: block;
 	width: 100%;
 	height: auto;
+	/*
+	 * The shadow belongs here rather than inside the drawing: an SVG filter is
+	 * clipped by its own viewBox, so a soft one ended in a straight line across
+	 * the background. Two passes give a falloff that reaches the page colour
+	 * instead of stopping at an edge.
+	 */
+	filter:
+		drop-shadow(0 4px 10px rgba(43, 49, 56, .10))
+		drop-shadow(0 18px 34px rgba(43, 49, 56, .12));
 }
 
 .bonkers-phone-section .bonkers-phone-image .bonkers-phone-screenshot {
