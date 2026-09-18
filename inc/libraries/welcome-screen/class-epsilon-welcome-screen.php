@@ -765,8 +765,8 @@ class Epsilon_Welcome_Screen {
 	 * @return string;
 	 */
 	public static function set_frontpage_to_static( $args = array() ) {
-		$home = get_page_by_title( 'Homepage' );
-		$blog = get_page_by_title( 'Blog' );
+		$home = bonkers_get_page_by_title( 'Homepage' );
+		$blog = bonkers_get_page_by_title( 'Blog' );
 
 		if ( null === $home ) {
 			$id = wp_insert_post(
